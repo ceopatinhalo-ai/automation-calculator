@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1-Click AI Agent Cloud Generator 2026: Sinh Lệnh Cài Đặt VPS n8n, DeepSeek, Docker</title>
+  <meta name="description" content="Tạo lệnh Bash 1 dòng duy nhất để biến Cloud VPS $4/tháng thành máy chủ AI Agent tự hành 24/7. Tự động cài đặt n8n, DeepSeek, Docker, Telegram Bot.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #8b5cf6;
+      --primary-hover: #7c3aed;
+      --accent-cyan: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.12) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 50px;
+    }
+    .sticky-vip-bar {
+      background: linear-gradient(90deg, #10b981, #8b5cf6, #06b6d4);
+      color: #ffffff;
+      text-align: center;
+      padding: 11px 16px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .sticky-vip-bar a {
+      color: #ffffff;
+      background: rgba(0,0,0,0.3);
+      padding: 4px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.4);
+      transition: all 0.2s ease;
+    }
+    .sticky-vip-bar a:hover {
+      background: #ffffff;
+      color: #090d16;
+    }
+    .container { width: 100%; max-width: 900px; padding: 32px 18px 0; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #c4b5fd;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 30%, #c4b5fd 70%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      h1 { font-size: 1.75rem; }
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .feature-item:hover {
+      background: rgba(139, 92, 246, 0.08);
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+    .feature-item input[type="checkbox"] {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .feature-info { flex: 1; }
+    .feature-name { font-size: 0.92rem; font-weight: 700; color: #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
+    .feature-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+    .tag-free { font-size: 0.7rem; padding: 2px 8px; background: rgba(16, 185, 129, 0.15); color: #34d399; border-radius: 999px; font-weight: 600; }
+    .tag-ai { font-size: 0.7rem; padding: 2px 8px; background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border-radius: 999px; font-weight: 600; }
+
+    .input-group { margin-bottom: 14px; }
+    .input-group label { display: block; font-size: 0.84rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+    .input-group input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .input-group input:focus { border-color: var(--primary); }
+
+    .terminal-card {
+      background: #0d1117;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .terminal-header {
+      background: rgba(255,255,255,0.04);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .terminal-dots { display: flex; gap: 6px; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+    .terminal-title { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); }
+    .copy-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    pre.terminal-code {
+      padding: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #a5f3fc;
+      line-height: 1.5;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .vps-pitch-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .vps-pitch-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .vps-specs { display: flex; gap: 12px; flex-wrap: wrap; }
+    .spec-badge {
+      background: rgba(0,0,0,0.4);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #e2e8f0;
+    }
+    .cta-vps {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 14px 28px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .cta-vps:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(139, 92, 246, 0.5); }
+
+    .lead-box {
+      background: rgba(17, 24, 39, 0.95);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .lead-box h3 { font-size: 1.25rem; font-weight: 800; color: #34d399; margin-bottom: 8px; }
+    .lead-box p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; }
+    .lead-form { display: flex; gap: 10px; max-width: 520px; margin: 0 auto; flex-wrap: wrap; }
+    .lead-form input {
+      flex: 1;
+      min-width: 240px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .lead-form button {
+      background: #10b981;
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lead-form button:hover { background: #059669; }
+
+    footer {
+      text-align: center;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--card-border);
+      width: 100%;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+    .footer-links a { color: #c4b5fd; text-decoration: none; font-weight: 600; }
+    .footer-links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Bar -->
+  <div class="sticky-vip-bar">
+    <span>⚡ <strong>Ưu đãi Solopreneur:</strong> Tải trọn bộ 15 kịch bản tự động hóa Make + AI Agent</span>
+    <a href="https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html">👉 Lấy VIP Kit $19 USD</a>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="badge">🚀 1-Click Server Automation 2026</div>
+      <h1>1-Click AI Agent Cloud Generator</h1>
+      <p class="subtitle">Đừng mất 5 tiếng cấu hình Linux! Tick chọn các module bạn cần, hệ thống tự động biên dịch thành <strong>1 dòng lệnh Bash duy nhất</strong> để biến Cloud VPS $4/tháng thành cỗ máy AI Agent 24/7.</p>
+    </header>
+
+    <div class="grid-2">
+      <!-- Cột trái: Chọn module -->
+      <div class="card">
+        <div class="card-title">🧩 1. Chọn Tính Năng Cần Cài Đặt</div>
+        
+        <label class="feature-item">
+          <input type="checkbox" id="mod-docker" checked disabled>
+          <div class="feature-info">
+            <div class="feature-name">Docker & Docker Compose <span class="tag-free">Cốt lõi</span></div>
+            <div class="feature-desc">Nền tảng container hóa chuẩn doanh nghiệp, tối ưu hóa RAM.</div>
+          </div>
+        </label>
+
+        <label class="feature-item">
+          <input type="checkbox" id="mod-n8n" checked onchange="updateScript()">
+          <div class="feature-info">
+            <div class="feature-name">n8n Automation Engine <span class="tag-free">Khuyên dùng</span></div>
+            <div class="feature-desc">Cỗ máy tự động hóa không giới hạn execution, webhook gom lead.</div>
+          </div>
+        </label>
+
+        <label class="feature-item">
+          <input type="checkbox" id="mod-deepseek" onchange="updateScript()">
+          <div class="feature-info">
+            <div class="feature-name">DeepSeek R1 / V3 (Ollama) <span class="tag-ai">AI Local</span></div>
+            <div class="feature-desc">Chạy mô hình LLM riêng tư 100% trên VPS, không tốn tiền API.</div>
+          </div>
+        </label>
+
+        <label class="feature-item">
+          <input type="checkbox" id="mod-telegram" checked onchange="updateScript()">
+          <div class="feature-info">
+            <div class="feature-name">Telegram Auto-Alert Bot <span class="tag-free">Webhook</span></div>
+            <div class="feature-desc">Reo chuông báo đơn hàng, lead mới & cảnh báo server sập nguồn.</div>
+          </div>
+        </label>
+
+        <label class="feature-item">
+          <input type="checkbox" id="mod-webui" onchange="updateScript()">
+          <div class="feature-info">
+            <div class="feature-name">Open-WebUI Portal <span class="tag-ai">Giao diện</span></div>
+            <div class="feature-desc">Giao diện Chat UI đẹp như ChatGPT, hỗ trợ phân quyền nhóm.</div>
+          </div>
+        </label>
+
+        <label class="feature-item">
+          <input type="checkbox" id="mod-ssl" checked onchange="updateScript()">
+          <div class="feature-info">
+            <div class="feature-name">Caddy Reverse Proxy & SSL <span class="tag-free">Bảo mật</span></div>
+            <div class="feature-desc">Tự động cấp chứng chỉ HTTPS xanh, tường lửa UFW chống hack.</div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Cột phải: Cấu hình nhanh -->
+      <div class="card">
+        <div class="card-title">⚙️ 2. Thông Số Máy Chủ Của Bạn</div>
+
+        <div class="input-group">
+          <label>Tên miền / Subdomain (Tùy chọn):</label>
+          <input type="text" id="cfg-domain" placeholder="agent.domaincuaban.com" oninput="updateScript()">
+        </div>
+
+        <div class="input-group">
+          <label>Email đăng ký chứng chỉ SSL:</label>
+          <input type="email" id="cfg-email" placeholder="admin@domaincuaban.com" oninput="updateScript()">
+        </div>
+
+        <div class="input-group">
+          <label>Telegram Bot Token (Nếu bật bot alert):</label>
+          <input type="text" id="cfg-token" placeholder="123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11" oninput="updateScript()">
+        </div>
+
+        <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px; font-size: 0.82rem; color: #fde68a; line-height: 1.5;">
+          💡 <strong>Khuyến nghị phần cứng:</strong> Gói <strong>Hostinger KVM 2</strong> (2 vCPU, 8GB RAM, 100GB NVMe) đủ mượt để chạy đồng thời n8n, Telegram Bot và Caddy SSL.
+        </div>
+      </div>
+    </div>
+
+    <!-- Hộp Terminal xuất lệnh -->
+    <div class="terminal-card">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+        </div>
+        <div class="terminal-title">bash-1click-install.sh (Chạy trên Ubuntu 22.04 / 24.04 LTS)</div>
+        <button class="copy-btn" onclick="copyCommand()">📋 Sao Chép Lệnh</button>
+      </div>
+      <pre class="terminal-code" id="cmd-output">curl -sSL https://raw.githubusercontent.com/ceopatinhalo-ai/automation-calculator/main/scripts/quick-setup.sh | bash</pre>
+    </div>
+
+    <!-- Khối Pitch VPS Hostinger -->
+    <div class="vps-pitch-card">
+      <div class="vps-pitch-header">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Chưa có máy chủ VPS để paste lệnh này?</h3>
+          <p style="font-size: 0.9rem; color: #c4b5fd; margin-top: 4px;">Khuyên dùng Hostinger Cloud VPS: Băng thông 1Gbps, ổ cứng NVMe siêu tốc, hỗ trợ Docker 1-click.</p>
+        </div>
+        <div class="vps-specs">
+          <div class="spec-badge">⚡ 2 vCPU</div>
+          <div class="spec-badge">🧠 8GB RAM</div>
+          <div class="spec-badge">💾 100GB NVMe</div>
+          <div class="spec-badge">🌐 IP Riêng</div>
+        </div>
+      </div>
+      <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" class="cta-vps">
+        🚀 Mua VPS Hostinger Chỉ Từ $4.99/tháng (Nhập mã AUTOFLOW20 giảm 20%)
+      </a>
+    </div>
+
+    <!-- Lead Magnet Box -->
+    <div class="lead-box">
+      <h3>🎁 Nhận Ngay Bộ 15 Kịch Bản n8n & Telegram Bot Đóng Gói Sẵn</h3>
+      <p>Điền email để nhận ngay file JSON kịch bản (Webhook gom lead, AI Support 24/7, Báo cáo doanh thu) miễn phí 100%.</p>
+      <form class="lead-form" onsubmit="handleLead(event)">
+        <input type="email" id="lead-email" placeholder="Nhập địa chỉ email của bạn..." required>
+        <button type="submit">Tải Trọn Bộ JSON ➔</button>
+      </form>
+      <div id="lead-msg" style="display:none; color:#34d399; margin-top:10px; font-weight:600; font-size:0.9rem;">
+        ✅ Đã gửi! File kịch bản JSON đang được tải xuống máy của bạn...
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="index.html">Make vs Zapier Calculator</a>
+        <a href="vps-calculator.html">VPS Cost Calculator</a>
+        <a href="llm-api-calculator.html">LLM API Arbitrage</a>
+        <a href="forex-calculator.html">Forex Lot Calculator</a>
+        <a href="propfirm-rule-scanner.html">Prop Firm Scanner</a>
+        <a href="vip-kit.html">VIP Kit $19</a>
+        <a href="dfy-onboarding.html">Dịch Vụ DFY $97</a>
+      </div>
+      <p>© 2026 AutoFlow Tech • Độc Lập 100% • Tự Động Hóa & Tối Ưu Hóa Dòng Tiền Toàn Cầu</p>
+    </footer>
+  </div>
+
+  <script>
+    function updateScript() {
+      const n8n = document.getElementById('mod-n8n').checked;
+      const deepseek = document.getElementById('mod-deepseek').checked;
+      const telegram = document.getElementById('mod-telegram').checked;
+      const webui = document.getElementById('mod-webui').checked;
+      const ssl = document.getElementById('mod-ssl').checked;
+      const domain = document.getElementById('cfg-domain').value.trim();
+      const email = document.getElementById('cfg-email').value.trim();
+      const token = document.getElementById('cfg-token').value.trim();
+
+      let flags = [];
+      if (n8n) flags.push("--n8n");
+      if (deepseek) flags.push("--deepseek");
+      if (telegram) flags.push("--telegram");
+      if (webui) flags.push("--webui");
+      if (ssl) flags.push("--ssl");
+      if (domain) flags.push(`--domain=${domain}`);
+      if (email) flags.push(`--email=${email}`);
+      if (token) flags.push(`--bot-token=${token}`);
+
+      const cmd = `curl -sSL https://raw.githubusercontent.com/ceopatinhalo-ai/automation-calculator/main/scripts/quick-setup.sh | bash -s -- ${flags.join(' ')}`;
+      document.getElementById('cmd-output').innerText = cmd;
+    }
+
+    function copyCommand() {
+      const text = document.getElementById('cmd-output').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const oldText = btn.innerHTML;
+        btn.innerHTML = '✅ Đã Sao Chép!';
+        btn.style.background = '#10b981';
+        setTimeout(() => {
+          btn.innerHTML = oldText;
+          btn.style.background = 'var(--primary)';
+        }, 2000);
+      });
+    }
+
+    function handleLead(e) {
+      e.preventDefault();
+      const email = document.getElementById('lead-email').value.trim();
+      if (!email) return;
+
+      try {
+        let leads = JSON.parse(localStorage.getItem('autoflow_leads') || '[]');
+        leads.push({ email: email, tool: 'ai-agent-cloud-generator', date: new Date().toISOString() });
+        localStorage.setItem('autoflow_leads', JSON.stringify(leads));
+      } catch (err) {}
+
+      document.getElementById('lead-msg').style.display = 'block';
+
+      // Kích hoạt tải file blueprint JSON quà tặng
+      const a = document.createElement('a');
+      a.href = 'blueprints/Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json';
+      a.download = 'Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Khởi tạo
+    updateScript();
+  </script>
+</body>
+</html>

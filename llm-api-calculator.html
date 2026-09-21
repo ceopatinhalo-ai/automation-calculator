@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Tính Trọng Tài Chi Phí LLM API 2026: Đừng Để OpenAI & Anthropic Bòn Rút Ngân Sách</title>
+  <meta name="description" content="Công cụ tính toán trọng tài chi phí LLM API thời gian thực. So sánh GPT-4o, Claude 3.5 Sonnet vs DeepSeek V3/R1, Gemini 2.5 Flash, Groq. Cắt giảm 80-95% chi phí API ngay lập tức.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover: rgba(255, 255, 255, 0.12);
+      --primary: #8b5cf6;
+      --primary-hover: #7c3aed;
+      --purple-light: #c4b5fd;
+      --cyan: #06b6d4;
+      --cyan-light: #67e8f9;
+      --success: #10b981;
+      --success-neon: #34d399;
+      --danger: #f43f5e;
+      --danger-light: #fda4af;
+      --amber: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--sans); }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 50px;
+    }
+
+    /* Sticky VIP Top Bar */
+    .sticky-vip-bar {
+      background: linear-gradient(90deg, #8b5cf6, #06b6d4, #10b981);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .sticky-vip-bar a {
+      background: #ffffff;
+      color: #090d16;
+      padding: 4px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    .sticky-vip-bar a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      padding: 36px 20px 0;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--purple-light);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    h1 {
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 30%, #c4b5fd 70%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Main Box */
+    .calc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 36px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .section-title span.icon {
+      font-size: 1.2rem;
+    }
+
+    /* Input Controls Grid */
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 768px) {
+      .controls-grid { grid-template-columns: 1fr; }
+      .calc-box { padding: 24px 18px; }
+      h1 { font-size: 1.85rem; }
+    }
+
+    .control-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 20px;
+    }
+    .control-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .control-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .val-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .number-box {
+      background: #0f172a;
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      color: var(--cyan-light);
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 8px;
+      width: 110px;
+      text-align: right;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .number-box:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+    }
+    .val-unit {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #1e293b;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      margin: 12px 0 8px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--primary));
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.8);
+      border: 2px solid #ffffff;
+      transition: transform 0.1s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .preset-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .chip-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      padding: 3px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .chip-btn:hover {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #fff;
+    }
+
+    /* Model Selector Cards */
+    .model-select-group {
+      margin-top: 24px;
+    }
+    .model-options-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 12px;
+    }
+    @media (max-width: 680px) {
+      .model-options-grid { grid-template-columns: 1fr; }
+    }
+    .model-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+    .model-card:hover {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .model-card.active {
+      border: 2px solid var(--danger);
+      background: rgba(244, 63, 94, 0.08);
+      box-shadow: 0 0 20px rgba(244, 63, 94, 0.2);
+    }
+    .model-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .model-title {
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .model-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(244, 63, 94, 0.15);
+      color: var(--danger-light);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+    .model-price-rate {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      line-height: 1.4;
+    }
+    .model-radio {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      accent-color: var(--danger);
+    }
+
+    /* Savings Hero Spotlight Banner */
+    .spotlight-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(6, 182, 212, 0.15));
+      border: 2px solid rgba(16, 185, 129, 0.45);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      margin: 32px 0;
+      box-shadow: 0 10px 40px rgba(16, 185, 129, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .spotlight-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #6ee7b7;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+    }
+    .spotlight-digits {
+      font-size: 2.75rem;
+      font-weight: 900;
+      color: var(--success-neon);
+      font-family: var(--mono);
+      margin: 6px 0;
+      letter-spacing: -1px;
+      text-shadow: 0 0 25px rgba(52, 211, 153, 0.5);
+    }
+    .spotlight-sub {
+      color: #a7f3d0;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+    .spotlight-metric-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(16, 185, 129, 0.25);
+      flex-wrap: wrap;
+    }
+    .spotlight-metric {
+      text-align: center;
+    }
+    .spotlight-metric-label {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .spotlight-metric-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      font-family: var(--mono);
+      color: #fff;
+    }
+
+    /* Cost Arbitrage Grid */
+    .arbitrage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .arb-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 22px 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .arb-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    .arb-card.proprietary {
+      border-color: rgba(244, 63, 94, 0.4);
+      background: rgba(244, 63, 94, 0.05);
+    }
+    .arb-card.winner {
+      border: 2px solid var(--success-neon);
+      background: rgba(16, 185, 129, 0.08);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+    }
+    .arb-card.featured-speed {
+      border: 2px solid var(--cyan);
+      background: rgba(6, 182, 212, 0.08);
+    }
+    .arb-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 9999px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .badge-win {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4);
+    }
+    .badge-speed {
+      background: linear-gradient(135deg, #06b6d4, #0284c7);
+      color: #fff;
+    }
+    .badge-reasoning {
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      color: #fff;
+    }
+    .badge-loss {
+      background: #f43f5e;
+      color: #fff;
+    }
+
+    .arb-model-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .arb-model-rates {
+      font-size: 0.78rem;
+      font-family: var(--mono);
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .arb-price-block {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .arb-month-cost {
+      font-size: 1.85rem;
+      font-weight: 900;
+      font-family: var(--mono);
+      margin-bottom: 2px;
+    }
+    .arb-month-cost.red { color: var(--danger-light); }
+    .arb-month-cost.green { color: var(--success-neon); }
+    .arb-month-cost.cyan { color: var(--cyan-light); }
+    .arb-month-cost.purple { color: var(--purple-light); }
+    .arb-year-cost {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+    .arb-savings-tag {
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .arb-savings-tag.save-good {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--success-neon);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .arb-savings-tag.base-tag {
+      background: rgba(244, 63, 94, 0.15);
+      color: var(--danger-light);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+    .arb-note {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      line-height: 1.45;
+    }
+
+    /* 1-Click Code Generator */
+    .code-box-wrapper {
+      background: #0d121f;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 20px;
+      padding: 26px;
+      margin-bottom: 36px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+    .code-tabs-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .code-tabs-nav {
+      display: flex;
+      gap: 8px;
+    }
+    .code-tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .code-tab-btn.active {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25));
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: var(--success-neon);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      background: rgba(16, 185, 129, 0.25);
+      transform: translateY(-1px);
+    }
+    .copy-btn.copied {
+      background: var(--success);
+      color: #ffffff;
+      border-color: var(--success);
+    }
+    .code-block {
+      background: #070a12;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+      white-space: pre;
+    }
+    .code-block .keyword { color: #c084fc; font-weight: 600; }
+    .code-block .string { color: #67e8f9; }
+    .code-block .comment { color: #64748b; font-style: italic; }
+    .code-block .function { color: #34d399; }
+    .code-block .variable { color: #fca5a5; }
+
+    /* CTA Grid */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 720px) {
+      .cta-grid { grid-template-columns: 1fr; }
+    }
+    .cta-action-card {
+      border-radius: 20px;
+      padding: 26px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .cta-openrouter {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15));
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
+    }
+    .cta-hostinger {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(244, 63, 94, 0.15));
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+    }
+    .cta-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 22px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 18px;
+    }
+    .btn-cyan {
+      background: linear-gradient(135deg, #06b6d4, #0284c7);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+    }
+    .btn-cyan:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(6, 182, 212, 0.6); }
+    .btn-purple {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+    }
+    .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6); }
+
+    /* Lead Magnet Box */
+    .lead-magnet-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.8));
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .lead-form-row {
+      display: flex;
+      max-width: 540px;
+      margin: 20px auto 0;
+      gap: 10px;
+    }
+    @media (max-width: 580px) {
+      .lead-form-row { flex-direction: column; }
+    }
+    .lead-email-input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: #090d16;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .lead-email-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+    }
+    .lead-submit-btn {
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+    .lead-submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    }
+    .lead-success-msg {
+      margin-top: 14px;
+      color: var(--success-neon);
+      font-size: 0.92rem;
+      font-weight: 700;
+      display: none;
+    }
+
+    /* VIP Suite Callout */
+    .vip-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(139, 92, 246, 0.15));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* Footer & Tool Hub Navigation */
+    .footer-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 28px 0 20px;
+      text-align: left;
+    }
+    .tool-link-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px;
+      text-decoration: none;
+      color: #e2e8f0;
+      transition: all 0.2s;
+      display: block;
+    }
+    .tool-link-card:hover {
+      border-color: var(--primary);
+      background: rgba(139, 92, 246, 0.1);
+      transform: translateY(-2px);
+    }
+    .tool-link-title {
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+    .tool-link-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    footer a {
+      color: var(--purple-light);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .disclaimer {
+      font-size: 0.76rem;
+      color: #64748b;
+      margin-top: 14px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sticky VIP Top Bar -->
+<div class="sticky-vip-bar">
+  <span>⭐ <strong>The 2026 Solopreneur AI Kit ($19 USD)</strong> — Tải trọn bộ 15+ Blueprints tự động hóa & AI Agent</span>
+  <a href="https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html">Tải Trọn Bộ Ngay ➔</a>
+</div>
+
+<div class="container">
+  <header>
+    <div class="badge-pill">⚡ Trọng Tài Chi Phí LLM API 2026</div>
+    <h1>Bảng Tính Trọng Tài Chi Phí LLM API 2026</h1>
+    <p class="subtitle">Đừng để OpenAI & Anthropic bòn rút ngân sách của bạn. Tận dụng kỹ thuật Trọng tài giá (Model Arbitrage) với DeepSeek V3/R1, Gemini Flash và Groq để tiết kiệm ngay 80% – 95% chi phí mà không suy giảm chất lượng đầu ra.</p>
+  </header>
+
+  <div class="calc-box">
+    <!-- Interactive Controls -->
+    <div class="section-title">
+      <span class="icon">🎛️</span>
+      <span>1. Thông Số Tải LLM Của Doanh Nghiệp Bạn</span>
+    </div>
+
+    <div class="controls-grid">
+      <!-- Requests Per Day -->
+      <div class="control-card">
+        <div class="control-head">
+          <span class="control-label">⚡ Lượt Request / Ngày:</span>
+          <div class="val-input-wrap">
+            <input type="number" id="numReq" class="number-box" min="100" max="100000" step="100" value="5000">
+            <span class="val-unit">req</span>
+          </div>
+        </div>
+        <input type="range" id="rngReq" min="100" max="100000" step="100" value="5000">
+        <div class="preset-chips">
+          <button class="chip-btn" onclick="setPreset('req', 1000)">1,000</button>
+          <button class="chip-btn" onclick="setPreset('req', 5000)">5,000 (Chuẩn)</button>
+          <button class="chip-btn" onclick="setPreset('req', 20000)">20,000</button>
+          <button class="chip-btn" onclick="setPreset('req', 50000)">50,000 (Scale)</button>
+          <button class="chip-btn" onclick="setPreset('req', 100000)">100,000</button>
+        </div>
+      </div>
+
+      <!-- Input Tokens -->
+      <div class="control-card">
+        <div class="control-head">
+          <span class="control-label">📥 Input Tokens / Request:</span>
+          <div class="val-input-wrap">
+            <input type="number" id="numInTok" class="number-box" min="100" max="8000" step="50" value="1200">
+            <span class="val-unit">tokens</span>
+          </div>
+        </div>
+        <input type="range" id="rngInTok" min="100" max="8000" step="50" value="1200">
+        <div class="preset-chips">
+          <button class="chip-btn" onclick="setPreset('inTok', 500)">500 (Chat ngắn)</button>
+          <button class="chip-btn" onclick="setPreset('inTok', 1200)">1,200 (Tiêu chuẩn)</button>
+          <button class="chip-btn" onclick="setPreset('inTok', 3500)">3,500 (RAG Doc)</button>
+          <button class="chip-btn" onclick="setPreset('inTok', 8000)">8,000 (Context lớn)</button>
+        </div>
+      </div>
+
+      <!-- Output Tokens -->
+      <div class="control-card">
+        <div class="control-head">
+          <span class="control-label">📤 Output Tokens / Request:</span>
+          <div class="val-input-wrap">
+            <input type="number" id="numOutTok" class="number-box" min="50" max="4000" step="50" value="400">
+            <span class="val-unit">tokens</span>
+          </div>
+        </div>
+        <input type="range" id="rngOutTok" min="50" max="4000" step="50" value="400">
+        <div class="preset-chips">
+          <button class="chip-btn" onclick="setPreset('outTok', 150)">150 (Tóm tắt)</button>
+          <button class="chip-btn" onclick="setPreset('outTok', 400)">400 (Phản hồi vừa)</button>
+          <button class="chip-btn" onclick="setPreset('outTok', 1000)">1,000 (Viết bài)</button>
+          <button class="chip-btn" onclick="setPreset('outTok', 2500)">2,500 (Code dài)</button>
+        </div>
+      </div>
+
+      <!-- Quick Summary Stats -->
+      <div class="control-card" style="display: flex; flex-direction: column; justify-content: center; background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.3);">
+        <div style="font-size: 0.88rem; font-weight: 700; color: #c4b5fd; margin-bottom: 8px;">📊 Tổng Lưu Lượng Token Mỗi Tháng:</div>
+        <div style="font-family: var(--mono); font-size: 1.4rem; font-weight: 900; color: #fff;" id="totalTokensDisplay">
+          240,000,000 Tokens
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
+          (~<span id="inMtokDisplay">180.0</span>M In + <span id="outMtokDisplay">60.0</span>M Out qua 150,000 requests/tháng)
+        </div>
+      </div>
+    </div>
+
+    <!-- Proprietary Model Selector -->
+    <div class="model-select-group">
+      <div style="font-size: 0.95rem; font-weight: 700; color: #f87171; display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+        <span>🔥 Mô Hình Độc Quyền Bạn Đang Dùng Làm Đối Chứng (Baseline):</span>
+      </div>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+        Chọn mô hình OpenAI hoặc Anthropic bạn đang gọi trực tiếp để đo lường số tiền đang bị lãng phí:
+      </p>
+      <div class="model-options-grid">
+        <!-- GPT-4o -->
+        <div class="model-card active" id="card-gpt4o" onclick="selectModel('gpt4o')">
+          <input type="radio" name="propModel" class="model-radio" id="radio-gpt4o" checked>
+          <div class="model-card-head">
+            <span class="model-title">GPT-4o</span>
+            <span class="model-tag">OpenAI Flagship</span>
+          </div>
+          <div class="model-price-rate">
+            In: <strong>$2.50</strong> / MTok<br>
+            Out: <strong>$10.00</strong> / MTok
+          </div>
+        </div>
+
+        <!-- Claude 3.5 Sonnet -->
+        <div class="model-card" id="card-claude" onclick="selectModel('claude')">
+          <input type="radio" name="propModel" class="model-radio" id="radio-claude">
+          <div class="model-card-head">
+            <span class="model-title">Claude 3.5 Sonnet</span>
+            <span class="model-tag">Anthropic Flagship</span>
+          </div>
+          <div class="model-price-rate">
+            In: <strong>$3.00</strong> / MTok<br>
+            Out: <strong>$15.00</strong> / MTok
+          </div>
+        </div>
+
+        <!-- o3-mini -->
+        <div class="model-card" id="card-o3mini" onclick="selectModel('o3mini')">
+          <input type="radio" name="propModel" class="model-radio" id="radio-o3mini">
+          <div class="model-card-head">
+            <span class="model-title">o3-mini</span>
+            <span class="model-tag">Reasoning Base</span>
+          </div>
+          <div class="model-price-rate">
+            In: <strong>$1.10</strong> / MTok<br>
+            Out: <strong>$4.40</strong> / MTok
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spotlight Savings Banner -->
+    <div class="spotlight-banner">
+      <span class="spotlight-tag">💰 KHOẢN TIẾT KIỆM TỐI ĐA KHI CHUYỂN QUA TRỌNG TÀI GIÁ</span>
+      <div class="spotlight-digits" id="heroSavingsMonth">+$1,008 USD / tháng</div>
+      <div class="spotlight-sub" id="heroSavingsYear">Tương đương +$12,096 USD / năm (~302.400.000 VNĐ)</div>
+      
+      <div class="spotlight-metric-row">
+        <div class="spotlight-metric">
+          <div class="spotlight-metric-label">Chi phí hiện tại (<span id="curModelName">GPT-4o</span>)</div>
+          <div class="spotlight-metric-val" style="color: #f87171;" id="curModelMonthCost">$1,050 / mo</div>
+        </div>
+        <div class="spotlight-metric">
+          <div class="spotlight-metric-label">Chi phí sau Arbitrage (DeepSeek V3)</div>
+          <div class="spotlight-metric-val" style="color: #34d399;" id="arbBestMonthCost">$42 / mo</div>
+        </div>
+        <div class="spotlight-metric">
+          <div class="spotlight-metric-label">Tỷ lệ cắt giảm ngân sách</div>
+          <div class="spotlight-metric-val" style="color: #67e8f9;" id="arbCutPercent">-96.0%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real-time Cost Arbitrage Grid -->
+    <div class="section-title">
+      <span class="icon">⚖️</span>
+      <span>2. Bảng So Sánh Trọng Tài Giá Thời Gian Thực (Cost Arbitrage Grid)</span>
+    </div>
+
+    <div class="arbitrage-grid">
+      <!-- Baseline Card -->
+      <div class="arb-card proprietary">
+        <div class="arb-badge badge-loss">🔴 ĐANG TRẢ HIỆN TẠI</div>
+        <div>
+          <div class="arb-model-name" id="gridPropName">OpenAI GPT-4o</div>
+          <div class="arb-model-rates" id="gridPropRates">In: $2.50 | Out: $10.00 / MTok</div>
+          <div class="arb-price-block">
+            <div class="arb-month-cost red" id="gridPropMonth">$1,050</div>
+            <div class="arb-year-cost" id="gridPropYear">$12,600 USD / năm</div>
+          </div>
+          <div class="arb-savings-tag base-tag">Mức giá độc quyền đắt đỏ</div>
+        </div>
+        <p class="arb-note">
+          Trả trực tiếp qua OpenAI/Anthropic API với giá niêm yết đầy đủ không có chiết khấu volume.
+        </p>
+      </div>
+
+      <!-- DeepSeek V3 Card (Winner) -->
+      <div class="arb-card winner">
+        <div class="arb-badge badge-win">👑 TIẾT KIỆM 92% - 96%</div>
+        <div>
+          <div class="arb-model-name" style="color: #6ee7b7;">DeepSeek V3 (671B MoE)</div>
+          <div class="arb-model-rates">In: $0.14 | Out: $0.28 / MTok</div>
+          <div class="arb-price-block">
+            <div class="arb-month-cost green" id="dsV3Month">$42</div>
+            <div class="arb-year-cost" id="dsV3Year">$504 USD / năm</div>
+          </div>
+          <div class="arb-savings-tag save-good" id="dsV3SaveTag">Tiết kiệm $1,008/tháng</div>
+        </div>
+        <p class="arb-note">
+          Hiệu năng ngang ngửa GPT-4o và Claude 3.5 Sonnet trong lập trình & phân tích. Tiết kiệm tới 96% chi phí.
+        </p>
+      </div>
+
+      <!-- DeepSeek R1 Card -->
+      <div class="arb-card">
+        <div class="arb-badge badge-reasoning">🧠 LÝ LUẬN CHUYÊN SÂU</div>
+        <div>
+          <div class="arb-model-name" style="color: #c4b5fd;">DeepSeek R1 (Reasoning)</div>
+          <div class="arb-model-rates">In: $0.55 | Out: $2.19 / MTok</div>
+          <div class="arb-price-block">
+            <div class="arb-month-cost purple" id="dsR1Month">$230</div>
+            <div class="arb-year-cost" id="dsR1Year">$2,765 USD / năm</div>
+          </div>
+          <div class="arb-savings-tag save-good" id="dsR1SaveTag">Tiết kiệm $820/tháng</div>
+        </div>
+        <p class="arb-note">
+          Tư duy Chain-of-thought mạnh mẽ như OpenAI o1/o3-mini nhưng chi phí rẻ hơn 5 lần.
+        </p>
+      </div>
+
+      <!-- Gemini 2.5 Flash Card -->
+      <div class="arb-card">
+        <div class="arb-badge badge-win">⚡ SIÊU RẺ & 1M CONTEXT</div>
+        <div>
+          <div class="arb-model-name" style="color: #38bdf8;">Gemini 2.5 Flash</div>
+          <div class="arb-model-rates">In: $0.075 | Out: $0.30 / MTok</div>
+          <div class="arb-price-block">
+            <div class="arb-month-cost cyan" id="geminiMonth">$31.5</div>
+            <div class="arb-year-cost" id="geminiYear">$378 USD / năm</div>
+          </div>
+          <div class="arb-savings-tag save-good" id="geminiSaveTag">Tiết kiệm $1,018/tháng</div>
+        </div>
+        <p class="arb-note">
+          Cửa sổ ngữ cảnh 1,000,000 tokens khổng lồ, phản hồi siêu tốc, giá rẻ nhất thị trường hiện nay.
+        </p>
+      </div>
+
+      <!-- Groq Llama 3.3 70B Card -->
+      <div class="arb-card featured-speed">
+        <div class="arb-badge badge-speed">🚀 300 TOKENS / GIÂY</div>
+        <div>
+          <div class="arb-model-name" style="color: #67e8f9;">Groq (Llama 3.3 70B)</div>
+          <div class="arb-model-rates">In: $0.59 | Out: $0.79 / MTok</div>
+          <div class="arb-price-block">
+            <div class="arb-month-cost cyan" id="groqMonth">$154</div>
+            <div class="arb-year-cost" id="groqYear">$1,843 USD / năm</div>
+          </div>
+          <div class="arb-savings-tag save-good" id="groqSaveTag">Tiết kiệm $896/tháng</div>
+        </div>
+        <p class="arb-note">
+          Chip LPU chuyên dụng đạt tốc độ 300 tokens/s tức thì. Hoàn hảo cho Voice Agent và Bot thời gian thực.
+        </p>
+      </div>
+    </div>
+
+    <!-- 1-Click Code Generator -->
+    <div class="code-box-wrapper">
+      <div class="code-tabs-head">
+        <div>
+          <div style="font-size: 1.15rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 8px;">
+            <span>💻</span>
+            <span>1-Click Drop-in Proxy Code Generator</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
+            Chỉ đổi <code>base_url</code> — Không cần sửa bất kỳ dòng logic nào trong ứng dụng hiện tại của bạn!
+          </p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button class="copy-btn" id="btnCopyCode" onclick="copySnippet()">
+            <span id="copyBtnIcon">📋</span>
+            <span id="copyBtnText">Sao Chép Code</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="code-tabs-nav">
+        <button class="code-tab-btn active" id="tabBtn-py" onclick="switchTab('py')">🐍 Python (OpenAI SDK)</button>
+        <button class="code-tab-btn" id="tabBtn-js" onclick="switchTab('js')">🟨 Node.js / TypeScript</button>
+        <button class="code-tab-btn" id="tabBtn-docker" onclick="switchTab('docker')">🐳 LiteLLM Proxy Docker</button>
+      </div>
+
+      <pre class="code-block" id="codeDisplay"></pre>
+    </div>
+
+    <!-- Monetization CTAs -->
+    <div class="section-title">
+      <span class="icon">🚀</span>
+      <span>3. Triển Khai Hạ Tầng Tiết Kiệm Chi Phí Ngay Hôm Nay</span>
+    </div>
+
+    <div class="cta-grid">
+      <!-- OpenRouter CTA -->
+      <div class="cta-action-card cta-openrouter">
+        <div>
+          <span style="background: rgba(6, 182, 212, 0.2); color: var(--cyan-light); font-size: 0.76rem; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
+            🌐 Trọng Tài Đám Mây Đa Mô Hình
+          </span>
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 12px 0 8px;">
+            Đăng Ký OpenRouter Nhận Credit Dùng Thử
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+            Một API Key duy nhất gọi hơn 200+ mô hình (DeepSeek V3/R1, Claude 3.5, Gemini, Llama 3.3). Tự động định tuyến sang nhà cung cấp rẻ nhất & nhanh nhất theo mili-giây.
+          </p>
+        </div>
+        <a href="https://openrouter.ai/" target="_blank" rel="noopener" class="cta-action-btn btn-cyan">
+          👉 Nhận Credit Dùng Thử OpenRouter ➔
+        </a>
+      </div>
+
+      <!-- Hostinger VPS CTA -->
+      <div class="cta-action-card cta-hostinger">
+        <div>
+          <span style="background: rgba(168, 85, 247, 0.2); color: #c084fc; font-size: 0.76rem; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
+            🛡️ Tự Chủ Hạ Tầng 100%
+          </span>
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 12px 0 8px;">
+            Treo DeepSeek R1/V3 Trên Hostinger VPS $4/tháng
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+            Tự dựng LiteLLM Proxy Gateway hoặc Ollama chạy model chưng cất 24/7. Nhập mã <strong>AUTOFLOW20</strong> giảm thêm 20%, IP tĩnh riêng, NVMe SSD siêu tốc.
+          </p>
+        </div>
+        <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" rel="noopener" class="cta-action-btn btn-purple">
+          ⚡ Thuê VPS Hostinger Giảm 20% Ngay ➔
+        </a>
+      </div>
+    </div>
+
+    <!-- Lead Magnet Form -->
+    <div class="lead-magnet-card">
+      <div class="badge-pill" style="margin-bottom: 10px; background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.3);">
+        🎁 QUÀ TẶNG MIỄN PHÍ DÀNH CHO DEVELOPER & FOUNDER
+      </div>
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: 6px;">
+        Tải Trọn Bộ Kịch Bản LiteLLM Proxy + 50 System Prompts Tối Ưu Chi Phí 2026
+      </h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 620px; margin: 0 auto;">
+        Bao gồm: File <code>docker-compose.yml</code> chuẩn sản xuất, cấu hình rate-limit & auto-fallback, và 50 system prompts nén ngữ cảnh tiết kiệm 40% input tokens.
+      </p>
+      <form class="lead-form-row" onsubmit="handleLeadSubmit(event)">
+        <input type="email" id="userLeadEmail" class="lead-email-input" placeholder="Nhập email làm việc của bạn..." required>
+        <button type="submit" class="lead-submit-btn">📥 Tải Bộ Kịch Bản (0đ)</button>
+      </form>
+      <div id="leadSuccessAlert" class="lead-success-msg">
+        ✅ Đã kích hoạt tải xuống! Tệp <code>litellm-proxy-config-and-50-prompts.json</code> đang được tải về máy của bạn.
+      </div>
+    </div>
+
+    <!-- VIP Solopreneur Automation Kit Banner -->
+    <div class="vip-banner">
+      <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">
+        ⭐ The 2026 Solopreneur AI Kit ($19 USD)
+      </span>
+      <h3 style="font-size: 1.35rem; font-weight: 800; margin-top: 10px; color: #fff;">
+        Tự Động Hóa 100% Doanh Nghiệp Với Make.com + AI Agent 24/7
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; max-width: 640px; margin: 6px auto 18px;">
+        Mở khóa toàn bộ kho tài sản: Kịch bản Gom Lead Telegram sang Google Sheet, Hệ thống Email Autoresponder Brevo, và Hướng dẫn triển khai AI Agent trên Cloud VPS hoàn chỉnh.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="automation-vip-kit.html" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #10b981, #059669); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);">
+          ⚡ Mở Khóa VIP Kit ($19 USD) ➔
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Navigation Hub -->
+  <div class="section-title" style="margin-top: 20px;">
+    <span class="icon">🧭</span>
+    <span>Hệ Sinh Thái Công Cụ Tự Động Hóa & Tài Chính AutoFlow Tech</span>
+  </div>
+
+  <div class="footer-tools-grid">
+    <a href="index.html" class="tool-link-card">
+      <div class="tool-link-title">⚡ Make vs Zapier ROI</div>
+      <div class="tool-link-desc">Tính toán chi phí tiết kiệm khi đổi nền tảng workflow tự động.</div>
+    </a>
+    <a href="vps-calculator.html" class="tool-link-card">
+      <div class="tool-link-title">🖥️ Cloud VPS vs Laptop</div>
+      <div class="tool-link-desc">So sánh chi phí chạy AI Agent 24/7 trên Cloud vs Treo Laptop.</div>
+    </a>
+    <a href="forex-calculator.html" class="tool-link-card">
+      <div class="tool-link-title">📈 Forex Lot & Risk Calc</div>
+      <div class="tool-link-desc">Tính toán khối lượng vào lệnh và quản trị rủi ro kỷ luật SMC.</div>
+    </a>
+    <a href="propfirm-calculator.html" class="tool-link-card">
+      <div class="tool-link-title">🎯 Prop Firm Eval Matrix</div>
+      <div class="tool-link-desc">Mô phỏng rào cản Drawdown hàng ngày các quỹ FTMO, FundingPips.</div>
+    </a>
+    <a href="automation-vip-kit.html" class="tool-link-card">
+      <div class="tool-link-title">💎 VIP Automation Kit</div>
+      <div class="tool-link-desc">Trọn gói 15+ Blueprint Make.com & Script Docker AI sẵn sàng chạy.</div>
+    </a>
+  </div>
+
+  <footer>
+    <p>© 2026 AutoFlow Tech. Xây dựng bởi các kỹ sư tự động hóa & nhà phát triển độc lập.</p>
+    <div style="margin-top: 10px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="https://github.com/ceopatinhalo-ai/automation-calculator" target="_blank" rel="noopener">Mã Nguồn Mở GitHub</a>
+      <a href="https://www.youtube.com/@AutoFlowTechVN" target="_blank" rel="noopener">Kênh YouTube AutoFlow Tech</a>
+      <a href="https://openrouter.ai/" target="_blank" rel="noopener">Cổng OpenRouter API</a>
+      <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" rel="noopener">Hostinger Cloud VPS</a>
+    </div>
+    <p class="disclaimer">
+      Tuyên bố miễn trừ: Công cụ này sử dụng bảng giá chính thức công bố của OpenAI, Anthropic, DeepSeek, Google và Groq tại thời điểm 2026. Một số liên kết trên trang là liên kết đối tác (Affiliate), giúp duy trì máy chủ miễn phí mà không làm tăng bất kỳ chi phí nào cho bạn.
+    </p>
+  </footer>
+</div>
+
+<script>
+  // DOM Elements
+  const rngReq = document.getElementById('rngReq');
+  const numReq = document.getElementById('numReq');
+  const rngInTok = document.getElementById('rngInTok');
+  const numInTok = document.getElementById('numInTok');
+  const rngOutTok = document.getElementById('rngOutTok');
+  const numOutTok = document.getElementById('numOutTok');
+
+  // Display Elements
+  const totalTokensDisplay = document.getElementById('totalTokensDisplay');
+  const inMtokDisplay = document.getElementById('inMtokDisplay');
+  const outMtokDisplay = document.getElementById('outMtokDisplay');
+
+  // Spotlight Banner Elements
+  const heroSavingsMonth = document.getElementById('heroSavingsMonth');
+  const heroSavingsYear = document.getElementById('heroSavingsYear');
+  const curModelName = document.getElementById('curModelName');
+  const curModelMonthCost = document.getElementById('curModelMonthCost');
+  const arbBestMonthCost = document.getElementById('arbBestMonthCost');
+  const arbCutPercent = document.getElementById('arbCutPercent');
+
+  // Grid Elements
+  const gridPropName = document.getElementById('gridPropName');
+  const gridPropRates = document.getElementById('gridPropRates');
+  const gridPropMonth = document.getElementById('gridPropMonth');
+  const gridPropYear = document.getElementById('gridPropYear');
+
+  const dsV3Month = document.getElementById('dsV3Month');
+  const dsV3Year = document.getElementById('dsV3Year');
+  const dsV3SaveTag = document.getElementById('dsV3SaveTag');
+
+  const dsR1Month = document.getElementById('dsR1Month');
+  const dsR1Year = document.getElementById('dsR1Year');
+  const dsR1SaveTag = document.getElementById('dsR1SaveTag');
+
+  const geminiMonth = document.getElementById('geminiMonth');
+  const geminiYear = document.getElementById('geminiYear');
+  const geminiSaveTag = document.getElementById('geminiSaveTag');
+
+  const groqMonth = document.getElementById('groqMonth');
+  const groqYear = document.getElementById('groqYear');
+  const groqSaveTag = document.getElementById('groqSaveTag');
+
+  // Baseline Model Pricing per 1M tokens
+  const PROPRIETARY_MODELS = {
+    gpt4o: {
+      name: 'OpenAI GPT-4o',
+      shortName: 'GPT-4o',
+      inPrice: 2.50,
+      outPrice: 10.00
+    },
+    claude: {
+      name: 'Claude 3.5 Sonnet',
+      shortName: 'Claude 3.5 Sonnet',
+      inPrice: 3.00,
+      outPrice: 15.00
+    },
+    o3mini: {
+      name: 'OpenAI o3-mini',
+      shortName: 'o3-mini',
+      inPrice: 1.10,
+      outPrice: 4.40
+    }
+  };
+
+  // Alternative Arbitrage Model Pricing per 1M tokens
+  const ALT_MODELS = {
+    dsV3: { inPrice: 0.14, outPrice: 0.28, name: 'DeepSeek V3' },
+    dsR1: { inPrice: 0.55, outPrice: 2.19, name: 'DeepSeek R1' },
+    gemini: { inPrice: 0.075, outPrice: 0.30, name: 'Gemini 2.5 Flash' },
+    groq: { inPrice: 0.59, outPrice: 0.79, name: 'Groq Llama 3.3' }
+  };
+
+  let selectedPropModel = 'gpt4o';
+  let activeCodeTab = 'py';
+
+  // Format currency helpers
+  function fmtUSD(val) {
+    if (val >= 100) return '$' + Math.round(val).toLocaleString('en-US');
+    return '$' + val.toFixed(2);
+  }
+
+  function fmtVND(usd) {
+    const vnd = Math.round(usd * 25400);
+    return vnd.toLocaleString('vi-VN') + ' VNĐ';
+  }
+
+  function syncInputs(source, target) {
+    target.value = source.value;
+    calculateArbitrage();
+  }
+
+  rngReq.addEventListener('input', () => syncInputs(rngReq, numReq));
+  numReq.addEventListener('input', () => syncInputs(numReq, rngReq));
+
+  rngInTok.addEventListener('input', () => syncInputs(rngInTok, numInTok));
+  numInTok.addEventListener('input', () => syncInputs(numInTok, rngInTok));
+
+  rngOutTok.addEventListener('input', () => syncInputs(rngOutTok, numOutTok));
+  numOutTok.addEventListener('input', () => syncInputs(numOutTok, rngOutTok));
+
+  function setPreset(type, val) {
+    if (type === 'req') {
+      rngReq.value = val;
+      numReq.value = val;
+    } else if (type === 'inTok') {
+      rngInTok.value = val;
+      numInTok.value = val;
+    } else if (type === 'outTok') {
+      rngOutTok.value = val;
+      numOutTok.value = val;
+    }
+    calculateArbitrage();
+  }
+
+  function selectModel(modelKey) {
+    selectedPropModel = modelKey;
+    document.querySelectorAll('.model-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.model-radio').forEach(r => r.checked = false);
+
+    const card = document.getElementById('card-' + modelKey);
+    const radio = document.getElementById('radio-' + modelKey);
+    if (card) card.classList.add('active');
+    if (radio) radio.checked = true;
+
+    calculateArbitrage();
+    updateCodeSnippet();
+  }
+
+  function calculateArbitrage() {
+    const reqPerDay = parseFloat(numReq.value) || 5000;
+    const inTok = parseFloat(numInTok.value) || 1200;
+    const outTok = parseFloat(numOutTok.value) || 400;
+
+    const monthlyRequests = reqPerDay * 30;
+    const monthlyInTokens = monthlyRequests * inTok;
+    const monthlyOutTokens = monthlyRequests * outTok;
+    const totalMonthlyTokens = monthlyInTokens + monthlyOutTokens;
+
+    const inMTok = monthlyInTokens / 1000000;
+    const outMTok = monthlyOutTokens / 1000000;
+
+    // Header token overview
+    totalTokensDisplay.textContent = totalMonthlyTokens.toLocaleString('en-US') + ' Tokens';
+    inMtokDisplay.textContent = inMTok.toFixed(1);
+    outMtokDisplay.textContent = outMTok.toFixed(1);
+
+    // Current Proprietary Model Cost
+    const propModel = PROPRIETARY_MODELS[selectedPropModel] || PROPRIETARY_MODELS.gpt4o;
+    const propMonthCost = (inMTok * propModel.inPrice) + (outMTok * propModel.outPrice);
+    const propYearCost = propMonthCost * 12;
+
+    curModelName.textContent = propModel.shortName;
+    curModelMonthCost.textContent = fmtUSD(propMonthCost) + ' / mo';
+
+    gridPropName.textContent = propModel.name;
+    gridPropRates.textContent = `In: $${propModel.inPrice.toFixed(2)} | Out: $${propModel.outPrice.toFixed(2)} / MTok`;
+    gridPropMonth.textContent = fmtUSD(propMonthCost);
+    gridPropYear.textContent = fmtUSD(propYearCost) + ' USD / năm';
+
+    // Alternative Costs
+    // 1. DeepSeek V3
+    const dsV3MonthVal = (inMTok * ALT_MODELS.dsV3.inPrice) + (outMTok * ALT_MODELS.dsV3.outPrice);
+    const dsV3YearVal = dsV3MonthVal * 12;
+    const dsV3Savings = Math.max(0, propMonthCost - dsV3MonthVal);
+    dsV3Month.textContent = fmtUSD(dsV3MonthVal);
+    dsV3Year.textContent = fmtUSD(dsV3YearVal) + ' USD / năm';
+    dsV3SaveTag.textContent = `Tiết kiệm ${fmtUSD(dsV3Savings)} / tháng`;
+
+    // 2. DeepSeek R1
+    const dsR1MonthVal = (inMTok * ALT_MODELS.dsR1.inPrice) + (outMTok * ALT_MODELS.dsR1.outPrice);
+    const dsR1YearVal = dsR1MonthVal * 12;
+    const dsR1Savings = Math.max(0, propMonthCost - dsR1MonthVal);
+    dsR1Month.textContent = fmtUSD(dsR1MonthVal);
+    dsR1Year.textContent = fmtUSD(dsR1YearVal) + ' USD / năm';
+    dsR1SaveTag.textContent = `Tiết kiệm ${fmtUSD(dsR1Savings)} / tháng`;
+
+    // 3. Gemini 2.5 Flash
+    const geminiMonthVal = (inMTok * ALT_MODELS.gemini.inPrice) + (outMTok * ALT_MODELS.gemini.outPrice);
+    const geminiYearVal = geminiMonthVal * 12;
+    const geminiSavings = Math.max(0, propMonthCost - geminiMonthVal);
+    geminiMonth.textContent = fmtUSD(geminiMonthVal);
+    geminiYear.textContent = fmtUSD(geminiYearVal) + ' USD / năm';
+    geminiSaveTag.textContent = `Tiết kiệm ${fmtUSD(geminiSavings)} / tháng`;
+
+    // 4. Groq Llama 3.3
+    const groqMonthVal = (inMTok * ALT_MODELS.groq.inPrice) + (outMTok * ALT_MODELS.groq.outPrice);
+    const groqYearVal = groqMonthVal * 12;
+    const groqSavings = Math.max(0, propMonthCost - groqMonthVal);
+    groqMonth.textContent = fmtUSD(groqMonthVal);
+    groqYear.textContent = fmtUSD(groqYearVal) + ' USD / năm';
+    groqSaveTag.textContent = `Tiết kiệm ${fmtUSD(groqSavings)} / tháng`;
+
+    // Spotlight Benchmark: DeepSeek V3 as the standard Flagship Arbitrage
+    const heroSavedMonth = propMonthCost - dsV3MonthVal;
+    const heroSavedYear = heroSavedMonth * 12;
+    const percentCut = ((heroSavedMonth / propMonthCost) * 100).toFixed(1);
+
+    heroSavingsMonth.textContent = `+${fmtUSD(heroSavedMonth)} USD / tháng`;
+    heroSavingsYear.textContent = `Tương đương +${fmtUSD(heroSavedYear)} USD / năm (~${fmtVND(heroSavedYear)})`;
+    arbBestMonthCost.textContent = `${fmtUSD(dsV3MonthVal)} / mo`;
+    arbCutPercent.textContent = `-${percentCut}%`;
+  }
+
+  // Code Generator Tabs
+  const SNIPPETS = {
+    py: `# Cài đặt: pip install openai
+# CHỈ CẦN ĐỔI base_url VÀ api_key — Không sửa bất kỳ logic code nào!
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    # Trỏ đến OpenRouter hoặc LiteLLM Proxy Gateway chạy trên Hostinger VPS
+    base_url="https://openrouter.ai/api/v1",  # hoặc "http://vps-ip:4000/v1"
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+)
+
+response = client.chat.completions.create(
+    # DeepSeek V3: Giảm 96% chi phí ($0.14 / $0.28 MTok)
+    model="deepseek/deepseek-chat",
+    # Hoặc DeepSeek R1: model="deepseek/deepseek-r1"
+    # Hoặc Gemini Flash: model="google/gemini-2.5-flash"
+    messages=[
+        {"role": "system", "content": "You are an elite autonomous AI engineer."},
+        {"role": "user", "content": "Tối ưu hóa pipeline xử lý dữ liệu và xuất bản tự động."}
+    ],
+    temperature=0.6,
+)
+
+print(response.choices[0].message.content)`,
+
+    js: `// Cài đặt: npm install openai
+// Drop-in replacement hoàn hảo cho Node.js / TypeScript / Next.js
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  // Trỏ thẳng sang OpenRouter hoặc Proxy nội bộ
+  baseURL: "https://openrouter.ai/api/v1", // hoặc "http://vps-ip:4000/v1"
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
+
+async function runArbitrage() {
+  const completion = await openai.chat.completions.create({
+    // Sử dụng DeepSeek V3 với giá chỉ $0.14 / $0.28 MTok
+    model: "deepseek/deepseek-chat",
+    messages: [
+      { role: "system", content: "You are an elite autonomous AI engineer." },
+      { role: "user", content: "Tối ưu hóa pipeline xử lý dữ liệu và xuất bản tự động." }
+    ],
+    temperature: 0.6,
+  });
+
+  console.log(completion.choices[0].message.content);
+}
+
+runArbitrage();`,
+
+    docker: `# Treo LiteLLM Proxy Gateway trên Hostinger VPS $4/tháng
+# Cân bằng tải, caching redis, tự động retry & fallback khi OpenAI nghẽn mạng
+docker run -d \\
+  --name litellm-proxy \\
+  -p 4000:4000 \\
+  -e OPENROUTER_API_KEY="sk-or-v1-..." \\
+  -e DEEPSEEK_API_KEY="sk-..." \\
+  -e GEMINI_API_KEY="AIza..." \\
+  -e LITELLM_MASTER_KEY="sk-autoflow-proxy-2026" \\
+  --restart always \\
+  ghcr.io/berriai/litellm:main-latest \\
+  --port 4000
+
+# Sau khi chạy lệnh trên, trỏ tất cả ứng dụng của bạn về:
+# URL: http://<IP_VPS_HOSTINGER>:4000/v1
+# Key: sk-autoflow-proxy-2026`
+  };
+
+  function switchTab(tabKey) {
+    activeCodeTab = tabKey;
+    document.querySelectorAll('.code-tab-btn').forEach(b => b.classList.remove('active'));
+    const btn = document.getElementById('tabBtn-' + tabKey);
+    if (btn) btn.classList.add('active');
+    updateCodeSnippet();
+  }
+
+  function updateCodeSnippet() {
+    const raw = SNIPPETS[activeCodeTab] || SNIPPETS.py;
+    // Format syntax highlight roughly
+    const formatted = raw
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    document.getElementById('codeDisplay').innerHTML = formatted;
+  }
+
+  function copySnippet() {
+    const raw = SNIPPETS[activeCodeTab] || SNIPPETS.py;
+    navigator.clipboard.writeText(raw).then(() => {
+      const btn = document.getElementById('btnCopyCode');
+      const text = document.getElementById('copyBtnText');
+      const icon = document.getElementById('copyBtnIcon');
+      btn.classList.add('copied');
+      icon.textContent = '✅';
+      text.textContent = 'Đã Sao Chép!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        icon.textContent = '📋';
+        text.textContent = 'Sao Chép Code';
+      }, 2500);
+    }).catch(err => {
+      console.error('Không thể copy', err);
+    });
+  }
+
+  // Lead Magnet Email Submission
+  function handleLeadSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById('userLeadEmail');
+    const email = input ? input.value.trim() : '';
+    if (!email || !email.includes('@')) return;
+
+    // Persist to localStorage
+    try {
+      const leads = JSON.parse(localStorage.getItem('autoflow_leads') || '[]');
+      leads.push({
+        email: email,
+        source: 'llm_api_calculator',
+        model_tested: selectedPropModel,
+        timestamp: new Date().toISOString()
+      });
+      localStorage.setItem('autoflow_leads', JSON.stringify(leads));
+
+      // Dual save for compatibility with autoflow_captured_leads_v1
+      const captured = JSON.parse(localStorage.getItem('autoflow_captured_leads_v1') || '[]');
+      captured.push({
+        email: email,
+        source: 'llm_api_calculator',
+        date: new Date().toISOString()
+      });
+      localStorage.setItem('autoflow_captured_leads_v1', JSON.stringify(captured));
+    } catch(err) {
+      console.warn('localStorage access failed:', err);
+    }
+
+    // Show success alert
+    document.getElementById('leadSuccessAlert').style.display = 'block';
+
+    // Generate downloadable VIP payload
+    const payload = {
+      title: "The 2026 Production LiteLLM Proxy Kit & 50 Cost-Cutting Prompts",
+      author: "AutoFlow Tech - Solopreneur Automation Suite",
+      version: "2026.3.0",
+      vps_recommendation: {
+        hostinger_referral: "https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1",
+        coupon: "AUTOFLOW20",
+        specs: "Hostinger KVM2 (8GB RAM, NVMe SSD, 300Mb/s port)"
+      },
+      docker_compose: {
+        version: "3.8",
+        services: {
+          litellm: {
+            image: "ghcr.io/berriai/litellm:main-latest",
+            ports: ["4000:4000"],
+            environment: [
+              "OPENROUTER_API_KEY=your-openrouter-key",
+              "DEEPSEEK_API_KEY=your-deepseek-key",
+              "GEMINI_API_KEY=your-gemini-key",
+              "LITELLM_MASTER_KEY=sk-autoflow-master-secret"
+            ],
+            restart: "always"
+          }
+        }
+      },
+      proxy_routing_strategy: [
+        { task: "Code Architecture & Complex Refactor", primary: "deepseek/deepseek-chat", fallback: "anthropic/claude-3.5-sonnet" },
+        { task: "Deep Logic & Mathematics", primary: "deepseek/deepseek-r1", fallback: "openai/o3-mini" },
+        { task: "RAG & Long Document Ingestion", primary: "google/gemini-2.5-flash", fallback: "deepseek/deepseek-chat" },
+        { task: "Voice Agent & Realtime Chat (<500ms)", primary: "groq/llama-3.3-70b-versatile", fallback: "google/gemini-2.5-flash" }
+      ],
+      token_reduction_principles: [
+        "1. XML Tag Compression: Replace verbose JSON input with compact XML (<ctx>...</ctx>) to cut 35% tokens.",
+        "2. Few-Shot Stripping: Use fine-tuned system guidelines instead of bloated in-context examples.",
+        "3. Cache Read Optimizations: DeepSeek & OpenRouter provide 50-80% cache hit discounts for recurring prompt prefixes."
+      ],
+      sample_system_prompts: [
+        { id: 1, name: "Ultra-Concise Lead Extractor", prompt: "Extract {name, email, intent, budget} into compact JSON. Zero conversational filler." },
+        { id: 2, name: "Code Synthesizer & Bug Hunter", prompt: "Analyze diff, identify root cause, provide exact patch chunk. No explanations unless critical." },
+        { id: 3, name: "Email Campaign Architect", prompt: "Write high-converting plain-text email with 1 hook, 1 proof, 1 unambiguous CTA." }
+      ]
+    };
+
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'litellm-proxy-config-and-50-prompts.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // Initialize
+  calculateArbitrage();
+  updateCodeSnippet();
+</script>
+
+</body>
+</html>
