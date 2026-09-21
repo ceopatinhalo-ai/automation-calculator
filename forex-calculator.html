@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Forex & Gold Lot Size Calculator | IC Markets & Exness Spread Comparison 2026</title>
+  <meta name="description" content="Calculate your exact lot size and dollar risk for Forex, Gold (XAUUSD), and Crypto. Compare raw spread savings with IC Markets and Exness. Download free ICT TradingView Pine Script.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --icmarkets-color: #0088cc;
+      --exness-color: #f59e0b;
+      --retail-color: #ef4444;
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; padding: 24px 16px; min-height: 100vh; }
+    .container { max-width: 1020px; margin: 0 auto; }
+    
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 0 28px; border-bottom: 1px solid #1f2937; margin-bottom: 36px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; color: #fff; text-decoration: none; }
+    .logo-badge { background: linear-gradient(135deg, #10b981, #06b6d4); color: #fff; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; }
+    .nav-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: #fff; }
+
+    /* Hero */
+    header { text-align: center; margin-bottom: 40px; }
+    .badge { display: inline-block; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
+    h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 14px; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subtitle { color: var(--text-muted); font-size: 1.1rem; max-width: 760px; margin: 0 auto; }
+
+    /* Tabs */
+    .tab-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 32px; }
+    .tab-btn { background: #1f2937; color: var(--text-muted); border: 1px solid #374151; padding: 10px 22px; border-radius: 12px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .tab-btn.active { background: #10b981; color: #000; border-color: #10b981; }
+
+    /* Cards */
+    .calc-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 32px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6); margin-bottom: 40px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 1.85rem; } }
+
+    /* Inputs */
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 0.88rem; font-weight: 700; color: #d1d5db; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .form-control { width: 100%; background: #1f2937; border: 1px solid #374151; color: #fff; padding: 12px 16px; border-radius: 12px; font-size: 1.05rem; font-weight: 600; outline: none; transition: border-color 0.2s; }
+    .form-control:focus { border-color: #10b981; }
+    select.form-control { cursor: pointer; }
+
+    /* Output Box */
+    .output-panel { background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .stat-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-label { color: var(--text-muted); font-size: 0.95rem; font-weight: 600; }
+    .stat-value { font-size: 1.4rem; font-weight: 800; color: #fff; }
+    .stat-value.primary { color: #34d399; font-size: 1.85rem; }
+
+    /* Slider styling */
+    input[type=range] { width: 100%; height: 10px; border-radius: 6px; background: #1f2937; outline: none; appearance: none; -webkit-appearance: none; margin: 12px 0 20px; cursor: pointer; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #10b981; cursor: pointer; box-shadow: 0 0 15px rgba(16, 185, 129, 0.7); }
+
+    /* Broker Cards */
+    .brokers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+    @media (max-width: 768px) { .brokers-grid { grid-template-columns: 1fr; } }
+    .broker-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .broker-card.icmarkets { border-color: rgba(0, 136, 204, 0.4); background: linear-gradient(180deg, rgba(0, 136, 204, 0.05) 0%, rgba(17, 24, 39, 1) 100%); }
+    .broker-card.exness { border-color: rgba(245, 158, 11, 0.4); background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, rgba(17, 24, 39, 1) 100%); }
+    .broker-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+    .broker-name { font-size: 1.5rem; font-weight: 800; color: #fff; }
+    .broker-tag { font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; }
+    .broker-card.icmarkets .broker-tag { background: rgba(0, 136, 204, 0.2); color: #38bdf8; }
+    .broker-card.exness .broker-tag { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    
+    .feature-list { list-style: none; margin-bottom: 24px; }
+    .feature-item { font-size: 0.92rem; color: #d1d5db; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .feature-item::before { content: "✓"; color: #10b981; font-weight: 800; }
+
+    .btn-broker { display: block; text-align: center; text-decoration: none; font-weight: 800; font-size: 1rem; padding: 14px 20px; border-radius: 12px; transition: transform 0.15s, box-shadow 0.15s; }
+    .btn-broker:hover { transform: translateY(-2px); }
+    .btn-icmarkets { background: #0088cc; color: #fff; box-shadow: 0 10px 25px -5px rgba(0, 136, 204, 0.5); }
+    .btn-exness { background: #f59e0b; color: #000; box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.5); }
+
+    /* Free Lead Magnet Box */
+    .magnet-card { background: #1e1b4b; border: 1px solid #4338ca; border-radius: 20px; padding: 28px; display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+    .magnet-text h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; color: #fff; }
+    .magnet-text p { font-size: 0.95rem; color: #c7d2fe; max-width: 600px; }
+    .btn-download { background: #6366f1; color: #fff; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; white-space: nowrap; }
+    .btn-download:hover { background: #4f46e5; }
+
+    footer { text-align: center; padding: 32px 0 16px; border-top: 1px solid #1f2937; color: #6b7280; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html" class="logo">
+        <span>AutoFlow</span>
+        <span class="logo-badge">Global Forex 2026</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Make vs Zapier</a>
+        <a href="vps-calculator.html" class="nav-link">AI VPS Calculator</a>
+        <a href="forex-calculator.html" class="nav-link active">Forex Lot & Spread</a>
+        <a href="mission-control.html" class="nav-link">Mission Control</a>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+      <div class="badge">Institutional Risk & Cost Optimization</div>
+      <h1>Forex & Gold Position Size Calculator</h1>
+      <p class="subtitle">Calculate exact standard lots & risk amounts for EUR/USD, Gold (XAU/USD), and Crypto. Compare your annual spread savings with True ECN brokers.</p>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tab-container">
+      <button class="tab-btn active" id="tab-lot-btn" onclick="switchTab('lot')">1. Position Size Calculator</button>
+      <button class="tab-btn" id="tab-spread-btn" onclick="switchTab('spread')">2. Broker Spread Savings</button>
+    </div>
+
+    <!-- Mode 1: Lot Size Calculator -->
+    <div id="section-lot" class="calc-card">
+      <div class="grid-2">
+        <div class="input-panel">
+          <div class="form-group">
+            <label class="form-label" for="instrument-select">Trading Instrument</label>
+            <select id="instrument-select" class="form-control" onchange="recalculateLotSize()">
+              <option value="EURUSD" selected>EUR/USD (Euro / US Dollar)</option>
+              <option value="GBPUSD">GBP/USD (British Pound)</option>
+              <option value="XAUUSD">XAU/USD (Gold 100 oz)</option>
+              <option value="USDJPY">USD/JPY (US Dollar / Japanese Yen)</option>
+              <option value="BTCUSD">BTC/USD (Bitcoin CFD)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="account-balance">Account Balance ($ USD)</label>
+            <input type="number" id="account-balance" class="form-control" value="10000" min="100" step="500" oninput="recalculateLotSize()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Risk Percentage (% of Account): <span id="risk-val-badge" style="color:#10b981; font-weight:800;">1.0%</span></label>
+            <input type="range" id="risk-range" min="0.25" max="5.0" step="0.25" value="1.0" oninput="recalculateLotSize()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="stop-loss-pips">Stop Loss (Pips / Points)</label>
+            <input type="number" id="stop-loss-pips" class="form-control" value="20" min="1" step="1" oninput="recalculateLotSize()">
+          </div>
+        </div>
+
+        <div class="output-panel">
+          <div>
+            <div class="stat-row">
+              <span class="stat-label">Recommended Lot Size</span>
+              <span id="output-lots" class="stat-value primary">0.50 Lots</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Maximum Risk Amount</span>
+              <span id="output-risk-usd" class="stat-value">$100.00</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Pip Value per Standard Lot</span>
+              <span id="output-pip-val" class="stat-value">$10.00</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Mini Lots (0.10)</span>
+              <span id="output-mini-lots" class="stat-value">5.0 Mini</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Micro Lots (0.01)</span>
+              <span id="output-micro-lots" class="stat-value">50.0 Micro</span>
+            </div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-top:16px;">
+            ⚡ <em>Tip: For Gold (XAUUSD), 1 standard lot is 100 troy oz. A $1.00 move equals $100.00 profit/loss.</em>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode 2: Broker Spread Savings Calculator -->
+    <div id="section-spread" class="calc-card" style="display:none;">
+      <div class="form-group">
+        <label class="form-label">Monthly Trading Volume (Standard Lots): <span id="volume-val-badge" style="color:#38bdf8; font-weight:800;">50 Lots/Month</span></label>
+        <input type="range" id="volume-range" min="5" max="300" step="5" value="50" oninput="recalculateSpreadSavings()">
+      </div>
+
+      <div class="grid-2">
+        <div style="background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.25); border-radius:18px; padding:24px;">
+          <div style="color:#f87171; font-weight:800; text-transform:uppercase; font-size:0.85rem; margin-bottom:8px;">Standard Retail Broker (Marked Up)</div>
+          <div style="font-size:1.8rem; font-weight:800; color:#fff;" id="cost-retail">$800 / mo</div>
+          <p style="font-size:0.88rem; color:#9ca3af; margin-top:8px;">Average 1.6 pips EURUSD spread markup ($16/lot). Slippage on high impact news.</p>
+        </div>
+
+        <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); border-radius:18px; padding:24px;">
+          <div style="color:#34d399; font-weight:800; text-transform:uppercase; font-size:0.85rem; margin-bottom:8px;">True ECN / Raw Spread (IC Markets / Exness)</div>
+          <div style="font-size:1.8rem; font-weight:800; color:#34d399;" id="cost-raw">$400 / mo</div>
+          <p style="font-size:0.88rem; color:#9ca3af; margin-top:8px;">0.0 pip raw interbank spread + $7/lot commission. Zero markup, institutional liquidity.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:24px; text-align:center; padding:20px; background:rgba(56,189,248,0.08); border:1px dashed rgba(56,189,248,0.3); border-radius:16px;">
+        <span style="font-size:1.05rem; font-weight:700; color:#e0f2fe;">Your Annual Capital Saved: </span>
+        <span id="annual-savings" style="font-size:1.85rem; font-weight:800; color:#38bdf8;">$4,800 USD</span>
+        <p style="font-size:0.85rem; color:#94a3b8; margin-top:4px;">That is pure trading capital retained in your account instead of given away to retail broker markups.</p>
+      </div>
+    </div>
+
+    <!-- Verified Global Partner Cards -->
+    <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:20px; text-align:center;">Verified Low-Cost Global Broker Partners</h2>
+    <div class="brokers-grid">
+      <!-- IC Markets -->
+      <div class="broker-card icmarkets">
+        <div>
+          <div class="broker-header">
+            <div class="broker-name">IC Markets</div>
+            <span class="broker-tag">True ECN Leader</span>
+          </div>
+          <ul class="feature-list">
+            <li class="feature-item">Raw Spreads starting from 0.0 pips on EUR/USD & Gold</li>
+            <li class="feature-item">Sub-35ms Ultra-fast execution (Equinix NY4 Server)</li>
+            <li class="feature-item">Regulated by Tier-1 ASIC (Australia), CySEC, & FSA</li>
+            <li class="feature-item">Full support for MetaTrader 4, MT5, and cTrader</li>
+            <li class="feature-item">No restrictions on scalping, hedging, or high-frequency EAs</li>
+          </ul>
+        </div>
+        <a href="https://www.icmarkets.com/en/?camp=38531&utm_source=autoflow_calculator&utm_medium=web&utm_campaign=global_traders_2026" 
+           target="_blank" rel="noopener noreferrer" class="btn-broker btn-icmarkets">
+          Open IC Markets True ECN Account ➔
+        </a>
+      </div>
+
+      <!-- Exness -->
+      <div class="broker-card exness">
+        <div>
+          <div class="broker-header">
+            <div class="broker-name">Exness</div>
+            <span class="broker-tag">World #1 Volume</span>
+          </div>
+          <ul class="feature-list">
+            <li class="feature-item">0-Second Instant Automatic Crypto & Wire Withdrawals 24/7</li>
+            <li class="feature-item">0% Overnight Swap Fee on Gold (XAUUSD), Indices & Crypto</li>
+            <li class="feature-item">Over $4 Trillion in Monthly Trading Volume</li>
+            <li class="feature-item">Regulated by FCA (UK), CySEC, FSCA, & FSA</li>
+            <li class="feature-item">Customizable leverage up to 1:2000 & Unlimited</li>
+          </ul>
+        </div>
+        <a href="https://one.exnesstrack.net/a/ulep7bti?utm_source=autoflow_calculator&utm_medium=web&utm_campaign=global_traders_2026" 
+           target="_blank" rel="noopener noreferrer" class="btn-broker btn-exness">
+          Open Exness Pro Account ➔
+        </a>
+      </div>
+    </div>
+
+    <!-- Free Lead Magnet -->
+    <div class="magnet-card">
+      <div class="magnet-text">
+        <h3>🎁 Free Bonus: ICT Fair Value Gap & Liquidity Sweep Indicator</h3>
+        <p>Download our free open-source Pine Script (v5) indicator for TradingView. Identifies institutional imbalances, market structure shifts, and liquidity sweeps automatically.</p>
+      </div>
+      <a href="blueprints/Pine-Script-Fair-Value-Gap-ICT.pine" download="AutoFlow-ICT-FVG-TradingView.pine" class="btn-download">
+        <span>Download Pine Script (.pine)</span>
+        <span>⬇</span>
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 AutoFlow Global Trading Tools. Position sizing calculations are mathematical models for risk management. Trading Forex and CFDs involves substantial risk of loss.</p>
+    </footer>
+  </div>
+
+  <script>
+    function switchTab(tab) {
+      const sectionLot = document.getElementById('section-lot');
+      const sectionSpread = document.getElementById('section-spread');
+      const btnLot = document.getElementById('tab-lot-btn');
+      const btnSpread = document.getElementById('tab-spread-btn');
+
+      if (tab === 'lot') {
+        sectionLot.style.display = 'block';
+        sectionSpread.style.display = 'none';
+        btnLot.classList.add('active');
+        btnSpread.classList.remove('active');
+      } else {
+        sectionLot.style.display = 'none';
+        sectionSpread.style.display = 'block';
+        btnLot.classList.remove('active');
+        btnSpread.classList.add('active');
+      }
+    }
+
+    function recalculateLotSize() {
+      const instrument = document.getElementById('instrument-select').value;
+      const balance = parseFloat(document.getElementById('account-balance').value) || 10000;
+      const riskPercent = parseFloat(document.getElementById('risk-range').value) || 1.0;
+      const stopLossPips = parseFloat(document.getElementById('stop-loss-pips').value) || 20;
+
+      document.getElementById('risk-val-badge').textContent = riskPercent.toFixed(2) + '%';
+
+      const riskUsd = balance * (riskPercent / 100.0);
+
+      let pipValue = 10.0;
+      if (instrument === 'USDJPY') {
+        pipValue = 6.67;
+      } else if (instrument === 'BTCUSD') {
+        pipValue = 1.0;
+      } else if (instrument === 'XAUUSD') {
+        pipValue = 10.0; // 100 oz standard lot * $0.10 per pip
+      } else {
+        pipValue = 10.0; // EURUSD, GBPUSD
+      }
+
+      const totalPipRisk = stopLossPips * pipValue;
+      const recommendedLots = totalPipRisk > 0 ? (riskUsd / totalPipRisk) : 0;
+
+      document.getElementById('output-lots').textContent = recommendedLots.toFixed(2) + ' Lots';
+      document.getElementById('output-risk-usd').textContent = '$' + riskUsd.toFixed(2);
+      document.getElementById('output-pip-val').textContent = '$' + pipValue.toFixed(2);
+      document.getElementById('output-mini-lots').textContent = (recommendedLots * 10).toFixed(1) + ' Mini';
+      document.getElementById('output-micro-lots').textContent = (recommendedLots * 100).toFixed(0) + ' Micro';
+    }
+
+    function recalculateSpreadSavings() {
+      const volume = parseFloat(document.getElementById('volume-range').value) || 50;
+      document.getElementById('volume-val-badge').textContent = volume + ' Lots/Month';
+
+      const retailCost = volume * 16.0; // 1.6 pips * $10
+      const rawCost = volume * 8.0;     // 0.1 pip ($1) + $7 commission
+      const monthlySavings = retailCost - rawCost;
+      const annualSavings = monthlySavings * 12;
+
+      document.getElementById('cost-retail').textContent = '$' + retailCost.toLocaleString() + ' / mo';
+      document.getElementById('cost-raw').textContent = '$' + rawCost.toLocaleString() + ' / mo';
+      document.getElementById('annual-savings').textContent = '$' + annualSavings.toLocaleString() + ' USD';
+    }
+
+    // Initial calculation
+    recalculateLotSize();
+    recalculateSpreadSavings();
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+//@version=5
+indicator("AutoFlow ICT Fair Value Gap & Liquidity Sweep [Multi-Timeframe]", overlay=true, max_boxes_count=500)
+
+// ==============================================================================
+// 🎯 AUTOFLOW TRADING ACADEMY & BROKER PERFORMANCE ADVISORY 2026
+// Free Open-Source Indicator for Smart Money Concepts (SMC) & ICT Traders.
+// ⚡ RECOMMENDED BROKERS FOR ZERO SLIPPAGE & 0.0 RAW SPREAD:
+// 👉 IC Markets (True ECN 0.0 Spreads): https://www.icmarkets.com/en/?camp=38531
+// 👉 Exness Pro (Instant Withdrawals & 0% Overnight Swap): https://one.exnesstrack.net/a/ulep7bti
+// ==============================================================================
+
+// --- Inputs ---
+grp_fvg = "Fair Value Gap (FVG) Settings"
+show_bullish_fvg = input.bool(true, "Show Bullish FVG", group=grp_fvg)
+show_bearish_fvg = input.bool(true, "Show Bearish FVG", group=grp_fvg)
+fvg_transparency = input.int(85, "FVG Box Transparency (0-100)", minval=0, maxval=100, group=grp_fvg)
+fvg_extend = input.int(10, "Extend FVG (bars)", minval=1, maxval=50, group=grp_fvg)
+filter_mitigated = input.bool(true, "Hide Mitigated FVGs", group=grp_fvg)
+
+grp_liquidity = "Liquidity Sweeps & Session High/Low"
+show_sweeps = input.bool(true, "Highlight Liquidity Sweeps", group=grp_liquidity)
+sweep_wick_threshold = input.float(0.4, "Min Wick-to-Body Ratio", minval=0.1, maxval=1.0, step=0.05, group=grp_liquidity)
+
+// --- Colors ---
+color_bullish = color.new(#10b981, fvg_transparency)
+color_bullish_border = color.new(#10b981, 30)
+color_bearish = color.new(#ef4444, fvg_transparency)
+color_bearish_border = color.new(#ef4444, 30)
+color_sweep = color.new(#f59e0b, 0)
+
+// --- Bullish Fair Value Gap (High of bar 2 < Low of bar 0) ---
+is_bullish_fvg = (low > high[2]) and (close[1] > open[1])
+if is_bullish_fvg and show_bullish_fvg
+    box.new(left=bar_index[2], top=low, right=bar_index + fvg_extend, bottom=high[2],
+            border_color=color_bullish_border, bgcolor=color_bullish, border_style=line.style_dotted)
+
+// --- Bearish Fair Value Gap (Low of bar 2 > High of bar 0) ---
+is_bearish_fvg = (high < low[2]) and (close[1] < open[1])
+if is_bearish_fvg and show_bearish_fvg
+    box.new(left=bar_index[2], top=low[2], right=bar_index + fvg_extend, bottom=high,
+            border_color=color_bearish_border, bgcolor=color_bearish, border_style=line.style_dotted)
+
+// --- Liquidity Sweep Detection (False breakout + strong rejection wick) ---
+highest_20 = ta.highest(high, 20)[1]
+lowest_20 = ta.lowest(low, 20)[1]
+
+upper_wick = high - math.max(open, close)
+lower_wick = math.min(open, close) - low
+candle_range = high - low
+
+bearish_sweep = (high > highest_20) and (close < highest_20) and (candle_range > 0) and (upper_wick / candle_range >= sweep_wick_threshold)
+bullish_sweep = (low < lowest_20) and (close > lowest_20) and (candle_range > 0) and (lower_wick / candle_range >= sweep_wick_threshold)
+
+if show_sweeps
+    if bearish_sweep
+        label.new(bar_index, high, text="⚡ Liquidity Sweep", color=color_sweep, textcolor=color.black, style=label.style_label_down, size=size.tiny)
+    if bullish_sweep
+        label.new(bar_index, low, text="⚡ Liquidity Sweep", color=color_sweep, textcolor=color.black, style=label.style_label_up, size=size.tiny)
+
+// --- Alerts ---
+alertcondition(is_bullish_fvg, title="Bullish FVG Formed", message="Bullish Fair Value Gap detected on {{ticker}} at price {{close}}")
+alertcondition(is_bearish_fvg, title="Bearish FVG Formed", message="Bearish Fair Value Gap detected on {{ticker}} at price {{close}}")
+alertcondition(bearish_sweep, title="Bearish Liquidity Sweep", message="Liquidity Grab High detected on {{ticker}}! Watch for reversal.")
+alertcondition(bullish_sweep, title="Bullish Liquidity Sweep", message="Liquidity Grab Low detected on {{ticker}}! Watch for reversal.")
