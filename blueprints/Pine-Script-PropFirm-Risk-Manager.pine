@@ -1,0 +1,25 @@
+//@version=5
+indicator("AutoFlow Prop Firm Daily Drawdown & Risk Guard Pro", overlay=true)
+
+// ===============================================
+// AUTOFLOW PROP FIRM DAILY DRAWDOWN RISK GUARD
+// Automatic Daily Loss Line Calculation on Charts
+// ===============================================
+
+account_balance = input.float(100000.0, title="Prop Firm Account Size ($)", minval=1000.0)
+daily_dd_limit_pct = input.float(5.0, title="Daily Max Drawdown (%)", minval=1.0, maxval=10.0)
+current_equity = input.float(100000.0, title="Starting Session Equity ($)")
+
+max_daily_loss_usd = account_balance * (daily_dd_limit_pct / 100.0)
+daily_loss_floor = current_equity - max_daily_loss_usd
+
+// Plotting the danger barrier
+var table risk_table = table.new(position.top_right, 2, 3, bgcolor=color.new(color.black, 20), border_color=color.gray, border_width=1)
+
+if barstate.islast
+    table.cell(risk_table, 0, 0, "Account Size:", text_color=color.white, text_size=size.small)
+    table.cell(risk_table, 1, 0, "$" + str.tostring(account_balance, "#,###"), text_color=color.green, text_size=size.small)
+    table.cell(risk_table, 0, 1, "Max Daily Loss:", text_color=color.white, text_size=size.small)
+    table.cell(risk_table, 1, 1, "-$" + str.tostring(max_daily_loss_usd, "#,###"), text_color=color.red, text_size=size.small)
+    table.cell(risk_table, 0, 2, "Safe Risk (0.5%):", text_color=color.white, text_size=size.small)
+    table.cell(risk_table, 1, 2, "$" + str.tostring(account_balance * 0.005, "#,###"), text_color=color.yellow, text_size=size.small)

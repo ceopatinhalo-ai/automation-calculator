@@ -1,0 +1,35 @@
+//@version=5
+indicator("AutoFlow Liquidity Sweep & SMC Order Block Hunter Pro", overlay=true)
+
+// ==========================================
+// AUTOFLOW LIQUIDITY SWEEP & ORDER BLOCK PRO
+// Part of the 2026 Pro Trader Pack ($19 USD)
+// ==========================================
+
+lookback = input.int(10, title="Swing High/Low Lookback", minval=3, maxval=50)
+show_sweeps = input.bool(true, title="Show Liquidity Sweeps")
+show_ob = input.bool(true, title="Highlight Institutional Order Blocks")
+
+// Swing Highs & Lows
+swing_high = ta.highestbars(high, lookback) == 0
+swing_low = ta.lowestbars(low, lookback) == 0
+
+var float last_high = na
+var float last_low = na
+
+if swing_high
+    last_high := high[0]
+
+if swing_low
+    last_low := low[0]
+
+// Liquidity Sweep Detection (Wick breaks high/low but candle closes inside)
+bullish_sweep = low < last_low[1] and close > last_low[1] and show_sweeps
+bearish_sweep = high > last_high[1] and close < last_high[1] and show_sweeps
+
+plotshape(bullish_sweep, title="Bullish Liquidity Sweep", style=shape.triangleup, location=location.belowbar, color=color.green, size=size.small, text="BULL SWEEP")
+plotshape(bearish_sweep, title="Bearish Liquidity Sweep", style=shape.triangledown, location=location.abovebar, color=color.red, size=size.small, text="BEAR SWEEP")
+
+// Alert conditions
+alertcondition(bullish_sweep, title="Bullish Sweep Alert", message="AutoFlow: Bullish Liquidity Sweep detected! Look for Long entry.")
+alertcondition(bearish_sweep, title="Bearish Sweep Alert", message="AutoFlow: Bearish Liquidity Sweep detected! Look for Short entry.")

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 2026 Pro Trader & Automation Starter Kit | AutoFlow VIP</title>
+  <meta name="description" content="Unlock institutional Pine Script trading indicators, Notion Trading Journal, and 10x Make.com VIP automation blueprints for just $19 USD.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(16, 24, 40, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --primary: #3b82f6;
+      --gold: #fbbf24;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.12) 0%, transparent 40%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 820px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 36px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #3b82f6, #fbbf24);
+    }
+
+    .price-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .price-old {
+      text-decoration: line-through;
+      color: #64748b;
+      font-size: 1.3rem;
+      margin-left: 8px;
+    }
+    .price-tagline {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .value-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--card-border);
+      padding: 16px 20px;
+      border-radius: 14px;
+    }
+    .value-icon { font-size: 1.4rem; line-height: 1; margin-top: 2px; }
+    .value-content { flex: 1; }
+    .value-title { font-weight: 700; font-size: 1rem; color: #fff; display: flex; justify-content: space-between; }
+    .value-worth { color: var(--gold); font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; }
+    .value-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+
+    .btn-buy {
+      width: 100%;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding: 18px 24px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(16, 185, 129, 0.5);
+    }
+    .security-note {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .faq-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .faq-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 18px; }
+    .faq-item { margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .faq-q { font-weight: 700; font-size: 0.95rem; color: #fff; margin-bottom: 4px; }
+    .faq-a { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">⭐ Instant Access • Zero Subscription Fees</div>
+    <h1>The 2026 Pro Trader & <span class="gradient-text">Automation Starter Kit</span></h1>
+    <p class="subtitle">Skip 60 hours of manual coding. Get institutional-grade TradingView Pine Script indicators, Notion Risk Journals, and production-ready Make.com automation blueprints.</p>
+  </header>
+
+  <div class="pricing-card">
+    <div class="price-box">
+      <div>
+        <div class="price-tagline">🔥 Complete Digital Asset Bundle</div>
+        <div class="price-amount">$19 <span class="price-old">$415</span></div>
+      </div>
+      <div style="text-align: right;">
+        <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.85rem;">
+          Save 95% Today
+        </span>
+      </div>
+    </div>
+
+    <!-- Value Stack -->
+    <div class="value-stack">
+      <!-- Item 1 -->
+      <div class="value-item">
+        <div class="value-icon">🕯️</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>TradingView Pine Script Pro Suite (v5)</span>
+            <span class="value-worth">$149 Value</span>
+          </div>
+          <div class="value-desc">Includes Automated ICT Fair Value Gap Bot, Liquidity Sweep / Order Block Hunter, and Prop Firm Daily Drawdown Warning Guard.</div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="value-item">
+        <div class="value-icon">📓</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>Notion Pro Trading Journal & Risk Manager</span>
+            <span class="value-worth">$49 Value</span>
+          </div>
+          <div class="value-desc">Pre-built automated database template with Win-Rate tracking, Risk-to-Reward ratio calculator, and emotion logging. 1-Click Duplicate.</div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="value-item">
+        <div class="value-icon">⚡</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>VIP Make.com Master Lead Generation Blueprint</span>
+            <span class="value-worth">$99 Value</span>
+          </div>
+          <div class="value-desc">Production-grade JSON blueprint connecting Webhooks, Google Sheets database, and instant Telegram push notifications with error handling.</div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="value-item">
+        <div class="value-icon">🚀</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>1-Click Cloud VPS AI Agent Deployment Script</span>
+            <span class="value-worth">$79 Value</span>
+          </div>
+          <div class="value-desc">Automated Bash script to deploy Docker, Python 3, n8n, and 24/7 background AI agents on a $4.99/mo Hostinger VPS with zero terminal headache.</div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="value-item">
+        <div class="value-icon">📘</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>3-Minute Quickstart Guide & Zero-Touch FAQ</span>
+            <span class="value-worth">$39 Value</span>
+          </div>
+          <div class="value-desc">Step-by-step visual documentation and troubleshooting guide. Set up everything in under 5 minutes without writing a single line of code.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official PayPal Checkout Form -->
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="b0ynghe0lx@gmail.com">
+      <input type="hidden" name="item_name" value="The 2026 Pro Trader and Automation Starter Kit">
+      <input type="hidden" name="amount" value="19.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="no_shipping" value="1">
+      <input type="hidden" name="return" value="https://ceopatinhalo-ai.github.io/automation-calculator/download-vault-vip.html">
+      <input type="hidden" name="cancel_return" value="https://ceopatinhalo-ai.github.io/automation-calculator/vip-kit.html">
+      <button type="submit" class="btn-buy">
+        🔒 Pay $19 USD with PayPal / Credit Card (Instant Download)
+      </button>
+    </form>
+
+    <div class="security-note">
+      🛡️ Encrypted 256-Bit SSL Checkout • Immediate Digital Delivery • Zero Touch Setup
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-card">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-item">
+      <div class="faq-q">How do I receive the files after purchase?</div>
+      <div class="faq-a">Immediately after completing payment, PayPal will redirect you to the AutoFlow VIP Download Vault where you can download the entire `.zip` bundle and access the Notion templates in 1 click.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need coding skills?</div>
+      <div class="faq-a">Zero coding required. You simply copy and paste the Pine Script code into TradingView's editor and import the JSON blueprint into Make.com. Everything is plug-and-play.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are there any recurring subscription fees?</div>
+      <div class="faq-a">None whatsoever. This is a one-time purchase with lifetime access to all files and indicators included in the 2026 starter package.</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
