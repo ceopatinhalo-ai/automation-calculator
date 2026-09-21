@@ -79,6 +79,25 @@
     .gift-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 10px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; cursor: pointer; transition: background 0.2s; }
     .gift-btn:hover { background: rgba(56, 189, 248, 0.25); }
 
+    .ecosystem-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 32px; margin-bottom: 36px; margin-top: 36px; }
+    .ecosystem-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: #e2e8f0; }
+    .ecosystem-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
+    .ecosystem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 640px) { .ecosystem-grid { grid-template-columns: 1fr; } }
+    .eco-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+    .eco-box:hover { border-color: rgba(99, 102, 241, 0.4); }
+    .eco-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .eco-icon { font-size: 1.75rem; }
+    .eco-name { font-size: 1.1rem; font-weight: 700; color: #f8fafc; }
+    .eco-desc { font-size: 0.9rem; color: #94a3b8; margin-bottom: 16px; line-height: 1.5; }
+    .eco-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
+    .eco-btn.hostinger { background: rgba(103, 58, 183, 0.2); color: #c4b5fd; border: 1px solid rgba(103, 58, 183, 0.4); }
+    .eco-btn.hostinger:hover { background: rgba(103, 58, 183, 0.35); }
+    .eco-btn.brevo { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .eco-btn.brevo:hover { background: rgba(16, 185, 129, 0.25); }
+    .eco-btn.youtube { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .eco-btn.youtube:hover { background: rgba(239, 68, 68, 0.25); }
+
     footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
   </style>
 </head>
@@ -158,6 +177,53 @@
     <a href="blueprints/Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json" download="Kich-Ban-Gom-Lead-Make.json" class="gift-btn">
       📥 Tải Kịch Bản JSON Miễn Phí (Import 1-Click)
     </a>
+  </div>
+
+  <div class="ecosystem-card">
+    <div class="ecosystem-title">🌐 Hệ Sinh Thái Công Cụ & Kênh Tự Động Hóa Thực Chiến</div>
+    <div class="ecosystem-sub">Các công cụ hạ tầng đám mây tốt nhất giúp cỗ máy vận hành 24/7 với chi phí rẻ nhất:</div>
+    
+    <div class="ecosystem-grid">
+      <div class="eco-box">
+        <div>
+          <div class="eco-header">
+            <span class="eco-icon">⚡</span>
+            <div>
+              <div class="eco-name">Hostinger Cloud VPS</div>
+              <div style="font-size:0.75rem; color:#a78bfa; font-weight:700;">Treo AI Bot & Tool 24/7</div>
+            </div>
+          </div>
+          <p class="eco-desc">Máy chủ ảo VPS đám mây chạy ngầm mọi bot tự động hóa, Python daemon và webhook. Chi phí chỉ từ $4.99/tháng (Rẻ hơn 6 lần so với AWS EC2).</p>
+        </div>
+        <a href="https://hostinger.com?REFERRALCODE=AUTOFLOW20" target="_blank" class="eco-btn hostinger">
+          🚀 Nhận Mã Giảm 20% VPS Hostinger
+        </a>
+      </div>
+
+      <div class="eco-box">
+        <div>
+          <div class="eco-header">
+            <span class="eco-icon">📬</span>
+            <div>
+              <div class="eco-name">Brevo Email Automation</div>
+              <div style="font-size:0.75rem; color:#34d399; font-weight:700;">Gửi 300 Email/Ngày Miễn Phí</div>
+            </div>
+          </div>
+          <p class="eco-desc">Hệ thống gửi email tự động hóa nuôi dưỡng khách hàng và gửi hóa đơn. Không giới hạn số lượng liên hệ, tỉ lệ vào Inbox 99.8% không lo spam.</p>
+        </div>
+        <a href="https://www.brevo.com/?tap_a=12affiliates" target="_blank" class="eco-btn brevo">
+          ✨ Dùng Thử Brevo Miễn Phí 0đ
+        </a>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; text-align: center; padding: 18px; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 14px;">
+      <span style="font-weight: 700; color: #f87171; margin-right: 10px;">📺 Kênh Video Demo Kỹ Thuật:</span>
+      <span style="color: #cbd5e1; font-size: 0.95rem;">Xem trực tiếp các kịch bản tự động hóa thực chiến trên kênh</span>
+      <a href="https://www.youtube.com/channel/UC7PeqI6acT89HkDXMYQFbaw" target="_blank" class="eco-btn youtube" style="margin-left: 12px; display: inline-flex;">
+        ▶️ Đăng Ký Kênh AutoFlow Tech
+      </a>
+    </div>
   </div>
 
   <footer>
