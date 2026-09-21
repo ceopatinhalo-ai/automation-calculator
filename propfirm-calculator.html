@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prop Firm Challenge & Drawdown Risk Simulator 2026 | FTMO vs FundingPips vs FundedNext</title>
+  <meta name="description" content="Calculate your max daily loss, overall drawdown, profit targets and survival probability for FTMO, FundingPips and FundedNext evaluation challenges.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(16, 24, 40, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --gold: #fbbf24;
+      --primary: #3b82f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.12) 0%, transparent 40%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 30px 20px 80px;
+    }
+    .container { max-width: 1040px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .control-group { margin-bottom: 20px; }
+    label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .val-highlight { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+    select, input[type="range"] {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+    }
+    input[type="range"] {
+      height: 8px;
+      border-radius: 6px;
+      background: #1e293b;
+      cursor: pointer;
+      accent-color: var(--accent);
+      padding: 0;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .metric-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      padding: 16px;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .metric-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+    .metric-val { font-size: 1.4rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+    .metric-val.green { color: var(--accent); }
+    .metric-val.red { color: var(--danger); }
+    .metric-val.yellow { color: var(--warning); }
+    .metric-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+    .survival-meter {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 22px;
+    }
+    .survival-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .survival-title { font-size: 0.9rem; font-weight: 700; color: #fca5a5; display: flex; align-items: center; gap: 8px; }
+    .survival-count { font-size: 1.1rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: #fff; }
+
+    .firm-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 0.88rem;
+    }
+    .firm-matrix th {
+      text-align: left;
+      padding: 12px 10px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--card-border);
+      font-weight: 600;
+    }
+    .firm-matrix td {
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .firm-matrix tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.15));
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .cta-banner h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; }
+    .cta-banner p { color: var(--text-muted); max-width: 650px; margin: 0 auto 20px; }
+    .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5); }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border: 1px solid var(--card-border);
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+
+    .lead-box {
+      margin-top: 36px;
+      background: rgba(16, 24, 40, 0.9);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 20px;
+      padding: 26px;
+      text-align: center;
+    }
+    .lead-input-wrap {
+      display: flex;
+      max-width: 520px;
+      margin: 18px auto 0;
+      gap: 10px;
+    }
+    @media (max-width: 560px) { .lead-input-wrap { flex-direction: column; } }
+    .lead-input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .lead-btn {
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: #3b82f6;
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .lead-btn:hover { background: #2563eb; }
+    .lead-msg { margin-top: 10px; font-size: 0.85rem; color: #10b981; display: none; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">🛡️ Risk Telemetry Engine 2026</div>
+    <h1>Prop Firm Challenge <span class="gradient-text">& Drawdown Simulator</span></h1>
+    <p class="subtitle">Simulate strict prop firm rules before paying $500+ for an evaluation challenge. Know your exact daily loss limits and survive the 5% drawdown trap.</p>
+  </header>
+
+  <div class="grid">
+    <!-- Configuration Panel -->
+    <div class="card">
+      <div class="card-title">⚙️ Challenge Configuration</div>
+
+      <div class="control-group">
+        <label>Select Account Size: <span class="val-highlight" id="lblAccount">$100,000</span></label>
+        <select id="selAccount" onchange="runSimulation()">
+          <option value="10000">$10,000 (Micro Challenge)</option>
+          <option value="25000">$25,000 (Standard)</option>
+          <option value="50000">$50,000 (Popular)</option>
+          <option value="100000" selected>$100,000 (Pro Benchmark)</option>
+          <option value="200000">$200,000 (Institutional)</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Selected Prop Firm: <span class="val-highlight" id="lblFirm">FundingPips</span></label>
+        <select id="selFirm" onchange="runSimulation()">
+          <option value="fundingpips" selected>FundingPips (8% Phase 1 / 5% Daily DD - $399)</option>
+          <option value="ftmo">FTMO Challenge (10% Phase 1 / 5% Daily DD - €540)</option>
+          <option value="fundednext">FundedNext (8% Phase 1 / 5% Daily DD - $519)</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Risk Per Trade (% of Balance): <span class="val-highlight" id="lblRisk">0.5% ($500)</span></label>
+        <input type="range" id="rngRisk" min="0.25" max="2.0" step="0.25" value="0.5" oninput="runSimulation()">
+      </div>
+
+      <div class="survival-meter">
+        <div class="survival-header">
+          <span class="survival-title">⚠️ Daily Buffer Before Disqualification:</span>
+          <span class="survival-count" id="valConsecutiveLosses">10 Losses</span>
+        </div>
+        <p style="font-size: 0.8rem; color: #fca5a5;">
+          At <strong id="lblSurvivalRisk">0.5% risk</strong>, you can endure <strong id="lblSurvivalCount">10 consecutive losing trades</strong> in a single day before breaching the strict 5% Daily Drawdown barrier.
+        </p>
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        💡 <strong>Pro Tip:</strong> 92% of failed prop firm evaluations fail on the <em>Daily Drawdown rule</em> due to revenge trading, not the overall 10% limit.
+      </div>
+    </div>
+
+    <!-- Output Metrics Panel -->
+    <div class="card">
+      <div class="card-title">📊 Simulated Limits & Risk Targets</div>
+
+      <div class="metrics-grid">
+        <div class="metric-box">
+          <div class="metric-label">Max Daily Loss Limit</div>
+          <div class="metric-val red" id="valDailyLoss">-$5,000</div>
+          <div class="metric-sub" id="subDailyLoss">5.0% of Starting Balance</div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-label">Max Overall Drawdown</div>
+          <div class="metric-val red" id="valMaxDD">-$10,000</div>
+          <div class="metric-sub" id="subMaxDD">10.0% Trailing / Static</div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-label">Phase 1 Target (+8%)</div>
+          <div class="metric-val green" id="valPhase1">+$8,000</div>
+          <div class="metric-sub">No Time Limit</div>
+        </div>
+
+        <div class="metric-box">
+          <div class="metric-label">Phase 2 Target (+5%)</div>
+          <div class="metric-val green" id="valPhase2">+$5,000</div>
+          <div class="metric-sub">80-90% Profit Split</div>
+        </div>
+      </div>
+
+      <div class="card-title" style="margin-top: 14px; font-size: 0.98rem;">⚖️ Recommended Position Sizes</div>
+      <table class="firm-matrix">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Stop Loss</th>
+            <th>Max Lot Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🪙 Gold (XAUUSD)</td>
+            <td>30 Pips ($3.00 move)</td>
+            <td id="lotGold" style="color: var(--gold); font-weight: 700;">1.66 Lots</td>
+          </tr>
+          <tr>
+            <td>💶 EUR/USD</td>
+            <td>15 Pips</td>
+            <td id="lotEurUsd" style="color: #38bdf8; font-weight: 700;">3.33 Lots</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Real Money Broker vs Prop Firm Callout -->
+  <div class="cta-banner">
+    <h2>Tired of Arbitrary Drawdown Traps? Trade Your Own Capital with Zero Restrictions</h2>
+    <p>Prop firms charge $400 - $600 just for the privilege of trading with synthetic rules. With a True ECN broker, you keep 100% of your gains, trade with raw 0.0 pip spreads, and never get liquidated by an arbitrary 5% clock.</p>
+    <div class="btn-group">
+      <a href="https://icmarkets.com/?camp=38531" target="_blank" rel="noopener" class="btn btn-primary">
+        🚀 Open IC Markets Raw Spread Account (0.0 Pips)
+      </a>
+      <a href="https://one.exnesstrack.net/a/ulep7bti" target="_blank" rel="noopener" class="btn btn-secondary">
+        ⚡ Trade on Exness (Instant Withdrawals)
+      </a>
+      <a href="forex-calculator.html" class="btn btn-secondary">
+        🧮 Open Live Spread Savings Calculator
+      </a>
+    </div>
+  </div>
+
+  <!-- Email Lead Capture Magnet -->
+  <div class="lead-box">
+    <div class="badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">
+      🎁 FREE TRADER ASSET
+    </div>
+    <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Download Pine Script Prop Firm Risk Manager (TradingView)</h3>
+    <p style="color: var(--text-muted); font-size: 0.92rem; max-width: 600px; margin: 0 auto;">
+      Automatically displays your max daily drawdown line on your chart so you NEVER breach your evaluation account.
+    </p>
+    <form class="lead-input-wrap" onsubmit="capturePropLead(event)">
+      <input type="email" id="txtLeadEmail" class="lead-input" placeholder="Enter your email to download indicator..." required>
+      <button type="submit" class="lead-btn">📥 Instant Download</button>
+    </form>
+    <div id="leadSuccess" class="lead-msg">
+      ✅ Success! Indicator code unlocked. Downloading Pine Script file now...
+    </div>
+  </div>
+</div>
+
+<script>
+  const FIRMS = {
+    fundingpips: { p1: 8.0, p2: 5.0, daily: 5.0, max: 10.0, name: "FundingPips" },
+    ftmo: { p1: 10.0, p2: 5.0, daily: 5.0, max: 10.0, name: "FTMO" },
+    fundednext: { p1: 8.0, p2: 5.0, daily: 5.0, max: 10.0, name: "FundedNext" }
+  };
+
+  function runSimulation() {
+    const balance = parseFloat(document.getElementById('selAccount').value);
+    const firmKey = document.getElementById('selFirm').value;
+    const riskPct = parseFloat(document.getElementById('rngRisk').value);
+
+    const firm = FIRMS[firmKey] || FIRMS.fundingpips;
+
+    document.getElementById('lblAccount').innerText = '$' + balance.toLocaleString();
+    document.getElementById('lblFirm').innerText = firm.name;
+    const riskDollars = balance * (riskPct / 100);
+    document.getElementById('lblRisk').innerText = `${riskPct.toFixed(2)}% ($${riskDollars.toLocaleString()})`;
+
+    const dailyLimit = balance * (firm.daily / 100);
+    const maxDD = balance * (firm.max / 100);
+    const p1Target = balance * (firm.p1 / 100);
+    const p2Target = balance * (firm.p2 / 100);
+
+    document.getElementById('valDailyLoss').innerText = '-$' + dailyLimit.toLocaleString();
+    document.getElementById('subDailyLoss').innerText = `${firm.daily.toFixed(1)}% Daily Limit`;
+
+    document.getElementById('valMaxDD').innerText = '-$' + maxDD.toLocaleString();
+    document.getElementById('subMaxDD').innerText = `${firm.max.toFixed(1)}% Max Drawdown`;
+
+    document.getElementById('valPhase1').innerText = '+$' + p1Target.toLocaleString();
+    document.getElementById('valPhase2').innerText = '+$' + p2Target.toLocaleString();
+
+    const consecutiveLosses = Math.floor(dailyLimit / riskDollars);
+    document.getElementById('valConsecutiveLosses').innerText = `${consecutiveLosses} Losses`;
+    document.getElementById('lblSurvivalRisk').innerText = `${riskPct.toFixed(2)}% risk`;
+    document.getElementById('lblSurvivalCount').innerText = `${consecutiveLosses} consecutive losing trades`;
+
+    // Position sizing
+    // Gold: 1 lot = $100 per $1 move (100 oz). 30 pips = $3.00 move = $300 per lot.
+    const goldLot = (riskDollars / 300).toFixed(2);
+    // EURUSD: 1 lot = $10 per pip. 15 pips = $150 per lot.
+    const eurLot = (riskDollars / 150).toFixed(2);
+
+    document.getElementById('lotGold').innerText = `${goldLot} Lots`;
+    document.getElementById('lotEurUsd').innerText = `${eurLot} Lots`;
+  }
+
+  function capturePropLead(e) {
+    e.preventDefault();
+    const email = document.getElementById('txtLeadEmail').value;
+    if (!email) return;
+
+    try {
+      const leads = JSON.parse(localStorage.getItem('autoflow_captured_leads_v1') || '[]');
+      leads.push({ email: email, source: 'propfirm_calculator', date: new Date().toISOString() });
+      localStorage.setItem('autoflow_captured_leads_v1', JSON.stringify(leads));
+    } catch(err) {}
+
+    document.getElementById('leadSuccess').style.display = 'block';
+
+    // Auto download indicator
+    const link = document.createElement('a');
+    link.href = 'blueprints/Pine-Script-Fair-Value-Gap-ICT.pine';
+    link.download = 'Pine-Script-Fair-Value-Gap-ICT.pine';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  // Initialize
+  runSimulation();
+</script>
+
+</body>
+</html>
