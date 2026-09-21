@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AutoFlow Mission Control 24/7 | 12-Affiliates & Central Control Center</title>
+  <title>AutoFlow Mission Control 24/7 | Protected Executive Cockpit</title>
   <style>
     :root[data-theme="light"] {
       --bg: #f8fafc;
@@ -51,17 +51,50 @@
     body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 20px; transition: background 0.2s, color 0.2s; }
     .container { max-width: 1440px; margin: 0 auto; }
     
+    /* SECURITY GATE OVERLAY */
+    .gate-overlay {
+      position: fixed; inset: 0; background: var(--bg); z-index: 9999;
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+    }
+    .gate-card {
+      background: var(--card-bg); border: 2px solid var(--accent); border-radius: 20px;
+      padding: 36px 32px; width: 100%; max-width: 440px; box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+    .gate-icon {
+      width: 60px; height: 60px; border-radius: 16px; background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff; font-size: 28px; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px auto; box-shadow: 0 4px 12px rgba(2,132,199,0.3);
+    }
+    .gate-title { font-size: 20px; font-weight: 900; color: var(--text-main); margin-bottom: 6px; }
+    .gate-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; line-height: 1.5; }
+    .gate-input-wrap { margin-bottom: 20px; }
+    .gate-input {
+      width: 100%; padding: 14px 18px; border-radius: 12px; border: 2px solid var(--card-border);
+      background: var(--item-bg); color: var(--text-main); font-size: 18px; font-weight: 800;
+      letter-spacing: 4px; text-align: center; outline: none; transition: border-color 0.2s;
+    }
+    .gate-input:focus { border-color: var(--accent); background: var(--card-bg); }
+    .gate-btn {
+      width: 100%; padding: 14px; border-radius: 12px; border: none;
+      background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff;
+      font-size: 15px; font-weight: 800; cursor: pointer; transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(2,132,199,0.3);
+    }
+    .gate-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(2,132,199,0.4); }
+    .gate-error {
+      color: var(--accent-red); font-size: 12px; font-weight: 700; margin-top: 12px; display: none;
+    }
+    .gate-remember {
+      display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px;
+      font-size: 12px; color: var(--text-dim); font-weight: 600; cursor: pointer;
+    }
+
     /* Header */
     .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 24px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
-      margin-bottom: 16px;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 24px; background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; box-shadow: var(--card-shadow); margin-bottom: 16px;
     }
     .brand { display: flex; align-items: center; gap: 14px; }
     .logo-badge {
@@ -72,7 +105,7 @@
     }
     .brand-title { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: var(--text-main); }
     .brand-sub { font-size: 13px; color: var(--text-dim); }
-    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
     .status-pill {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
@@ -85,6 +118,12 @@
       background: var(--item-bg); border: 1px solid var(--item-border); color: var(--text-main);
       padding: 6px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer;
     }
+    .btn-lock {
+      background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); color: var(--accent-red);
+      padding: 6px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .btn-lock:hover { background: rgba(220, 38, 38, 0.2); }
 
     /* TOP NAVIGATION TABS */
     .nav-tabs {
@@ -115,12 +154,8 @@
 
     /* EXECUTIVE RADAR BAR */
     .decision-cockpit {
-      background: var(--card-bg);
-      border: 2px solid var(--accent);
-      border-radius: 16px;
-      padding: 20px 24px;
-      box-shadow: var(--card-shadow);
-      margin-bottom: 20px;
+      background: var(--card-bg); border: 2px solid var(--accent); border-radius: 16px;
+      padding: 20px 24px; box-shadow: var(--card-shadow); margin-bottom: 20px;
     }
     .cockpit-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
     .cockpit-title { font-size: 16px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 8px; }
@@ -258,17 +293,9 @@
       border: 1px solid #cbd5e1;
     }
     .meta-m5-list {
-      margin-top: 16px;
-      font-size: 12px;
-      color: #1e293b !important;
-      line-height: 1.8;
-      font-weight: 600;
+      margin-top: 16px; font-size: 12px; color: #1e293b !important; line-height: 1.8; font-weight: 600;
     }
-    .meta-m5-list div {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .meta-m5-list div { display: flex; align-items: center; gap: 6px; }
 
     /* DAILY ACCOUNTING & GROWTH VISUALIZER STYLES */
     .accounting-panel {
@@ -373,13 +400,40 @@
       position: fixed; bottom: 24px; right: 24px; background: #0f172a; color: #fff;
       padding: 12px 20px; border-radius: 10px; font-size: 13px; font-weight: 700;
       box-shadow: 0 6px 20px rgba(0,0,0,0.3); border: 1px solid var(--accent-green);
-      display: none; z-index: 1000; animation: toastIn 0.2s ease-out;
+      display: none; z-index: 10000; animation: toastIn 0.2s ease-out;
     }
     @keyframes toastIn { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <!-- ============================================================= -->
+  <!-- 🔐 SECURITY GATE OVERLAY (FOUNDER PIN GATEKEEPER) -->
+  <!-- ============================================================= -->
+  <div id="securityGateOverlay" class="gate-overlay">
+    <div class="gate-card">
+      <div class="gate-icon">🔐</div>
+      <h1 class="gate-title">AutoFlow Tech — Mission Control</h1>
+      <p class="gate-sub">
+        Buồng lái bí mật & Sổ kế toán dòng tiền tự hành 24/7.<br/>
+        Dành riêng cho <b>Founder Nguyễn Thế Mạnh</b>.
+      </p>
+      <div class="gate-input-wrap">
+        <input type="password" id="pinInput" class="gate-input" placeholder="••••••" maxlength="12" autofocus onkeydown="if(event.key==='Enter') verifyAndUnlock()">
+      </div>
+      <button class="gate-btn" onclick="verifyAndUnlock()">🚀 Mở Cổng Tác Chiến (Unlock)</button>
+      <div id="authError" class="gate-error">⚠️ Mật mã PIN không chính xác! Vui lòng thử lại.</div>
+      <label class="gate-remember">
+        <input type="checkbox" id="rememberMe" checked>
+        <span>Ghi nhớ thiết bị này 30 ngày (Mac M5 Pro / OPPO)</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- 🛡️ PROTECTED DASHBOARD CONTAINER -->
+  <!-- ============================================================= -->
+  <div id="hudProtectedContent" class="container" style="display: none;">
     <!-- Header -->
     <header class="header">
       <div class="brand">
@@ -392,6 +446,7 @@
       <div class="header-actions">
         <span class="status-pill"><span class="pulse-dot"></span> 🟢 Tác Chiến 24/7 • 100% Online</span>
         <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Sáng / 🌙 Tối</button>
+        <button class="btn-lock" onclick="lockScreen()" title="Khóa màn hình ngay lập tức">🔒 Khóa Ngay</button>
       </div>
     </header>
 
@@ -998,6 +1053,9 @@
             <button class="btn-telemetry" onclick="exportLedgerMarkdown()">
               <span>📤 Xuất Sổ Kế Toán Sang Markdown</span>
             </button>
+            <button class="btn-telemetry" onclick="changePinPrompt()">
+              <span>🔑 Đổi Mã PIN Bảo Mật</span>
+            </button>
             <button class="btn-telemetry" onclick="forceManualRolloverTest()" style="opacity: 0.8;">
               <span>⚡ (Thử Nghiệm) Chốt Sổ Thủ Công</span>
             </button>
@@ -1252,6 +1310,111 @@
   <div id="toast" class="toast"></div>
 
   <script>
+    // -------------------------------------------------------------
+    // 🔐 SECURITY GATEKEEPER (SHA-256 HASH + 30-DAY PERSISTENCE)
+    // -------------------------------------------------------------
+    // Default PIN: 202688 (Hash: 1322cccdbc5c56294cd17b34846dfc2331311bba5293106846f5c077cfc06c42)
+    const DEFAULT_PIN_HASH = "1322cccdbc5c56294cd17b34846dfc2331311bba5293106846f5c077cfc06c42";
+    const AUTH_STORAGE_KEY = "autoflow_hud_auth_v1";
+    const CUSTOM_HASH_KEY = "autoflow_hud_custom_pin_hash";
+
+    async function computeSha256(str) {
+      const buffer = new TextEncoder().encode(str);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function verifyAndUnlock() {
+      const pin = document.getElementById("pinInput")?.value.trim() || "";
+      if (!pin) return;
+      const hash = await computeSha256(pin);
+      const activeHash = localStorage.getItem(CUSTOM_HASH_KEY) || DEFAULT_PIN_HASH;
+
+      if (hash === activeHash) {
+        const remember = document.getElementById("rememberMe")?.checked;
+        const expire = Date.now() + (remember ? 30 * 24 * 60 * 60 * 1000 : 8 * 60 * 60 * 1000);
+        localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({ token: hash, expire }));
+        unlockScreen();
+      } else {
+        const err = document.getElementById("authError");
+        if (err) {
+          err.style.display = "block";
+          err.textContent = "⚠️ Mã PIN không chính xác! Vui lòng nhập đúng mã của Founder.";
+        }
+      }
+    }
+
+    function unlockScreen() {
+      const gate = document.getElementById("securityGateOverlay");
+      const content = document.getElementById("hudProtectedContent");
+      if (gate) gate.style.display = "none";
+      if (content) content.style.display = "block";
+
+      renderTelemetry();
+      renderDailyLedger();
+      setTimeout(renderSvgChart, 50);
+      showToast("🔓 Đã mở khóa buồng lái Mission Control thành công!");
+    }
+
+    function lockScreen() {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+      const gate = document.getElementById("securityGateOverlay");
+      const content = document.getElementById("hudProtectedContent");
+      if (content) content.style.display = "none";
+      if (gate) gate.style.display = "flex";
+      const pin = document.getElementById("pinInput");
+      if (pin) { pin.value = ""; pin.focus(); }
+      const err = document.getElementById("authError");
+      if (err) err.style.display = "none";
+      showToast("🔒 Đã khóa buồng lái an toàn!");
+    }
+
+    async function changePinPrompt() {
+      const currentPin = prompt("Nhập mã PIN hiện tại của bạn:");
+      if (!currentPin) return;
+      const curHash = await computeSha256(currentPin.trim());
+      const activeHash = localStorage.getItem(CUSTOM_HASH_KEY) || DEFAULT_PIN_HASH;
+      if (curHash !== activeHash) {
+        alert("Mã PIN hiện tại không đúng!");
+        return;
+      }
+      const newPin = prompt("Nhập mã PIN MỚI (6 số hoặc chữ cái):");
+      if (!newPin || newPin.trim().length < 4) {
+        alert("Mã PIN mới phải từ 4 ký tự trở lên!");
+        return;
+      }
+      const confirmPin = prompt("Xác nhận lại mã PIN MỚI:");
+      if (newPin.trim() !== confirmPin.trim()) {
+        alert("Mã PIN xác nhận không khớp!");
+        return;
+      }
+      const newHash = await computeSha256(newPin.trim());
+      localStorage.setItem(CUSTOM_HASH_KEY, newHash);
+      const expire = Date.now() + 30 * 24 * 60 * 60 * 1000;
+      localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({ token: newHash, expire }));
+      alert("✅ Đổi mã PIN thành công! Hệ thống đã ghi nhớ mã PIN mới của bạn.");
+    }
+
+    function checkAuthOnLoad() {
+      try {
+        const raw = localStorage.getItem(AUTH_STORAGE_KEY);
+        const activeHash = localStorage.getItem(CUSTOM_HASH_KEY) || DEFAULT_PIN_HASH;
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed.token === activeHash && parsed.expire > Date.now()) {
+            unlockScreen();
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // Default locked
+      const gate = document.getElementById("securityGateOverlay");
+      const content = document.getElementById("hudProtectedContent");
+      if (content) content.style.display = "none";
+      if (gate) gate.style.display = "flex";
+    }
+
     // -------------------------------------------------------------
     // THEME CONTROLLER - DEFAULT PURE LIGHT
     // -------------------------------------------------------------
@@ -1520,7 +1683,6 @@
     }
 
     // ZERO-TOUCH AUTOMATIC ROLLOVER ENGINE
-    // Automatically checks calendar date. When a new day comes, it rolls over 100% automatically!
     function autoCheckAndRollover() {
       const ledger = loadDailyLedger();
       if (!ledger || ledger.length === 0) return;
@@ -1533,14 +1695,12 @@
       const lastEntry = ledger[ledger.length - 1];
 
       if (lastEntry && lastEntry.date < todayStr) {
-        // Automatically close all previous days
         ledger.forEach(row => {
           if (row.date < todayStr && row.status === "active") {
             row.status = "closed";
           }
         });
 
-        // Automatically create new day entry
         const dayLabel = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')} (Hôm nay)`;
         const prev = ledger[ledger.length - 1];
         const prevRev = prev ? prev.revenue : 0;
@@ -1626,7 +1786,6 @@
         tbody.appendChild(tr);
       });
 
-      // Update Summary KPI Cards
       const todayRow = ledger[ledger.length - 1];
       const elTodayRev = document.getElementById("todayRevenue");
       const elTodayGrowth = document.getElementById("todayGrowth");
@@ -1661,7 +1820,7 @@
       const chartH = 190;
       const startX = 80;
       const stepX = chartW / n;
-      const maxVal = 55; // $55 max scale
+      const maxVal = 55;
       const baseY = 230;
 
       let linePathD = "";
@@ -1673,7 +1832,6 @@
         const netH = (item.netProfit / maxVal) * chartH;
         const netY = baseY - netH;
 
-        // Bar (Revenue)
         const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         rect.setAttribute("x", x - 22);
         rect.setAttribute("y", barY);
@@ -1688,7 +1846,6 @@
         rect.addEventListener("mouseleave", hideChartTooltip);
         barsGroup.appendChild(rect);
 
-        // Date Label below
         const labelText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         labelText.setAttribute("x", x);
         labelText.setAttribute("y", baseY + 20);
@@ -1699,7 +1856,6 @@
         labelText.textContent = item.dayLabel || item.date;
         barsGroup.appendChild(labelText);
 
-        // Revenue Value above bar
         const valText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         valText.setAttribute("x", x);
         valText.setAttribute("y", barY - 8);
@@ -1710,14 +1866,12 @@
         valText.textContent = "$" + item.revenue.toFixed(1);
         barsGroup.appendChild(valText);
 
-        // Line Path for Net Profit
         if (i === 0) {
           linePathD += `M ${x} ${netY}`;
         } else {
           linePathD += ` L ${x} ${netY}`;
         }
 
-        // Net profit dot
         const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         circle.setAttribute("cx", x);
         circle.setAttribute("cy", netY);
@@ -1730,7 +1884,6 @@
         circle.addEventListener("mouseleave", hideChartTooltip);
         pointsGroup.appendChild(circle);
 
-        // Growth tag
         if (i > 0) {
           const sign = item.growthRate >= 0 ? "+" : "";
           const color = item.growthRate >= 0 ? "#10b981" : "#ef4444";
@@ -1746,7 +1899,6 @@
         }
       });
 
-      // Render Profit Line
       const pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
       pathEl.setAttribute("d", linePathD);
       pathEl.setAttribute("fill", "none");
@@ -1782,7 +1934,6 @@
       if (tt) tt.style.display = "none";
     }
 
-    // Force manual rollover test (optional)
     function forceManualRolloverTest() {
       const ledger = loadDailyLedger();
       const today = ledger[ledger.length - 1];
@@ -1869,20 +2020,19 @@
     }
 
     // -------------------------------------------------------------
-    // INIT & AUTO TIMERS
+    // INIT & SECURITY GATE CHECK
     // -------------------------------------------------------------
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Run automatic zero-touch rollover check on page load
+      // 1. Verify authentication
+      checkAuthOnLoad();
+
+      // 2. Run zero-touch auto rollover
       autoCheckAndRollover();
 
-      // 2. Render UI
-      renderTelemetry();
-      renderDailyLedger();
-
-      // 3. Periodic automatic check every 30s (rollover automatically at midnight)
+      // 3. Periodic check every 30s
       setInterval(autoCheckAndRollover, 30000);
 
-      // Add SVG Gradients dynamically
+      // SVG Gradients
       const svg = document.getElementById("growthSvgChart");
       if (svg) {
         const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
