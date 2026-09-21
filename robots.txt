@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ceopatinhalo-ai.github.io/automation-calculator/sitemap.xml
