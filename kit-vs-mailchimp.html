@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng Tính Chi Phí Email Marketing: Kit vs Mailchimp 2026</title>
-  <meta name="description" content="Công cụ tính toán so sánh trực quan giữa các giải pháp phần mềm B2B hàng đầu 2026.">
+  <title>Email Marketing Cost Calculator: Kit vs Mailchimp (2026 Edition)</title>
+  <meta name="description" content="Interactive ROI calculator comparing subscriber pricing and true delivery costs between Kit (ConvertKit) and Mailchimp in 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -81,33 +81,33 @@
 <body>
   <div class="container">
     <header>
-      <a href="index.html" class="nav-back">← Quay lại Hub AutoFlow</a>
-      <h1>Bảng Tính Chi Phí Email Marketing: Kit vs Mailchimp 2026</h1>
-      <p class="subtitle">Phân tích chi phí thực tế và khả năng hoàn vốn cho doanh nghiệp tinh gọn.</p>
+      <a href="index.html" class="nav-back">← Back to AutoFlow Vault</a>
+      <h1>Email Marketing Cost Calculator: Kit vs Mailchimp</h1>
+      <p class="subtitle">Calculate realistic subscription overhead and long-term list savings for solopreneurs.</p>
     </header>
     <div class="calc-card">
       <div class="slider-head">
-        <span>Quy mô ước tính:</span>
-        <span id="scale-val" style="color: #38bdf8;">10,000 đơn vị</span>
+        <span>Email List Size:</span>
+        <span id="scale-val" style="color: #38bdf8;">10,000 subscribers</span>
       </div>
       <input type="range" id="scale-slider" min="1000" max="50000" step="1000" value="10000" oninput="calculate()">
       
       <div class="result-box">
-        <div style="font-size: 0.9rem; color: #94a3b8;">Ước tính tiết kiệm hàng năm:</div>
-        <div class="result-amount" id="savings-val">$1,200 / năm</div>
+        <div style="font-size: 0.9rem; color: #94a3b8;">Estimated Annual Savings Switching to Kit:</div>
+        <div class="result-amount" id="savings-val">$1,200 / year</div>
       </div>
 
       <a href="https://kit.com?via=autoflow" target="_blank" rel="noopener sponsored" class="cta-btn">
-        ⚡ Trải Nghiệm Miễn Phí Kit Ngay
+        ⚡ Start Free Trial on Kit (ConvertKit)
       </a>
     </div>
   </div>
   <script>
     function calculate() {
       const val = parseInt(document.getElementById('scale-slider').value);
-      document.getElementById('scale-val').innerText = val.toLocaleString() + ' đơn vị';
+      document.getElementById('scale-val').innerText = val.toLocaleString() + ' subscribers';
       const savings = Math.round(val * 0.12);
-      document.getElementById('savings-val').innerText = '$' + savings.toLocaleString() + ' / năm';
+      document.getElementById('savings-val').innerText = '$' + savings.toLocaleString() + ' / year';
     }
   </script>
 </body>

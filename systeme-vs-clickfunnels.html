@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>So Sánh Chi Phí Phễu Bán Hàng: Systeme.io vs ClickFunnels</title>
-  <meta name="description" content="Công cụ tính toán so sánh trực quan giữa các giải pháp phần mềm B2B hàng đầu 2026.">
+  <title>Sales Funnel Cost Calculator: Systeme.io vs ClickFunnels (2026)</title>
+  <meta name="description" content="Calculate your true monthly and yearly savings switching from ClickFunnels to Systeme.io all-in-one platform.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -81,33 +81,34 @@
 <body>
   <div class="container">
     <header>
-      <a href="index.html" class="nav-back">← Quay lại Hub AutoFlow</a>
-      <h1>So Sánh Chi Phí Phễu Bán Hàng: Systeme.io vs ClickFunnels</h1>
-      <p class="subtitle">Phân tích chi phí thực tế và khả năng hoàn vốn cho doanh nghiệp tinh gọn.</p>
+      <a href="index.html" class="nav-back">← Back to AutoFlow Vault</a>
+      <h1>Sales Funnel Cost Calculator: Systeme.io vs ClickFunnels</h1>
+      <p class="subtitle">Calculate direct software savings and runway extension for bootstrapped founders.</p>
     </header>
     <div class="calc-card">
       <div class="slider-head">
-        <span>Quy mô ước tính:</span>
-        <span id="scale-val" style="color: #38bdf8;">10,000 đơn vị</span>
+        <span>Active Funnel Contacts:</span>
+        <span id="scale-val" style="color: #38bdf8;">5,000 contacts</span>
       </div>
-      <input type="range" id="scale-slider" min="1000" max="50000" step="1000" value="10000" oninput="calculate()">
+      <input type="range" id="scale-slider" min="1000" max="30000" step="1000" value="5000" oninput="calculate()">
       
       <div class="result-box">
-        <div style="font-size: 0.9rem; color: #94a3b8;">Ước tính tiết kiệm hàng năm:</div>
-        <div class="result-amount" id="savings-val">$1,200 / năm</div>
+        <div style="font-size: 0.9rem; color: #94a3b8;">Annual Savings vs ClickFunnels:</div>
+        <div class="result-amount" id="savings-val">$1,164 / year</div>
       </div>
 
       <a href="https://systeme.io?via=autoflow" target="_blank" rel="noopener sponsored" class="cta-btn">
-        ⚡ Trải Nghiệm Miễn Phí Systeme.io Ngay
+        ⚡ Create Free Account on Systeme.io
       </a>
     </div>
   </div>
   <script>
     function calculate() {
       const val = parseInt(document.getElementById('scale-slider').value);
-      document.getElementById('scale-val').innerText = val.toLocaleString() + ' đơn vị';
-      const savings = Math.round(val * 0.12);
-      document.getElementById('savings-val').innerText = '$' + savings.toLocaleString() + ' / năm';
+      document.getElementById('scale-val').innerText = val.toLocaleString() + ' contacts';
+      // ClickFunnels ~$147/mo ($1764/yr) vs Systeme ~$49/mo ($588/yr) = $1176 saved
+      const savings = 1164 + Math.round(val * 0.05);
+      document.getElementById('savings-val').innerText = '$' + savings.toLocaleString() + ' / year';
     }
   </script>
 </body>

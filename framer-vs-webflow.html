@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>So Sánh & Tính Chi Phí: Framer vs Webflow 2026 — Nên Chọn Nền Tảng Nào?</title>
-  <meta name="description" content="Công cụ tương tác so sánh tính năng, thời gian dựng web và chi phí thực tế giữa Framer và Webflow năm 2026. Chọn đúng nền tảng phù hợp cho Freelancer, Startup và Agency.">
+  <title>Framer vs Webflow Interactive Decision Calculator (2026 Edition)</title>
+  <meta name="description" content="Interactive decision matrix comparing features, build speed, and true hosting costs between Framer and Webflow in 2026. Pick the right platform for solopreneurs and agencies.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -285,83 +285,83 @@
 
   <div class="container">
     <header>
-      <a href="index.html" class="nav-back">← Quay lại Hub Công Cụ Tự Động</a>
+      <a href="index.html" class="nav-back">← Back to AutoFlow Vault</a>
       <div>
-        <span class="badge">⚡ Radar B2B No-Code 2026</span>
+        <span class="badge">⚡ B2B No-Code Decision Matrix 2026</span>
       </div>
-      <h1>Framer vs Webflow: Chọn Nền Tảng Nào?</h1>
-      <p class="subtitle">Đừng đoán mò. Trả lời 3 tiêu chí dưới đây để thuật toán tính toán chính xác nền tảng tối ưu nhất cho thời gian, kỹ năng và ngân sách của bạn.</p>
+      <h1>Framer vs Webflow: Which Platform Wins?</h1>
+      <p class="subtitle">Stop guessing. Answer 3 quick criteria below to let our algorithm calculate the optimal platform for your team velocity, skillset, and hosting budget.</p>
     </header>
 
     <div class="calc-box">
-      <div class="form-section-title">1. Loại website bạn cần dựng:</div>
+      <div class="form-section-title">1. Website Type Needed:</div>
       <div class="options-grid" id="type-options">
         <button class="option-btn active" data-type="landing" onclick="selectType(this)">
           🚀 Landing Page / Portfolio
-          <span>Cần chuyển đổi nhanh, đẹp mắt</span>
+          <span>High conversion, visual polish</span>
         </button>
         <button class="option-btn" data-type="saas" onclick="selectType(this)">
           💻 SaaS Marketing Site
-          <span>Đẹp, mượt, tích hợp SEO</span>
+          <span>Interactive, fast, SEO ready</span>
         </button>
         <button class="option-btn" data-type="cms" onclick="selectType(this)">
-          📚 Blog / CMS Đồ Sộ
-          <span>Hàng trăm bài viết, phân mục</span>
+          📚 Enterprise CMS & Blog
+          <span>Hundreds of pages & categories</span>
         </button>
         <button class="option-btn" data-type="agency" onclick="selectType(this)">
-          🏢 Dự án Khách hàng Agency
-          <span>Bàn giao client tự quản trị</span>
+          🏢 Agency Client Delivery
+          <span>Client handoff & custom editors</span>
         </button>
       </div>
 
-      <div class="form-section-title">2. Kỹ năng hiện tại của bạn:</div>
+      <div class="form-section-title">2. Current Team Technical Skill:</div>
       <div class="options-grid" id="skill-options">
         <button class="option-btn active" data-skill="figma" onclick="selectSkill(this)">
-          🎨 Dùng thạo Figma
-          <span>Kéo thả visual, auto-layout</span>
+          🎨 Fluent in Figma
+          <span>Visual auto-layout & components</span>
         </button>
         <button class="option-btn" data-skill="coding" onclick="selectSkill(this)">
-          👨‍💻 Biết HTML/CSS cơ bản
-          <span>Hiểu Box-model, Flexbox, Grid</span>
+          👨‍💻 Basic HTML/CSS
+          <span>Box-model, flexbox & grid</span>
         </button>
         <button class="option-btn" data-skill="beginner" onclick="selectSkill(this)">
-          🌱 Người mới bắt đầu
-          <span>Chưa biết thiết kế lẫn code</span>
+          🌱 Complete Beginner
+          <span>Zero code or design background</span>
         </button>
       </div>
 
       <div class="slider-group">
         <div class="slider-head">
-          <span class="slider-label">3. Số lượng trang web dự kiến:</span>
-          <span class="slider-val" id="page-count-val">5 trang</span>
+          <span class="slider-label">3. Expected Page Count:</span>
+          <span class="slider-val" id="page-count-val">5 pages</span>
         </div>
         <input type="range" id="page-slider" min="1" max="50" value="5" oninput="updateCalculation()">
       </div>
 
       <!-- Recommendation Display -->
       <div class="recommendation-card" id="rec-card">
-        <span class="rec-badge" id="rec-winner-badge">🏆 ĐỀ XUẤT TỐI ƯU 96%</span>
-        <div class="rec-title" id="rec-title">Framer là lựa chọn số 1 của bạn!</div>
+        <span class="rec-badge" id="rec-winner-badge">🏆 OPTIMAL MATCH: 96%</span>
+        <div class="rec-title" id="rec-title">Framer is your #1 Recommended Choice!</div>
         <p class="rec-desc" id="rec-desc">
-          Với nhu cầu dựng Landing Page / Portfolio và kỹ năng Figma, Framer cho phép bạn copy paste trực tiếp từ Figma lên web chỉ trong 1 nốt nhạc, tiết kiệm 80% thời gian so với Webflow.
+          For landing pages, portfolios, and Figma workflows, Framer enables 1-click copy-paste directly to live web code with native React spring animations, cutting build time by 80%.
         </p>
 
         <div class="score-breakdown">
           <div class="score-item score-framer">
-            <div class="label">Độ tương thích Framer</div>
+            <div class="label">Framer Fit Score</div>
             <div class="value" id="score-framer">96%</div>
           </div>
           <div class="score-item score-webflow">
-            <div class="label">Độ tương thích Webflow</div>
+            <div class="label">Webflow Fit Score</div>
             <div class="value" id="score-webflow">68%</div>
           </div>
           <div class="score-item">
-            <div class="label">Thời gian triển khai ước tính</div>
-            <div class="value" id="time-estimate" style="color: #10b981;">1 - 2 ngày</div>
+            <div class="label">Estimated Build Time</div>
+            <div class="value" id="time-estimate" style="color: #10b981;">1 - 2 days</div>
           </div>
           <div class="score-item">
-            <div class="label">Chi phí hosting khởi điểm</div>
-            <div class="value" id="cost-estimate" style="color: #facc15;">$5 - $15/tháng</div>
+            <div class="label">Starting Monthly Hosting</div>
+            <div class="value" id="cost-estimate" style="color: #facc15;">$5 - $15 / mo</div>
           </div>
         </div>
       </div>
@@ -370,41 +370,41 @@
         <table class="compare-table">
           <thead>
             <tr>
-              <th>Tiêu Chí So Sánh</th>
+              <th>Evaluation Criteria</th>
               <th style="color: #38bdf8;">Framer (Design-First)</th>
               <th style="color: #818cf8;">Webflow (Code-First)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Copy paste từ Figma</strong></td>
-              <td><span class="check">✔ 1-Click Native plugin</span></td>
-              <td><span class="cross">▲ Phải chỉnh lại CSS box</span></td>
+              <td><strong>Figma to Web Workflow</strong></td>
+              <td><span class="check">✔ 1-Click Native Plugin</span></td>
+              <td><span class="cross">▲ Manual CSS Box Restructuring</span></td>
             </tr>
             <tr>
-              <td><strong>Độ dốc học tập (Learning curve)</strong></td>
-              <td><span class="check">✔ Siêu thấp (giống Figma 90%)</span></td>
-              <td><span class="cross">▲ Cao (phải hiểu HTML/CSS)</span></td>
+              <td><strong>Learning Curve</strong></td>
+              <td><span class="check">✔ Minimal (90% identical to Figma)</span></td>
+              <td><span class="cross">▲ Steep (requires HTML/CSS mental model)</span></td>
             </tr>
             <tr>
-              <td><strong>Hiệu ứng Animation</strong></td>
-              <td><span class="check">✔ React Spring mượt đỉnh cao</span></td>
-              <td><span class="check">✔ Interactions 2.0 mạnh mẽ</span></td>
+              <td><strong>Animation & Interactions</strong></td>
+              <td><span class="check">✔ Physics-based React Spring</span></td>
+              <td><span class="check">✔ Interactions 2.0 Engine</span></td>
             </tr>
             <tr>
-              <td><strong>Hệ thống CMS & Database</strong></td>
-              <td>Tối đa 10,000 items (Đủ cho 95% web)</td>
-              <td><span class="check">✔ Khủng, quan hệ đa tầng (Relational)</span></td>
+              <td><strong>CMS & Relational Database</strong></td>
+              <td>Up to 10,000 items (covers 95% sites)</td>
+              <td><span class="check">✔ Multi-reference complex schemas</span></td>
             </tr>
             <tr>
-              <td><strong>Tốc độ xuất bản (Speed to Market)</strong></td>
-              <td><span class="check">✔ 2 - 4 giờ cho Landing Page</span></td>
-              <td>▲ 2 - 5 ngày thiết lập</td>
+              <td><strong>Speed to Market</strong></td>
+              <td><span class="check">✔ 2 - 4 hours for landing pages</span></td>
+              <td>▲ 2 - 5 days standard setup</td>
             </tr>
             <tr>
-              <td><strong>Chính sách dùng thử</strong></td>
-              <td><span class="check">✔ Miễn phí trọn đời (subdomain)</span></td>
-              <td><span class="check">✔ Miễn phí 2 trang tĩnh</span></td>
+              <td><strong>Free Plan Policy</strong></td>
+              <td><span class="check">✔ Free forever on subdomain</span></td>
+              <td><span class="check">✔ Free up to 2 static pages</span></td>
             </tr>
           </tbody>
         </table>
@@ -412,27 +412,27 @@
 
       <div class="action-grid">
         <a href="https://framer.com?via=autoflow" target="_blank" rel="noopener sponsored" class="btn-framer">
-          🚀 Mở Tài Khoản Framer (Free Forever)
+          🚀 Open Free Framer Account
         </a>
         <a href="https://webflow.com?via=autoflow" target="_blank" rel="noopener sponsored" class="btn-webflow">
-          🌐 Khám Phá Webflow (Free Tier)
+          🌐 Explore Webflow Free Tier
         </a>
       </div>
 
       <div class="bonus-box">
-        <h3>🎁 Gói Quà Tặng Độc Quyền Khi Đăng Ký Qua AutoFlow:</h3>
+        <h3>🎁 Exclusive Bonuses When Launching via AutoFlow:</h3>
         <ul>
-          <li>✔ <strong>Bộ 12+ Templates Framer SaaS Landing Page</strong> chuẩn conversion trị giá $149.</li>
-          <li>✔ <strong>SOP Tối ưu hóa SEO & Page Speed 99/100</strong> trên Google Lighthouse.</li>
-          <li>✔ <strong>Kịch bản tích hợp Webhook Tự động</strong> gửi Lead về Google Sheets / Airtable.</li>
+          <li>✔ <strong>12+ Conversion-Tested Framer SaaS Landing Page Templates</strong> ($149 value).</li>
+          <li>✔ <strong>Core Web Vitals & 99/100 Lighthouse Speed Optimization SOP</strong>.</li>
+          <li>✔ <strong>Ready-to-use Webhook Automations</strong> routing leads to Google Sheets / Airtable.</li>
         </ul>
       </div>
 
     </div>
 
     <footer>
-      <p>© 2026 AutoFlow Intelligence Hub. Mọi liên kết đối tác đều được kiểm duyệt minh bạch theo chuẩn FTC.<br>
-      Khuyến nghị mang tính tham khảo kỹ thuật dựa trên dữ liệu hiệu năng thực tế.</p>
+      <p>© 2026 AutoFlow Intelligence Hub. All affiliate partnerships adhere to strict FTC disclosure guidelines.<br>
+      Technical recommendations are benchmarked on real production metrics.</p>
     </footer>
   </div>
 
@@ -457,7 +457,7 @@
     function updateCalculation() {
       const pageSlider = document.getElementById('page-slider');
       const pages = parseInt(pageSlider.value);
-      document.getElementById('page-count-val').innerText = pages + (pages === 1 ? ' trang' : ' trang');
+      document.getElementById('page-count-val').innerText = pages + (pages === 1 ? ' page' : ' pages');
 
       let framerScore = 70;
       let webflowScore = 70;
@@ -495,20 +495,20 @@
 
       if (framerScore >= webflowScore) {
         winner = 'framer';
-        document.getElementById('rec-winner-badge').innerText = `🏆 ĐỀ XUẤT FRAMER: ${framerScore}% PHÙ HỢP`;
+        document.getElementById('rec-winner-badge').innerText = `🏆 RECOMMENDED: FRAMER (${framerScore}% FIT)`;
         document.getElementById('rec-winner-badge').style.background = 'linear-gradient(135deg, #0099ff, #0055ff)';
-        document.getElementById('rec-title').innerText = 'Framer là lựa chọn số 1 dành cho bạn!';
-        document.getElementById('rec-desc').innerText = `Với định hướng ${pages} trang và thế mạnh hiện tại, Framer giúp bạn đưa sản phẩm ra thị trường nhanh gấp 3 lần với hiệu ứng mượt như ứng dụng gốc và chi phí hosting cực kỳ dễ chịu.`;
-        timeEst = pages <= 5 ? '1 - 2 ngày' : `${Math.ceil(pages / 3)} ngày`;
-        costEst = '$5 - $15 / tháng';
+        document.getElementById('rec-title').innerText = 'Framer is your #1 Recommended Choice!';
+        document.getElementById('rec-desc').innerText = `With your target of ${pages} pages and workflow preferences, Framer enables 3x faster delivery with native app-level animation polish and lower hosting friction.`;
+        timeEst = pages <= 5 ? '1 - 2 days' : `${Math.ceil(pages / 3)} days`;
+        costEst = '$5 - $15 / mo';
       } else {
         winner = 'webflow';
-        document.getElementById('rec-winner-badge').innerText = `🏆 ĐỀ XUẤT WEBFLOW: ${webflowScore}% PHÙ HỢP`;
+        document.getElementById('rec-winner-badge').innerText = `🏆 RECOMMENDED: WEBFLOW (${webflowScore}% FIT)`;
         document.getElementById('rec-winner-badge').style.background = 'linear-gradient(135deg, #146ef5, #4338ca)';
-        document.getElementById('rec-title').innerText = 'Webflow là giải pháp tối ưu quy mô lớn!';
-        document.getElementById('rec-desc').innerText = `Bạn cần cơ chế quản trị dữ liệu phức tạp (${pages} trang) hoặc cần kiểm soát tuyệt đối từng dòng code HTML/CSS. Webflow là tiêu chuẩn vàng của ngành dành cho các hệ thống CMS đa tầng.`;
-        timeEst = pages <= 5 ? '3 - 5 ngày' : `${Math.ceil(pages / 1.5)} ngày`;
-        costEst = '$14 - $29 / tháng';
+        document.getElementById('rec-title').innerText = 'Webflow is optimal for complex CMS architecture!';
+        document.getElementById('rec-desc').innerText = `You require extensive multi-relational CMS schemas (${pages} pages) and granular control over every CSS box property. Webflow is the enterprise standard for complex content operations.`;
+        timeEst = pages <= 5 ? '3 - 5 days' : `${Math.ceil(pages / 1.5)} days`;
+        costEst = '$14 - $29 / mo';
       }
 
       document.getElementById('score-framer').innerText = framerScore + '%';
