@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng So Sánh Chi Phí Chạy AI Agent 24/7: Treo Laptop vs AWS vs Hostinger VPS</title>
-  <meta name="description" content="Công cụ tính toán chi phí thực tế khi chạy AI Agent (Claude Code, n8n, Telegram Bot) 24/7. So sánh Treo PC vs AWS EC2 vs Hostinger VPS.">
+  <title>24/7 AI Agent Cloud Cost Calculator (2026): Laptop vs AWS EC2 vs Hostinger VPS</title>
+  <meta name="description" content="Calculate true infrastructure costs of running 24/7 AI Agents (Claude Code, n8n, DeepSeek, Telegram bots). Compare burning your laptop battery vs AWS bills vs Cloud VPS.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -204,15 +204,15 @@
 
 <div class="container">
   <header>
-    <div class="badge">⚡ Tối Ưu Hạ Tầng AI Agent 2026</div>
-    <h1>So Sánh Chi Phí Chạy AI Agent 24/7</h1>
-    <p class="subtitle">Đừng treo laptop khiến máy nóng ran và chai pin. Kéo thanh trượt bên dưới để tính toán số tiền tiết kiệm được khi chuyển bot AI lên Cloud VPS.</p>
+    <div class="badge">⚡ 2026 Autonomous AI Infrastructure</div>
+    <h1>24/7 AI Agent Infrastructure Cost Calculator</h1>
+    <p class="subtitle">Stop frying your personal laptop battery running background bots. Adjust the sliders below to see how much capital you preserve moving to dedicated Cloud VPS.</p>
   </header>
 
   <div class="calc-box">
     <div class="slider-group">
       <div class="slider-head">
-        <span class="slider-label">Số Lượng AI Agent / Bot Chạy Đồng Thời:</span>
+        <span class="slider-label">Concurrent AI Agents / Background Bots:</span>
         <span class="slider-val" id="agentVal">2 Agents</span>
       </div>
       <input type="range" id="agentSlider" min="1" max="10" value="2">
@@ -220,7 +220,7 @@
 
     <div class="slider-group">
       <div class="slider-head">
-        <span class="slider-label">Dung Lượng RAM Cần Cho Hệ Thống:</span>
+        <span class="slider-label">Required System RAM Headroom:</span>
         <span class="slider-val" id="ramVal">4 GB RAM</span>
       </div>
       <input type="range" id="ramSlider" min="2" max="16" step="2" value="4">
@@ -228,54 +228,54 @@
 
     <div class="compare-grid">
       <div class="compare-card">
-        <div class="plan-title">Treo Laptop / PC</div>
-        <div class="plan-price" id="laptopCost">$28/tháng</div>
-        <div class="plan-sub">Tiền điện + Hao pin</div>
-        <div class="plan-desc">Rủi ro sập nguồn, chai pin ($150 thay pin), laptop luôn nóng ran và giật lag.</div>
+        <div class="plan-title">Personal Laptop / PC</div>
+        <div class="plan-price" id="laptopCost">$28/mo</div>
+        <div class="plan-sub">Electricity + Battery Wear</div>
+        <div class="plan-desc">Power outage risk, $150 battery replacement cost, thermal throttling, and local network lag.</div>
       </div>
 
       <div class="compare-card">
-        <div class="plan-title">AWS EC2 / GCP</div>
-        <div class="plan-price" id="awsCost">$42/tháng</div>
-        <div class="plan-sub">Pay-as-you-go</div>
-        <div class="plan-desc">Bẫy tính phí dung lượng mạng (Bandwidth) và IP tĩnh phát sinh ngoài tầm kiểm soát.</div>
+        <div class="plan-title">AWS EC2 / Google Cloud</div>
+        <div class="plan-price" id="awsCost">$42/mo</div>
+        <div class="plan-sub">Pay-As-You-Go</div>
+        <div class="plan-desc">Surprise data transfer bandwidth fees, expensive static IPv4 costs, and complex IAM setup.</div>
       </div>
 
       <div class="compare-card winner">
-        <div class="card-badge">TIẾT KIỆM 85%</div>
+        <div class="card-badge">85% SAVINGS (WINNER)</div>
         <div class="plan-title" style="color: #c4b5fd;">Hostinger KVM VPS</div>
-        <div class="plan-price" id="hostingerCost" style="color: #c084fc;">$5.99/tháng</div>
+        <div class="plan-price" id="hostingerCost" style="color: #c084fc;">$5.99/mo</div>
         <div class="plan-sub" style="color: #a78bfa;">NVMe + AMD EPYC</div>
-        <div class="plan-desc">Băng thông 4TB/tháng, IP riêng, trợ lý AI Cody quản trị tự động, Uptime 99.9%.</div>
+        <div class="plan-desc">4TB high-speed bandwidth, dedicated IPv4, 1-click Docker OS, NVMe storage, 99.9% uptime SLA.</div>
       </div>
     </div>
 
     <div class="savings-banner">
-      <div class="savings-title">Tổng Số Tiền Doanh Nghiệp Của Bạn Tiết Kiệm Được:</div>
-      <div class="savings-amount" id="savingsAmount">$432 USD / năm</div>
-      <div class="savings-vnd" id="savingsVND">~10.800.000 VNĐ (Đủ mua thêm 2 tài khoản Claude Pro trọn năm!)</div>
+      <div class="savings-title">ESTIMATED ANNUAL CAPITAL PRESERVED:</div>
+      <div class="savings-amount" id="savingsAmount">$432 USD / year</div>
+      <div class="savings-vnd" id="savingsVND">(Enough to fund 2 full annual Claude Pro or ChatGPT subscriptions!)</div>
     </div>
 
     <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" class="cta-btn" id="ctaLink">
-      👉 Nhận Giảm Giá 20% & Triển Khai Cloud VPS Ngay
+      👉 Deploy Hostinger Cloud VPS (Use Code AUTOFLOW20 for Extra 20% Off) ➔
     </a>
     <p style="text-align:center; color: var(--text-muted); font-size: 0.8rem; margin-top: 10px;">
-      Cam kết hoàn tiền trong 30 ngày nếu không hài lòng. Hỗ trợ thanh toán thẻ nội địa và quốc tế.
+      Risk-free 30-day money-back guarantee. Instant setup with global PayPal & credit card checkout.
     </p>
 
     <div class="bonus-box" style="display: flex; flex-direction: column; align-items: stretch; gap: 16px;">
       <div>
-        <div style="font-weight: 700; color: #f8fafc; margin-bottom: 4px;">🎁 Quà Tặng Độc Quyền: Script Cài Đặt AI Agent 1-Click + VIP Blueprints</div>
-        <div style="color: #94a3b8; font-size: 0.85rem;">Nhập email để nhận ngay file script Bash tự động cấu hình Docker, n8n, Claude Code và toàn bộ kịch bản tự động hóa 24/7.</div>
+        <div style="font-weight: 700; color: #f8fafc; margin-bottom: 4px;">🎁 Exclusive Bonus: 1-Click AI Agent Bash Installer + VIP Blueprints</div>
+        <div style="color: #94a3b8; font-size: 0.85rem;">Enter your email to receive our automated Bash installer for Docker, n8n, Claude Code, and complete 24/7 background pipelines.</div>
       </div>
       <form id="vpsLeadForm" onsubmit="handleVpsLeadSubmit(event)" style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <input type="email" id="vpsLeadEmail" placeholder="Nhập email của bạn..." required style="flex: 1; min-width: 240px; padding: 12px 16px; border-radius: 10px; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--card-border); color: #fff; font-size: 0.95rem; outline: none;">
+        <input type="email" id="vpsLeadEmail" placeholder="Enter your business email..." required style="flex: 1; min-width: 240px; padding: 12px 16px; border-radius: 10px; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--card-border); color: #fff; font-size: 0.95rem; outline: none;">
         <button type="submit" class="bonus-btn" style="border: none; cursor: pointer; font-size: 0.92rem; padding: 12px 20px;">
-          📥 Tải Script Bash (0đ)
+          📥 Download Bash Script (Free) ➔
         </button>
       </form>
       <div id="vpsLeadSuccess" style="color: #10b981; font-size: 0.85rem; font-weight: 600; display: none;">
-        ✅ Đã kích hoạt tải xuống! Script đang được tải về máy của bạn.
+        ✅ Success! Your Bash installer script is downloading now.
       </div>
     </div>
 
@@ -298,7 +298,7 @@
   </div>
 
   <footer>
-    <p>© 2026 Cỗ Máy Tự Động Hóa 12-Affiliates. Dữ liệu so sánh dựa trên bảng giá chuẩn công bố của AWS EC2 (t3.medium) và Hostinger KVM2 VPS.</p>
+    <p>© 2026 AutoFlow Tech. Comparative benchmarks based on published standard rates of AWS EC2 (t3.medium) and Hostinger KVM2 Cloud VPS.</p>
   </footer>
 </div>
 
@@ -334,14 +334,13 @@
     else hostinger = 14.99;
 
     const yearlySavings = Math.round(((aws * 12) - (hostinger * 12)));
-    const vndSavings = (yearlySavings * 25000).toLocaleString('vi-VN');
 
-    laptopCostEl.textContent = '$' + laptop + '/tháng';
-    awsCostEl.textContent = '$' + aws + '/tháng';
-    hostingerCostEl.textContent = '$' + hostinger + '/tháng';
+    laptopCostEl.textContent = '$' + laptop + '/mo';
+    awsCostEl.textContent = '$' + aws + '/mo';
+    hostingerCostEl.textContent = '$' + hostinger + '/mo';
 
-    savingsAmountEl.textContent = '$' + yearlySavings + ' USD / năm';
-    savingsVNDEl.textContent = '~' + vndSavings + ' VNĐ (Đủ mua thêm 2 tài khoản Claude Pro trọn năm!)';
+    savingsAmountEl.textContent = '$' + yearlySavings + ' USD / year';
+    savingsVNDEl.textContent = '(Enough to fund ' + Math.max(1, Math.floor(yearlySavings / 240)) + ' full annual Claude Pro or ChatGPT subscriptions!)';
   }
 
   agentSlider.addEventListener('input', updateCalculations);
