@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng So Sánh Chi Phí Chạy AI Agent 24/7: Treo Laptop vs AWS vs Hostinger VPS</title>
+  <meta name="description" content="Công cụ tính toán chi phí thực tế khi chạy AI Agent (Claude Code, n8n, Telegram Bot) 24/7. So sánh Treo PC vs AWS EC2 vs Hostinger VPS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #8b5cf6;
+      --primary-hover: #7c3aed;
+      --hostinger: #a855f7;
+      --aws: #f97316;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.12) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 16px;
+    }
+    .container { width: 100%; max-width: 820px; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c4b5fd;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: 2.25rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; background: linear-gradient(135deg, #ffffff 40%, #c4b5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subtitle { color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; max-width: 680px; margin: 0 auto; }
+
+    .calc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      margin-bottom: 32px;
+    }
+    .slider-group { margin-bottom: 28px; }
+    .slider-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .slider-label { font-weight: 600; font-size: 1rem; color: #e2e8f0; }
+    .slider-val { font-size: 1.25rem; font-weight: 800; color: #a855f7; }
+    input[type=range] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #1e293b;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #8b5cf6;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.8);
+      border: 2px solid #ffffff;
+    }
+
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0 24px; }
+    @media (max-width: 680px) { .compare-grid { grid-template-columns: 1fr; } }
+    .compare-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      padding: 20px 16px;
+      text-align: center;
+      position: relative;
+    }
+    .compare-card.winner {
+      border: 2px solid #a855f7;
+      background: rgba(168, 85, 247, 0.08);
+      box-shadow: 0 8px 30px rgba(168, 85, 247, 0.2);
+    }
+    .card-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 9999px;
+      letter-spacing: 0.5px;
+    }
+    .plan-title { font-size: 0.95rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; }
+    .plan-price { font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+    .plan-sub { font-size: 0.8rem; color: #64748b; }
+    .plan-desc { font-size: 0.8rem; color: #94a3b8; margin-top: 12px; line-height: 1.4; }
+
+    .savings-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin: 24px 0 28px;
+    }
+    .savings-title { font-size: 0.9rem; font-weight: 700; color: #6ee7b7; text-transform: uppercase; letter-spacing: 1px; }
+    .savings-amount { font-size: 2.2rem; font-weight: 800; color: #34d399; margin: 6px 0; }
+    .savings-vnd { color: #a7f3d0; font-size: 0.95rem; font-weight: 600; }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 14px;
+      transition: all 0.2s;
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+    }
+    .cta-btn:hover { background: linear-gradient(135deg, #7c3aed, #6d28d9); transform: translateY(-2px); }
+
+    .bonus-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    @media (max-width: 600px) { .bonus-box { flex-direction: column; text-align: center; } }
+    .bonus-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .bonus-btn:hover { background: rgba(16, 185, 129, 0.25); }
+
+    footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">⚡ Tối Ưu Hạ Tầng AI Agent 2026</div>
+    <h1>So Sánh Chi Phí Chạy AI Agent 24/7</h1>
+    <p class="subtitle">Đừng treo laptop khiến máy nóng ran và chai pin. Kéo thanh trượt bên dưới để tính toán số tiền tiết kiệm được khi chuyển bot AI lên Cloud VPS.</p>
+  </header>
+
+  <div class="calc-box">
+    <div class="slider-group">
+      <div class="slider-head">
+        <span class="slider-label">Số Lượng AI Agent / Bot Chạy Đồng Thời:</span>
+        <span class="slider-val" id="agentVal">2 Agents</span>
+      </div>
+      <input type="range" id="agentSlider" min="1" max="10" value="2">
+    </div>
+
+    <div class="slider-group">
+      <div class="slider-head">
+        <span class="slider-label">Dung Lượng RAM Cần Cho Hệ Thống:</span>
+        <span class="slider-val" id="ramVal">4 GB RAM</span>
+      </div>
+      <input type="range" id="ramSlider" min="2" max="16" step="2" value="4">
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="plan-title">Treo Laptop / PC</div>
+        <div class="plan-price" id="laptopCost">$28/tháng</div>
+        <div class="plan-sub">Tiền điện + Hao pin</div>
+        <div class="plan-desc">Rủi ro sập nguồn, chai pin ($150 thay pin), laptop luôn nóng ran và giật lag.</div>
+      </div>
+
+      <div class="compare-card">
+        <div class="plan-title">AWS EC2 / GCP</div>
+        <div class="plan-price" id="awsCost">$42/tháng</div>
+        <div class="plan-sub">Pay-as-you-go</div>
+        <div class="plan-desc">Bẫy tính phí dung lượng mạng (Bandwidth) và IP tĩnh phát sinh ngoài tầm kiểm soát.</div>
+      </div>
+
+      <div class="compare-card winner">
+        <div class="card-badge">TIẾT KIỆM 85%</div>
+        <div class="plan-title" style="color: #c4b5fd;">Hostinger KVM VPS</div>
+        <div class="plan-price" id="hostingerCost" style="color: #c084fc;">$5.99/tháng</div>
+        <div class="plan-sub" style="color: #a78bfa;">NVMe + AMD EPYC</div>
+        <div class="plan-desc">Băng thông 4TB/tháng, IP riêng, trợ lý AI Cody quản trị tự động, Uptime 99.9%.</div>
+      </div>
+    </div>
+
+    <div class="savings-banner">
+      <div class="savings-title">Tổng Số Tiền Doanh Nghiệp Của Bạn Tiết Kiệm Được:</div>
+      <div class="savings-amount" id="savingsAmount">$432 USD / năm</div>
+      <div class="savings-vnd" id="savingsVND">~10.800.000 VNĐ (Đủ mua thêm 2 tài khoản Claude Pro trọn năm!)</div>
+    </div>
+
+    <a href="https://hostinger.com?REFERRALCODE=AUTOFLOW20" target="_blank" class="cta-btn" id="ctaLink">
+      🚀 Bấm Vào Đây Mua VPS Hostinger Giảm 20% (Mã: AUTOFLOW20)
+    </a>
+    <p style="text-align:center; color: var(--text-muted); font-size: 0.8rem; margin-top: 10px;">
+      Cam kết hoàn tiền trong 30 ngày nếu không hài lòng. Hỗ trợ thanh toán thẻ nội địa và quốc tế.
+    </p>
+
+    <div class="bonus-box">
+      <div>
+        <div style="font-weight: 700; color: #f8fafc; margin-bottom: 4px;">🎁 Quà Tặng Độc Quyền: Script Cài Đặt AI Agent 1-Click</div>
+        <div style="color: #94a3b8; font-size: 0.85rem;">Tự động cài đặt Docker, n8n, Claude Code và cấu hình tường lửa UFW trong 1 dòng lệnh duy nhất.</div>
+      </div>
+      <a href="blueprints/install-ai-agent-vps.sh" download="install-ai-agent-vps.sh" class="bonus-btn">
+        📥 Tải Script Bash (0đ)
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Cỗ Máy Tự Động Hóa 12-Affiliates. Dữ liệu so sánh dựa trên bảng giá chuẩn công bố của AWS EC2 (t3.medium) và Hostinger KVM2 VPS.</p>
+  </footer>
+</div>
+
+<script>
+  const agentSlider = document.getElementById('agentSlider');
+  const ramSlider = document.getElementById('ramSlider');
+  const agentVal = document.getElementById('agentVal');
+  const ramVal = document.getElementById('ramVal');
+
+  const laptopCostEl = document.getElementById('laptopCost');
+  const awsCostEl = document.getElementById('awsCost');
+  const hostingerCostEl = document.getElementById('hostingerCost');
+  const savingsAmountEl = document.getElementById('savingsAmount');
+  const savingsVNDEl = document.getElementById('savingsVND');
+
+  function updateCalculations() {
+    const agents = parseInt(agentSlider.value);
+    const ram = parseInt(ramSlider.value);
+
+    agentVal.textContent = agents + (agents > 1 ? ' Agents' : ' Agent');
+    ramVal.textContent = ram + ' GB RAM';
+
+    // Laptop cost: Electricity ($10/mo) + Wear & Tear ($15/mo base) + scale with RAM
+    const laptop = 20 + (ram * 2);
+
+    // AWS EC2: ~$10/month base + $8 per 2GB RAM + data transfer
+    const aws = 18 + (ram * 6);
+
+    // Hostinger VPS: KVM1 (4GB) ~ $5.99, KVM2 (8GB) ~ $8.99, KVM4 (16GB) ~ $14.99
+    let hostinger = 5.99;
+    if (ram <= 4) hostinger = 5.99;
+    else if (ram <= 8) hostinger = 8.99;
+    else hostinger = 14.99;
+
+    const yearlySavings = Math.round(((aws * 12) - (hostinger * 12)));
+    const vndSavings = (yearlySavings * 25000).toLocaleString('vi-VN');
+
+    laptopCostEl.textContent = '$' + laptop + '/tháng';
+    awsCostEl.textContent = '$' + aws + '/tháng';
+    hostingerCostEl.textContent = '$' + hostinger + '/tháng';
+
+    savingsAmountEl.textContent = '$' + yearlySavings + ' USD / năm';
+    savingsVNDEl.textContent = '~' + vndSavings + ' VNĐ (Đủ mua thêm 2 tài khoản Claude Pro trọn năm!)';
+  }
+
+  agentSlider.addEventListener('input', updateCalculations);
+  ramSlider.addEventListener('input', updateCalculations);
+  updateCalculations();
+</script>
+
+</body>
+</html>
