@@ -1056,9 +1056,6 @@
             <button class="btn-telemetry" onclick="changePinPrompt()">
               <span>🔑 Đổi Mã PIN Bảo Mật</span>
             </button>
-            <button class="btn-telemetry" onclick="forceManualRolloverTest()" style="opacity: 0.8;">
-              <span>⚡ (Thử Nghiệm) Chốt Sổ Thủ Công</span>
-            </button>
           </div>
           <div style="font-size: 12px; color: var(--text-dim);">
             • Sổ kế toán tự động đồng bộ vào <code>00-So-ke-toan-va-tang-truong-hang-ngay.md</code> trong Vault.
@@ -1585,7 +1582,7 @@
     // -------------------------------------------------------------
     // DAILY ACCOUNTING LEDGER & 100% ZERO-TOUCH ROLLOVER ENGINE
     // -------------------------------------------------------------
-    const DAILY_LEDGER_KEY = "autoflow_daily_ledger_v3";
+    const DAILY_LEDGER_KEY = "autoflow_daily_ledger_v4";
     const initialLedger = [
       {
         date: "2026-09-21",
@@ -1886,40 +1883,6 @@
     function hideChartTooltip() {
       const tt = document.getElementById("chartTooltip");
       if (tt) tt.style.display = "none";
-    }
-
-    function forceManualRolloverTest() {
-      const ledger = loadDailyLedger();
-      const today = ledger[ledger.length - 1];
-      if (!today) return;
-
-      today.status = "closed";
-
-      const d = new Date(today.date);
-      d.setDate(d.getDate() + 1);
-      const nextDateStr = d.toISOString().split("T")[0];
-      const nextLabel = `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')} (Hôm nay)`;
-
-      const newDay = {
-        date: nextDateStr,
-        dayLabel: nextLabel,
-        forex: 0.00,
-        vps: 0.00,
-        kit: 0.00,
-        saas: 0.00,
-        revenue: 0.00,
-        expenses: 2.00,
-        netProfit: -2.00,
-        clicks: 0,
-        growthRate: -100.0,
-        status: "active",
-        notes: "Chuyển ngày tự động 24/7"
-      };
-
-      ledger.push(newDay);
-      saveDailyLedger(ledger);
-      renderDailyLedger();
-      showToast("🔒 Đã chuyển sang ngày mới: " + nextLabel);
     }
 
     function promptAddRevenue() {
