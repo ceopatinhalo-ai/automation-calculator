@@ -1,64 +1,130 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AutoFlow Mission Control 24/7 | 12-Affiliates</title>
   <style>
-    :root {
+    :root[data-theme="light"] {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #cbd5e1;
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-green: #059669;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
+      --accent-red: #dc2626;
+      --text-main: #0f172a;
+      --text-sub: #334155;
+      --text-dim: #64748b;
+      --item-bg: #f1f5f9;
+      --item-border: #e2e8f0;
+      --highlight-box: #eff6ff;
+    }
+    :root[data-theme="dark"] {
       --bg: #090d16;
-      --card-bg: rgba(18, 26, 44, 0.75);
+      --card-bg: rgba(18, 26, 44, 0.85);
       --card-border: rgba(56, 189, 248, 0.18);
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
       --accent: #00f0ff;
+      --accent-hover: #38bdf8;
       --accent-green: #10b981;
       --accent-purple: #a855f7;
       --accent-amber: #f59e0b;
-      --text-main: #f1f5f9;
+      --accent-red: #ef4444;
+      --text-main: #f8fafc;
+      --text-sub: #cbd5e1;
       --text-dim: #94a3b8;
+      --item-bg: rgba(255, 255, 255, 0.03);
+      --item-border: rgba(255, 255, 255, 0.08);
+      --highlight-box: rgba(0, 240, 255, 0.05);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
-    body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 24px; }
-    .container { max-width: 1360px; margin: 0 auto; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 24px; transition: background 0.2s, color 0.2s; }
+    .container { max-width: 1400px; margin: 0 auto; }
     
     /* Header */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 24px;
+      padding: 18px 24px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      backdrop-filter: blur(16px);
-      margin-bottom: 24px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 20px;
     }
     .brand { display: flex; align-items: center; gap: 14px; }
     .logo-badge {
       width: 44px; height: 44px; border-radius: 12px;
-      background: linear-gradient(135deg, #00f0ff, #3b82f6);
+      background: linear-gradient(135deg, #0284c7, #2563eb);
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 900; color: #000;
+      font-size: 22px; font-weight: 900; color: #fff;
     }
-    .brand-title { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+    .brand-title { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: var(--text-main); }
     .brand-sub { font-size: 13px; color: var(--text-dim); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
     .status-pill {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
-      background: rgba(16, 185, 129, 0.15); color: var(--accent-green);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: rgba(5, 150, 105, 0.12); color: var(--accent-green);
+      border: 1px solid rgba(5, 150, 105, 0.25);
     }
     .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green); animation: pulse 1.5s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.3); } }
+    .theme-toggle {
+      background: var(--item-bg); border: 1px solid var(--item-border); color: var(--text-main);
+      padding: 6px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer;
+    }
+
+    /* EXECUTIVE RADAR BAR (ELON DECISION COCKPIT) */
+    .decision-cockpit {
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 24px;
+    }
+    .cockpit-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+    }
+    .cockpit-title {
+      font-size: 16px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 8px;
+    }
+    .verdict-badge {
+      font-size: 13px; font-weight: 800; padding: 6px 16px; border-radius: 20px;
+      background: rgba(5, 150, 105, 0.15); color: var(--accent-green);
+      border: 1px solid var(--accent-green);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .cockpit-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+    }
+    @media (max-width: 900px) { .cockpit-grid { grid-template-columns: 1fr; } }
+    .cockpit-col {
+      background: var(--highlight-box); border: 1px solid var(--item-border);
+      padding: 16px; border-radius: 12px;
+    }
+    .col-label { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .col-content { font-size: 13px; line-height: 1.6; color: var(--text-sub); }
+    .col-content b { color: var(--text-main); font-weight: 700; }
+    .col-content ul { list-style: none; margin-top: 6px; }
+    .col-content li { margin-bottom: 6px; position: relative; padding-left: 18px; }
+    .col-content li::before { content: "➔"; position: absolute; left: 0; color: var(--accent); }
 
     /* Top Grid KPI */
     .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
     .kpi-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      padding: 18px 20px; border-radius: 14px; backdrop-filter: blur(12px);
+      padding: 18px 20px; border-radius: 14px; box-shadow: var(--card-shadow);
     }
-    .kpi-label { font-size: 12px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
-    .kpi-value { font-size: 26px; font-weight: 800; color: #fff; display: flex; align-items: baseline; gap: 8px; }
-    .kpi-sub { font-size: 12px; color: var(--accent); font-weight: 500; }
+    .kpi-label { font-size: 12px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .kpi-value { font-size: 26px; font-weight: 800; color: var(--text-main); display: flex; align-items: baseline; gap: 8px; }
+    .kpi-sub { font-size: 12px; color: var(--accent); font-weight: 600; }
 
     /* Main Grid */
     .main-grid { display: grid; grid-template-columns: 2fr 1.2fr; gap: 24px; }
@@ -66,53 +132,53 @@
 
     .section-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 16px; padding: 22px; backdrop-filter: blur(16px); margin-bottom: 24px;
+      border-radius: 16px; padding: 22px; box-shadow: var(--card-shadow); margin-bottom: 24px;
     }
     .section-title {
-      font-size: 16px; font-weight: 800; letter-spacing: -0.3px;
+      font-size: 16px; font-weight: 800; letter-spacing: -0.3px; color: var(--text-main);
       margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;
     }
-    .badge-count { font-size: 11px; background: rgba(0, 240, 255, 0.15); color: var(--accent); padding: 3px 8px; border-radius: 6px; }
+    .badge-count { font-size: 11px; background: rgba(2, 132, 199, 0.12); color: var(--accent); padding: 4px 10px; border-radius: 6px; font-weight: 700; }
 
     /* Video List */
     .video-item {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 14px; background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; margin-bottom: 10px;
+      padding: 12px 16px; background: var(--item-bg);
+      border: 1px solid var(--item-border); border-radius: 10px; margin-bottom: 10px;
       transition: all 0.2s;
     }
-    .video-item:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--accent); }
+    .video-item:hover { border-color: var(--accent); transform: translateX(2px); }
     .video-meta { display: flex; align-items: center; gap: 12px; }
     .video-num { font-size: 12px; font-weight: 800; color: var(--accent); width: 22px; }
-    .video-title { font-size: 14px; font-weight: 600; color: #fff; max-width: 480px; }
-    .video-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); font-weight: 600; }
+    .video-title { font-size: 14px; font-weight: 700; color: var(--text-main); max-width: 480px; }
+    .video-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(5, 150, 105, 0.12); color: var(--accent-green); font-weight: 700; }
     .btn-play {
       padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none;
       background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff;
       display: inline-flex; align-items: center; gap: 6px; transition: transform 0.1s;
     }
-    .btn-play:hover { transform: scale(1.03); }
+    .btn-play:hover { transform: scale(1.05); }
 
     /* Intel List */
     .intel-item {
-      padding: 12px 14px; background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; margin-bottom: 10px;
+      padding: 14px 16px; background: var(--item-bg);
+      border: 1px solid var(--item-border); border-radius: 10px; margin-bottom: 10px;
     }
     .intel-header { display: flex; justify-content: space-between; margin-bottom: 4px; }
     .intel-code { font-size: 12px; font-weight: 800; color: var(--accent-purple); }
-    .intel-words { font-size: 12px; color: var(--text-dim); font-weight: 600; }
-    .intel-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
-    .intel-insight { font-size: 12px; color: #cbd5e1; }
+    .intel-words { font-size: 12px; color: var(--text-dim); font-weight: 700; }
+    .intel-title { font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .intel-insight { font-size: 12px; color: var(--text-sub); line-height: 1.5; }
 
     /* Tools List */
     .tool-link {
-      display: block; padding: 14px; background: rgba(0, 240, 255, 0.04);
-      border: 1px dashed rgba(0, 240, 255, 0.3); border-radius: 10px; text-decoration: none;
+      display: block; padding: 14px; background: var(--highlight-box);
+      border: 1px dashed var(--accent); border-radius: 10px; text-decoration: none;
       color: var(--text-main); margin-bottom: 12px; transition: all 0.2s;
     }
-    .tool-link:hover { background: rgba(0, 240, 255, 0.08); border-color: var(--accent); }
-    .tool-name { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
-    .tool-desc { font-size: 12px; color: var(--text-dim); }
+    .tool-link:hover { background: rgba(2, 132, 199, 0.1); }
+    .tool-name { font-size: 14px; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+    .tool-desc { font-size: 12px; color: var(--text-sub); }
 
     /* Fast Action Panel */
     .action-panel {
@@ -120,28 +186,103 @@
     }
     .btn-action {
       padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 700; text-align: center;
-      text-decoration: none; background: rgba(255, 255, 255, 0.08); color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.12); cursor: pointer; transition: all 0.2s;
+      text-decoration: none; background: var(--item-bg); color: var(--text-main);
+      border: 1px solid var(--item-border); cursor: pointer; transition: all 0.2s;
     }
-    .btn-action:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+    .btn-action:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* Standalone Mode Banner */
+    .app-mode-tip {
+      background: #fef3c7; border: 1px solid #fde68a; color: #92400e;
+      padding: 12px 16px; border-radius: 10px; font-size: 12px; line-height: 1.5; margin-bottom: 20px;
+    }
+    :root[data-theme="dark"] .app-mode-tip {
+      background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3); color: #fbbf24;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Standalone Tip -->
+    <div class="app-mode-tip">
+      💡 <b>MẸO CHỐNG LOẠN TAB DÀNH CHO FOUNDER:</b> Để không bị lạc trong 20+ tab Gmail/Facebook, mở bảng này dưới dạng <b>Cửa Sổ Ứng Dụng Độc Lập (App Window)</b> bằng lệnh terminal: 
+      <code>open -na "Brave Browser" --args --app="file:///Users/nguyenthemanh/ObsidianVault20.6.2026/obsidian-global/01-du-an/12-affiliates/00-Dashboard-Mission-Control.html"</code>
+    </div>
+
     <!-- Header -->
     <header class="header">
       <div class="brand">
         <div class="logo-badge">⚡</div>
         <div>
           <h1 class="brand-title">AutoFlow Tech — Mission Control HUD</h1>
-          <p class="brand-sub">Hệ Thống Vận Hành Affiliate Tự Hành 24/7 • Chip Apple M5 Pro</p>
+          <p class="brand-sub">Hệ Thống Tiếp Thị Liên Kết & Traffic Tự Hành 24/7 • MacBook Pro M5 Pro</p>
         </div>
       </div>
-      <div class="status-pill">
-        <span class="pulse-dot"></span>
-        DAEMON 24/7 ONLINE (PID 81515)
+      <div class="header-actions">
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Nền Sáng / 🌙 Nền Tối</button>
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          DAEMON 24/7 LIVE (PID 81515)
+        </div>
       </div>
     </header>
+
+    <!-- EXECUTIVE DECISION COCKPIT -->
+    <section class="decision-cockpit">
+      <div class="cockpit-header">
+        <div class="cockpit-title">
+          <span>🧭 TRẠM CHỈ HUY TÁC CHIẾN (ELON MUSK EXECUTIVE RADAR)</span>
+        </div>
+        <div class="verdict-badge">
+          🟢 KHUYẾN NGHỊ: NGỒI CHỜ MÁY TỰ CHẠY 24/7
+        </div>
+      </div>
+
+      <div class="cockpit-grid">
+        <!-- Col 1: Đang làm gì -->
+        <div class="cockpit-col">
+          <div class="col-label" style="color: var(--accent-green);">
+            <span>🟢 1. ĐANG CHẠY TỰ ĐỘNG (NOW)</span>
+          </div>
+          <div class="col-content">
+            <ul>
+              <li><b>Daemon 24/7 (PID 81515):</b> Tự động quét đối soát Uptime Web và Video 30 phút/lần.</li>
+              <li><b>Hạm đội 7 Video Shorts:</b> Đang phủ sóng trên YouTube Kênh AutoFlow Tech.</li>
+              <li><b>2 Micro-Tools Live:</b> Sẵn sàng hứng traffic và tặng Blueprint JSON.</li>
+              <li><b>Kho Tình Báo 36,722 từ:</b> 6 Siêu Tệp đã khóa vững trong thư mục <code>intel/</code>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 2: Tiếp theo làm gì -->
+        <div class="cockpit-col">
+          <div class="col-label" style="color: var(--accent);">
+            <span>🔵 2. KẾ HOẠCH BỨC PHÁ (NEXT)</span>
+          </div>
+          <div class="col-content">
+            <ul>
+              <li><b>Gắn thẻ Cookie Ref:</b> Cung cấp mã ref affiliate để cấy vào các nút chuyển đổi (Make, Brevo, Hostinger).</li>
+              <li><b>Nạp NotebookLM Ultra:</b> Tải 6 tệp <code>intel/</code> lên và bấm <b>Audio Overview</b> nghe tóm tắt 12 phút.</li>
+              <li><b>Đồng bộ TikTok:</b> Đăng 6 video dọc sang <code>@autoflow.tech</code> theo file kịch bản có sẵn.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 3: Gợi ý hành động -->
+        <div class="cockpit-col">
+          <div class="col-label" style="color: var(--accent-amber);">
+            <span>⚡ 3. GỢI Ý: LÀM TIẾP HAY CHỜ?</span>
+          </div>
+          <div class="col-content">
+            <p><b>👉 KHÔNG CẦN CODE THÊM:</b> Cỗ máy đã tự hành 100%.</p>
+            <p style="margin-top: 6px;"><b>Hành động đòn bẩy duy nhất của Founder:</b></p>
+            <p style="margin-top: 4px; font-size: 12px; color: var(--accent-red); font-weight: 700;">
+              Chỉ cần gửi mã Ref Affiliate (Make/Brevo/Hostinger) để AI nhúng vào link web, đảm bảo hoa hồng chảy về PayPal <b>b0ynghe0lx@gmail.com</b>!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- KPI Grid -->
     <div class="kpi-grid">
@@ -155,11 +296,11 @@
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Micro-Tools Live Web</div>
-        <div class="kpi-value">2/2 <span class="kpi-sub">GitHub Pages HTTP 200</span></div>
+        <div class="kpi-value">2/2 <span class="kpi-sub">HTTP 200 Online</span></div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Cổng Nhận Hoa Hồng</div>
-        <div class="kpi-value" style="font-size: 18px; color: var(--accent-green);">PayPal <span class="kpi-sub">b0ynghe0lx...</span></div>
+        <div class="kpi-value" style="font-size: 17px; color: var(--accent-green);">PayPal <span class="kpi-sub">b0ynghe0lx...</span></div>
       </div>
     </div>
 
@@ -352,7 +493,7 @@
               <span>Dành riêng cho Founder (30%)</span>
               <span style="color: var(--accent-green); font-weight: 700;">7.2 GB RAM (Khóa cứng)</span>
             </div>
-            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;">
+            <div style="width: 100%; height: 8px; background: var(--item-border); border-radius: 4px; overflow: hidden;">
               <div style="width: 30%; height: 100%; background: var(--accent-green);"></div>
             </div>
           </div>
@@ -362,7 +503,7 @@
               <span>Cấp cho Hạm Đội AGY Tác Chiến (70%)</span>
               <span style="color: var(--accent); font-weight: 700;">16.8 GB RAM (Metal GPU)</span>
             </div>
-            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;">
+            <div style="width: 100%; height: 8px; background: var(--item-border); border-radius: 4px; overflow: hidden;">
               <div style="width: 70%; height: 100%; background: var(--accent);"></div>
             </div>
           </div>
@@ -379,7 +520,7 @@
           <div class="section-title">
             <span>🧭 Trạm Giám Sát Tiến Độ Trong Vault</span>
           </div>
-          <div style="font-size: 13px; color: #cbd5e1; line-height: 1.8;">
+          <div style="font-size: 13px; color: var(--text-sub); line-height: 1.8;">
             <div>1. <b>Sổ Nhật Ký 24/7:</b> <code>00-Nhat-ky-van-hanh-24h.md</code></div>
             <div>2. <b>Trạm Tác Chiến:</b> <code>00-Dashboard-aff-intel-traffic.md</code></div>
             <div>3. <b>Trạm Điều Khiển Web:</b> <code>00-Dashboard-aff-auto.md</code></div>
@@ -389,5 +530,19 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      const next = current === "light" ? "dark" : "light";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("theme_pref", next);
+    }
+    const saved = localStorage.getItem("theme_pref");
+    if (saved) {
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  </script>
 </body>
 </html>
