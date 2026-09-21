@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng Tính Trọng Tài Chi Phí LLM API 2026: Đừng Để OpenAI & Anthropic Bòn Rút Ngân Sách</title>
-  <meta name="description" content="Công cụ tính toán trọng tài chi phí LLM API thời gian thực. So sánh GPT-4o, Claude 3.5 Sonnet vs DeepSeek V3/R1, Gemini 2.5 Flash, Groq. Cắt giảm 80-95% chi phí API ngay lập tức.">
+  <title>LLM API Cost & Arbitrage Calculator (2026): Stop Overpaying OpenAI & Anthropic</title>
+  <meta name="description" content="Real-time LLM API cost & arbitrage calculator. Compare GPT-4o, Claude 3.5 Sonnet vs DeepSeek V3/R1, Gemini 2.5 Flash, and Groq. Cut 80-95% off your AI bills instantly.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -595,11 +595,6 @@
       line-height: 1.6;
       white-space: pre;
     }
-    .code-block .keyword { color: #c084fc; font-weight: 600; }
-    .code-block .string { color: #67e8f9; }
-    .code-block .comment { color: #64748b; font-style: italic; }
-    .code-block .function { color: #34d399; }
-    .code-block .variable { color: #fca5a5; }
 
     /* CTA Grid */
     .cta-grid {
@@ -786,38 +781,38 @@
 
 <!-- Sticky VIP Top Bar -->
 <div class="sticky-vip-bar">
-  <span>⭐ <strong>The 2026 Solopreneur AI Kit ($19 USD)</strong> — Tải trọn bộ 15+ Blueprints tự động hóa & AI Agent</span>
-  <a href="https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html">Tải Trọn Bộ Ngay ➔</a>
+  <span>⭐ <strong>The 2026 Solopreneur AI Kit ($19 USD)</strong> — Download 15+ Production Automation Blueprints & AI Agents</span>
+  <a href="https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html">Unlock Full Kit ➔</a>
 </div>
 
 <div class="container">
   <header>
-    <div class="badge-pill">⚡ Trọng Tài Chi Phí LLM API 2026</div>
-    <h1>Bảng Tính Trọng Tài Chi Phí LLM API 2026</h1>
-    <p class="subtitle">Đừng để OpenAI & Anthropic bòn rút ngân sách của bạn. Tận dụng kỹ thuật Trọng tài giá (Model Arbitrage) với DeepSeek V3/R1, Gemini Flash và Groq để tiết kiệm ngay 80% – 95% chi phí mà không suy giảm chất lượng đầu ra.</p>
+    <div class="badge-pill">⚡ 2026 LLM API Cost Arbitrage</div>
+    <h1>LLM API Cost & Arbitrage Calculator (2026)</h1>
+    <p class="subtitle">Stop overpaying OpenAI & Anthropic. Leverage real-time model routing and cost arbitrage with DeepSeek V3/R1, Gemini 2.5 Flash, and Groq to slash 80% to 95% off your monthly AI infrastructure bill without sacrificing output quality.</p>
   </header>
 
   <div class="calc-box">
     <!-- Interactive Controls -->
     <div class="section-title">
       <span class="icon">🎛️</span>
-      <span>1. Thông Số Tải LLM Của Doanh Nghiệp Bạn</span>
+      <span>1. Your Monthly LLM Workload & Traffic Parameters</span>
     </div>
 
     <div class="controls-grid">
       <!-- Requests Per Day -->
       <div class="control-card">
         <div class="control-head">
-          <span class="control-label">⚡ Lượt Request / Ngày:</span>
+          <span class="control-label">⚡ Daily API Requests:</span>
           <div class="val-input-wrap">
             <input type="number" id="numReq" class="number-box" min="100" max="100000" step="100" value="5000">
-            <span class="val-unit">req</span>
+            <span class="val-unit">req/day</span>
           </div>
         </div>
         <input type="range" id="rngReq" min="100" max="100000" step="100" value="5000">
         <div class="preset-chips">
           <button class="chip-btn" onclick="setPreset('req', 1000)">1,000</button>
-          <button class="chip-btn" onclick="setPreset('req', 5000)">5,000 (Chuẩn)</button>
+          <button class="chip-btn" onclick="setPreset('req', 5000)">5,000 (Standard)</button>
           <button class="chip-btn" onclick="setPreset('req', 20000)">20,000</button>
           <button class="chip-btn" onclick="setPreset('req', 50000)">50,000 (Scale)</button>
           <button class="chip-btn" onclick="setPreset('req', 100000)">100,000</button>
@@ -827,7 +822,7 @@
       <!-- Input Tokens -->
       <div class="control-card">
         <div class="control-head">
-          <span class="control-label">📥 Input Tokens / Request:</span>
+          <span class="control-label">📥 Average Input Tokens / Request:</span>
           <div class="val-input-wrap">
             <input type="number" id="numInTok" class="number-box" min="100" max="8000" step="50" value="1200">
             <span class="val-unit">tokens</span>
@@ -835,17 +830,17 @@
         </div>
         <input type="range" id="rngInTok" min="100" max="8000" step="50" value="1200">
         <div class="preset-chips">
-          <button class="chip-btn" onclick="setPreset('inTok', 500)">500 (Chat ngắn)</button>
-          <button class="chip-btn" onclick="setPreset('inTok', 1200)">1,200 (Tiêu chuẩn)</button>
-          <button class="chip-btn" onclick="setPreset('inTok', 3500)">3,500 (RAG Doc)</button>
-          <button class="chip-btn" onclick="setPreset('inTok', 8000)">8,000 (Context lớn)</button>
+          <button class="chip-btn" onclick="setPreset('inTok', 500)">500 (Short Chat)</button>
+          <button class="chip-btn" onclick="setPreset('inTok', 1200)">1,200 (Standard)</button>
+          <button class="chip-btn" onclick="setPreset('inTok', 3500)">3,500 (RAG / Docs)</button>
+          <button class="chip-btn" onclick="setPreset('inTok', 8000)">8,000 (Long Context)</button>
         </div>
       </div>
 
       <!-- Output Tokens -->
       <div class="control-card">
         <div class="control-head">
-          <span class="control-label">📤 Output Tokens / Request:</span>
+          <span class="control-label">📤 Average Output Tokens / Request:</span>
           <div class="val-input-wrap">
             <input type="number" id="numOutTok" class="number-box" min="50" max="4000" step="50" value="400">
             <span class="val-unit">tokens</span>
@@ -853,21 +848,21 @@
         </div>
         <input type="range" id="rngOutTok" min="50" max="4000" step="50" value="400">
         <div class="preset-chips">
-          <button class="chip-btn" onclick="setPreset('outTok', 150)">150 (Tóm tắt)</button>
-          <button class="chip-btn" onclick="setPreset('outTok', 400)">400 (Phản hồi vừa)</button>
-          <button class="chip-btn" onclick="setPreset('outTok', 1000)">1,000 (Viết bài)</button>
-          <button class="chip-btn" onclick="setPreset('outTok', 2500)">2,500 (Code dài)</button>
+          <button class="chip-btn" onclick="setPreset('outTok', 150)">150 (Summaries)</button>
+          <button class="chip-btn" onclick="setPreset('outTok', 400)">400 (Standard Response)</button>
+          <button class="chip-btn" onclick="setPreset('outTok', 1000)">1,000 (Articles / Reports)</button>
+          <button class="chip-btn" onclick="setPreset('outTok', 2500)">2,500 (Code Generation)</button>
         </div>
       </div>
 
       <!-- Quick Summary Stats -->
       <div class="control-card" style="display: flex; flex-direction: column; justify-content: center; background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.3);">
-        <div style="font-size: 0.88rem; font-weight: 700; color: #c4b5fd; margin-bottom: 8px;">📊 Tổng Lưu Lượng Token Mỗi Tháng:</div>
+        <div style="font-size: 0.88rem; font-weight: 700; color: #c4b5fd; margin-bottom: 8px;">📊 Estimated Monthly Token Volume:</div>
         <div style="font-family: var(--mono); font-size: 1.4rem; font-weight: 900; color: #fff;" id="totalTokensDisplay">
           240,000,000 Tokens
         </div>
         <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
-          (~<span id="inMtokDisplay">180.0</span>M In + <span id="outMtokDisplay">60.0</span>M Out qua 150,000 requests/tháng)
+          (~<span id="inMtokDisplay">180.0</span>M In + <span id="outMtokDisplay">60.0</span>M Out across 150,000 monthly requests)
         </div>
       </div>
     </div>
@@ -875,10 +870,10 @@
     <!-- Proprietary Model Selector -->
     <div class="model-select-group">
       <div style="font-size: 0.95rem; font-weight: 700; color: #f87171; display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-        <span>🔥 Mô Hình Độc Quyền Bạn Đang Dùng Làm Đối Chứng (Baseline):</span>
+        <span>🔥 Baseline Proprietary Model You Currently Use:</span>
       </div>
       <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
-        Chọn mô hình OpenAI hoặc Anthropic bạn đang gọi trực tiếp để đo lường số tiền đang bị lãng phí:
+        Select the OpenAI or Anthropic model your production code currently calls directly to calculate how much you are burning:
       </p>
       <div class="model-options-grid">
         <!-- GPT-4o -->
@@ -912,7 +907,7 @@
           <input type="radio" name="propModel" class="model-radio" id="radio-o3mini">
           <div class="model-card-head">
             <span class="model-title">o3-mini</span>
-            <span class="model-tag">Reasoning Base</span>
+            <span class="model-tag">Reasoning Baseline</span>
           </div>
           <div class="model-price-rate">
             In: <strong>$1.10</strong> / MTok<br>
@@ -924,21 +919,21 @@
 
     <!-- Spotlight Savings Banner -->
     <div class="spotlight-banner">
-      <span class="spotlight-tag">💰 KHOẢN TIẾT KIỆM TỐI ĐA KHI CHUYỂN QUA TRỌNG TÀI GIÁ</span>
-      <div class="spotlight-digits" id="heroSavingsMonth">+$1,008 USD / tháng</div>
-      <div class="spotlight-sub" id="heroSavingsYear">Tương đương +$12,096 USD / năm (~302.400.000 VNĐ)</div>
+      <span class="spotlight-tag">💰 MAXIMUM ARBITRAGE SAVINGS ESTIMATE</span>
+      <div class="spotlight-digits" id="heroSavingsMonth">+$1,008 USD / month</div>
+      <div class="spotlight-sub" id="heroSavingsYear">Equivalent to +$12,096 USD / year in capital preserved</div>
       
       <div class="spotlight-metric-row">
         <div class="spotlight-metric">
-          <div class="spotlight-metric-label">Chi phí hiện tại (<span id="curModelName">GPT-4o</span>)</div>
+          <div class="spotlight-metric-label">Current Spend (<span id="curModelName">GPT-4o</span>)</div>
           <div class="spotlight-metric-val" style="color: #f87171;" id="curModelMonthCost">$1,050 / mo</div>
         </div>
         <div class="spotlight-metric">
-          <div class="spotlight-metric-label">Chi phí sau Arbitrage (DeepSeek V3)</div>
+          <div class="spotlight-metric-label">Arbitrage Cost (DeepSeek V3)</div>
           <div class="spotlight-metric-val" style="color: #34d399;" id="arbBestMonthCost">$42 / mo</div>
         </div>
         <div class="spotlight-metric">
-          <div class="spotlight-metric-label">Tỷ lệ cắt giảm ngân sách</div>
+          <div class="spotlight-metric-label">Gross Budget Reduction</div>
           <div class="spotlight-metric-val" style="color: #67e8f9;" id="arbCutPercent">-96.0%</div>
         </div>
       </div>
@@ -947,92 +942,92 @@
     <!-- Real-time Cost Arbitrage Grid -->
     <div class="section-title">
       <span class="icon">⚖️</span>
-      <span>2. Bảng So Sánh Trọng Tài Giá Thời Gian Thực (Cost Arbitrage Grid)</span>
+      <span>2. Real-Time Cost Arbitrage Grid</span>
     </div>
 
     <div class="arbitrage-grid">
       <!-- Baseline Card -->
       <div class="arb-card proprietary">
-        <div class="arb-badge badge-loss">🔴 ĐANG TRẢ HIỆN TẠI</div>
+        <div class="arb-badge badge-loss">🔴 CURRENT DIRECT SPEND</div>
         <div>
           <div class="arb-model-name" id="gridPropName">OpenAI GPT-4o</div>
           <div class="arb-model-rates" id="gridPropRates">In: $2.50 | Out: $10.00 / MTok</div>
           <div class="arb-price-block">
             <div class="arb-month-cost red" id="gridPropMonth">$1,050</div>
-            <div class="arb-year-cost" id="gridPropYear">$12,600 USD / năm</div>
+            <div class="arb-year-cost" id="gridPropYear">$12,600 USD / year</div>
           </div>
-          <div class="arb-savings-tag base-tag">Mức giá độc quyền đắt đỏ</div>
+          <div class="arb-savings-tag base-tag">Direct Proprietary Pricing</div>
         </div>
         <p class="arb-note">
-          Trả trực tiếp qua OpenAI/Anthropic API với giá niêm yết đầy đủ không có chiết khấu volume.
+          Billed directly by OpenAI or Anthropic at standard non-volume list prices without caching or routing optimization.
         </p>
       </div>
 
       <!-- DeepSeek V3 Card (Winner) -->
       <div class="arb-card winner">
-        <div class="arb-badge badge-win">👑 TIẾT KIỆM 92% - 96%</div>
+        <div class="arb-badge badge-win">👑 92% - 96% NET SAVINGS</div>
         <div>
           <div class="arb-model-name" style="color: #6ee7b7;">DeepSeek V3 (671B MoE)</div>
           <div class="arb-model-rates">In: $0.14 | Out: $0.28 / MTok</div>
           <div class="arb-price-block">
             <div class="arb-month-cost green" id="dsV3Month">$42</div>
-            <div class="arb-year-cost" id="dsV3Year">$504 USD / năm</div>
+            <div class="arb-year-cost" id="dsV3Year">$504 USD / year</div>
           </div>
-          <div class="arb-savings-tag save-good" id="dsV3SaveTag">Tiết kiệm $1,008/tháng</div>
+          <div class="arb-savings-tag save-good" id="dsV3SaveTag">Save $1,008 / month</div>
         </div>
         <p class="arb-note">
-          Hiệu năng ngang ngửa GPT-4o và Claude 3.5 Sonnet trong lập trình & phân tích. Tiết kiệm tới 96% chi phí.
+          Matches GPT-4o and Claude 3.5 Sonnet in coding and benchmark reasoning while slashing cost by up to 96%.
         </p>
       </div>
 
       <!-- DeepSeek R1 Card -->
       <div class="arb-card">
-        <div class="arb-badge badge-reasoning">🧠 LÝ LUẬN CHUYÊN SÂU</div>
+        <div class="arb-badge badge-reasoning">🧠 DEEP REASONING</div>
         <div>
           <div class="arb-model-name" style="color: #c4b5fd;">DeepSeek R1 (Reasoning)</div>
           <div class="arb-model-rates">In: $0.55 | Out: $2.19 / MTok</div>
           <div class="arb-price-block">
             <div class="arb-month-cost purple" id="dsR1Month">$230</div>
-            <div class="arb-year-cost" id="dsR1Year">$2,765 USD / năm</div>
+            <div class="arb-year-cost" id="dsR1Year">$2,765 USD / year</div>
           </div>
-          <div class="arb-savings-tag save-good" id="dsR1SaveTag">Tiết kiệm $820/tháng</div>
+          <div class="arb-savings-tag save-good" id="dsR1SaveTag">Save $820 / month</div>
         </div>
         <p class="arb-note">
-          Tư duy Chain-of-thought mạnh mẽ như OpenAI o1/o3-mini nhưng chi phí rẻ hơn 5 lần.
+          Chain-of-thought mathematical reasoning competitive with OpenAI o1/o3-mini at 5x lower inference cost.
         </p>
       </div>
 
       <!-- Gemini 2.5 Flash Card -->
       <div class="arb-card">
-        <div class="arb-badge badge-win">⚡ SIÊU RẺ & 1M CONTEXT</div>
+        <div class="arb-badge badge-win">⚡ ULTRA CHEAP & 1M CONTEXT</div>
         <div>
           <div class="arb-model-name" style="color: #38bdf8;">Gemini 2.5 Flash</div>
           <div class="arb-model-rates">In: $0.075 | Out: $0.30 / MTok</div>
           <div class="arb-price-block">
             <div class="arb-month-cost cyan" id="geminiMonth">$31.5</div>
-            <div class="arb-year-cost" id="geminiYear">$378 USD / năm</div>
+            <div class="arb-year-cost" id="geminiYear">$378 USD / year</div>
           </div>
-          <div class="arb-savings-tag save-good" id="geminiSaveTag">Tiết kiệm $1,018/tháng</div>
+          <div class="arb-savings-tag save-good" id="geminiSaveTag">Save $1,018 / month</div>
         </div>
         <p class="arb-note">
-          Cửa sổ ngữ cảnh 1,000,000 tokens khổng lồ, phản hồi siêu tốc, giá rẻ nhất thị trường hiện nay.
+          Huge 1,000,000 token context window, sub-second latency, and the lowest commercial token pricing on earth.
         </p>
       </div>
 
       <!-- Groq Llama 3.3 70B Card -->
       <div class="arb-card featured-speed">
-        <div class="arb-badge badge-speed">🚀 300 TOKENS / GIÂY</div>
+        <div class="arb-badge badge-speed">🚀 300 TOKENS / SECOND</div>
         <div>
           <div class="arb-model-name" style="color: #67e8f9;">Groq (Llama 3.3 70B)</div>
           <div class="arb-model-rates">In: $0.59 | Out: $0.79 / MTok</div>
           <div class="arb-price-block">
             <div class="arb-month-cost cyan" id="groqMonth">$154</div>
-            <div class="arb-year-cost" id="groqYear">$1,843 USD / năm</div>
+            <div class="arb-year-cost" id="groqYear">$1,843 USD / year</div>
           </div>
-          <div class="arb-savings-tag save-good" id="groqSaveTag">Tiết kiệm $896/tháng</div>
+          <div class="arb-savings-tag save-good" id="groqSaveTag">Save $896 / month</div>
         </div>
         <p class="arb-note">
-          Chip LPU chuyên dụng đạt tốc độ 300 tokens/s tức thì. Hoàn hảo cho Voice Agent và Bot thời gian thực.
+          Dedicated LPU hardware delivering near-instant 300 t/s streaming. Ideal for real-time voice agents and interactive bots.
         </p>
       </div>
     </div>
@@ -1046,13 +1041,13 @@
             <span>1-Click Drop-in Proxy Code Generator</span>
           </div>
           <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
-            Chỉ đổi <code>base_url</code> — Không cần sửa bất kỳ dòng logic nào trong ứng dụng hiện tại của bạn!
+            Just swap the <code>base_url</code> — Zero application code refactoring required!
           </p>
         </div>
         <div style="display: flex; align-items: center; gap: 10px;">
           <button class="copy-btn" id="btnCopyCode" onclick="copySnippet()">
             <span id="copyBtnIcon">📋</span>
-            <span id="copyBtnText">Sao Chép Code</span>
+            <span id="copyBtnText">Copy Code</span>
           </button>
         </div>
       </div>
@@ -1069,7 +1064,7 @@
     <!-- Monetization CTAs -->
     <div class="section-title">
       <span class="icon">🚀</span>
-      <span>3. Triển Khai Hạ Tầng Tiết Kiệm Chi Phí Ngay Hôm Nay</span>
+      <span>3. Deploy Your Arbitrage Infrastructure Today</span>
     </div>
 
     <div class="cta-grid">
@@ -1077,17 +1072,17 @@
       <div class="cta-action-card cta-openrouter">
         <div>
           <span style="background: rgba(6, 182, 212, 0.2); color: var(--cyan-light); font-size: 0.76rem; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
-            🌐 Trọng Tài Đám Mây Đa Mô Hình
+            🌐 MULTI-MODEL CLOUD ARBITRAGE
           </span>
           <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 12px 0 8px;">
-            Đăng Ký OpenRouter Nhận Credit Dùng Thử
+            Create Free OpenRouter Account with Test Credits
           </h3>
           <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-            Một API Key duy nhất gọi hơn 200+ mô hình (DeepSeek V3/R1, Claude 3.5, Gemini, Llama 3.3). Tự động định tuyến sang nhà cung cấp rẻ nhất & nhanh nhất theo mili-giây.
+            A single unified API key to access 200+ models (DeepSeek V3/R1, Claude 3.5, Gemini, Llama 3.3). Automatic latency and price-optimized routing across global providers.
           </p>
         </div>
         <a href="https://openrouter.ai/" target="_blank" rel="noopener" class="cta-action-btn btn-cyan">
-          👉 Nhận Credit Dùng Thử OpenRouter ➔
+          👉 Claim OpenRouter Credits ➔
         </a>
       </div>
 
@@ -1095,17 +1090,17 @@
       <div class="cta-action-card cta-hostinger">
         <div>
           <span style="background: rgba(168, 85, 247, 0.2); color: #c084fc; font-size: 0.76rem; font-weight: 800; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
-            🛡️ Tự Chủ Hạ Tầng 100%
+            🛡️ 100% SELF-HOSTED INFRASTRUCTURE
           </span>
           <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 12px 0 8px;">
-            Treo DeepSeek R1/V3 Trên Hostinger VPS $4/tháng
+            Deploy DeepSeek & LiteLLM on Hostinger VPS ($4/mo)
           </h3>
           <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-            Tự dựng LiteLLM Proxy Gateway hoặc Ollama chạy model chưng cất 24/7. Nhập mã <strong>AUTOFLOW20</strong> giảm thêm 20%, IP tĩnh riêng, NVMe SSD siêu tốc.
+            Host your private LiteLLM Proxy Gateway or distilled models 24/7. Use coupon code <strong>AUTOFLOW20</strong> for an extra 20% off. Dedicated IP, NVMe SSD, 99.9% uptime.
           </p>
         </div>
         <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" rel="noopener" class="cta-action-btn btn-purple">
-          ⚡ Thuê VPS Hostinger Giảm 20% Ngay ➔
+          ⚡ Get Hostinger VPS (20% Off) ➔
         </a>
       </div>
     </div>
@@ -1113,20 +1108,20 @@
     <!-- Lead Magnet Form -->
     <div class="lead-magnet-card">
       <div class="badge-pill" style="margin-bottom: 10px; background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.3);">
-        🎁 QUÀ TẶNG MIỄN PHÍ DÀNH CHO DEVELOPER & FOUNDER
+        🎁 FREE DEVELOPER & FOUNDER ASSET
       </div>
       <h3 style="font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: 6px;">
-        Tải Trọn Bộ Kịch Bản LiteLLM Proxy + 50 System Prompts Tối Ưu Chi Phí 2026
+        Download The Production LiteLLM Proxy Kit + 50 Cost-Cutting Prompts
       </h3>
       <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 620px; margin: 0 auto;">
-        Bao gồm: File <code>docker-compose.yml</code> chuẩn sản xuất, cấu hình rate-limit & auto-fallback, và 50 system prompts nén ngữ cảnh tiết kiệm 40% input tokens.
+        Includes production-ready <code>docker-compose.yml</code>, automated fallback & rate-limiting configs, plus 50 compressed system prompts that trim 35-40% off token bloat.
       </p>
       <form class="lead-form-row" onsubmit="handleLeadSubmit(event)">
-        <input type="email" id="userLeadEmail" class="lead-email-input" placeholder="Nhập email làm việc của bạn..." required>
-        <button type="submit" class="lead-submit-btn">📥 Tải Bộ Kịch Bản (0đ)</button>
+        <input type="email" id="userLeadEmail" class="lead-email-input" placeholder="Enter your work email..." required>
+        <button type="submit" class="lead-submit-btn">📥 Instant Download ($0)</button>
       </form>
       <div id="leadSuccessAlert" class="lead-success-msg">
-        ✅ Đã kích hoạt tải xuống! Tệp <code>litellm-proxy-config-and-50-prompts.json</code> đang được tải về máy của bạn.
+        ✅ Success! Your download for <code>litellm-proxy-config-and-50-prompts.json</code> has started.
       </div>
     </div>
 
@@ -1136,14 +1131,14 @@
         ⭐ The 2026 Solopreneur AI Kit ($19 USD)
       </span>
       <h3 style="font-size: 1.35rem; font-weight: 800; margin-top: 10px; color: #fff;">
-        Tự Động Hóa 100% Doanh Nghiệp Với Make.com + AI Agent 24/7
+        Automate 100% of Your Business with Make.com + 24/7 AI Agents
       </h3>
       <p style="color: var(--text-muted); font-size: 0.92rem; max-width: 640px; margin: 6px auto 18px;">
-        Mở khóa toàn bộ kho tài sản: Kịch bản Gom Lead Telegram sang Google Sheet, Hệ thống Email Autoresponder Brevo, và Hướng dẫn triển khai AI Agent trên Cloud VPS hoàn chỉnh.
+        Unlock our production library: Telegram-to-Google Sheets lead pipelines, AI email autoresponder, Brevo deliverability workflows, and 1-click cloud server setup.
       </p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
         <a href="automation-vip-kit.html" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #10b981, #059669); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);">
-          ⚡ Mở Khóa VIP Kit ($19 USD) ➔
+          ⚡ Unlock VIP Kit for $19 USD ➔
         </a>
       </div>
     </div>
@@ -1152,42 +1147,42 @@
   <!-- Footer Navigation Hub -->
   <div class="section-title" style="margin-top: 20px;">
     <span class="icon">🧭</span>
-    <span>Hệ Sinh Thái Công Cụ Tự Động Hóa & Tài Chính AutoFlow Tech</span>
+    <span>AutoFlow Tech Automation & Financial Tool Suite</span>
   </div>
 
   <div class="footer-tools-grid">
     <a href="index.html" class="tool-link-card">
       <div class="tool-link-title">⚡ Make vs Zapier ROI</div>
-      <div class="tool-link-desc">Tính toán chi phí tiết kiệm khi đổi nền tảng workflow tự động.</div>
+      <div class="tool-link-desc">Calculate cost savings when migrating your automated workflows.</div>
     </a>
     <a href="vps-calculator.html" class="tool-link-card">
       <div class="tool-link-title">🖥️ Cloud VPS vs Laptop</div>
-      <div class="tool-link-desc">So sánh chi phí chạy AI Agent 24/7 trên Cloud vs Treo Laptop.</div>
+      <div class="tool-link-desc">Compare 24/7 AI agent hosting costs on cloud VPS vs local machine.</div>
     </a>
     <a href="forex-calculator.html" class="tool-link-card">
       <div class="tool-link-title">📈 Forex Lot & Risk Calc</div>
-      <div class="tool-link-desc">Tính toán khối lượng vào lệnh và quản trị rủi ro kỷ luật SMC.</div>
+      <div class="tool-link-desc">Calculate exact lot sizing and risk allocation for SMC trading.</div>
     </a>
     <a href="propfirm-calculator.html" class="tool-link-card">
       <div class="tool-link-title">🎯 Prop Firm Eval Matrix</div>
-      <div class="tool-link-desc">Mô phỏng rào cản Drawdown hàng ngày các quỹ FTMO, FundingPips.</div>
+      <div class="tool-link-desc">Simulate daily drawdown barriers and profit targets for FTMO & funding firms.</div>
     </a>
     <a href="automation-vip-kit.html" class="tool-link-card">
       <div class="tool-link-title">💎 VIP Automation Kit</div>
-      <div class="tool-link-desc">Trọn gói 15+ Blueprint Make.com & Script Docker AI sẵn sàng chạy.</div>
+      <div class="tool-link-desc">Get 15+ production Make.com blueprints and Docker AI scripts.</div>
     </a>
   </div>
 
   <footer>
-    <p>© 2026 AutoFlow Tech. Xây dựng bởi các kỹ sư tự động hóa & nhà phát triển độc lập.</p>
+    <p>© 2026 AutoFlow Tech. Built by independent automation engineers and AI developers.</p>
     <div style="margin-top: 10px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-      <a href="https://github.com/ceopatinhalo-ai/automation-calculator" target="_blank" rel="noopener">Mã Nguồn Mở GitHub</a>
-      <a href="https://www.youtube.com/@AutoFlowTechVN" target="_blank" rel="noopener">Kênh YouTube AutoFlow Tech</a>
-      <a href="https://openrouter.ai/" target="_blank" rel="noopener">Cổng OpenRouter API</a>
+      <a href="https://github.com/ceopatinhalo-ai/automation-calculator" target="_blank" rel="noopener">Open-Source GitHub</a>
+      <a href="https://www.youtube.com/@AutoFlowTechVN" target="_blank" rel="noopener">AutoFlow Tech YouTube</a>
+      <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter API Gateway</a>
       <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" rel="noopener">Hostinger Cloud VPS</a>
     </div>
     <p class="disclaimer">
-      Tuyên bố miễn trừ: Công cụ này sử dụng bảng giá chính thức công bố của OpenAI, Anthropic, DeepSeek, Google và Groq tại thời điểm 2026. Một số liên kết trên trang là liên kết đối tác (Affiliate), giúp duy trì máy chủ miễn phí mà không làm tăng bất kỳ chi phí nào cho bạn.
+      Disclaimer: All calculations are based on officially published pricing from OpenAI, Anthropic, DeepSeek, Google, and Groq as of 2026. Some links on this page are affiliate links that support free tool development at zero additional cost to you. Affiliate payouts processed via PayPal: b0ynghe0lx@gmail.com.
     </p>
   </footer>
 </div>
@@ -1269,15 +1264,10 @@
   let selectedPropModel = 'gpt4o';
   let activeCodeTab = 'py';
 
-  // Format currency helpers
+  // Format currency helper
   function fmtUSD(val) {
     if (val >= 100) return '$' + Math.round(val).toLocaleString('en-US');
     return '$' + val.toFixed(2);
-  }
-
-  function fmtVND(usd) {
-    const vnd = Math.round(usd * 25400);
-    return vnd.toLocaleString('vi-VN') + ' VNĐ';
   }
 
   function syncInputs(source, target) {
@@ -1351,7 +1341,7 @@
     gridPropName.textContent = propModel.name;
     gridPropRates.textContent = `In: $${propModel.inPrice.toFixed(2)} | Out: $${propModel.outPrice.toFixed(2)} / MTok`;
     gridPropMonth.textContent = fmtUSD(propMonthCost);
-    gridPropYear.textContent = fmtUSD(propYearCost) + ' USD / năm';
+    gridPropYear.textContent = fmtUSD(propYearCost) + ' USD / year';
 
     // Alternative Costs
     // 1. DeepSeek V3
@@ -1359,90 +1349,90 @@
     const dsV3YearVal = dsV3MonthVal * 12;
     const dsV3Savings = Math.max(0, propMonthCost - dsV3MonthVal);
     dsV3Month.textContent = fmtUSD(dsV3MonthVal);
-    dsV3Year.textContent = fmtUSD(dsV3YearVal) + ' USD / năm';
-    dsV3SaveTag.textContent = `Tiết kiệm ${fmtUSD(dsV3Savings)} / tháng`;
+    dsV3Year.textContent = fmtUSD(dsV3YearVal) + ' USD / year';
+    dsV3SaveTag.textContent = `Save ${fmtUSD(dsV3Savings)} / month`;
 
     // 2. DeepSeek R1
     const dsR1MonthVal = (inMTok * ALT_MODELS.dsR1.inPrice) + (outMTok * ALT_MODELS.dsR1.outPrice);
     const dsR1YearVal = dsR1MonthVal * 12;
     const dsR1Savings = Math.max(0, propMonthCost - dsR1MonthVal);
     dsR1Month.textContent = fmtUSD(dsR1MonthVal);
-    dsR1Year.textContent = fmtUSD(dsR1YearVal) + ' USD / năm';
-    dsR1SaveTag.textContent = `Tiết kiệm ${fmtUSD(dsR1Savings)} / tháng`;
+    dsR1Year.textContent = fmtUSD(dsR1YearVal) + ' USD / year';
+    dsR1SaveTag.textContent = `Save ${fmtUSD(dsR1Savings)} / month`;
 
     // 3. Gemini 2.5 Flash
     const geminiMonthVal = (inMTok * ALT_MODELS.gemini.inPrice) + (outMTok * ALT_MODELS.gemini.outPrice);
     const geminiYearVal = geminiMonthVal * 12;
     const geminiSavings = Math.max(0, propMonthCost - geminiMonthVal);
     geminiMonth.textContent = fmtUSD(geminiMonthVal);
-    geminiYear.textContent = fmtUSD(geminiYearVal) + ' USD / năm';
-    geminiSaveTag.textContent = `Tiết kiệm ${fmtUSD(geminiSavings)} / tháng`;
+    geminiYear.textContent = fmtUSD(geminiYearVal) + ' USD / year';
+    geminiSaveTag.textContent = `Save ${fmtUSD(geminiSavings)} / month`;
 
     // 4. Groq Llama 3.3
     const groqMonthVal = (inMTok * ALT_MODELS.groq.inPrice) + (outMTok * ALT_MODELS.groq.outPrice);
     const groqYearVal = groqMonthVal * 12;
     const groqSavings = Math.max(0, propMonthCost - groqMonthVal);
     groqMonth.textContent = fmtUSD(groqMonthVal);
-    groqYear.textContent = fmtUSD(groqYearVal) + ' USD / năm';
-    groqSaveTag.textContent = `Tiết kiệm ${fmtUSD(groqSavings)} / tháng`;
+    groqYear.textContent = fmtUSD(groqYearVal) + ' USD / year';
+    groqSaveTag.textContent = `Save ${fmtUSD(groqSavings)} / month`;
 
     // Spotlight Benchmark: DeepSeek V3 as the standard Flagship Arbitrage
     const heroSavedMonth = propMonthCost - dsV3MonthVal;
     const heroSavedYear = heroSavedMonth * 12;
     const percentCut = ((heroSavedMonth / propMonthCost) * 100).toFixed(1);
 
-    heroSavingsMonth.textContent = `+${fmtUSD(heroSavedMonth)} USD / tháng`;
-    heroSavingsYear.textContent = `Tương đương +${fmtUSD(heroSavedYear)} USD / năm (~${fmtVND(heroSavedYear)})`;
+    heroSavingsMonth.textContent = `+${fmtUSD(heroSavedMonth)} USD / month`;
+    heroSavingsYear.textContent = `Equivalent to +${fmtUSD(heroSavedYear)} USD / year in capital preserved`;
     arbBestMonthCost.textContent = `${fmtUSD(dsV3MonthVal)} / mo`;
     arbCutPercent.textContent = `-${percentCut}%`;
   }
 
   // Code Generator Tabs
   const SNIPPETS = {
-    py: `# Cài đặt: pip install openai
-# CHỈ CẦN ĐỔI base_url VÀ api_key — Không sửa bất kỳ logic code nào!
+    py: `# Install: pip install openai
+# JUST CHANGE base_url AND api_key — No application logic rewrite required!
 import os
 from openai import OpenAI
 
 client = OpenAI(
-    # Trỏ đến OpenRouter hoặc LiteLLM Proxy Gateway chạy trên Hostinger VPS
-    base_url="https://openrouter.ai/api/v1",  # hoặc "http://vps-ip:4000/v1"
+    # Point directly to OpenRouter or your LiteLLM Proxy Gateway on Hostinger VPS
+    base_url="https://openrouter.ai/api/v1",  # or "http://your-vps-ip:4000/v1"
     api_key=os.getenv("OPENROUTER_API_KEY"),
 )
 
 response = client.chat.completions.create(
-    # DeepSeek V3: Giảm 96% chi phí ($0.14 / $0.28 MTok)
+    # DeepSeek V3: 96% cost reduction ($0.14 in / $0.28 out per MTok)
     model="deepseek/deepseek-chat",
-    # Hoặc DeepSeek R1: model="deepseek/deepseek-r1"
-    # Hoặc Gemini Flash: model="google/gemini-2.5-flash"
+    # Or DeepSeek R1 reasoning: model="deepseek/deepseek-r1"
+    # Or Gemini Flash speed: model="google/gemini-2.5-flash"
     messages=[
         {"role": "system", "content": "You are an elite autonomous AI engineer."},
-        {"role": "user", "content": "Tối ưu hóa pipeline xử lý dữ liệu và xuất bản tự động."}
+        {"role": "user", "content": "Optimize data pipeline execution and automated deployment."}
     ],
     temperature=0.6,
 )
 
 print(response.choices[0].message.content)`,
 
-    js: `// Cài đặt: npm install openai
-// Drop-in replacement hoàn hảo cho Node.js / TypeScript / Next.js
+    js: `// Install: npm install openai
+// Perfect drop-in replacement for Node.js / TypeScript / Next.js
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  // Trỏ thẳng sang OpenRouter hoặc Proxy nội bộ
-  baseURL: "https://openrouter.ai/api/v1", // hoặc "http://vps-ip:4000/v1"
+  // Point to OpenRouter or private self-hosted gateway
+  baseURL: "https://openrouter.ai/api/v1", // or "http://your-vps-ip:4000/v1"
   apiKey: process.env.OPENROUTER_API_KEY,
 });
 
 async function runArbitrage() {
   const completion = await openai.chat.completions.create({
-    // Sử dụng DeepSeek V3 với giá chỉ $0.14 / $0.28 MTok
+    // DeepSeek V3: Only $0.14 / $0.28 per MTok
     model: "deepseek/deepseek-chat",
     messages: [
       { role: "system", content: "You are an elite autonomous AI engineer." },
-      { role: "user", content: "Tối ưu hóa pipeline xử lý dữ liệu và xuất bản tự động." }
+      { role: "user", content: "Optimize data pipeline execution and automated deployment." }
     ],
-    temperature: 0.6,
+    temperature=0.6,
   });
 
   console.log(completion.choices[0].message.content);
@@ -1450,8 +1440,8 @@ async function runArbitrage() {
 
 runArbitrage();`,
 
-    docker: `# Treo LiteLLM Proxy Gateway trên Hostinger VPS $4/tháng
-# Cân bằng tải, caching redis, tự động retry & fallback khi OpenAI nghẽn mạng
+    docker: `# Run LiteLLM Proxy Gateway on Hostinger VPS ($4/month)
+# Load balancing, Redis caching, and automatic fallback when OpenAI rate limits
 docker run -d \\
   --name litellm-proxy \\
   -p 4000:4000 \\
@@ -1463,8 +1453,8 @@ docker run -d \\
   ghcr.io/berriai/litellm:main-latest \\
   --port 4000
 
-# Sau khi chạy lệnh trên, trỏ tất cả ứng dụng của bạn về:
-# URL: http://<IP_VPS_HOSTINGER>:4000/v1
+# After starting, point all your production apps to:
+# URL: http://<HOSTINGER_VPS_IP>:4000/v1
 # Key: sk-autoflow-proxy-2026`
   };
 
@@ -1478,7 +1468,6 @@ docker run -d \\
 
   function updateCodeSnippet() {
     const raw = SNIPPETS[activeCodeTab] || SNIPPETS.py;
-    // Format syntax highlight roughly
     const formatted = raw
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
@@ -1494,14 +1483,14 @@ docker run -d \\
       const icon = document.getElementById('copyBtnIcon');
       btn.classList.add('copied');
       icon.textContent = '✅';
-      text.textContent = 'Đã Sao Chép!';
+      text.textContent = 'Copied!';
       setTimeout(() => {
         btn.classList.remove('copied');
         icon.textContent = '📋';
-        text.textContent = 'Sao Chép Code';
+        text.textContent = 'Copy Code';
       }, 2500);
     }).catch(err => {
-      console.error('Không thể copy', err);
+      console.error('Clipboard copy failed:', err);
     });
   }
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1-Click AI Agent Cloud Generator 2026: Sinh Lệnh Cài Đặt VPS n8n, DeepSeek, Docker</title>
-  <meta name="description" content="Tạo lệnh Bash 1 dòng duy nhất để biến Cloud VPS $4/tháng thành máy chủ AI Agent tự hành 24/7. Tự động cài đặt n8n, DeepSeek, Docker, Telegram Bot.">
+  <title>1-Click AI Agent Cloud Generator (2026): Deploy n8n, DeepSeek & Docker in 60s</title>
+  <meta name="description" content="Generate a single production-ready Bash command to turn any $4/mo Cloud VPS into a 24/7 autonomous AI Agent machine. Automated setup for n8n, DeepSeek, Docker & Telegram bots.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -307,97 +307,97 @@
 
   <!-- Sticky Top Bar -->
   <div class="sticky-vip-bar">
-    <span>⚡ <strong>Ưu đãi Solopreneur:</strong> Tải trọn bộ 15 kịch bản tự động hóa Make + AI Agent</span>
-    <a href="https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html">👉 Lấy VIP Kit $19 USD</a>
+    <span>⚡ <strong>Solopreneur Special:</strong> Download 15+ Production Make & AI Agent Blueprints</span>
+    <a href="https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html">👉 Unlock VIP Kit for $19 USD</a>
   </div>
 
   <div class="container">
     <header>
       <div class="badge">🚀 1-Click Server Automation 2026</div>
       <h1>1-Click AI Agent Cloud Generator</h1>
-      <p class="subtitle">Đừng mất 5 tiếng cấu hình Linux! Tick chọn các module bạn cần, hệ thống tự động biên dịch thành <strong>1 dòng lệnh Bash duy nhất</strong> để biến Cloud VPS $4/tháng thành cỗ máy AI Agent 24/7.</p>
+      <p class="subtitle">Stop wasting 5 hours debugging Linux dependencies! Check the modules you need, and our engine compiles a single production-ready Bash command to spin up your 24/7 autonomous AI machine on any Cloud VPS.</p>
     </header>
 
     <div class="grid-2">
-      <!-- Cột trái: Chọn module -->
+      <!-- Left Column: Module Selection -->
       <div class="card">
-        <div class="card-title">🧩 1. Chọn Tính Năng Cần Cài Đặt</div>
+        <div class="card-title">🧩 1. Select Engine Modules</div>
         
         <label class="feature-item">
           <input type="checkbox" id="mod-docker" checked disabled>
           <div class="feature-info">
-            <div class="feature-name">Docker & Docker Compose <span class="tag-free">Cốt lõi</span></div>
-            <div class="feature-desc">Nền tảng container hóa chuẩn doanh nghiệp, tối ưu hóa RAM.</div>
+            <div class="feature-name">Docker & Docker Compose <span class="tag-free">Core Runtime</span></div>
+            <div class="feature-desc">Industry-standard containerization, automated memory recycling.</div>
           </div>
         </label>
 
         <label class="feature-item">
           <input type="checkbox" id="mod-n8n" checked onchange="updateScript()">
           <div class="feature-info">
-            <div class="feature-name">n8n Automation Engine <span class="tag-free">Khuyên dùng</span></div>
-            <div class="feature-desc">Cỗ máy tự động hóa không giới hạn execution, webhook gom lead.</div>
+            <div class="feature-name">n8n Automation Engine <span class="tag-free">Recommended</span></div>
+            <div class="feature-desc">Self-hosted workflow automation with unlimited executions & webhooks.</div>
           </div>
         </label>
 
         <label class="feature-item">
           <input type="checkbox" id="mod-deepseek" onchange="updateScript()">
           <div class="feature-info">
-            <div class="feature-name">DeepSeek R1 / V3 (Ollama) <span class="tag-ai">AI Local</span></div>
-            <div class="feature-desc">Chạy mô hình LLM riêng tư 100% trên VPS, không tốn tiền API.</div>
+            <div class="feature-name">DeepSeek R1 / V3 (Ollama) <span class="tag-ai">Local LLM</span></div>
+            <div class="feature-desc">Run private open-weights models on your VPS. Zero OpenAI token bills.</div>
           </div>
         </label>
 
         <label class="feature-item">
           <input type="checkbox" id="mod-telegram" checked onchange="updateScript()">
           <div class="feature-info">
-            <div class="feature-name">Telegram Auto-Alert Bot <span class="tag-free">Webhook</span></div>
-            <div class="feature-desc">Reo chuông báo đơn hàng, lead mới & cảnh báo server sập nguồn.</div>
+            <div class="feature-name">Telegram Auto-Alert Bot <span class="tag-free">Webhooks</span></div>
+            <div class="feature-desc">Instant phone chimes for new leads, customer purchases & server alerts.</div>
           </div>
         </label>
 
         <label class="feature-item">
           <input type="checkbox" id="mod-webui" onchange="updateScript()">
           <div class="feature-info">
-            <div class="feature-name">Open-WebUI Portal <span class="tag-ai">Giao diện</span></div>
-            <div class="feature-desc">Giao diện Chat UI đẹp như ChatGPT, hỗ trợ phân quyền nhóm.</div>
+            <div class="feature-name">Open-WebUI Portal <span class="tag-ai">Chat UI</span></div>
+            <div class="feature-desc">ChatGPT-grade private web interface with team access controls.</div>
           </div>
         </label>
 
         <label class="feature-item">
           <input type="checkbox" id="mod-ssl" checked onchange="updateScript()">
           <div class="feature-info">
-            <div class="feature-name">Caddy Reverse Proxy & SSL <span class="tag-free">Bảo mật</span></div>
-            <div class="feature-desc">Tự động cấp chứng chỉ HTTPS xanh, tường lửa UFW chống hack.</div>
+            <div class="feature-name">Caddy Reverse Proxy & SSL <span class="tag-free">Security</span></div>
+            <div class="feature-desc">Automatic Let's Encrypt HTTPS certificates + UFW firewall protection.</div>
           </div>
         </label>
       </div>
 
-      <!-- Cột phải: Cấu hình nhanh -->
+      <!-- Right Column: Quick Server Configuration -->
       <div class="card">
-        <div class="card-title">⚙️ 2. Thông Số Máy Chủ Của Bạn</div>
+        <div class="card-title">⚙️ 2. Server Parameters</div>
 
         <div class="input-group">
-          <label>Tên miền / Subdomain (Tùy chọn):</label>
-          <input type="text" id="cfg-domain" placeholder="agent.domaincuaban.com" oninput="updateScript()">
+          <label>Domain / Subdomain (Optional):</label>
+          <input type="text" id="cfg-domain" placeholder="agent.yourdomain.com" oninput="updateScript()">
         </div>
 
         <div class="input-group">
-          <label>Email đăng ký chứng chỉ SSL:</label>
-          <input type="email" id="cfg-email" placeholder="admin@domaincuaban.com" oninput="updateScript()">
+          <label>Admin Email for Automatic SSL:</label>
+          <input type="email" id="cfg-email" placeholder="admin@yourdomain.com" oninput="updateScript()">
         </div>
 
         <div class="input-group">
-          <label>Telegram Bot Token (Nếu bật bot alert):</label>
+          <label>Telegram Bot Token (For alerts):</label>
           <input type="text" id="cfg-token" placeholder="123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11" oninput="updateScript()">
         </div>
 
         <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px; font-size: 0.82rem; color: #fde68a; line-height: 1.5;">
-          💡 <strong>Khuyến nghị phần cứng:</strong> Gói <strong>Hostinger KVM 2</strong> (2 vCPU, 8GB RAM, 100GB NVMe) đủ mượt để chạy đồng thời n8n, Telegram Bot và Caddy SSL.
+          💡 <strong>Hardware Spec Recommendation:</strong> <strong>Hostinger KVM 2</strong> (2 vCPUs, 8GB RAM, 100GB NVMe) provides optimal headroom to run n8n, Telegram Bot, and Caddy SSL simultaneously with 99.9% uptime.
         </div>
       </div>
     </div>
 
-    <!-- Hộp Terminal xuất lệnh -->
+    <!-- Terminal Command Output Box -->
     <div class="terminal-card">
       <div class="terminal-header">
         <div class="terminal-dots">
@@ -405,41 +405,41 @@
           <div class="dot dot-yellow"></div>
           <div class="dot dot-green"></div>
         </div>
-        <div class="terminal-title">bash-1click-install.sh (Chạy trên Ubuntu 22.04 / 24.04 LTS)</div>
-        <button class="copy-btn" onclick="copyCommand()">📋 Sao Chép Lệnh</button>
+        <div class="terminal-title">bash-1click-install.sh (Ubuntu 22.04 / 24.04 LTS)</div>
+        <button class="copy-btn" onclick="copyCommand()">📋 Copy Command</button>
       </div>
       <pre class="terminal-code" id="cmd-output">curl -sSL https://raw.githubusercontent.com/ceopatinhalo-ai/automation-calculator/main/scripts/quick-setup.sh | bash</pre>
     </div>
 
-    <!-- Khối Pitch VPS Hostinger -->
+    <!-- Hostinger VPS Pitch Block -->
     <div class="vps-pitch-card">
       <div class="vps-pitch-header">
         <div>
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Chưa có máy chủ VPS để paste lệnh này?</h3>
-          <p style="font-size: 0.9rem; color: #c4b5fd; margin-top: 4px;">Khuyên dùng Hostinger Cloud VPS: Băng thông 1Gbps, ổ cứng NVMe siêu tốc, hỗ trợ Docker 1-click.</p>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Need a dedicated VPS to paste this command?</h3>
+          <p style="font-size: 0.9rem; color: #c4b5fd; margin-top: 4px;">Hostinger Cloud KVM: 1Gbps unmetered network, lightning-fast NVMe storage, and 1-click Docker OS.</p>
         </div>
         <div class="vps-specs">
           <div class="spec-badge">⚡ 2 vCPU</div>
           <div class="spec-badge">🧠 8GB RAM</div>
           <div class="spec-badge">💾 100GB NVMe</div>
-          <div class="spec-badge">🌐 IP Riêng</div>
+          <div class="spec-badge">🌐 Dedicated IPv4</div>
         </div>
       </div>
       <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" class="cta-vps">
-        🚀 Mua VPS Hostinger Chỉ Từ $4.99/tháng (Nhập mã AUTOFLOW20 giảm 20%)
+        🚀 Deploy Hostinger VPS From $4.99/mo (Use Code AUTOFLOW20 for Extra 20% OFF)
       </a>
     </div>
 
     <!-- Lead Magnet Box -->
     <div class="lead-box">
-      <h3>🎁 Nhận Ngay Bộ 15 Kịch Bản n8n & Telegram Bot Đóng Gói Sẵn</h3>
-      <p>Điền email để nhận ngay file JSON kịch bản (Webhook gom lead, AI Support 24/7, Báo cáo doanh thu) miễn phí 100%.</p>
+      <h3>🎁 Instant Download: 15 Production n8n & Telegram Blueprints</h3>
+      <p>Enter your work email to receive our ready-to-import JSON pipelines (Lead capture webhook, 24/7 AI customer responder, Stripe revenue tracker) 100% free.</p>
       <form class="lead-form" onsubmit="handleLead(event)">
-        <input type="email" id="lead-email" placeholder="Nhập địa chỉ email của bạn..." required>
-        <button type="submit">Tải Trọn Bộ JSON ➔</button>
+        <input type="email" id="lead-email" placeholder="Enter your business email..." required>
+        <button type="submit">Download JSON Pack ➔</button>
       </form>
       <div id="lead-msg" style="display:none; color:#34d399; margin-top:10px; font-weight:600; font-size:0.9rem;">
-        ✅ Đã gửi! File kịch bản JSON đang được tải xuống máy của bạn...
+        ✅ Success! Your blueprint JSON package is downloading now...
       </div>
     </div>
 
@@ -451,9 +451,9 @@
         <a href="forex-calculator.html">Forex Lot Calculator</a>
         <a href="propfirm-rule-scanner.html">Prop Firm Scanner</a>
         <a href="vip-kit.html">VIP Kit $19</a>
-        <a href="dfy-onboarding.html">Dịch Vụ DFY $97</a>
+        <a href="dfy-onboarding.html">24H DFY Setup ($97)</a>
       </div>
-      <p>© 2026 AutoFlow Tech • Độc Lập 100% • Tự Động Hóa & Tối Ưu Hóa Dòng Tiền Toàn Cầu</p>
+      <p>© 2026 AutoFlow Tech • Autonomous & Independent Global Digital Infrastructure</p>
     </footer>
   </div>
 
@@ -487,7 +487,7 @@
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.querySelector('.copy-btn');
         const oldText = btn.innerHTML;
-        btn.innerHTML = '✅ Đã Sao Chép!';
+        btn.innerHTML = '✅ Copied to Clipboard!';
         btn.style.background = '#10b981';
         setTimeout(() => {
           btn.innerHTML = oldText;
@@ -509,16 +509,16 @@
 
       document.getElementById('lead-msg').style.display = 'block';
 
-      // Kích hoạt tải file blueprint JSON quà tặng
+      // Trigger automatic blueprint JSON download
       const a = document.createElement('a');
       a.href = 'blueprints/Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json';
-      a.download = 'Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json';
+      a.download = 'Make-Lead-Automation-Telegram.json';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
     }
 
-    // Khởi tạo
+    // Initialize
     updateScript();
   </script>
 </body>

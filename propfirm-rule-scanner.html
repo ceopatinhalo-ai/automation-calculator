@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Máy Quét Luật Ẩn & Giả Lập Sụt Giảm Tài Khoản Quỹ 2026 | Prop Firm Drawdown & Hidden Rule Scanner</title>
-  <meta name="description" content="Công cụ quét luật ngầm và tính toán rủi ro vi phạm Daily Drawdown cho các quỹ thi FTMO, FundingPips, FundedNext, The5ers. Quản trị rủi ro lot size, stop loss và bẫy trượt giá.">
+  <title>Institutional Prop Firm Drawdown & Hidden Rule Scanner (2026 Edition) | FTMO, FundingPips & FundedNext Risk Guard</title>
+  <meta name="description" content="Audit prop firm hidden rules, calculate exact daily drawdown limits, and simulate position sizing risks for FTMO, FundingPips, FundedNext, and The5ers evaluation challenges.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -173,7 +173,7 @@
     .header-desc {
       color: var(--text-muted);
       font-size: 1.02rem;
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto;
       line-height: 1.6;
     }
@@ -1033,10 +1033,10 @@
 
   <!-- Sticky VIP Top Bar -->
   <div class="sticky-vip-bar">
-    <span class="vip-tag">⭐ Khuyến Nghị 2026</span>
-    <span><strong>The 2026 Institutional Trader Suite ($19 USD)</strong> — Nhận Trọn Bộ Pine Script v5 & Sổ Nhật Ký Quỹ</span>
+    <span class="vip-tag">⭐ 2026 Institutional Suite</span>
+    <span><strong>The 2026 Institutional Trader Suite ($19 USD)</strong> — Get Full Pine Script v5 Indicators & Prop Firm Risk Journal</span>
     <a href="https://ceopatinhalo-ai.github.io/automation-calculator/forex-vip-kit.html" class="vip-action">
-      Mở Khóa Ngay ➔
+      Unlock Instant Access ➔
     </a>
   </div>
 
@@ -1045,14 +1045,14 @@
     <header>
       <div class="header-badge">
         <span class="dot"></span>
-        Hệ Thống Phân Tích & Kiểm Toán Rủi Ro Quỹ 2026
+        Institutional Prop Risk Engine & Challenge Auditor (2026)
       </div>
       <h1>
-        Máy Quét Luật Ẩn & Giả Lập Sụt Giảm Tài Khoản Quỹ<br>
-        <span class="gradient-gold-cyan">(Prop Firm Drawdown & Hidden Rule Scanner)</span>
+        Institutional Prop Firm Drawdown & Hidden Rule Scanner<br>
+        <span class="gradient-gold-cyan">(FTMO, FundingPips & FundedNext Risk Guard)</span>
       </h1>
       <p class="header-desc">
-        Hơn 92% trader trượt vòng thi quỹ không phải vì chiến lược yếu, mà vì vi phạm các điều khoản ngầm: Bẫy Daily Drawdown theo Equity lúc 00:00, tin tức giật spread và giữ lệnh qua tuần. Quét và phòng thủ ngay trước khi vào lệnh.
+        Over 92% of traders fail funded challenges not from flawed edge, but from obscure fine print: Midnight 00:00 Equity-based Daily Drawdown traps, news slippage restrictions, and weekend gap holding. Audit your positions and protect your capital before executing.
       </p>
     </header>
 
@@ -1062,12 +1062,12 @@
       <div class="card">
         <div class="card-title">
           <span class="icon">⚙️</span>
-          1. Chọn Quỹ & Cấu Hình Thử Thách
+          1. Select Prop Firm & Challenge Parameters
         </div>
 
         <!-- Prop Firm Selector Chips -->
         <label class="label-row">
-          <span>Quỹ Thi Tuyển Phổ Biến</span>
+          <span>Target Evaluation Firm</span>
           <span class="label-val" id="lblFirmSelected">FTMO (Standard)</span>
         </label>
         <div class="prop-presets">
@@ -1092,7 +1092,7 @@
         <!-- Account Size Selector -->
         <div class="form-group">
           <div class="label-row">
-            <span>Quy Mô Tài Khoản Quỹ</span>
+            <span>Evaluation Account Size</span>
             <span class="label-val" id="lblAccountSize">$100,000 USD</span>
           </div>
           <div class="size-chips">
@@ -1108,7 +1108,7 @@
         <!-- Today Existing PnL / Drawdown Buffer Slider -->
         <div class="form-group">
           <div class="label-row">
-            <span>Số Lỗ Tạm Thời Hoặc Đã Chốt Hôm Nay</span>
+            <span>Current Day Realized / Floating Loss</span>
             <span class="label-val text-gold" id="lblCurrentDayLoss">-$0.00 USD</span>
           </div>
           <div class="slider-row">
@@ -1117,33 +1117,33 @@
               <input type="number" id="numCurrentDayLoss" value="0" min="0" max="10000" oninput="syncLossInput(this.value)">
             </div>
           </div>
-          <small style="color: var(--text-dim); font-size: 0.74rem;">*Giúp giả định nếu bạn đã lỗ một phần trong ngày, lệnh tiếp theo còn bao nhiêu bộ đệm.</small>
+          <small style="color: var(--text-dim); font-size: 0.74rem;">*Simulates today's depleted buffer if you already took losing trades earlier in this session.</small>
         </div>
 
         <div class="card-title" style="margin-top: 24px;">
           <span class="icon">🎯</span>
-          2. Thông Số Lệnh Dự Kiến Vào
+          2. Planned Order & Execution Specifications
         </div>
 
         <!-- Trading Pair Selector -->
         <div class="form-group">
           <div class="label-row">
-            <span>Cặp Giao Dịch Dự Kiến</span>
+            <span>Asset Instrument</span>
             <span class="label-val" id="lblPairSpec">1 Pip = $10 / Lot</span>
           </div>
           <select id="selPair" onchange="updatePairSpecs()">
-            <option value="XAUUSD" selected>🪙 XAU/USD (Vàng Thế Giới) - $1.00 move = 10 Pips</option>
-            <option value="EURUSD">💶 EUR/USD (Euro / Dollar) - 1 Pip = $10/Lot</option>
-            <option value="GBPUSD">💷 GBP/USD (Bảng Anh / Dollar) - 1 Pip = $10/Lot</option>
-            <option value="US30">📈 US30 (Dow Jones Index) - 1 Point = $1/Lot</option>
-            <option value="NAS100">💻 NAS100 (Nasdaq Index) - 1 Point = $1/Lot</option>
+            <option value="XAUUSD" selected>🪙 XAU/USD (Spot Gold) — $1.00 move = 10 Pips</option>
+            <option value="EURUSD">💶 EUR/USD (Euro / US Dollar) — 1 Pip = $10 / Lot</option>
+            <option value="GBPUSD">💷 GBP/USD (British Pound / US Dollar) — 1 Pip = $10 / Lot</option>
+            <option value="US30">📈 US30 (Dow Jones Industrial Average) — 1 Point = $1.00 / Lot</option>
+            <option value="NAS100">💻 NAS100 (Nasdaq 100 Index) — 1 Point = $1.00 / Lot</option>
           </select>
         </div>
 
         <!-- Planned Lot Size -->
         <div class="form-group">
           <div class="label-row">
-            <span>Số Lot Dự Định Vào</span>
+            <span>Planned Position Size</span>
             <span class="label-val" id="lblLotVal">2.00 Lots</span>
           </div>
           <div class="slider-row">
@@ -1157,7 +1157,7 @@
         <!-- Stop Loss Distance -->
         <div class="form-group">
           <div class="label-row">
-            <span id="lblSlTitle">Khoảng Dừng Lỗ (Stop Loss Pips)</span>
+            <span id="lblSlTitle">Stop Loss Distance (Pips)</span>
             <span class="label-val text-gold" id="lblSlVal">30 Pips</span>
           </div>
           <div class="slider-row">
@@ -1174,16 +1174,16 @@
       <div class="card">
         <div class="card-title">
           <span class="icon">⚡</span>
-          Động Cơ Đánh Giá Rủi Ro Tức Thì
+          Real-Time Institutional Risk Assessment
         </div>
 
         <!-- Traffic Light Status Banner -->
         <div class="traffic-status-banner safe" id="trafficBanner">
           <div class="traffic-light-disc" id="trafficIcon">🛡️</div>
           <div>
-            <div class="traffic-info-title" id="trafficTitle">AN TOÀN (< 1.5% Rủi Ro)</div>
+            <div class="traffic-info-title" id="trafficTitle">SAFE RISK LEVEL (< 1.5% Risk)</div>
             <div class="traffic-info-desc" id="trafficDesc">
-              Rủi ro nằm trong giới hạn kiểm soát chuẩn quỹ. Bạn có đủ bộ đệm để chịu các đợt rung lắc hoặc trượt giá nhẹ.
+              Order risk is within institutional prop parameters. You maintain substantial buffer against market volatility and spread expansion.
             </div>
           </div>
         </div>
@@ -1191,53 +1191,53 @@
         <!-- Core Risk Metrics Grid -->
         <div class="metrics-grid">
           <div class="metric-card">
-            <div class="metric-header">Số Tiền Rủi Ro Của Lệnh</div>
+            <div class="metric-header">Trade Capital Risk</div>
             <div class="metric-number text-gold" id="metOrderRiskUsd">$600.00</div>
-            <div class="metric-subtext" id="metOrderRiskPct">0.60% Quy mô quỹ</div>
+            <div class="metric-subtext" id="metOrderRiskPct">0.60% of Account Capital</div>
           </div>
 
           <div class="metric-card">
-            <div class="metric-header">Giới Hạn Daily DD Hôm Nay</div>
+            <div class="metric-header">Today's Daily DD Ceiling</div>
             <div class="metric-number text-danger" id="metDailyDdLimit">-$5,000.00</div>
-            <div class="metric-subtext" id="metDailyDdParm">5.0% Daily Limit</div>
+            <div class="metric-subtext" id="metDailyDdParm">5.0% Maximum Daily Loss</div>
           </div>
 
           <div class="metric-card">
-            <div class="metric-header">Bộ Đệm Còn Lại Hôm Nay</div>
+            <div class="metric-header">Remaining Daily Buffer</div>
             <div class="metric-number text-cyan" id="metBufferRemaining">$4,400.00</div>
-            <div class="metric-subtext" id="metBufferPct">88.0% Buffer nguyên vẹn</div>
+            <div class="metric-subtext" id="metBufferPct">88.0% Buffer Intact</div>
           </div>
 
           <div class="metric-card">
-            <div class="metric-header">Khoảng Cháy Daily DD</div>
+            <div class="metric-header">Buffer to Breach</div>
             <div class="metric-number text-success" id="metPipsToBreach">220 Pips</div>
-            <div class="metric-subtext" id="metConsecutiveLosses">Tối đa 7.3 lệnh thua liên tiếp</div>
+            <div class="metric-subtext" id="metConsecutiveLosses">Allows 7.3 consecutive full stop losses</div>
           </div>
         </div>
 
         <!-- Visual Risk & Buffer Gauge Bar -->
         <div class="gauge-section">
           <div class="gauge-top">
-            <span style="font-weight: 700; color: #fff;">Thanh Đo Chiếm Dụng Daily Drawdown:</span>
-            <span style="font-family: var(--font-mono); font-weight: 700;" id="lblGaugeSummary">12.0% Sử Dụng</span>
+            <span style="font-weight: 700; color: #fff;">Daily Drawdown Capacity Consumption:</span>
+            <span style="font-family: var(--font-mono); font-weight: 700;" id="lblGaugeSummary">12.0% Consumed</span>
           </div>
           <div class="gauge-track">
-            <div class="gauge-fill-consumed" id="gaugeConsumed" style="width: 0%;" title="Đã lỗ trong ngày"></div>
-            <div class="gauge-fill-order" id="gaugeOrder" style="width: 12%;" title="Lệnh này nếu dính SL"></div>
-            <div class="gauge-fill-buffer" id="gaugeBuffer" title="Bộ đệm an toàn còn lại"></div>
+            <div class="gauge-fill-consumed" id="gaugeConsumed" style="width: 0%;" title="Depleted earlier today"></div>
+            <div class="gauge-fill-order" id="gaugeOrder" style="width: 12%;" title="This position if stopped out"></div>
+            <div class="gauge-fill-buffer" id="gaugeBuffer" title="Remaining safe buffer"></div>
           </div>
           <div class="gauge-legend">
             <div class="legend-item">
               <div class="legend-dot" style="background: #ef4444;"></div>
-              <span>Lỗ sẵn hôm nay</span>
+              <span>Session Loss Today</span>
             </div>
             <div class="legend-item">
               <div class="legend-dot" style="background: #f59e0b;"></div>
-              <span>Rủi ro lệnh này</span>
+              <span>This Order Risk</span>
             </div>
             <div class="legend-item">
               <div class="legend-dot" style="background: #10b981;"></div>
-              <span>Bộ đệm an toàn</span>
+              <span>Safe Buffer Remaining</span>
             </div>
           </div>
         </div>
@@ -1245,8 +1245,8 @@
         <!-- Hidden Rules Warning Box (Dynamic based on selected firm) -->
         <div class="hidden-rules-box">
           <div class="rules-header">
-            <h4>⚠️ Cảnh Báo Luật Ẩn: <span id="lblRulesFirmName">FTMO</span></h4>
-            <span class="badge-warning rule-badge" id="lblFirmType">Cơ chế Equity lúc 00:00</span>
+            <h4>⚠️ Hidden Rule Audit: <span id="lblRulesFirmName">FTMO</span></h4>
+            <span class="badge-warning rule-badge" id="lblFirmType">Equity-based 00:00 CE(S)T</span>
           </div>
 
           <div id="firmRulesList">
@@ -1260,20 +1260,20 @@
     <!-- Hidden Rules & Comparison Matrix Table -->
     <div class="comparison-section">
       <div class="section-header">
-        <h2>Bảng Đối Chiếu Luật Ngầm 4 Quỹ Hàng Đầu 2026</h2>
-        <p>Hiểu rõ từng chi tiết nhỏ nhất để không bao giờ bị khóa tài khoản oan uổng</p>
+        <h2>2026 Institutional Prop Firm Hidden Rule Matrix</h2>
+        <p>Comprehensive side-by-side breakdown of drawdown formulas, news execution clauses, and holding restrictions</p>
       </div>
 
       <div class="table-wrap">
         <table class="comp-table">
           <thead>
             <tr>
-              <th>Quỹ / Tiêu Chí</th>
-              <th>Cách Tính Daily DD</th>
-              <th>Luật Tin Tức (News)</th>
-              <th>Giữ Lệnh Qua Tuần</th>
-              <th>Đòn Bẩy & Stop Loss</th>
-              <th>Chia Lợi Nhuận</th>
+              <th>Evaluation Provider</th>
+              <th>Daily Drawdown Formula</th>
+              <th>High-Impact News Clause</th>
+              <th>Weekend Position Holding</th>
+              <th>Leverage & Stop Loss</th>
+              <th>Profit Split Schedule</th>
             </tr>
           </thead>
           <tbody>
@@ -1283,10 +1283,10 @@
                   <span>🇨🇿</span> <strong>FTMO</strong>
                 </div>
               </td>
-              <td><span class="check-warn">Equity lúc 00:00 CE(S)T</span> (Reset theo giờ Prague)</td>
-              <td><span class="check-no">Cấm 2 phút trước/sau tin</span> (Tài khoản Standard)</td>
-              <td><span class="check-no">Cấm qua tuần</span> (Standard) / <span class="check-yes">Được</span> (Swing)</td>
-              <td>1:100 (Standard) / 1:30 (Swing). Không ép SL</td>
+              <td><span class="check-warn">Equity at 00:00 CE(S)T</span> (Prague midnight reset trap)</td>
+              <td><span class="check-no">Strict 2-min ban</span> (Standard account)</td>
+              <td><span class="check-no">Prohibited</span> (Standard) / <span class="check-yes">Allowed</span> (Swing)</td>
+              <td>1:100 (Standard) / 1:30 (Swing). Discretionary SL</td>
               <td><strong class="text-gold">80% - 90%</strong></td>
             </tr>
             <tr>
@@ -1295,10 +1295,10 @@
                   <span>🇦🇪</span> <strong>FundingPips</strong>
                 </div>
               </td>
-              <td><span class="check-no">Balance/Equity CAO HƠN</span> (Cực dễ dính bẫy floating profit)</td>
-              <td><span class="check-no">Cấm mở/đóng 2 phút quanh tin</span> (Tài khoản Master)</td>
-              <td><span class="check-warn">Cho phép</span> (nhưng cấm dính gap trượt Daily DD)</td>
-              <td>1:100. Cấm Martingale / Arbitrage</td>
+              <td><span class="check-no">Higher of Balance/Equity</span> (Floating midnight profit trap)</td>
+              <td><span class="check-no">2-min execution ban</span> (Funded Master stage)</td>
+              <td><span class="check-warn">Allowed</span> (Subject to Monday market opening gap DD)</td>
+              <td>1:100. Martingale & Latency Arbitrage banned</td>
               <td><strong class="text-gold">80% - 90%</strong></td>
             </tr>
             <tr>
@@ -1307,11 +1307,11 @@
                   <span>🇦🇪</span> <strong>FundedNext</strong>
                 </div>
               </td>
-              <td><span class="check-yes">Balance-based (Stellar)</span> (Dễ thở hơn, không phạt floating)</td>
-              <td><span class="check-yes">Được trade tin</span> (Gói Stellar Challenge)</td>
-              <td><span class="check-yes">Được giữ lệnh</span> (Gói Stellar Challenge)</td>
-              <td>1:100 Forex. Không bắt buộc SL</td>
-              <td><strong class="text-gold">80% - 90% + 15% vòng thi</strong></td>
+              <td><span class="check-yes">Balance-based (Stellar)</span> (Trader-friendly, no floating penalty)</td>
+              <td><span class="check-yes">Full News Trading</span> (Stellar Challenge model)</td>
+              <td><span class="check-yes">Weekend Holding Permitted</span></td>
+              <td>1:100 on FX. Discretionary Stop Loss</td>
+              <td><strong class="text-gold">80% - 90% + 15% phase rewards</strong></td>
             </tr>
             <tr>
               <td>
@@ -1319,10 +1319,10 @@
                   <span>🇮🇱</span> <strong>The5ers</strong>
                 </div>
               </td>
-              <td><span class="check-no">4% Daily DD</span> (Khắt khe hơn chuẩn 5% thông thường)</td>
-              <td><span class="check-yes">Được trade tin</span> (Tất cả tài khoản)</td>
-              <td><span class="check-yes">Được giữ lệnh qua tuần</span></td>
-              <td><span class="check-no">BẮT BUỘC ĐẶT SL</span> (Không có SL sẽ bị phạt đóng lệnh)</td>
+              <td><span class="check-no">4% Strict Daily Limit</span> (Lower threshold than 5% industry standard)</td>
+              <td><span class="check-yes">News Trading Permitted</span> (All models)</td>
+              <td><span class="check-yes">Weekend Holding Permitted</span></td>
+              <td><span class="check-no">MANDATORY STOP LOSS</span> (Order closure penalty without SL)</td>
               <td><strong class="text-gold">80% - 100%</strong></td>
             </tr>
           </tbody>
@@ -1332,8 +1332,8 @@
 
     <!-- Monetization CTAs: ECN Broker Alternatives (Zero Arbitrary Rules) -->
     <div class="section-header" style="margin-top: 20px;">
-      <h2>Mệt Mỏi Với Các Chiêu Trò Luật Ẩn Của Quỹ?</h2>
-      <p>Giao dịch bằng tài khoản cá nhân ECN True Raw Spread: Giữ 100% lợi nhuận, không giới hạn đòn bẩy, không sợ đồng hồ 00:00 thanh lý tài khoản</p>
+      <h2>Exhausted by Synthetic Prop Firm Rule Traps?</h2>
+      <p>Trade with a True ECN Raw Spread Broker: Keep 100% of your earnings, trade through high-impact news, and eliminate 00:00 liquidation clocks</p>
     </div>
 
     <div class="broker-cta-grid">
@@ -1341,21 +1341,21 @@
       <div class="broker-card gold-tier">
         <div>
           <span class="broker-badge" style="background: rgba(2, 132, 199, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4);">
-            🏆 Sàn ECN Số 1 Thế Giới
+            🏆 #1 Global True ECN Broker
           </span>
           <h3>IC Markets ECN Raw Spread</h3>
           <p>
-            Khắc phục hoàn toàn rủi ro bị trượt giá quét Stop Loss của các máy chủ quỹ giả lập. Spread Vàng chỉ từ <strong>0.0 – 0.1 pip</strong>, máy chủ New York Equinix NY4 khớp lệnh siêu tốc dưới 15ms, hoàn phí tự động qua mã đối tác độc quyền.
+            Eliminate artificial slippage and simulated execution server anomalies. Trade Spot Gold with raw spreads from <strong>0.0 – 0.1 pip</strong>, sub-15ms fiber connection directly to New York Equinix NY4 servers, and automated rebate distribution.
           </p>
           <div class="feature-tags">
-            <span class="feature-tag">⚡ Spread Vàng 0.0 Pip</span>
-            <span class="feature-tag">🛡️ Không Luật Ẩn 5%</span>
-            <span class="feature-tag">💎 Giữ Lệnh Qua Tuần Thoải Mái</span>
-            <span class="feature-tag">📈 Giữ 100% Lợi Nhuận</span>
+            <span class="feature-tag">⚡ Gold Spreads from 0.0 Pip</span>
+            <span class="feature-tag">🛡️ Zero Synthetic Drawdown Traps</span>
+            <span class="feature-tag">💎 Full Weekend & News Freedom</span>
+            <span class="feature-tag">📈 Retain 100% Trading Profits</span>
           </div>
         </div>
         <a href="https://www.icmarkets.com/?camp=38531" target="_blank" rel="noopener" class="btn-broker btn-icmarkets">
-          🚀 Mở Tài Khoản IC Markets (Spread 0.0 Pips) ➔
+          🚀 Open IC Markets Raw Account (0.0 Pip Spreads) ➔
         </a>
       </div>
 
@@ -1363,21 +1363,21 @@
       <div class="broker-card">
         <div>
           <span class="broker-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--gold-light); border: 1px solid rgba(245, 158, 11, 0.4);">
-            ⚡ Nạp Rút Siêu Tốc 24/7
+            ⚡ Instant Automated Withdrawals 24/7
           </span>
           <h3>Exness Zero / Pro Account</h3>
           <p>
-            Rút tiền tự động trong 3 giây về tài khoản ngân hàng nội địa bất kể ngày đêm và cuối tuần. Đòn bẩy vô cực, miễn phí phí qua đêm (Swap-Free) cho Vàng và tiền tệ chính, không có bất kỳ quy định cấm giao dịch tin tức nào.
+            Automated withdrawal processing in under 3 seconds directly to your local bank or crypto wallet around the clock. Benefit from unlimited leverage, Swap-Free overnight holding on Gold and FX majors, and zero news trading restrictions.
           </p>
           <div class="feature-tags">
-            <span class="feature-tag">⚡ Rút Tiền Tức Thì 24/7</span>
-            <span class="feature-tag">🌙 Miễn Phí Phí Swap Vàng</span>
-            <span class="feature-tag">🔥 Đòn Bẩy Không Giới Hạn</span>
-            <span class="feature-tag">✅ Giao Dịch Tin Thoải Mái</span>
+            <span class="feature-tag">⚡ 3-Second Instant Payouts</span>
+            <span class="feature-tag">🌙 Swap-Free Overnight Gold</span>
+            <span class="feature-tag">🔥 Unlimited Leverage Flexibility</span>
+            <span class="feature-tag">✅ Zero News Restrictions</span>
           </div>
         </div>
         <a href="https://one.exnesstrack.net/a/ulep7bti" target="_blank" rel="noopener" class="btn-broker btn-exness">
-          ⚡ Mở Tài Khoản Exness (Rút Tiền 3 Giây) ➔
+          ⚡ Open Exness Account (Instant 3s Withdrawals) ➔
         </a>
       </div>
     </div>
@@ -1385,51 +1385,51 @@
     <!-- VIP Commercial Callout ($19 USD) -->
     <div class="vip-banner">
       <span class="vip-tag" style="background: var(--gold); color: #000; padding: 4px 14px; border-radius: 999px; font-weight: 800; font-size: 0.78rem;">
-        ⭐ BỘ CÔNG CỤ TÁC CHIẾN TÀI CHÍNH 2026
+        ⭐ INSTITUTIONAL TRADER SUITE 2026
       </span>
-      <h3>Nâng Cấp 'The 2026 Institutional Trader Suite' ($19 USD)</h3>
+      <h3>Upgrade to 'The 2026 Institutional Trader Suite' ($19 USD)</h3>
       <p>
-        Bao gồm 3 chỉ báo Pine Script v5 độc quyền cho TradingView (Chặn Cháy Hộp Daily Drawdown + ICT Fair Value Gap + Quét Thanh Khoản Liquidity Sweep) kèm Hệ Thống Sổ Nhật Ký Quỹ & Quản Trị Rủi Ro Chuyên Nghiệp.
+        Includes 3 proprietary TradingView Pine Script v5 indicators (Dynamic Daily Drawdown Barrier Guard + ICT Fair Value Gap Bot + Liquidity Sweep Matrix) plus the Pro Prop Firm Risk Management Notion & Excel Journal.
       </p>
       <a href="https://ceopatinhalo-ai.github.io/automation-calculator/forex-vip-kit.html" class="btn-vip">
-        ⚡ Sở Hữu Ngay Trọn Bộ Chỉ Với $19 USD ➔
+        ⚡ Get Complete Institutional Suite for $19 USD ➔
       </a>
     </div>
 
     <!-- Email Lead Magnet Box -->
     <div class="lead-box">
       <div class="header-badge" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: var(--success-light);">
-        🎁 QUÀ TẶNG TRADER MIỄN PHÍ
+        🎁 FREE INSTITUTIONAL TRADER ASSET
       </div>
-      <h3>Tải Chỉ Báo Pine Script v5: Tự Động Vẽ Hộp Daily Drawdown Trên TradingView</h3>
+      <h3>Download Pine Script v5: Automated Daily Drawdown Floor Guard (TradingView)</h3>
       <p>
-        Chỉ báo tự động tính và vẽ đường sàn nguy hiểm Daily Loss Limit ngay trên biểu đồ TradingView của bạn theo thời gian thực. Kèm Sổ Quản Trị Quỹ Excel 2026 giúp bạn không bao giờ vi phạm luật ngày.
+        Automatically projects your broker's exact daily loss limit floor directly on your live TradingView charts. Bundled with the 2026 Prop Firm Risk Journal to ensure you never breach evaluation parameters.
       </p>
       <form class="lead-form" onsubmit="captureScannerLead(event)">
-        <input type="email" id="txtScannerEmail" class="lead-input" placeholder="Nhập địa chỉ email của bạn..." required>
-        <button type="submit" class="lead-btn">📥 Nhận Chỉ Báo & Tải Ngay</button>
+        <input type="email" id="txtScannerEmail" class="lead-input" placeholder="Enter your best email address..." required>
+        <button type="submit" class="lead-btn">📥 Instant Indicator Download</button>
       </form>
       <div id="msgLeadSuccess" class="lead-success-msg">
-        ✅ Thành công! Đã lưu email và đang tự động kích hoạt tải xuống file Pine Script v5...
+        ✅ Success! Email recorded. Initiating automatic download of Pine Script v5 indicator...
       </div>
     </div>
 
     <!-- Footer Navigation -->
     <footer>
       <div class="footer-nav">
-        <a href="index.html">🏠 Trang Chủ (Make vs Zapier)</a>
-        <a href="vps-calculator.html">🖥️ Máy Tính VPS Hostinger</a>
-        <a href="forex-calculator.html">🧮 Tính Lot & Phí Sàn Forex</a>
-        <a href="propfirm-calculator.html">📊 Giả Lập Thử Thách Quỹ</a>
-        <a href="propfirm-rule-scanner.html" style="color: var(--cyan-light); font-weight: 700;">🔍 Máy Quét Luật Ẩn Quỹ</a>
+        <a href="index.html">🏠 Home (Make vs Zapier)</a>
+        <a href="vps-calculator.html">🖥️ Hostinger VPS Calculator</a>
+        <a href="forex-calculator.html">🧮 Forex Lot & Spread Calculator</a>
+        <a href="propfirm-calculator.html">📊 Prop Firm Challenge Simulator</a>
+        <a href="propfirm-rule-scanner.html" style="color: var(--cyan-light); font-weight: 700;">🔍 Hidden Rule Scanner</a>
         <a href="vip-kit.html">⭐ Automation VIP Kit</a>
         <a href="forex-vip-kit.html">👑 Forex Trader VIP Suite</a>
       </div>
       <p class="disclaimer">
-        Tuyên bố miễn trừ trách nhiệm: Giao dịch ngoại hối (Forex), Hợp đồng Chênh lệch (CFD) và thi tài khoản quỹ ủy thác (Prop Firm) chứa đựng mức độ rủi ro vốn cao và có thể không phù hợp với tất cả mọi người. Hãy chắc chắn rằng bạn hiểu rõ toàn bộ cơ chế sụt giảm tài khoản (Drawdown), đòn bẩy và điều khoản dịch vụ trước khi quyết định nộp phí thử thách.
+        Risk Disclaimer: Trading foreign exchange (Forex), contracts for difference (CFDs), and participating in proprietary trading firm evaluation challenges involves significant risk of capital loss and is not suitable for all investors. Ensure you thoroughly comprehend leverage mechanisms, drawdown calculation methodologies, and contractual terms of service prior to entering any challenge.
       </p>
       <div class="copyright">
-        © 2026 AutoFlow Alpha • Prop Firm Drawdown & Hidden Rule Scanner • All Rights Reserved.
+        © 2026 AutoFlow Alpha • Institutional Prop Firm Drawdown & Hidden Rule Scanner • All Rights Reserved.
       </div>
     </footer>
 
@@ -1444,31 +1444,31 @@
         shortName: "FTMO",
         dailyPct: 5.0,
         maxPct: 10.0,
-        typeDesc: "Equity lúc 00:00 CE(S)T",
+        typeDesc: "Equity at 00:00 CE(S)T",
         rules: [
           {
-            badge: "BẪY 00:00 CE(S)T",
+            badge: "MIDNIGHT 00:00 TRAP",
             badgeClass: "badge-danger",
-            title: "Daily DD Reset Vào 00:00 Giờ Prague (CE(S)T)",
-            desc: "Daily Drawdown được tính dựa trên Equity hoặc Balance lúc nửa đêm (00:00 CE(S)T). Nếu bạn có lệnh lời chưa chốt lúc 23:59, ngày mới sẽ tính ngưỡng sụt giảm dựa trên đỉnh Equity cao đó!"
+            title: "Daily Drawdown Resets at 00:00 Prague Time (CE(S)T)",
+            desc: "Daily Drawdown is benchmarked against the higher of Equity or Balance at midnight 00:00 CE(S)T. If you hold an open trade with unrealized profits at 23:59, the new day locks in a higher loss floor!"
           },
           {
-            badge: "CẤM TIN TỨC",
+            badge: "NEWS BAN",
             badgeClass: "badge-danger",
-            title: "Cấm Mở / Đóng Lệnh 2 Phút Quanh Tin Đỏ (Tài Khoản Thường)",
-            desc: "Đối với tài khoản thường (không phải Swing), bạn bị cấm tuyệt đối mở hoặc đóng lệnh trong khoảng 2 phút trước và 2 phút sau các tin tức kinh tế quan trọng (NFP, CPI, FOMC, Lãi suất)."
+            title: "2-Minute Execution Restriction on High-Impact News",
+            desc: "On Standard evaluation accounts (non-Swing), executing or closing trades within 2 minutes before and after Tier-1 economic releases (NFP, CPI, FOMC rate decisions) is strictly prohibited."
           },
           {
-            badge: "CẤM QUA TUẦN",
+            badge: "WEEKEND BAN",
             badgeClass: "badge-warning",
-            title: "Bắt Buộc Đóng Lệnh Trước Đêm Thứ 6",
-            desc: "Tài khoản thường phải đóng toàn bộ vị thế trước 22:00 CE(S)T tối thứ Sáu. Nếu để lệnh qua tuần sẽ bị hệ thống tự động đóng hoặc hủy kết quả thi."
+            title: "Mandatory Friday Evening Position Liquidation",
+            desc: "Standard accounts must close all open positions before 22:00 CE(S)T on Friday. Holding over the weekend will result in automatic position closure or challenge disqualification."
           },
           {
-            badge: "ĐÒN BẨY",
+            badge: "LEVERAGE",
             badgeClass: "badge-info",
-            title: "Đòn Bẩy Cố Định 1:100",
-            desc: "Tài khoản Swing có đòn bẩy hạ xuống 1:30 nhưng được trade tin và giữ lệnh qua tuần."
+            title: "Fixed 1:100 Leverage Profile",
+            desc: "Swing model accounts reduce leverage to 1:30 but permit unrestricted news trading and weekend position holding."
           }
         ]
       },
@@ -1477,31 +1477,31 @@
         shortName: "FundingPips",
         dailyPct: 5.0,
         maxPct: 10.0,
-        typeDesc: "Balance / Equity Cao Hơn Lúc 00:00",
+        typeDesc: "Higher of Balance/Equity at 00:00 Server Time",
         rules: [
           {
-            badge: "BẪY NGUY HIỂM NHẤT",
+            badge: "LETHAL TRAP",
             badgeClass: "badge-danger",
-            title: "Cơ Chế 'Higher of Balance or Equity' Lúc 00:00",
-            desc: "Nếu tài khoản $100k của bạn đang có lệnh lời thả nổi $4,000 lúc nửa đêm, Daily DD ngày hôm sau sẽ chốt mốc tính trên $104,000 (tức ngưỡng vi phạm là $98,800 thay vì $95,000)! Rất nhiều trader bay quỹ vì bẫy này."
+            title: "'Higher of Balance or Equity' at Midnight 00:00",
+            desc: "If your $100k account holds $4,000 in floating unrealized profit at midnight, your Daily Loss floor is recalculated against $104,000 (breach triggers at $98,800 rather than $95,000)! This is the primary reason funded accounts get breached."
           },
           {
-            badge: "CẤM TIN MASTER",
+            badge: "MASTER NEWS CLAUSE",
             badgeClass: "badge-danger",
-            title: "Quy Tắc 2 Phút Tin Tức Với Tài Khoản Funded",
-            desc: "Cấm mở và đóng lệnh trong 2 phút trước/sau tin đỏ. Lợi nhuận sinh ra từ các giao dịch vi phạm khung giờ này sẽ bị tịch thu hoàn toàn."
+            title: "2-Minute High-Impact News Rule on Master Accounts",
+            desc: "Prohibits opening or closing positions 2 minutes before and after red-folder events. Any profits generated within this window are subject to complete forfeiture."
           },
           {
-            badge: "CẤM CHIẾN THUẬT",
+            badge: "PROHIBITED STRATEGIES",
             badgeClass: "badge-warning",
-            title: "Cấm Đánh Martingale, Latency & Grid Không SL",
-            desc: "Hệ thống kiểm soát rủi ro tự động quét và đánh dấu vi phạm nếu phát hiện trader nhồi lệnh âm theo cấp số nhân không có điểm dừng."
+            title: "Strict Ban on Martingale, Latency & Grid Without SL",
+            desc: "Automated risk filters flag exponential position scaling without predefined stop limits or exploiting broker latency feeds."
           },
           {
-            badge: "ĐÒN BẨY",
+            badge: "LEVERAGE",
             badgeClass: "badge-info",
-            title: "Đòn Bẩy 1:100 & Không Giới Hạn Thời Gian",
-            desc: "Không áp lực thời gian vượt ải, nhưng cần quản lý rủi ro từng lot cực kỳ nghiêm ngặt."
+            title: "1:100 Leverage with No Calendar Time Limits",
+            desc: "No rush to hit profit targets, but demands ultra-disciplined daily risk budgeting on every single position."
           }
         ]
       },
@@ -1510,31 +1510,31 @@
         shortName: "FundedNext",
         dailyPct: 5.0,
         maxPct: 10.0,
-        typeDesc: "Balance-based (Mô hình Stellar)",
+        typeDesc: "Balance-Based Daily Drawdown (Stellar Model)",
         rules: [
           {
-            badge: "ĐIỂM CỘNG LỚN",
+            badge: "TRADER FRIENDLY",
             badgeClass: "badge-info",
-            title: "Tính Daily DD Theo Balance (Số Dư)",
-            desc: "Ở mô hình Stellar Challenge, Daily DD được tính dựa trên Balance lúc bắt đầu ngày, giúp bạn giữ lệnh lời qua đêm mà không bị dịch ngưỡng vi phạm như FundingPips."
+            title: "Balance-Based Daily Drawdown Calculation",
+            desc: "Under the Stellar Challenge model, daily drawdown is strictly anchored to beginning-of-day Balance, ensuring your floating profits overnight do not penalize your loss ceiling."
           },
           {
-            badge: "CHO PHÉP TIN TỨC",
+            badge: "NEWS ALLOWED",
             badgeClass: "badge-info",
-            title: "Được Phép Giao Dịch Tin Tức & Giữ Lệnh Qua Tuần",
-            desc: "Mô hình Stellar cho phép bạn trade tin tức và giữ lệnh qua đêm/cuối tuần mà không bị phạt hay trừ lợi nhuận."
+            title: "Unrestricted News Trading & Weekend Holding",
+            desc: "Stellar accounts allow traders to capitalize on high-volatility news releases and hold swing trades over weekends without penalty."
           },
           {
-            badge: "CHIA THƯỞNG 15%",
+            badge: "15% PROFIT SHARE",
             badgeClass: "badge-warning",
-            title: "Thưởng 15% Lợi Nhuận Vòng Thi",
-            desc: "Khi vượt qua 2 vòng thi và nhận đợt payout đầu tiên, bạn được nhận thêm 15% phần lợi nhuận bạn đã kiếm được trong 2 vòng thi."
+            title: "15% Challenge Phase Profit Sharing Incentive",
+            desc: "Upon passing both evaluation phases and securing your initial payout, you receive an extra 15% payout from profits generated during the challenge."
           },
           {
-            badge: "RỦI RO GAP",
+            badge: "GAP EXPOSURE",
             badgeClass: "badge-danger",
-            title: "Cảnh Giác Gap Mở Cửa Sáng Thứ Hai",
-            desc: "Dù được giữ lệnh qua tuần, nhưng nếu thị trường mở cửa nhảy Gap ngược chiều làm chạm ngưỡng 5% Daily DD, tài khoản vẫn bị vi phạm ngay lập tức."
+            title: "Monday Market Open Gap Drawdown Exposure",
+            desc: "While weekend holding is permitted, opening price gaps that push account equity below the 5% daily threshold will instantly trigger an unrecoverable breach."
           }
         ]
       },
@@ -1543,31 +1543,31 @@
         shortName: "The5ers",
         dailyPct: 4.0,
         maxPct: 8.0,
-        typeDesc: "4% Daily DD (Rất Khắt Khe)",
+        typeDesc: "Strict 4% Daily Drawdown Limit",
         rules: [
           {
-            badge: "GIỚI HẠN 4% GẮT GAO",
+            badge: "STRICT 4% CEILING",
             badgeClass: "badge-danger",
-            title: "Daily DD Chỉ Có 4% (Thấp Hơn 5% Chuẩn)",
-            desc: "Với tài khoản $100k, bạn chỉ có $4,000 hạn mức lỗ trong ngày thay vì $5,000 như FTMO. Khả năng chịu đòn rung lắc ít hơn 20%."
+            title: "Tight 4% Daily Drawdown Limit (vs 5% Industry Standard)",
+            desc: "On a $100,000 account, you only have a $4,000 maximum daily loss cushion rather than $5,000. Provides 20% less margin for error during adverse market swings."
           },
           {
-            badge: "BẮT BUỘC STOP LOSS",
+            badge: "MANDATORY STOP LOSS",
             badgeClass: "badge-danger",
-            title: "Bắt Buộc Đặt Stop Loss Trong Mỗi Giao Dịch",
-            desc: "Mọi lệnh mở bắt buộc phải được gắn Stop Loss hợp lệ. Mở lệnh không có SL hoặc tháo SL có thể bị cảnh cáo hoặc đóng tài khoản ngay lập tức."
+            title: "Compulsory Stop Loss on Every Executed Position",
+            desc: "Every order must have a valid stop loss placed within minutes of entry. Entering without an SL or removing it exposes the account to immediate termination."
           },
           {
-            badge: "TỰ DO TIN TỨC",
+            badge: "NEWS PERMITTED",
             badgeClass: "badge-info",
-            title: "Cho Phép Giao Dịch Tin Tức & Giữ Qua Đêm",
-            desc: "The5ers cho phép giao dịch tin tức và giữ lệnh qua tuần mà không bị cấm cản."
+            title: "Full Freedom on News Trading & Overnight Swings",
+            desc: "The5ers permits news execution and weekend holding across all high-stakes challenge tiers."
           },
           {
-            badge: "CHIA LỢI NHUẬN",
+            badge: "PROFIT SPLIT",
             badgeClass: "badge-warning",
-            title: "Chia Lợi Nhuận Khởi Điểm 80% Lên Đến 100%",
-            desc: "Có lộ trình scale tài khoản lên đến hàng triệu USD nếu duy trì lợi nhuận ổn định."
+            title: "Ascending Profit Split Starting at 80% up to 100%",
+            desc: "Features aggressive account scaling milestones extending up to multi-million dollar institutional funding allocations."
           }
         ]
       }
@@ -1580,8 +1580,8 @@
     // Pair Specs (Pip value per 1.0 lot)
     const PAIR_SPECS = {
       XAUUSD: { pipValue: 10.0, name: "XAU/USD", pipsOrPoints: "Pips", note: "$1.00 move = 10 Pips ($10/pip/lot)" },
-      EURUSD: { pipValue: 10.0, name: "EUR/USD", pipsOrPoints: "Pips", note: "1 Pip = $10 / Lot" },
-      GBPUSD: { pipValue: 10.0, name: "GBP/USD", pipsOrPoints: "Pips", note: "1 Pip = $10 / Lot" },
+      EURUSD: { pipValue: 10.0, name: "EUR/USD", pipsOrPoints: "Pips", note: "1 Pip = $10.00 / Lot" },
+      GBPUSD: { pipValue: 10.0, name: "GBP/USD", pipsOrPoints: "Pips", note: "1 Pip = $10.00 / Lot" },
       US30:   { pipValue: 1.0,  name: "US30",    pipsOrPoints: "Points", note: "1 Point = $1.00 / Lot" },
       NAS100: { pipValue: 1.0,  name: "NAS100",  pipsOrPoints: "Points", note: "1 Point = $1.00 / Lot" }
     };
@@ -1590,7 +1590,7 @@
     function selectFirm(key) {
       currentFirmKey = key;
       const chips = document.querySelectorAll('.firm-chip');
-      chips.forEach((chip, idx) => {
+      chips.forEach((chip) => {
         chip.classList.remove('active');
       });
 
@@ -1660,7 +1660,7 @@
       const pairKey = document.getElementById('selPair').value;
       const spec = PAIR_SPECS[pairKey] || PAIR_SPECS.XAUUSD;
       document.getElementById('lblPairSpec').innerText = spec.note;
-      document.getElementById('lblSlTitle').innerText = `Khoảng Dừng Lỗ (Stop Loss ${spec.pipsOrPoints})`;
+      document.getElementById('lblSlTitle').innerText = `Stop Loss Distance (${spec.pipsOrPoints})`;
 
       updateCalculations();
     }
@@ -1727,16 +1727,16 @@
 
       // Render Metrics to UI
       document.getElementById('metOrderRiskUsd').innerText = '$' + orderRiskUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      document.getElementById('metOrderRiskPct').innerText = `${orderRiskPct.toFixed(2)}% Quy mô quỹ`;
+      document.getElementById('metOrderRiskPct').innerText = `${orderRiskPct.toFixed(2)}% of Account Capital`;
 
       document.getElementById('metDailyDdLimit').innerText = '-$' + dailyDdLimitUsd.toLocaleString();
-      document.getElementById('metDailyDdParm').innerText = `${firm.dailyPct.toFixed(1)}% Giới Hạn Ngày`;
+      document.getElementById('metDailyDdParm').innerText = `${firm.dailyPct.toFixed(1)}% Daily Loss Limit`;
 
       document.getElementById('metBufferRemaining').innerText = '$' + bufferRemainingUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      document.getElementById('metBufferPct').innerText = `${bufferPct.toFixed(1)}% Buffer khả dụng`;
+      document.getElementById('metBufferPct').innerText = `${bufferPct.toFixed(1)}% Buffer Available`;
 
       document.getElementById('metPipsToBreach').innerText = `${pipsToBreach} ${pairSpec.pipsOrPoints}`;
-      document.getElementById('metConsecutiveLosses').innerText = `Chịu tối đa ${consecutiveLosses} lệnh thua liên tiếp`;
+      document.getElementById('metConsecutiveLosses').innerText = `Allows ${consecutiveLosses} consecutive full stop losses`;
 
       // Gauge Bar updates
       const pctConsumed = Math.min(100, (dayLoss / dailyDdLimitUsd) * 100);
@@ -1745,7 +1745,7 @@
 
       document.getElementById('gaugeConsumed').style.width = pctConsumed + '%';
       document.getElementById('gaugeOrder').style.width = pctOrder + '%';
-      document.getElementById('lblGaugeSummary').innerText = `${totalPctUsed.toFixed(1)}% Hạn Mức Ngày Bị Chiếm`;
+      document.getElementById('lblGaugeSummary').innerText = `${totalPctUsed.toFixed(1)}% Daily Limit Consumed`;
 
       // Traffic Light State Logic
       const banner = document.getElementById('trafficBanner');
@@ -1772,22 +1772,22 @@
         banner.classList.add('danger');
         icon.innerText = '🚨';
         if (bufferRemainingAfterTrade <= 0) {
-          title.innerText = 'BÁO ĐỘNG ĐỎ: CHÁY QUỸ NẾU DÍNH STOP LOSS!';
-          desc.innerText = `Lệnh này rủi ro $${orderRiskUsd.toLocaleString()}, vượt quá toàn bộ số đệm $${bufferRemainingUsd.toLocaleString()} còn lại của ngày hôm nay. KHÔNG ĐƯỢC VÀO LỆNH!`;
+          title.innerText = 'CRITICAL BREACH HAZARD: LIQUIDATION IF SL HIT!';
+          desc.innerText = `This order risks $${orderRiskUsd.toLocaleString()}, exceeding your remaining daily buffer of $${bufferRemainingUsd.toLocaleString()}. DO NOT EXECUTE THIS TRADE!`;
         } else {
-          title.innerText = `ĐỎ CỰC KỲ NGUY HIỂM (${orderRiskPct.toFixed(2)}% Rủi Ro)`;
-          desc.innerText = `Lệnh này chiếm tới ${bufferConsumptionPct.toFixed(0)}% số đệm Daily DD còn lại! Chỉ cần 1 cú trượt giá (slippage) lúc có tin là tài khoản bị quỹ thanh lý ngay.`;
+          title.innerText = `CRITICAL RISK WARNING (${orderRiskPct.toFixed(2)}% Risk)`;
+          desc.innerText = `This single position consumes ${bufferConsumptionPct.toFixed(0)}% of your remaining daily buffer! Any minor slippage or spread blowout will instantly breach your account.`;
         }
       } else if (orderRiskPct > 1.5 || bufferConsumptionPct > 35) {
         banner.classList.add('warning');
         icon.innerText = '⚠️';
-        title.innerText = `CẢNH BÁO: RỦI RO CAO (${orderRiskPct.toFixed(2)}% Rủi Ro)`;
-        desc.innerText = `Rủi ro lệnh chiếm ${bufferConsumptionPct.toFixed(0)}% hạn mức ngày. Bạn chỉ chịu được khoảng ${consecutiveLosses} lệnh thua liên tiếp trước khi vi phạm luật quỹ. Khuyến nghị giảm lot.`;
+        title.innerText = `ELEVATED RISK CAUTION (${orderRiskPct.toFixed(2)}% Risk)`;
+        desc.innerText = `This order absorbs ${bufferConsumptionPct.toFixed(0)}% of today's remaining buffer. You can only withstand approximately ${consecutiveLosses} consecutive losses. Consider scaling down lots.`;
       } else {
         banner.classList.add('safe');
         icon.innerText = '🛡️';
-        title.innerText = `AN TOÀN (< 1.5% Rủi Ro)`;
-        desc.innerText = `Rủi ro ${orderRiskPct.toFixed(2)}% nằm trong chuẩn quản trị của các quỹ chuyên nghiệp. Thị trường cần giật ngược ${pipsToBreach} ${pairSpec.pipsOrPoints} mới có thể chạm ngưỡng Daily DD.`;
+        title.innerText = `SAFE RISK LEVEL (< 1.5% Risk)`;
+        desc.innerText = `Risk of ${orderRiskPct.toFixed(2)}% conforms to professional institutional management standards. Market must move adversely ${pipsToBreach} ${pairSpec.pipsOrPoints} to breach daily limits.`;
       }
     }
 
@@ -1806,7 +1806,7 @@
         timestamp: new Date().toISOString()
       };
 
-      // Save to autoflow_leads as requested in prompt
+      // Save to autoflow_leads
       try {
         let leads = JSON.parse(localStorage.getItem('autoflow_leads') || '[]');
         leads.push(leadData);
