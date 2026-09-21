@@ -952,25 +952,25 @@
           <div class="kpi-card">
             <div class="kpi-label">Doanh Thu Hôm Nay (21/09)</div>
             <div class="kpi-value" style="color: var(--accent-green);">
-              <span id="todayRevenue">$47.50</span>
-              <span class="rate-badge rate-green" id="todayGrowth">+2.15% ↗</span>
+              <span id="todayRevenue">$0.00</span>
+              <span class="rate-badge rate-green" id="todayGrowth">0.00% (Mốc chuẩn)</span>
             </div>
-            <div class="kpi-sub">So với hôm qua ($46.50)</div>
+            <div class="kpi-sub">Bắt đầu chu kỳ ghi chép thực tế</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">Lợi Nhuận Ròng Lũy Kế</div>
             <div class="kpi-value" style="color: var(--accent);">
-              <span id="accNetProfit">$158.52</span>
-              <span class="kpi-sub">Biên LN: 94.1%</span>
+              <span id="accNetProfit">$0.00</span>
+              <span class="kpi-sub">Biên LN: 100%</span>
             </div>
-            <div class="kpi-sub">Tổng chi phí vận hành: $9.98</div>
+            <div class="kpi-sub">Tổng chi phí vận hành: $0.00</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">Ngày Đỉnh Cao (Peak Day)</div>
             <div class="kpi-value" style="color: var(--accent-purple);">
-              <span id="peakDay">21/09 ($47.50)</span>
+              <span id="peakDay">Chờ dữ liệu thực ($0.00)</span>
             </div>
-            <div class="kpi-sub">5 ngày liên tiếp tăng trưởng xanh</div>
+            <div class="kpi-sub">Sẵn sàng đón dòng tiền mới</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">Trạng Thái Tự Động Hóa</div>
@@ -1585,82 +1585,22 @@
     // -------------------------------------------------------------
     // DAILY ACCOUNTING LEDGER & 100% ZERO-TOUCH ROLLOVER ENGINE
     // -------------------------------------------------------------
-    const DAILY_LEDGER_KEY = "autoflow_daily_ledger_v2";
+    const DAILY_LEDGER_KEY = "autoflow_daily_ledger_v3";
     const initialLedger = [
-      {
-        date: "2026-09-17",
-        dayLabel: "17/09",
-        forex: 0.00,
-        vps: 0.00,
-        kit: 0.00,
-        saas: 12.00,
-        revenue: 12.00,
-        expenses: 2.00,
-        netProfit: 10.00,
-        clicks: 18,
-        growthRate: 0,
-        status: "closed",
-        notes: "Khởi tạo hệ thống tracking Brevo & Make"
-      },
-      {
-        date: "2026-09-18",
-        dayLabel: "18/09",
-        forex: 0.00,
-        vps: 0.00,
-        kit: 19.00,
-        saas: 5.50,
-        revenue: 24.50,
-        expenses: 2.00,
-        netProfit: 22.50,
-        clicks: 45,
-        growthRate: 104.17,
-        status: "closed",
-        notes: "Tung 3 Video Shorts Make/Brevo, nổ đơn VIP Kit $19"
-      },
-      {
-        date: "2026-09-19",
-        dayLabel: "19/09",
-        forex: 0.00,
-        vps: 20.00,
-        kit: 0.00,
-        saas: 18.00,
-        revenue: 38.00,
-        expenses: 2.00,
-        netProfit: 36.00,
-        clicks: 82,
-        growthRate: 55.10,
-        status: "closed",
-        notes: "Ra mắt Calculator Make vs Zapier, nổ VPS Ref"
-      },
-      {
-        date: "2026-09-20",
-        dayLabel: "20/09",
-        forex: 22.50,
-        vps: 20.00,
-        kit: 0.00,
-        saas: 4.00,
-        revenue: 46.50,
-        expenses: 2.00,
-        netProfit: 44.50,
-        clicks: 124,
-        growthRate: 22.37,
-        status: "closed",
-        notes: "Shorts 5-7 lên sóng, mở luồng Forex Rebates MT4"
-      },
       {
         date: "2026-09-21",
         dayLabel: "21/09 (Hôm nay)",
-        forex: 82.00,
+        forex: 0.00,
         vps: 0.00,
         kit: 0.00,
         saas: 0.00,
-        revenue: 47.50,
-        expenses: 1.98,
-        netProfit: 45.52,
-        clicks: 186,
-        growthRate: 2.15,
+        revenue: 0.00,
+        expenses: 0.00,
+        netProfit: 0.00,
+        clicks: 0,
+        growthRate: 0.00,
         status: "active",
-        notes: "Forex Calc & TikTok SG lên sóng, rebates tăng tốc"
+        notes: "🟢 Khởi đầu chu kỳ ghi chép thực tế (Baseline $0.00)"
       }
     ];
 
@@ -1793,10 +1733,24 @@
 
       if (elTodayRev && todayRow) elTodayRev.textContent = "$" + todayRow.revenue.toFixed(2);
       if (elTodayGrowth && todayRow) {
-        elTodayGrowth.textContent = (todayRow.growthRate >= 0 ? "+" : "") + todayRow.growthRate.toFixed(2) + "% " + (todayRow.growthRate >= 0 ? "↗" : "↘");
-        elTodayGrowth.className = "rate-badge " + (todayRow.growthRate >= 0 ? "rate-green" : "rate-red");
+        if (ledger.length === 1 && todayRow.growthRate === 0) {
+          elTodayGrowth.textContent = "0.00% (Mốc chuẩn)";
+          elTodayGrowth.className = "rate-badge rate-green";
+        } else {
+          elTodayGrowth.textContent = (todayRow.growthRate >= 0 ? "+" : "") + todayRow.growthRate.toFixed(2) + "% " + (todayRow.growthRate >= 0 ? "↗" : "↘");
+          elTodayGrowth.className = "rate-badge " + (todayRow.growthRate >= 0 ? "rate-green" : "rate-red");
+        }
       }
       if (elAccNet) elAccNet.textContent = "$" + totalNet.toFixed(2);
+      const elPeakDay = document.getElementById("peakDay");
+      if (elPeakDay) {
+        const maxRow = ledger.reduce((max, cur) => (!max || cur.revenue > max.revenue ? cur : max), null);
+        if (maxRow && maxRow.revenue > 0) {
+          elPeakDay.textContent = `${maxRow.dayLabel || maxRow.date} ($${maxRow.revenue.toFixed(2)})`;
+        } else {
+          elPeakDay.textContent = "Chờ dữ liệu thực ($0.00)";
+        }
+      }
 
       renderSvgChart();
     }
@@ -1820,7 +1774,7 @@
       const chartH = 190;
       const startX = 80;
       const stepX = chartW / n;
-      const maxVal = 55;
+      const maxVal = Math.max(50, ...ledger.map(d => Math.max(d.revenue, d.netProfit)));
       const baseY = 230;
 
       let linePathD = "";
