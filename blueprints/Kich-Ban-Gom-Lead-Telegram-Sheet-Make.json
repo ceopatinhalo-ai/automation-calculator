@@ -1,0 +1,99 @@
+{
+  "name": "Kịch Bản Tự Động Gom Lead: Webhook ➔ Google Sheets ➔ Telegram",
+  "version": 1,
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0,
+          "name": "Hứng Form Đăng Ký (Custom Webhook)"
+        },
+        "restore": {},
+        "expect": [
+          {
+            "name": "name",
+            "type": "text",
+            "label": "Họ và Tên Khách Hàng"
+          },
+          {
+            "name": "phone",
+            "type": "text",
+            "label": "Số Điện Thoại"
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "label": "Email Khách Hàng"
+          },
+          {
+            "name": "note",
+            "type": "text",
+            "label": "Nhu Cầu Tư Vấn"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "google-sheets:addRow",
+      "version": 1,
+      "parameters": {
+        "sheet": "Trang tính1"
+      },
+      "filter": {
+        "name": "Lọc số điện thoại hợp lệ",
+        "conditions": [
+          [
+            {
+              "a": "{{1.phone}}",
+              "o": "exist"
+            }
+          ]
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0,
+          "name": "Lưu Vào Google Sheets Tự Động"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "telegram:sendMessage",
+      "version": 1,
+      "parameters": {
+        "text": "🚨 **KHÁCH HÀNG MỚI ĐĂNG KÝ TỰ ĐỘNG!**\n\n👤 Họ tên: {{1.name}}\n📞 Số điện thoại: {{1.phone}}\n📧 Email: {{1.email}}\n📝 Nhu cầu: {{1.note}}\n⏰ Thời gian: {{now}}\n\n⚡ *Hệ thống tự động hóa vận hành bởi Make.com & 12-Affiliates.*"
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0,
+          "name": "Bắn Chuông Báo Rung Telegram"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false
+    },
+    "designer": {
+      "orphans": []
+    }
+  }
+}
