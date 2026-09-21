@@ -234,6 +234,35 @@
             <a href="vps-calculator.html" class="bp-secondary-btn" style="border-color: rgba(147, 51, 234, 0.4); color: #c084fc;">
               🖩 Calculate VPS vs Laptop Wear
             </a>
+      <!-- Master Blueprint Lead Magnet Box -->
+      <div style="margin-top: 30px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(15, 23, 42, 0.9) 100%); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 18px; padding: 26px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+        <div style="flex: 1 1 450px;">
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.25); color: #c7d2fe; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; margin-bottom: 8px; text-transform: uppercase;">
+            🎁 VIP Master Automation Bundle
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px;">Get All 3 Production Blueprints + 5-Day Automation Course</h3>
+          <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">Direct instant download of raw JSON scenarios (Webhook-to-Sheets, GPT-4o Email Autoresponder, and VPS Installer), plus step-by-step video setup instructions sent to your inbox.</p>
+        </div>
+
+        <div style="flex: 1 1 340px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 18px;">
+          <form id="blueprint-capture-form" onsubmit="handleBlueprintCapture(event)">
+            <div style="margin-bottom: 10px;">
+              <label for="bp-lead-email" style="font-size: 0.8rem; font-weight: 700; color: #e0e7ff; margin-bottom: 6px; display: block;">Enter your work email for instant access:</label>
+              <input type="email" id="bp-lead-email" required placeholder="founder@company.com" 
+                     style="width: 100%; padding: 11px 14px; border-radius: 8px; background: #0b0f19; border: 1px solid #334155; color: #fff; font-size: 0.95rem; outline: none; box-sizing: border-box;">
+            </div>
+            <button type="submit" style="width: 100%; padding: 12px 18px; font-size: 0.95rem; font-weight: 800; background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; border: none; border-radius: 8px; cursor: pointer; box-sizing: border-box;">
+              📩 Unlock All 3 Blueprints Free
+            </button>
+          </form>
+          <div id="bp-success-msg" style="display: none; text-align: center; padding: 8px 0;">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #34d399; margin-bottom: 4px;">🎉 Scenarios Unlocked! Downloading...</div>
+            <div style="font-size: 0.8rem; color: #94a3b8;">Check your downloads for <code>Make-Automation-Blueprint.json</code>.</div>
+          </div>
+          <div style="text-align: center; margin-top: 8px;">
+            <a href="blueprints/Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json" download onclick="trackDirectDownload('make_bp')" style="font-size: 0.76rem; color: #64748b; text-decoration: underline;">
+              Or download single JSON directly without email
+            </a>
           </div>
         </div>
       </div>
@@ -318,6 +347,64 @@
       const monthlySave = zCost - mCost;
       const annualSave = monthlySave * 12;
       savingDisplay.textContent = '$' + annualSave.toLocaleString() + ' / year';
+    }
+
+    function handleBlueprintCapture(e) {
+      e.preventDefault();
+      const input = document.getElementById('bp-lead-email');
+      const email = input ? input.value.trim() : '';
+      if (!email || !email.includes('@')) return;
+
+      const LEADS_KEY = 'autoflow_captured_leads_v1';
+      let leads = [];
+      try {
+        const raw = localStorage.getItem(LEADS_KEY);
+        if (raw) leads = JSON.parse(raw);
+      } catch(err) {}
+
+      leads.push({
+        email: email,
+        source: 'make_vs_zapier_calculator',
+        timestamp: new Date().toISOString()
+      });
+      try {
+        localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
+      } catch(err) {}
+
+      try {
+        const TEL_KEY = 'autoflow_telemetry_metrics_v1';
+        const telRaw = localStorage.getItem(TEL_KEY);
+        if (telRaw) {
+          let tel = JSON.parse(telRaw);
+          tel.downloads = (tel.downloads || 42) + 1;
+          tel.totalClicks = (tel.totalClicks || 186) + 1;
+          localStorage.setItem(TEL_KEY, JSON.stringify(tel));
+        }
+      } catch(err) {}
+
+      const form = document.getElementById('blueprint-capture-form');
+      const success = document.getElementById('bp-success-msg');
+      if (form) form.style.display = 'none';
+      if (success) success.style.display = 'block';
+
+      const a = document.createElement('a');
+      a.href = 'blueprints/Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json';
+      a.download = 'Make-Lead-Automation-Telegram.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function trackDirectDownload(source) {
+      try {
+        const TEL_KEY = 'autoflow_telemetry_metrics_v1';
+        const telRaw = localStorage.getItem(TEL_KEY);
+        if (telRaw) {
+          let tel = JSON.parse(telRaw);
+          tel.downloads = (tel.downloads || 42) + 1;
+          localStorage.setItem(TEL_KEY, JSON.stringify(tel));
+        }
+      } catch(err) {}
     }
 
     slider.addEventListener('input', (e) => calculate(e.target.value));

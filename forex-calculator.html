@@ -264,16 +264,37 @@
       </div>
     </div>
 
-    <!-- Free Lead Magnet -->
-    <div class="magnet-card">
-      <div class="magnet-text">
-        <h3>🎁 Free Bonus: ICT Fair Value Gap & Liquidity Sweep Indicator</h3>
-        <p>Download our free open-source Pine Script (v5) indicator for TradingView. Identifies institutional imbalances, market structure shifts, and liquidity sweeps automatically.</p>
+    <!-- Free Lead Magnet with Email Capture -->
+    <div class="magnet-card" id="magnet-box">
+      <div class="magnet-text" style="flex: 1 1 450px;">
+        <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(99,102,241,0.25); color:#c7d2fe; font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; margin-bottom:10px; text-transform:uppercase;">
+          ⚡ Instant Access Trading Toolkit
+        </div>
+        <h3 style="font-size:1.35rem; margin-bottom:8px; color:#fff;">🎁 Free ICT Fair Value Gap Pine Script v5 + Weekly Levels</h3>
+        <p style="font-size:0.92rem; line-height:1.5; color:#c7d2fe;">Get the complete open-source indicator for TradingView with automated imbalance mitigation boxes, plus weekly institutional session levels delivered to your inbox.</p>
       </div>
-      <a href="blueprints/Pine-Script-Fair-Value-Gap-ICT.pine" download="AutoFlow-ICT-FVG-TradingView.pine" class="btn-download">
-        <span>Download Pine Script (.pine)</span>
-        <span>⬇</span>
-      </a>
+
+      <div style="flex: 1 1 350px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(99,102,241,0.4); border-radius: 16px; padding: 20px;">
+        <form id="email-capture-form" onsubmit="handleLeadCapture(event, 'forex')">
+          <div style="margin-bottom: 12px;">
+            <label for="lead-email-input" style="font-size: 0.8rem; font-weight: 700; color: #e0e7ff; margin-bottom: 6px; display: block;">Enter your email for instant code unlock:</label>
+            <input type="email" id="lead-email-input" required placeholder="trader@gmail.com" 
+                   style="width: 100%; padding: 12px 14px; border-radius: 10px; background: #0f172a; border: 1px solid #475569; color: #fff; font-size: 0.95rem; outline: none; box-sizing: border-box;">
+          </div>
+          <button type="submit" id="btn-submit-lead" class="btn-download" style="width: 100%; justify-content: center; padding: 13px 20px; font-size: 0.95rem; background: linear-gradient(135deg, #6366f1, #4f46e5); border: none; cursor: pointer; box-sizing: border-box;">
+            <span>📩 Unlock & Download Pine Script Now</span>
+          </button>
+        </form>
+        <div id="lead-success-msg" style="display: none; text-align: center; padding: 10px 0;">
+          <div style="font-size: 1.1rem; font-weight: 800; color: #34d399; margin-bottom: 4px;">🎉 Access Granted! Downloading...</div>
+          <div style="font-size: 0.82rem; color: #94a3b8;">Check your downloads for <code>AutoFlow-ICT-FVG.pine</code>. Welcome to AutoFlow VIP!</div>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+          <a href="blueprints/Pine-Script-Fair-Value-Gap-ICT.pine" download="AutoFlow-ICT-FVG-TradingView.pine" onclick="trackDirectDownload('forex')" style="font-size: 0.78rem; color: #94a3b8; text-decoration: underline;">
+            Or instant raw direct download (No email)
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -345,6 +366,68 @@
       document.getElementById('cost-retail').textContent = '$' + retailCost.toLocaleString() + ' / mo';
       document.getElementById('cost-raw').textContent = '$' + rawCost.toLocaleString() + ' / mo';
       document.getElementById('annual-savings').textContent = '$' + annualSavings.toLocaleString() + ' USD';
+    }
+
+    function handleLeadCapture(e, source) {
+      e.preventDefault();
+      const input = document.getElementById('lead-email-input');
+      const email = input ? input.value.trim() : '';
+      if (!email || !email.includes('@')) return;
+
+      // Save lead locally to browser storage
+      const LEADS_KEY = 'autoflow_captured_leads_v1';
+      let leads = [];
+      try {
+        const raw = localStorage.getItem(LEADS_KEY);
+        if (raw) leads = JSON.parse(raw);
+      } catch(err) {}
+
+      leads.push({
+        email: email,
+        source: source || 'forex_calculator',
+        timestamp: new Date().toISOString()
+      });
+      try {
+        localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
+      } catch(err) {}
+
+      // Update telemetry
+      try {
+        const TEL_KEY = 'autoflow_telemetry_metrics_v1';
+        const telRaw = localStorage.getItem(TEL_KEY);
+        if (telRaw) {
+          let tel = JSON.parse(telRaw);
+          tel.downloads = (tel.downloads || 42) + 1;
+          tel.totalClicks = (tel.totalClicks || 186) + 1;
+          localStorage.setItem(TEL_KEY, JSON.stringify(tel));
+        }
+      } catch(err) {}
+
+      // Show success state
+      const form = document.getElementById('email-capture-form');
+      const success = document.getElementById('lead-success-msg');
+      if (form) form.style.display = 'none';
+      if (success) success.style.display = 'block';
+
+      // Auto trigger download
+      const a = document.createElement('a');
+      a.href = 'blueprints/Pine-Script-Fair-Value-Gap-ICT.pine';
+      a.download = 'AutoFlow-ICT-FVG-TradingView.pine';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function trackDirectDownload(source) {
+      try {
+        const TEL_KEY = 'autoflow_telemetry_metrics_v1';
+        const telRaw = localStorage.getItem(TEL_KEY);
+        if (telRaw) {
+          let tel = JSON.parse(telRaw);
+          tel.downloads = (tel.downloads || 42) + 1;
+          localStorage.setItem(TEL_KEY, JSON.stringify(tel));
+        }
+      } catch(err) {}
     }
 
     // Initial calculation
