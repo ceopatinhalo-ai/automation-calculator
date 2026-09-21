@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoFlow Mission Control 24/7 | 12-Affiliates</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(18, 26, 44, 0.75);
+      --card-border: rgba(56, 189, 248, 0.18);
+      --accent: #00f0ff;
+      --accent-green: #10b981;
+      --accent-purple: #a855f7;
+      --accent-amber: #f59e0b;
+      --text-main: #f1f5f9;
+      --text-dim: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 24px; }
+    .container { max-width: 1360px; margin: 0 auto; }
+    
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      backdrop-filter: blur(16px);
+      margin-bottom: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .logo-badge {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, #00f0ff, #3b82f6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 900; color: #000;
+    }
+    .brand-title { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+    .brand-sub { font-size: 13px; color: var(--text-dim); }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
+      background: rgba(16, 185, 129, 0.15); color: var(--accent-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.3); } }
+
+    /* Top Grid KPI */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .kpi-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      padding: 18px 20px; border-radius: 14px; backdrop-filter: blur(12px);
+    }
+    .kpi-label { font-size: 12px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .kpi-value { font-size: 26px; font-weight: 800; color: #fff; display: flex; align-items: baseline; gap: 8px; }
+    .kpi-sub { font-size: 12px; color: var(--accent); font-weight: 500; }
+
+    /* Main Grid */
+    .main-grid { display: grid; grid-template-columns: 2fr 1.2fr; gap: 24px; }
+    @media (max-width: 1024px) { .main-grid { grid-template-columns: 1fr; } }
+
+    .section-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 22px; backdrop-filter: blur(16px); margin-bottom: 24px;
+    }
+    .section-title {
+      font-size: 16px; font-weight: 800; letter-spacing: -0.3px;
+      margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .badge-count { font-size: 11px; background: rgba(0, 240, 255, 0.15); color: var(--accent); padding: 3px 8px; border-radius: 6px; }
+
+    /* Video List */
+    .video-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 14px; background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; margin-bottom: 10px;
+      transition: all 0.2s;
+    }
+    .video-item:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--accent); }
+    .video-meta { display: flex; align-items: center; gap: 12px; }
+    .video-num { font-size: 12px; font-weight: 800; color: var(--accent); width: 22px; }
+    .video-title { font-size: 14px; font-weight: 600; color: #fff; max-width: 480px; }
+    .video-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); font-weight: 600; }
+    .btn-play {
+      padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none;
+      background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff;
+      display: inline-flex; align-items: center; gap: 6px; transition: transform 0.1s;
+    }
+    .btn-play:hover { transform: scale(1.03); }
+
+    /* Intel List */
+    .intel-item {
+      padding: 12px 14px; background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; margin-bottom: 10px;
+    }
+    .intel-header { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .intel-code { font-size: 12px; font-weight: 800; color: var(--accent-purple); }
+    .intel-words { font-size: 12px; color: var(--text-dim); font-weight: 600; }
+    .intel-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .intel-insight { font-size: 12px; color: #cbd5e1; }
+
+    /* Tools List */
+    .tool-link {
+      display: block; padding: 14px; background: rgba(0, 240, 255, 0.04);
+      border: 1px dashed rgba(0, 240, 255, 0.3); border-radius: 10px; text-decoration: none;
+      color: var(--text-main); margin-bottom: 12px; transition: all 0.2s;
+    }
+    .tool-link:hover { background: rgba(0, 240, 255, 0.08); border-color: var(--accent); }
+    .tool-name { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+    .tool-desc { font-size: 12px; color: var(--text-dim); }
+
+    /* Fast Action Panel */
+    .action-panel {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px;
+    }
+    .btn-action {
+      padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 700; text-align: center;
+      text-decoration: none; background: rgba(255, 255, 255, 0.08); color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.12); cursor: pointer; transition: all 0.2s;
+    }
+    .btn-action:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-badge">⚡</div>
+        <div>
+          <h1 class="brand-title">AutoFlow Tech — Mission Control HUD</h1>
+          <p class="brand-sub">Hệ Thống Vận Hành Affiliate Tự Hành 24/7 • Chip Apple M5 Pro</p>
+        </div>
+      </div>
+      <div class="status-pill">
+        <span class="pulse-dot"></span>
+        DAEMON 24/7 ONLINE (PID 81515)
+      </div>
+    </header>
+
+    <!-- KPI Grid -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">YouTube Shorts Đã Đăng</div>
+        <div class="kpi-value">7/7 <span class="kpi-sub">Công khai 100%</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Kho Tình Báo Đối Thủ</div>
+        <div class="kpi-value">36,722 <span class="kpi-sub">Từ (6 Siêu Tệp)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Micro-Tools Live Web</div>
+        <div class="kpi-value">2/2 <span class="kpi-sub">GitHub Pages HTTP 200</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Cổng Nhận Hoa Hồng</div>
+        <div class="kpi-value" style="font-size: 18px; color: var(--accent-green);">PayPal <span class="kpi-sub">b0ynghe0lx...</span></div>
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+      <!-- Left Column: Video Fleet & Intel -->
+      <div>
+        <!-- Video Shorts Fleet -->
+        <div class="section-card">
+          <div class="section-title">
+            <span>🎬 Hạm Đội 7 Video YouTube Shorts Đang Phủ Sóng</span>
+            <span class="badge-count">Kênh: AutoFlow Tech</span>
+          </div>
+
+          <div class="video-item">
+            <div class="video-meta">
+              <span class="video-num">#1</span>
+              <div>
+                <div class="video-title">Make vs Zapier: Tiết kiệm 80% chi phí tự động gom lead</div>
+                <span class="video-tag">🟢 Live Public (37s)</span>
+              </div>
+            </div>
+            <a href="https://youtu.be/AchDuW6vtFY" target="_blank" class="btn-play">▶ Xem</a>
+          </div>
+
+          <div class="video-item">
+            <div class="video-meta">
+              <span class="video-num">#2</span>
+              <div>
+                <div class="video-title">Treo AI Agent 24/7 trên VPS Cloud chỉ $4/tháng</div>
+                <span class="video-tag">🟢 Live Public (35s)</span>
+              </div>
+            </div>
+            <a href="https://youtu.be/humXV_q4S3Q" target="_blank" class="btn-play">▶ Xem</a>
+          </div>
+
+          <div class="video-item">
+            <div class="video-meta">
+              <span class="video-num">#3</span>
+              <div>
+                <div class="video-title">Gửi 10,000 Email tự động không lo Spam bằng Brevo</div>
+                <span class="video-tag">🟢 Live Public (31s)</span>
+              </div>
+            </div>
+            <a href="https://youtu.be/TkDqWyECiUk" target="_blank" class="btn-play">▶ Xem</a>
+          </div>
+
+          <div class="video-item">
+            <div class="video-meta">
+              <span class="video-num">#4</span>
+              <div>
+                <div class="video-title">Make vs n8n: Đâu là lựa chọn tối ưu năm 2026?</div>
+                <span class="video-tag">🟢 Live Public (45s)</span>
+              </div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=EwCUjiMr8l0" target="_blank" class="btn-play">▶ Xem</a>
+          </div>
+
+          <div class="video-item">
+            <div class="video-meta">
+              <span class="video-num">#5</span>
+              <div>
+                <div class="video-title">Zapier vs Make.com: Save $2,500/Year (Bản Quốc Tế)</div>
+                <span class="video-tag">🟢 Live Public (30s)</span>
+              </div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=HQgAiEsI1tY" target="_blank" class="btn-play">▶ Xem</a>
+          </div>
+
+          <div class="video-item">
+            <div class="video-meta">
+              <span class="video-num">#6</span>
+              <div>
+                <div class="video-title">Lệnh Cài VPS 1-Click Biến Cloud Thành Server AI</div>
+                <span class="video-tag">🟢 Live Public (45s)</span>
+              </div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=GR7BCp3S9tk" target="_blank" class="btn-play">▶ Xem</a>
+          </div>
+
+          <div class="video-item">
+            <div class="video-meta">
+              <span class="video-num">#7</span>
+              <div>
+                <div class="video-title">Báo Cáo Doanh Thu Reo Chuông Telegram Tự Động 24/7</div>
+                <span class="video-tag">🟢 Live Public (33s)</span>
+              </div>
+            </div>
+            <a href="https://youtu.be/mlup9cyd5O0" target="_blank" class="btn-play">▶ Xem</a>
+          </div>
+        </div>
+
+        <!-- Intel Mega-Batch -->
+        <div class="section-card">
+          <div class="section-title">
+            <span>📚 Kho Tri Thức 6 Siêu Tệp Nạp NotebookLM Ultra (36,722 từ)</span>
+            <span class="badge-count">Tối ưu trần 600 nguồn</span>
+          </div>
+
+          <div class="intel-item">
+            <div class="intel-header">
+              <span class="intel-code">INTEL-01</span>
+              <span class="intel-words">9,044 từ</span>
+            </div>
+            <div class="intel-title">Make vs Zapier Comparison & Migration Playbook</div>
+            <div class="intel-insight">Bóc tách tử huyệt bẫy phí Polling của Make. Tặng kèm Blueprint Webhook Sheets.</div>
+          </div>
+
+          <div class="intel-item">
+            <div class="intel-header">
+              <span class="intel-code">INTEL-02</span>
+              <span class="intel-words">7,382 từ</span>
+            </div>
+            <div class="intel-title">Hostinger VPS Cloud AI Agent Architecture 2026</div>
+            <div class="intel-insight">Cơn sốt tự host n8n và AI Bot trên VPS $4.99/tháng. Hoa hồng $40–$70/sale.</div>
+          </div>
+
+          <div class="intel-item">
+            <div class="intel-header">
+              <span class="intel-code">INTEL-03</span>
+              <span class="intel-words">4,180 từ</span>
+            </div>
+            <div class="intel-title">Brevo Email Marketing Automation Review & Funnel</div>
+            <div class="intel-insight">Chiến thuật lưu danh bạ 0đ của Brevo. Hoa hồng €5 CPL + 30% định kỳ.</div>
+          </div>
+
+          <div class="intel-item">
+            <div class="intel-header">
+              <span class="intel-code">INTEL-04</span>
+              <span class="intel-words">5,064 từ</span>
+            </div>
+            <div class="intel-title">ElevenLabs AI Voiceover Monetization Framework</div>
+            <div class="intel-insight">Đánh vào nỗi đau bản quyền giọng đọc kênh Faceless. Hoa hồng 22%–30% MRR.</div>
+          </div>
+
+          <div class="intel-item">
+            <div class="intel-header">
+              <span class="intel-code">INTEL-05</span>
+              <span class="intel-words">3,780 từ</span>
+            </div>
+            <div class="intel-title">Cursor AI vs Claude Code Coding Assistant Review</div>
+            <div class="intel-insight">Làn sóng lập trình tự động hóa cá nhân hóa. Hoa hồng định kỳ thuê bao $20/tháng.</div>
+          </div>
+
+          <div class="intel-item">
+            <div class="intel-header">
+              <span class="intel-code">INTEL-06</span>
+              <span class="intel-words">6,056 từ</span>
+            </div>
+            <div class="intel-title">Beehiiv Newsletter Monetization & AI Stack 2026</div>
+            <div class="intel-insight">Kiếm tiền từ bản tin số tự động. Hoa hồng 50% định kỳ 12 tháng liên tục.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Micro-Tools, Actions & Hardware -->
+      <div>
+        <!-- Live Micro-Tools -->
+        <div class="section-card">
+          <div class="section-title">
+            <span>🌐 2 Micro-Tools Live (Lead Magnets)</span>
+            <span class="badge-count">GitHub Pages</span>
+          </div>
+
+          <a href="https://ceopatinhalo-ai.github.io/automation-calculator/" target="_blank" class="tool-link">
+            <div class="tool-name">🖩 Make.com vs Zapier Savings Calculator</div>
+            <div class="tool-desc">Tính toán chi phí tiết kiệm theo số lượng task + Tặng 1-Click Blueprint Gom Lead.</div>
+          </a>
+
+          <a href="https://ceopatinhalo-ai.github.io/automation-calculator/vps-calculator.html" target="_blank" class="tool-link">
+            <div class="tool-name">⚡ Laptop Wear vs Hostinger VPS Calculator</div>
+            <div class="tool-desc">So sánh chi phí chai pin laptop vs VPS $4.99/tháng + Tải bash script cài đặt 1 dòng.</div>
+          </a>
+
+          <div class="action-panel">
+            <a href="https://github.com/ceopatinhalo-ai/automation-calculator" target="_blank" class="btn-action">📂 GitHub Repo</a>
+            <a href="https://www.youtube.com/channel/UC7PeqI6acT89HkDXMYQFbaw" target="_blank" class="btn-action">📺 Kênh YouTube</a>
+          </div>
+        </div>
+
+        <!-- Telemetry & Hardware State -->
+        <div class="section-card">
+          <div class="section-title">
+            <span>💻 Phân Bổ Chip Apple M5 Pro (24 GB)</span>
+            <span class="badge-count">70% Tác Chiến / 30% Dự Phòng</span>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+              <span>Dành riêng cho Founder (30%)</span>
+              <span style="color: var(--accent-green); font-weight: 700;">7.2 GB RAM (Khóa cứng)</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;">
+              <div style="width: 30%; height: 100%; background: var(--accent-green);"></div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+              <span>Cấp cho Hạm Đội AGY Tác Chiến (70%)</span>
+              <span style="color: var(--accent); font-weight: 700;">16.8 GB RAM (Metal GPU)</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;">
+              <div style="width: 70%; height: 100%; background: var(--accent);"></div>
+            </div>
+          </div>
+
+          <div style="font-size: 12px; color: var(--text-dim); line-height: 1.6;">
+            <div>• <b>Daemon PID:</b> 81515 (Quét đối soát mỗi 30 phút)</div>
+            <div>• <b>CDP Remote Port:</b> 127.0.0.1:9222 (Brave Profile 21)</div>
+            <div>• <b>SSOT Kế Thừa:</b> 93 Tài sản chuẩn hóa trong Central Control Center</div>
+          </div>
+        </div>
+
+        <!-- Trạm Giám Sát Obsidian -->
+        <div class="section-card">
+          <div class="section-title">
+            <span>🧭 Trạm Giám Sát Tiến Độ Trong Vault</span>
+          </div>
+          <div style="font-size: 13px; color: #cbd5e1; line-height: 1.8;">
+            <div>1. <b>Sổ Nhật Ký 24/7:</b> <code>00-Nhat-ky-van-hanh-24h.md</code></div>
+            <div>2. <b>Trạm Tác Chiến:</b> <code>00-Dashboard-aff-intel-traffic.md</code></div>
+            <div>3. <b>Trạm Điều Khiển Web:</b> <code>00-Dashboard-aff-auto.md</code></div>
+            <div>4. <b>Trạm Kế Thừa SSOT:</b> <code>00-Central-Control-Center.md</code></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
