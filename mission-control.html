@@ -17,13 +17,14 @@
       --accent-amber: #d97706;
       --accent-red: #dc2626;
       --text-main: #0f172a;
-      --text-sub: #334155;
-      --text-dim: #64748b;
+      --text-sub: #1e293b;
+      --text-dim: #475569;
       --item-bg: #f1f5f9;
-      --item-border: #e2e8f0;
+      --item-border: #cbd5e1;
       --highlight-box: #eff6ff;
       --tab-active-bg: #0284c7;
       --tab-active-text: #ffffff;
+      --bar-bg: #e2e8f0;
     }
     :root[data-theme="dark"] {
       --bg: #090d16;
@@ -44,6 +45,7 @@
       --highlight-box: rgba(0, 240, 255, 0.05);
       --tab-active-bg: #00f0ff;
       --tab-active-text: #090d16;
+      --bar-bg: rgba(255, 255, 255, 0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif; }
     body { background: var(--bg); color: var(--text-main); min-height: 100vh; padding: 20px; transition: background 0.2s, color 0.2s; }
@@ -232,10 +234,52 @@
     .btn-action:hover { border-color: var(--accent); color: var(--accent); }
     .action-panel { display: flex; gap: 8px; margin-top: 12px; }
 
+    /* HARDWARE M5 PRO - HIGH CONTRAST PURE LIGHT STYLING */
+    .card-hardware-m5 {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-left: 4px solid #0284c7 !important;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+    }
+    .card-hardware-m5 .section-title {
+      color: #0f172a !important;
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .ram-row {
+      display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 6px;
+      color: #0f172a !important;
+    }
+    .ram-track {
+      width: 100%; height: 10px; background: #e2e8f0 !important; border-radius: 5px; overflow: hidden;
+      border: 1px solid #cbd5e1;
+    }
+    .meta-m5-list {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #1e293b !important;
+      line-height: 1.8;
+      font-weight: 600;
+    }
+    .meta-m5-list div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     /* DAILY ACCOUNTING & GROWTH VISUALIZER STYLES */
     .accounting-panel {
       background: var(--card-bg); border: 1px solid var(--card-border);
       border-radius: 16px; padding: 24px; box-shadow: var(--card-shadow); margin-bottom: 24px;
+    }
+    .auto-rollover-banner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px; border-radius: 10px; margin-bottom: 16px;
+      background: rgba(5, 150, 105, 0.1); border: 1px solid rgba(5, 150, 105, 0.3);
+      color: #047857; font-size: 12px; font-weight: 700;
     }
     .chart-container {
       background: var(--item-bg); border: 1px solid var(--item-border);
@@ -256,7 +300,7 @@
     /* SVG Chart */
     .svg-chart { width: 100%; height: 260px; overflow: visible; }
     .chart-tooltip {
-      position: absolute; display: none; background: rgba(15, 23, 42, 0.95); color: #fff;
+      position: absolute; display: none; background: #0f172a; color: #fff;
       padding: 8px 12px; border-radius: 8px; font-size: 11px; line-height: 1.5; pointer-events: none;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25); z-index: 100; border: 1px solid var(--accent);
     }
@@ -399,7 +443,7 @@
             <div class="col-content">
               <b>Khai tử lãng phí:</b> Xóa sạch 100% bước trung gian thủ công.
               <ul>
-                <li>Phân bổ <b>90% RAM M5 Pro</b> cho Agent song song.</li>
+                <li>Phân bổ <b>70% RAM M5 Pro</b> cho Agent song song.</li>
                 <li>Tự động hóa 24/7: Video ➔ Web ➔ Telemetry ➔ Sổ Kế Toán.</li>
                 <li>Dữ liệu đối soát minh bạch từng USD về ví.</li>
               </ul>
@@ -600,7 +644,7 @@
           </div>
         </div>
 
-        <!-- Col Right: Tools & Gumroad & Hardware -->
+        <!-- Col Right: Tools & Gumroad & Hardware M5 (PURE LIGHT) -->
         <div>
           <!-- Digital Products Gumroad -->
           <div class="section-card" style="border: 1px solid rgba(99, 102, 241, 0.4); background: linear-gradient(180deg, var(--card-bg) 0%, rgba(99, 102, 241, 0.04) 100%);">
@@ -652,34 +696,37 @@
             </div>
           </div>
 
-          <!-- Hardware Allocation M5 Pro -->
-          <div class="section-card">
+          <!-- Hardware Allocation M5 Pro (100% PURE LIGHT & CONTRAST) -->
+          <div class="card-hardware-m5">
             <div class="section-title">
               <span>💻 Phân Bổ Chip Apple M5 Pro (24 GB)</span>
-              <span class="badge-count">90% Tác Chiến / 10% Dự Phòng</span>
+              <span class="badge-count" style="background:#eff6ff; border:1px solid #bfdbfe; color:#0284c7; font-weight:800;">70% Tác Chiến / 30% Dự Phòng</span>
             </div>
-            <div style="margin-bottom: 12px;">
-              <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                <span>Dành riêng cho Founder (10%)</span>
-                <span style="color: var(--accent-green); font-weight: 700;">2.4 GB RAM (Khóa cứng)</span>
+            
+            <div style="margin-bottom: 14px;">
+              <div class="ram-row">
+                <span>Dành riêng cho Founder (30%)</span>
+                <span style="color: #047857;">7.2 GB RAM (Khóa cứng an toàn)</span>
               </div>
-              <div style="width: 100%; height: 8px; background: var(--item-border); border-radius: 4px; overflow: hidden;">
-                <div style="width: 10%; height: 100%; background: var(--accent-green);"></div>
+              <div class="ram-track">
+                <div style="width: 30%; height: 100%; background: #10b981; border-radius: 4px;"></div>
               </div>
             </div>
+
             <div style="margin-bottom: 16px;">
-              <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                <span>Cấp cho Hạm Đội AGY Tác Chiến (90%)</span>
-                <span style="color: var(--accent); font-weight: 700;">21.6 GB RAM (Metal GPU)</span>
+              <div class="ram-row">
+                <span>Cấp cho Hạm Đội AGY Tác Chiến (70%)</span>
+                <span style="color: #0284c7;">16.8 GB RAM (Metal GPU Tự Hành)</span>
               </div>
-              <div style="width: 100%; height: 8px; background: var(--item-border); border-radius: 4px; overflow: hidden;">
-                <div style="width: 90%; height: 100%; background: var(--accent);"></div>
+              <div class="ram-track">
+                <div style="width: 70%; height: 100%; background: linear-gradient(90deg, #0284c7, #2563eb); border-radius: 4px;"></div>
               </div>
             </div>
-            <div style="font-size: 12px; color: var(--text-dim); line-height: 1.6;">
-              <div>• <b>Daemon PID:</b> 81515 (Quét đối soát mỗi 30 phút)</div>
-              <div>• <b>CDP Remote Port:</b> 127.0.0.1:9222 (Brave Profile 21)</div>
-              <div>• <b>SSOT Kế Thừa:</b> 93 Tài sản chuẩn hóa trong Central Control Center</div>
+
+            <div class="meta-m5-list">
+              <div><span>🤖</span> <span><b>Daemon PID:</b> 81515 (Quét đối soát mỗi 30 phút)</span></div>
+              <div><span>🌐</span> <span><b>CDP Remote Port:</b> 127.0.0.1:9222 (Brave Profile 21)</span></div>
+              <div><span>🏛️</span> <span><b>SSOT Kế Thừa:</b> 93 Tài sản chuẩn hóa trong Central Control Center</span></div>
             </div>
           </div>
         </div>
@@ -823,20 +870,26 @@
     </div>
 
     <!-- ============================================================= -->
-    <!-- TAB 2: SỔ KẾ TOÁN TỪNG NGÀY & BIỂU ĐỒ TĂNG TRƯỞNG (NEW) -->
+    <!-- TAB 2: SỔ KẾ TOÁN TỪNG NGÀY & BIỂU ĐỒ TĂNG TRƯỞNG (ZERO-TOUCH) -->
     <!-- ============================================================= -->
     <div id="tab-accounting" class="tab-content">
       <section class="accounting-panel">
         <div class="cockpit-header">
           <div>
-            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-main);">📅 Sổ Kế Toán Từng Ngày & Radar Tăng Trưởng (Day-over-Day Ledger)</h2>
+            <h2 style="font-size: 18px; font-weight: 800; color: var(--text-main);">📅 Sổ Kế Toán Tự Hành Từng Ngày (Zero-Touch Rollover Ledger)</h2>
             <p style="font-size: 13px; color: var(--text-dim); margin-top: 4px;">
-              Theo dõi chi tiết doanh thu, chi phí, lợi nhuận ròng và xung lực tăng trưởng từng ngày. Hết ngày tự động chốt sổ sang ngày mới.
+              Cỗ máy tự động đối soát, tự động kết chuyển số dư khi sang ngày mới mà Founder không cần bấm tay.
             </p>
           </div>
           <div id="dailyGrowthBadge" class="growth-indicator growth-up">
             <span>🚀 TĂNG TRƯỞNG: +46.0% (TB)</span>
           </div>
+        </div>
+
+        <!-- Zero-Touch Rollover Banner -->
+        <div class="auto-rollover-banner">
+          <span>⚡ <b>CƠ CHẾ TỰ ĐỘNG HÓA 100%:</b> Hệ thống tự động so khớp lịch máy Mac/Client. Mỗi khi qua 00:00 đêm, cỗ máy tự động chốt sổ ngày cũ, kết chuyển số dư và vẽ biểu đồ tăng trưởng/tụt lùi cho ngày mới!</span>
+          <span style="background:#059669; color:#fff; padding:3px 8px; border-radius:6px; font-size:11px;">AUTO LIVE</span>
         </div>
 
         <!-- Financial Overview Cards -->
@@ -865,11 +918,11 @@
             <div class="kpi-sub">5 ngày liên tiếp tăng trưởng xanh</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">Trạng Thái Sổ Sách</div>
-            <div class="kpi-value" style="font-size: 16px; color: var(--accent-green);">
-              🟢 Sổ Đã Khóa 4 Ngày • 1 Ngày Live
+            <div class="kpi-label">Trạng Thái Tự Động Hóa</div>
+            <div class="kpi-value" style="font-size: 15px; color: var(--accent-green);">
+              🟢 Tự Chuyển Ngày 00:00 (Active)
             </div>
-            <div class="kpi-sub">Chốt sổ tự động lúc 23:59</div>
+            <div class="kpi-sub">Không cần can thiệp thủ công</div>
           </div>
         </div>
 
@@ -939,14 +992,14 @@
         <!-- Accounting Action Cockpit -->
         <div class="accounting-bar">
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button class="btn-primary-glow" onclick="closeTodayAndRollover()">
-              <span>🔒 Chốt Sổ Ngày & Sang Ngày Mới</span>
-            </button>
-            <button class="btn-telemetry" onclick="promptAddRevenue()">
-              <span>➕ Cập Nhật Số Liệu Hôm Nay</span>
+            <button class="btn-primary-glow" onclick="promptAddRevenue()">
+              <span>➕ Ghi Nhận Doanh Thu Phát Sinh</span>
             </button>
             <button class="btn-telemetry" onclick="exportLedgerMarkdown()">
               <span>📤 Xuất Sổ Kế Toán Sang Markdown</span>
+            </button>
+            <button class="btn-telemetry" onclick="forceManualRolloverTest()" style="opacity: 0.8;">
+              <span>⚡ (Thử Nghiệm) Chốt Sổ Thủ Công</span>
             </button>
           </div>
           <div style="font-size: 12px; color: var(--text-dim);">
@@ -1200,7 +1253,7 @@
 
   <script>
     // -------------------------------------------------------------
-    // THEME CONTROLLER
+    // THEME CONTROLLER - DEFAULT PURE LIGHT
     // -------------------------------------------------------------
     function toggleTheme() {
       const html = document.documentElement;
@@ -1210,10 +1263,8 @@
       localStorage.setItem("theme_pref", next);
       renderSvgChart();
     }
-    const savedTheme = localStorage.getItem("theme_pref");
-    if (savedTheme) {
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    }
+    const savedTheme = localStorage.getItem("theme_pref") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
 
     // -------------------------------------------------------------
     // TAB NAVIGATION CONTROLLER
@@ -1227,7 +1278,6 @@
         targetTab.classList.add("active");
       }
 
-      // Mark button active
       const buttons = document.querySelectorAll(".nav-tab");
       if (tabId === "tab-radar") buttons[0].classList.add("active");
       else if (tabId === "tab-accounting") {
@@ -1342,7 +1392,7 @@
       saveTelemetry(data);
       renderTelemetry();
 
-      // Also update today's ledger entry
+      // Automatically feeds into today's ledger entry!
       updateTodayRevenue(1.50, 1);
 
       const status = document.getElementById("telemetryStatus");
@@ -1357,6 +1407,7 @@
     }
 
     function syncTelemetry() {
+      autoCheckAndRollover();
       renderTelemetry();
       renderDailyLedger();
       const status = document.getElementById("telemetryStatus");
@@ -1369,7 +1420,7 @@
     }
 
     // -------------------------------------------------------------
-    // DAILY ACCOUNTING LEDGER & GROWTH/DECLINE ENGINE
+    // DAILY ACCOUNTING LEDGER & 100% ZERO-TOUCH ROLLOVER ENGINE
     // -------------------------------------------------------------
     const DAILY_LEDGER_KEY = "autoflow_daily_ledger_v2";
     const initialLedger = [
@@ -1468,7 +1519,58 @@
       } catch (e) {}
     }
 
+    // ZERO-TOUCH AUTOMATIC ROLLOVER ENGINE
+    // Automatically checks calendar date. When a new day comes, it rolls over 100% automatically!
+    function autoCheckAndRollover() {
+      const ledger = loadDailyLedger();
+      if (!ledger || ledger.length === 0) return;
+
+      const now = new Date();
+      const todayStr = now.getFullYear() + "-" + 
+        String(now.getMonth() + 1).padStart(2, '0') + "-" + 
+        String(now.getDate()).padStart(2, '0');
+
+      const lastEntry = ledger[ledger.length - 1];
+
+      if (lastEntry && lastEntry.date < todayStr) {
+        // Automatically close all previous days
+        ledger.forEach(row => {
+          if (row.date < todayStr && row.status === "active") {
+            row.status = "closed";
+          }
+        });
+
+        // Automatically create new day entry
+        const dayLabel = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')} (Hôm nay)`;
+        const prev = ledger[ledger.length - 1];
+        const prevRev = prev ? prev.revenue : 0;
+
+        const newDay = {
+          date: todayStr,
+          dayLabel: dayLabel,
+          forex: 0.00,
+          vps: 0.00,
+          kit: 0.00,
+          saas: 0.00,
+          revenue: 0.00,
+          expenses: 2.00,
+          netProfit: -2.00,
+          clicks: 0,
+          growthRate: prevRev > 0 ? -100.0 : 0.0,
+          status: "active",
+          notes: "Cỗ máy tự động chuyển ngày 24/7 (Zero-Touch Rollover)"
+        };
+
+        ledger.push(newDay);
+        saveDailyLedger(ledger);
+        renderDailyLedger();
+        console.log("⚡ Auto-rolled over to new day automatically:", todayStr);
+        showToast("⚡ Cỗ máy tự động chuyển ngày mới: " + dayLabel);
+      }
+    }
+
     function updateTodayRevenue(revDelta, clickDelta) {
+      autoCheckAndRollover();
       const ledger = loadDailyLedger();
       const today = ledger[ledger.length - 1];
       if (today && today.status === "active") {
@@ -1493,19 +1595,11 @@
       let totalRev = 0;
       let totalExp = 0;
       let totalNet = 0;
-      let totalForex = 0;
-      let totalVps = 0;
-      let totalKit = 0;
-      let totalSaas = 0;
 
       ledger.forEach((row, idx) => {
         totalRev += row.revenue;
         totalExp += row.expenses;
         totalNet += row.netProfit;
-        totalForex += row.forex;
-        totalVps += row.vps;
-        totalKit += row.kit;
-        totalSaas += row.saas;
 
         const tr = document.createElement("tr");
         const rateClass = row.growthRate >= 0 ? "rate-green" : "rate-red";
@@ -1513,7 +1607,7 @@
         const rateSymbol = row.growthRate > 0 ? "↗" : (row.growthRate < 0 ? "↘" : "•");
         const rateText = idx === 0 ? "Khởi đầu" : `${rateSign}${row.growthRate.toFixed(1)}% ${rateSymbol}`;
         const statusBadge = row.status === "active" 
-          ? `<span class="badge-count" style="color: var(--accent-green); font-weight:800;">🟢 Đang Live</span>`
+          ? `<span class="badge-count" style="color: var(--accent-green); font-weight:800; background:rgba(5,150,105,0.1);">🟢 Đang Live</span>`
           : `<span class="badge-count" style="color: var(--text-dim);">🔒 Đã Chốt</span>`;
 
         tr.innerHTML = `
@@ -1587,10 +1681,9 @@
         rect.setAttribute("height", Math.max(2, barH));
         rect.setAttribute("rx", 6);
         rect.setAttribute("fill", item.status === "active" ? "url(#barGradActive)" : "url(#barGrad)");
-        rect.setAttribute("opacity", "0.9");
+        rect.setAttribute("opacity", "0.95");
         rect.style.cursor = "pointer";
 
-        // Hover events
         rect.addEventListener("mouseenter", (e) => showChartTooltip(e, item));
         rect.addEventListener("mouseleave", hideChartTooltip);
         barsGroup.appendChild(rect);
@@ -1689,24 +1782,18 @@
       if (tt) tt.style.display = "none";
     }
 
-    // Accounting Actions
-    function closeTodayAndRollover() {
+    // Force manual rollover test (optional)
+    function forceManualRolloverTest() {
       const ledger = loadDailyLedger();
       const today = ledger[ledger.length - 1];
       if (!today) return;
 
-      if (today.status === "closed") {
-        alert("Ngày hôm nay đã được chốt sổ trước đó! Bạn có thể thêm giao dịch mới nếu cần.");
-        return;
-      }
-
       today.status = "closed";
 
-      // Calculate next day date
       const d = new Date(today.date);
       d.setDate(d.getDate() + 1);
       const nextDateStr = d.toISOString().split("T")[0];
-      const nextLabel = `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')} (Ngày Mới)`;
+      const nextLabel = `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')} (Hôm nay)`;
 
       const newDay = {
         date: nextDateStr,
@@ -1721,13 +1808,13 @@
         clicks: 0,
         growthRate: -100.0,
         status: "active",
-        notes: "Khởi tạo ngày làm việc mới 24/7"
+        notes: "Chuyển ngày tự động 24/7"
       };
 
       ledger.push(newDay);
       saveDailyLedger(ledger);
       renderDailyLedger();
-      showToast("🔒 Đã chốt sổ ngày thành công & khởi tạo ngày làm việc mới!");
+      showToast("🔒 Đã chuyển sang ngày mới: " + nextLabel);
     }
 
     function promptAddRevenue() {
@@ -1768,14 +1855,12 @@
     function filterCccAssets() {
       const q = (document.getElementById("cccSearchInput")?.value || "").toLowerCase().trim();
       
-      // Filter matrix table
       const rows = document.querySelectorAll("#matrixTable tbody tr");
       rows.forEach(tr => {
         const text = tr.innerText.toLowerCase();
         tr.style.display = text.includes(q) ? "" : "none";
       });
 
-      // Filter core utils cards
       const cards = document.querySelectorAll("#coreUtilsGrid .util-card");
       cards.forEach(card => {
         const text = card.innerText.toLowerCase();
@@ -1784,11 +1869,18 @@
     }
 
     // -------------------------------------------------------------
-    // INIT
+    // INIT & AUTO TIMERS
     // -------------------------------------------------------------
     document.addEventListener("DOMContentLoaded", () => {
+      // 1. Run automatic zero-touch rollover check on page load
+      autoCheckAndRollover();
+
+      // 2. Render UI
       renderTelemetry();
       renderDailyLedger();
+
+      // 3. Periodic automatic check every 30s (rollover automatically at midnight)
+      setInterval(autoCheckAndRollover, 30000);
 
       // Add SVG Gradients dynamically
       const svg = document.getElementById("growthSvgChart");
