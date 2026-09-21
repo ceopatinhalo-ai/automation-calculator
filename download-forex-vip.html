@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Download Vault | The 2026 Institutional Prop Firm & SMC Trader Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080d1a;
+      --card-bg: rgba(15, 23, 42, 0.88);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #10b981;
+      --gold: #f59e0b;
+      --primary: #3b82f6;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.12) 0%, transparent 40%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-muted); font-size: 1.05rem; }
+
+    .bundle-download-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(16, 185, 129, 0.15));
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 24px;
+      padding: 36px;
+      text-align: center;
+      margin-bottom: 36px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .btn-download-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000;
+      font-weight: 800;
+      font-size: 1.2rem;
+      padding: 18px 36px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
+      transition: all 0.2s ease;
+      margin-top: 18px;
+    }
+    .btn-download-all:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(245, 158, 11, 0.45);
+    }
+
+    .telegram-unlock-card {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(16, 185, 129, 0.12));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 36px;
+    }
+    .telegram-badge {
+      display: inline-block;
+      background: #3b82f6;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .telegram-title { font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .telegram-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px; }
+
+    .assets-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 760px) { .assets-grid { grid-template-columns: 1fr; } }
+
+    .asset-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .asset-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .asset-icon { font-size: 1.5rem; line-height: 1; }
+    .asset-title { font-weight: 700; font-size: 1rem; color: #fff; }
+    .asset-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
+    .btn-asset {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 14px;
+    }
+    .btn-asset:hover { background: rgba(255, 255, 255, 0.12); }
+
+    .quickstart-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 36px;
+    }
+    .quickstart-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 16px; color: #fff; }
+    .step-item { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-num {
+      width: 28px; height: 28px;
+      background: var(--gold); color: #000;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+    .step-text strong { color: #fff; }
+
+    .partners-banner {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 20px;
+      padding: 26px;
+      text-align: center;
+    }
+    .partners-banner h3 { font-size: 1.15rem; color: var(--gold); margin-bottom: 8px; }
+    .partners-banner p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; }
+    .partners-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-partner {
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--gold);
+    }
+    .btn-partner:hover { background: rgba(245, 158, 11, 0.2); }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">✅ Instant Access Unlocked</div>
+    <h1>Welcome to the <span class="gradient-text">Pro Trader VIP Vault</span></h1>
+    <p class="subtitle">Thank you for your purchase! All TradingView Pine Scripts, Notion templates, and setup documentation are ready below.</p>
+  </header>
+
+  <!-- Complete Bundle Box -->
+  <div class="bundle-download-box">
+    <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff;">📦 Complete Pro Trader Suite (.ZIP)</h2>
+    <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.95rem;">
+      Contains all 3 TradingView Pine Scripts (v5), Prop Firm drawdown defense setup, and quickstart documentation.
+    </p>
+    <a href="downloads/pro-trader-suite-2026.zip" download class="btn-download-all">
+      ⚡ Download Trader Suite (.ZIP)
+    </a>
+  </div>
+
+  <!-- Telegram VIP Hub Claim -->
+  <div class="telegram-unlock-card">
+    <span class="telegram-badge">TELEGRAM VIP ACCESS</span>
+    <div class="telegram-title">🚀 Unlock Lifetime Access to AutoFlow VIP Alpha Channel</div>
+    <div class="telegram-desc">
+      To claim your free invitation to the private Telegram signals and institutional breakdown group, simply trade on our partner brokers (True Raw Spreads with 0.0 pips):
+    </div>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px;">
+      <a href="https://icmarkets.com/?camp=38531" target="_blank" rel="noopener" class="btn-partner">
+        Open IC Markets Raw Spread Account
+      </a>
+      <a href="https://one.exnesstrack.net/a/ulep7bti" target="_blank" rel="noopener" class="btn-partner">
+        Open Exness Zero Account
+      </a>
+    </div>
+    <div style="font-size: 0.82rem; color: #cbd5e1;">
+      👉 Once registered, send your MT4/MT5 account number to Telegram <strong>@AutoFlowTradingBot</strong> or email <strong>b0ynghe0lx@gmail.com</strong> for instant VIP activation.
+    </div>
+  </div>
+
+  <!-- Individual Assets Grid -->
+  <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 16px;">📂 Individual Indicator Downloads</h3>
+
+  <div class="assets-grid">
+    <!-- Asset 1 -->
+    <div class="asset-card">
+      <div class="asset-head">
+        <div class="asset-icon">🕯️</div>
+        <div>
+          <div class="asset-title">ICT Fair Value Gap Bot (.pine)</div>
+          <div class="asset-desc">Automated imbalance detection for TradingView v5 with real-time fill tracking.</div>
+        </div>
+      </div>
+      <a href="blueprints/Pine-Script-Fair-Value-Gap-ICT.pine" download class="btn-asset">📥 Download Pine Script</a>
+    </div>
+
+    <!-- Asset 2 -->
+    <div class="asset-card">
+      <div class="asset-head">
+        <div class="asset-icon">🎯</div>
+        <div>
+          <div class="asset-title">Liquidity Sweep & Order Block (.pine)</div>
+          <div class="asset-desc">Detects false breakout wick traps and institutional accumulation zones.</div>
+        </div>
+      </div>
+      <a href="blueprints/Pine-Script-Liquidity-Sweep-SMC.pine" download class="btn-asset">📥 Download Pine Script</a>
+    </div>
+
+    <!-- Asset 3 -->
+    <div class="asset-card">
+      <div class="asset-head">
+        <div class="asset-icon">🛡️</div>
+        <div>
+          <div class="asset-title">Prop Firm Drawdown Guard (.pine)</div>
+          <div class="asset-desc">Hard-locks your 5% max daily loss boundary directly on chart to protect evaluation.</div>
+        </div>
+      </div>
+      <a href="blueprints/Pine-Script-PropFirm-Risk-Manager.pine" download class="btn-asset">📥 Download Pine Script</a>
+    </div>
+
+    <!-- Asset 4 -->
+    <div class="asset-card">
+      <div class="asset-head">
+        <div class="asset-icon">📓</div>
+        <div>
+          <div class="asset-title">Notion Pro Trading Journal Template</div>
+          <div class="asset-desc">Win-rate, R:R analytics, and psychology risk management database.</div>
+        </div>
+      </div>
+      <a href="https://notion.so" target="_blank" rel="noopener" class="btn-asset">🔗 Open Notion Template</a>
+    </div>
+  </div>
+
+  <!-- Quickstart Setup -->
+  <div class="quickstart-card">
+    <div class="quickstart-title">⚡ 60-Second TradingView Installation</div>
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>Open TradingView:</strong> Open any currency or gold chart on <a href="https://www.tradingview.com" target="_blank" style="color: var(--gold);">TradingView.com</a>.
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>Pine Editor:</strong> Click <em>"Pine Editor"</em> at the bottom toolbar, paste the contents of your `.pine` file, and click <em>"Add to chart"</em>.
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>Save Indicator:</strong> Click <em>"Save"</em> in the Pine Editor to keep it forever in your indicator favorites.
+      </div>
+    </div>
+  </div>
+
+  <!-- Partner Infrastructure -->
+  <div class="partners-banner">
+    <h3>⭐ Zero-Spread Execution Partners</h3>
+    <p>To ensure indicator signals execute with zero slippage, trade on true ECN raw accounts:</p>
+    <div class="partners-links">
+      <a href="https://icmarkets.com/?camp=38531" target="_blank" rel="noopener" class="btn-partner">
+        IC Markets Raw Spread (0.0 Pips)
+      </a>
+      <a href="https://one.exnesstrack.net/a/ulep7bti" target="_blank" rel="noopener" class="btn-partner">
+        Exness Zero Spread
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

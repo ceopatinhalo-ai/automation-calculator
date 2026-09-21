@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 2026 Solopreneur Business Automation & AI Agent Kit | AutoFlow Tech</title>
+  <meta name="description" content="Deploy production-ready Make.com blueprints, automated email autoresponders, and 1-click 24/7 Cloud VPS AI agents for just $19 USD.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(16, 24, 40, 0.88);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --primary: #3b82f6;
+      --gold: #fbbf24;
+      --purple: #8b5cf6;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.12) 0%, transparent 40%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 840px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 36px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6);
+    }
+
+    .price-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .price-old {
+      text-decoration: line-through;
+      color: #64748b;
+      font-size: 1.3rem;
+      margin-left: 8px;
+    }
+    .price-tagline {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .value-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      padding: 16px 20px;
+      border-radius: 14px;
+    }
+    .value-icon { font-size: 1.4rem; line-height: 1; margin-top: 2px; }
+    .value-content { flex: 1; }
+    .value-title { font-weight: 700; font-size: 1rem; color: #fff; display: flex; justify-content: space-between; }
+    .value-worth { color: var(--gold); font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; }
+    .value-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+
+    .btn-buy {
+      width: 100%;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding: 18px 24px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(16, 185, 129, 0.5);
+    }
+    .security-note {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* DFY High-Ticket Section */
+    .dfy-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.12));
+      border: 2px solid rgba(139, 92, 246, 0.4);
+      border-radius: 24px;
+      padding: 36px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .dfy-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #8b5cf6;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .dfy-title { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .dfy-price { font-size: 2.2rem; font-weight: 800; color: #c4b5fd; font-family: 'JetBrains Mono', monospace; margin-bottom: 16px; }
+    .dfy-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .dfy-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: #e2e8f0;
+    }
+    .dfy-feature-item span { color: #a78bfa; font-weight: 800; }
+    .btn-dfy {
+      width: 100%;
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding: 18px 24px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .btn-dfy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(139, 92, 246, 0.5);
+    }
+
+    .faq-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .faq-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 18px; }
+    .faq-item { margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .faq-q { font-weight: 700; font-size: 0.95rem; color: #fff; margin-bottom: 4px; }
+    .faq-a { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .nav-back { text-align: center; margin-top: 24px; font-size: 0.85rem; }
+    .nav-back a { color: var(--text-muted); text-decoration: none; }
+    .nav-back a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">⭐ 2026 Production Automation Release</div>
+    <h1>The 2026 Solopreneur <span class="gradient-text">Business Automation & AI Kit</span></h1>
+    <p class="subtitle">Skip 50 hours of manual workflow building. Get battle-tested Make.com blueprints, AI autoresponders, and 1-click 24/7 Cloud VPS deployment scripts.</p>
+  </header>
+
+  <!-- $19 Standard Digital Suite -->
+  <div class="pricing-card">
+    <div class="price-box">
+      <div>
+        <div class="price-tagline">🚀 Complete Automation Asset Package</div>
+        <div class="price-amount">$19 <span class="price-old">$355</span></div>
+      </div>
+      <div>
+        <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.85rem;">
+          Save 94% Today
+        </span>
+      </div>
+    </div>
+
+    <!-- Value Stack -->
+    <div class="value-stack">
+      <!-- Item 1 -->
+      <div class="value-item">
+        <div class="value-icon">⚡</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>VIP Make.com Master Lead Generation Blueprint (.json)</span>
+            <span class="value-worth">$99 Value</span>
+          </div>
+          <div class="value-desc">Production JSON connecting Webhooks, Google Sheets database, and instant Telegram push notifications with error handling. 1-Click Import.</div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="value-item">
+        <div class="value-icon">🤖</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>Make.com AI Email Autoresponder & Lead Qualifier (.json)</span>
+            <span class="value-worth">$79 Value</span>
+          </div>
+          <div class="value-desc">Automatically ingests incoming lead questions, summarizes intent with AI, and drafts customized responses directly via Brevo / SMTP.</div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="value-item">
+        <div class="value-icon">☁️</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>Hostinger Cloud VPS 1-Click AI Agent Deployment Script (.sh)</span>
+            <span class="value-worth">$89 Value</span>
+          </div>
+          <div class="value-desc">Automated Bash script to deploy Docker, Python 3, n8n, and 24/7 background AI agents on a $4.99/mo Hostinger VPS with zero terminal headache.</div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="value-item">
+        <div class="value-icon">📢</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>Standalone Telegram Push Notification Dispatcher (.json)</span>
+            <span class="value-worth">$49 Value</span>
+          </div>
+          <div class="value-desc">Instant real-time transaction, sign-up, or alert forwarding directly to your private Telegram channel or phone.</div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="value-item">
+        <div class="value-icon">📘</div>
+        <div class="value-content">
+          <div class="value-title">
+            <span>3-Minute Zero-Touch Quickstart & Prompt Guide</span>
+            <span class="value-worth">$39 Value</span>
+          </div>
+          <div class="value-desc">Step-by-step visual documentation and troubleshooting guide. Set up everything in under 5 minutes without writing a single line of code.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official PayPal Checkout Form ($19) -->
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="b0ynghe0lx@gmail.com">
+      <input type="hidden" name="item_name" value="The 2026 Solopreneur Business Automation and AI Agent Kit">
+      <input type="hidden" name="amount" value="19.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="no_shipping" value="1">
+      <input type="hidden" name="return" value="https://ceopatinhalo-ai.github.io/automation-calculator/download-automation-vip.html">
+      <input type="hidden" name="cancel_return" value="https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html">
+      <button type="submit" class="btn-buy">
+        🔒 Pay $19 USD with PayPal / Card (Instant Download)
+      </button>
+    </form>
+
+    <div class="security-note">
+      🛡️ Encrypted 256-Bit SSL Checkout • Immediate Access to Source Files • Zero Monthly Fees
+    </div>
+  </div>
+
+  <!-- $97 Done-For-You (DFY) High-Margin Offer -->
+  <div class="dfy-card" id="dfy-setup">
+    <span class="dfy-badge">🔥 VIP WHITE-GLOVE SERVICE</span>
+    <div class="dfy-title">Prefer 100% Hands-Off Setup? Let Us Build It For You</div>
+    <div class="dfy-price">$97 USD <span style="font-size: 1rem; color: #94a3b8; font-weight: normal;">(One-Time Setup Fee)</span></div>
+    <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 20px;">
+      Don't want to touch terminal screens, SSH keys, or troubleshoot API webhooks? Our senior automation engineering team will remotely configure, harden, and verify your 24/7 Cloud AI Agent server within 24 hours.
+    </p>
+    <div class="dfy-features">
+      <div class="dfy-feature-item"><span>✓</span> Full installation of Docker, n8n, and Python 3 runtime on your Hostinger Cloud VPS</div>
+      <div class="dfy-feature-item"><span>✓</span> Automated setup of Make.com webhook connections and Google Sheets lead database</div>
+      <div class="dfy-feature-item"><span>✓</span> Integration and live testing of your Telegram notification bot</div>
+      <div class="dfy-feature-item"><span>✓</span> 24/7 background systemd watchdog setup (auto-restart if server reboots)</div>
+      <div class="dfy-feature-item"><span>✓</span> Guaranteed delivery in under 24 hours with full video walkthrough handover</div>
+    </div>
+
+    <!-- Official PayPal Checkout Form ($97 DFY) -->
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="b0ynghe0lx@gmail.com">
+      <input type="hidden" name="item_name" value="24h Done-For-You AI Agent and n8n Cloud VPS Setup">
+      <input type="hidden" name="amount" value="97.00">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="no_shipping" value="1">
+      <input type="hidden" name="return" value="https://ceopatinhalo-ai.github.io/automation-calculator/dfy-onboarding.html">
+      <input type="hidden" name="cancel_return" value="https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html">
+      <button type="submit" class="btn-dfy">
+        ⚡ Order 24H Done-For-You Setup ($97 USD)
+      </button>
+    </form>
+    <div style="text-align: center; margin-top: 12px; font-size: 0.8rem; color: #a78bfa;">
+      🔒 100% Satisfaction Guarantee • Includes All $19 Source Assets Free
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-card">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need coding experience to use the $19 starter kit?</div>
+      <div class="faq-a">Zero coding required. The Make.com blueprints import with 1-click, and the VPS installer is a single bash script that executes automatically.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which VPS provider do you recommend for running AI agents?</div>
+      <div class="faq-a">We specifically recommend Hostinger Cloud VPS ($4.99/mo) because it offers dedicated KVM virtualization, SSD storage, and works flawlessly with our 1-click script.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does the $97 Done-For-You (DFY) service work?</div>
+      <div class="faq-a">Immediately after checkout, you are redirected to the secure Onboarding Form where you provide your server IP and credentials. Our engineers deploy and test everything, then send you your ready-to-use system within 24 hours.</div>
+    </div>
+  </div>
+
+  <div class="nav-back">
+    <a href="index.html">← Back to Make vs Zapier Cost Calculator</a>
+  </div>
+</div>
+
+</body>
+</html>

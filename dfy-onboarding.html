@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24H DFY Setup Onboarding | AutoFlow VIP Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(16, 24, 40, 0.92);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.25);
+      --success: #10b981;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 20% 15%, rgba(139, 92, 246, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 40%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(139, 92, 246, 0.18);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #c4b5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-muted); font-size: 1.05rem; }
+
+    .status-card {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 18px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .status-icon { font-size: 1.8rem; }
+    .status-text { font-size: 0.95rem; color: #e2e8f0; }
+    .status-text strong { color: var(--success); }
+
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 36px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      margin-bottom: 36px;
+    }
+    .form-group { margin-bottom: 22px; }
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: #f1f5f9;
+    }
+    .input-hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+    input, select, textarea {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+    }
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding: 18px 24px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+      transition: all 0.2s ease;
+      margin-top: 10px;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(139, 92, 246, 0.5);
+    }
+
+    .security-guarantee {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+    }
+    .security-guarantee h3 { font-size: 1.1rem; color: #c4b5fd; margin-bottom: 8px; }
+    .security-guarantee p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">⚡ Payment Verified • Priority Queue</div>
+    <h1>24-Hour <span class="gradient-text">Done-For-You Setup</span> Intake</h1>
+    <p class="subtitle">Thank you for securing our VIP Engineering Setup. Complete the brief configuration form below to kick off deployment immediately.</p>
+  </header>
+
+  <div class="status-card">
+    <div class="status-icon">🚀</div>
+    <div class="status-text">
+      <strong>Your order has been queued for immediate deployment.</strong><br>
+      Typical turnaround time is 4 to 12 hours (guaranteed within 24 hours max).
+    </div>
+  </div>
+
+  <div class="form-card">
+    <form id="dfyForm" onsubmit="event.preventDefault(); handleSubmit();">
+      <div class="form-group">
+        <label for="contactEmail">Your Primary Email (for Delivery & Video Walkthrough)</label>
+        <input type="email" id="contactEmail" placeholder="founder@company.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telegramHandle">Your Telegram Username (Optional for Real-Time Chat)</label>
+        <input type="text" id="telegramHandle" placeholder="@your_handle">
+        <div class="input-hint">Our senior engineer will ping you on Telegram once live testing is complete.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="vpsProvider">Cloud VPS Provider</label>
+        <select id="vpsProvider" required>
+          <option value="Hostinger">Hostinger Cloud VPS (Recommended)</option>
+          <option value="Hetzner">Hetzner Cloud</option>
+          <option value="DigitalOcean">DigitalOcean Droplet</option>
+          <option value="AWS">Amazon Web Services (EC2)</option>
+          <option value="Other">Other Linux Ubuntu Server</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="vpsIp">Server IP Address</label>
+        <input type="text" id="vpsIp" placeholder="e.g. 195.35.24.110" required>
+      </div>
+
+      <div class="form-group">
+        <label for="vpsPass">Temporary Root Password or SSH Key</label>
+        <input type="password" id="vpsPass" placeholder="Enter temporary root password" required>
+        <div class="input-hint">You will be advised to change this root password immediately upon handover.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="customNotes">Specific Integrations or Notes (Optional)</label>
+        <textarea id="customNotes" rows="3" placeholder="e.g. Connect to my specific Telegram channel, custom domain setup..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn">
+        🚀 Submit Configuration & Start Deployment
+      </button>
+    </form>
+    <div id="confirmationMsg" style="display: none; text-align: center; padding: 20px; color: #34d399; font-weight: 700;">
+      ✅ Configuration received! Our engineering team has commenced setup. You will receive an initial dispatch notification shortly.
+    </div>
+  </div>
+
+  <div class="security-guarantee">
+    <h3>🔒 Institutional Security & Encryption Protocol</h3>
+    <p>
+      Server credentials are transmitted over encrypted TLS 1.3 and are strictly handled by certified DevOps engineers. All temporary keys are purged within 1 hour of project completion.
+    </p>
+  </div>
+</div>
+
+<script>
+  function handleSubmit() {
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerText = 'Submitting...';
+    setTimeout(() => {
+      document.getElementById('dfyForm').style.display = 'none';
+      document.getElementById('confirmationMsg').style.display = 'block';
+    }, 800);
+  }
+</script>
+
+</body>
+</html>

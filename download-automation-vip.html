@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Download Vault | The 2026 Solopreneur Business Automation & AI Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(16, 24, 40, 0.88);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #10b981;
+      --primary: #3b82f6;
+      --gold: #fbbf24;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-muted); font-size: 1.05rem; }
+
+    .bundle-download-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.2));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 24px;
+      padding: 36px;
+      text-align: center;
+      margin-bottom: 36px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .btn-download-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      padding: 18px 36px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+      transition: all 0.2s ease;
+      margin-top: 18px;
+    }
+    .btn-download-all:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(16, 185, 129, 0.5);
+    }
+
+    .assets-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 760px) { .assets-grid { grid-template-columns: 1fr; } }
+
+    .asset-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .asset-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .asset-icon { font-size: 1.5rem; line-height: 1; }
+    .asset-title { font-weight: 700; font-size: 1rem; color: #fff; }
+    .asset-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
+    .btn-asset {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 14px;
+    }
+    .btn-asset:hover { background: rgba(255, 255, 255, 0.12); }
+
+    .quickstart-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 36px;
+    }
+    .quickstart-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 16px; color: #fff; }
+    .step-item { display: flex; gap: 14px; margin-bottom: 18px; }
+    .step-num {
+      width: 28px; height: 28px;
+      background: #3b82f6; color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+    .step-text strong { color: #fff; }
+
+    .partners-banner {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 20px;
+      padding: 26px;
+      text-align: center;
+    }
+    .partners-banner h3 { font-size: 1.15rem; color: var(--accent); margin-bottom: 8px; }
+    .partners-banner p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; }
+    .partners-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-partner {
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+    }
+    .btn-partner:hover { background: rgba(16, 185, 129, 0.2); }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">✅ Instant Access Unlocked</div>
+    <h1>Welcome to the <span class="gradient-text">Automation Pro Vault</span></h1>
+    <p class="subtitle">Thank you for your purchase! All production Make.com blueprints, Bash VPS installers, and documentation are ready for download below.</p>
+  </header>
+
+  <!-- Complete Bundle Box -->
+  <div class="bundle-download-box">
+    <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff;">📦 Complete Automation Starter Package (.ZIP)</h2>
+    <p style="color: var(--text-muted); margin-top: 6px; font-size: 0.95rem;">
+      Contains all Make.com scenario JSON files, the Hostinger Cloud VPS installer script, and setup documentation in one archive.
+    </p>
+    <a href="downloads/automation-starter-kit-2026.zip" download class="btn-download-all">
+      ⚡ Download Automation Suite (.ZIP)
+    </a>
+  </div>
+
+  <!-- Individual Assets Grid -->
+  <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 16px;">📂 Individual Component Downloads</h3>
+
+  <div class="assets-grid">
+    <!-- Asset 1 -->
+    <div class="asset-card">
+      <div class="asset-head">
+        <div class="asset-icon">⚡</div>
+        <div>
+          <div class="asset-title">VIP Master Lead Gen Blueprint (.json)</div>
+          <div class="asset-desc">Connects Webhooks, Google Sheets, and Telegram alerts with built-in error handling.</div>
+        </div>
+      </div>
+      <a href="blueprints/Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json" download class="btn-asset">📥 Download Blueprint JSON</a>
+    </div>
+
+    <!-- Asset 2 -->
+    <div class="asset-card">
+      <div class="asset-head">
+        <div class="asset-icon">🤖</div>
+        <div>
+          <div class="asset-title">AI Email Autoresponder (.json)</div>
+          <div class="asset-desc">Analyzes incoming inquiries with AI and drafts auto-responses via Brevo / SMTP.</div>
+        </div>
+      </div>
+      <a href="blueprints/make-ai-email-autoresponder.json" download class="btn-asset">📥 Download Blueprint JSON</a>
+    </div>
+
+    <!-- Asset 3 -->
+    <div class="asset-card">
+      <div class="asset-head">
+        <div class="asset-icon">🚀</div>
+        <div>
+          <div class="asset-title">Hostinger Cloud VPS 1-Click Script (.sh)</div>
+          <div class="asset-desc">Automates Docker, Python 3, and n8n background agents in 60 seconds.</div>
+        </div>
+      </div>
+      <a href="blueprints/install-ai-agent-vps.sh" download class="btn-asset">📥 Download Shell Script</a>
+    </div>
+
+    <!-- Asset 4 -->
+    <div class="asset-card">
+      <div class="asset-head">
+        <div class="asset-icon">📢</div>
+        <div>
+          <div class="asset-title">Telegram Push Dispatcher (.json)</div>
+          <div class="asset-desc">Standalone scenario forwarding real-time alerts directly to Telegram channels.</div>
+        </div>
+      </div>
+      <a href="blueprints/make-lead-automation-telegram.json" download class="btn-asset">📥 Download Blueprint JSON</a>
+    </div>
+  </div>
+
+  <!-- Quickstart Setup -->
+  <div class="quickstart-card">
+    <div class="quickstart-title">⚡ 3-Minute Zero-Touch Quickstart Guide</div>
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>Import Make.com Blueprint:</strong> Create a new scenario in <a href="https://www.make.com" target="_blank" style="color: var(--accent);">Make.com</a> ➔ Click the three dots (...) at the bottom bar ➔ Click <em>"Import Blueprint"</em> ➔ Select any `.json` file.
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>Run VPS AI Agent Script:</strong> Deploy an Ubuntu VPS on Hostinger ($4.99/mo) ➔ SSH into the server ➔ Run <code>bash install-ai-agent-vps.sh</code>.
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>Connect Credentials:</strong> Plug in your Telegram bot token and Google account, then turn scenarios to <strong>ON</strong>.
+      </div>
+    </div>
+  </div>
+
+  <!-- Cloud Infrastructure Partners -->
+  <div class="partners-banner">
+    <h3>☁️ Recommended Cloud Infrastructure</h3>
+    <p>Deploy your 24/7 background AI agents on dedicated high-performance cloud servers:</p>
+    <div class="partners-links">
+      <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" rel="noopener" class="btn-partner">
+        Hostinger Cloud VPS (20% Off with AUTOFLOW20)
+      </a>
+      <a href="https://www.make.com" target="_blank" rel="noopener" class="btn-partner">
+        Make.com Visual Automation
+      </a>
+      <a href="https://www.brevo.com" target="_blank" rel="noopener" class="btn-partner">
+        Brevo Email Platform
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

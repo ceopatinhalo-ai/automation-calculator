@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The 2026 Pro Trader & Automation Starter Kit | AutoFlow VIP</title>
-  <meta name="description" content="Unlock institutional Pine Script trading indicators, Notion Trading Journal, and 10x Make.com VIP automation blueprints for just $19 USD.">
+  <title>The 2026 Institutional Prop Firm & SMC Trader Suite | AutoFlow Alpha</title>
+  <meta name="description" content="Unlock institutional Pine Script trading indicators (v5), Notion Prop Firm Trading Journal, and 5% Drawdown Defense Guard for just $19 USD.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(16, 24, 40, 0.85);
+      --bg: #080d1a;
+      --card-bg: rgba(15, 23, 42, 0.88);
       --card-border: rgba(255, 255, 255, 0.08);
       --accent: #10b981;
       --accent-glow: rgba(16, 185, 129, 0.25);
+      --gold: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.2);
       --primary: #3b82f6;
-      --gold: #fbbf24;
       --text: #f8fafc;
       --text-muted: #94a3b8;
     }
@@ -24,8 +25,8 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(59, 130, 246, 0.12) 0%, transparent 40%);
+        radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.12) 0%, transparent 40%);
       color: var(--text);
       line-height: 1.6;
       padding: 40px 20px 80px;
@@ -36,9 +37,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 14px;
-      background: rgba(251, 191, 36, 0.12);
-      border: 1px solid rgba(251, 191, 36, 0.35);
+      padding: 6px 16px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
       border-radius: 999px;
       font-size: 0.82rem;
       font-weight: 700;
@@ -55,7 +56,7 @@
       margin-bottom: 14px;
     }
     .gradient-text {
-      background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+      background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
       -webkit-background-clip: text;
       -webkit-fill-color: transparent;
       -webkit-text-fill-color: transparent;
@@ -63,7 +64,7 @@
     .subtitle {
       color: var(--text-muted);
       font-size: 1.05rem;
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto;
     }
 
@@ -83,7 +84,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #10b981, #3b82f6, #fbbf24);
+      background: linear-gradient(90deg, #f59e0b, #10b981, #3b82f6);
     }
 
     .price-box {
@@ -110,7 +111,7 @@
     }
     .price-tagline {
       font-size: 0.85rem;
-      color: var(--accent);
+      color: var(--gold);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -126,7 +127,7 @@
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      background: rgba(15, 23, 42, 0.5);
+      background: rgba(15, 23, 42, 0.6);
       border: 1px solid var(--card-border);
       padding: 16px 20px;
       border-radius: 14px;
@@ -137,17 +138,40 @@
     .value-worth { color: var(--gold); font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; }
     .value-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
 
+    .bonus-box {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px dashed rgba(245, 158, 11, 0.4);
+      border-radius: 16px;
+      padding: 18px 22px;
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .bonus-badge {
+      background: var(--gold);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .bonus-text { font-size: 0.88rem; color: #f1f5f9; line-height: 1.4; }
+    .bonus-text strong { color: var(--gold); }
+
     .btn-buy {
       width: 100%;
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #fff;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000;
       font-weight: 800;
       font-size: 1.15rem;
       padding: 18px 24px;
       border-radius: 14px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
@@ -157,17 +181,13 @@
     }
     .btn-buy:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(16, 185, 129, 0.5);
+      box-shadow: 0 14px 30px rgba(245, 158, 11, 0.45);
     }
     .security-note {
       text-align: center;
       margin-top: 14px;
       font-size: 0.8rem;
       color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
     }
 
     .faq-card {
@@ -180,44 +200,29 @@
     .faq-item { margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .faq-q { font-weight: 700; font-size: 0.95rem; color: #fff; margin-bottom: 4px; }
     .faq-a { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+    .nav-back { text-align: center; margin-top: 24px; font-size: 0.85rem; }
+    .nav-back a { color: var(--text-muted); text-decoration: none; }
+    .nav-back a:hover { color: #fff; }
   </style>
 </head>
 <body>
 
 <div class="container">
   <header>
-    <div class="badge">⭐ Instant Access • Zero Subscription Fees</div>
-    <h1>The 2026 Pro Trader & <span class="gradient-text">Automation Starter Kit</span></h1>
-    <p class="subtitle">Skip 60 hours of manual coding. Get institutional-grade TradingView Pine Script indicators, Notion Risk Journals, and production-ready Make.com automation blueprints.</p>
+    <div class="badge">🔥 2026 Institutional Trading Release</div>
+    <h1>The 2026 Institutional Prop Firm & <span class="gradient-text">SMC Trader Suite</span></h1>
+    <p class="subtitle">Stop breaching prop firm challenges. Get institutional-grade TradingView Pine Scripts, automated 5% daily drawdown defense, and algorithmic Fair Value Gap execution.</p>
   </header>
-
-  <!-- Specialized Track Switcher -->
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px;">
-    <a href="forex-vip-kit.html" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 14px; padding: 16px; text-decoration: none; display: flex; align-items: center; gap: 12px; transition: all 0.2s;">
-      <span style="font-size: 1.6rem;">📈</span>
-      <div>
-        <div style="font-weight: 800; font-size: 0.95rem; color: #fbbf24;">Only Need Trading Tools?</div>
-        <div style="font-size: 0.8rem; color: #94a3b8;">Prop Firm & SMC Trader Suite ($19) ➔</div>
-      </div>
-    </a>
-    <a href="automation-vip-kit.html" style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 14px; padding: 16px; text-decoration: none; display: flex; align-items: center; gap: 12px; transition: all 0.2s;">
-      <span style="font-size: 1.6rem;">⚡</span>
-      <div>
-        <div style="font-weight: 800; font-size: 0.95rem; color: #34d399;">Only Need Automations?</div>
-        <div style="font-size: 0.8rem; color: #94a3b8;">Make Blueprints & VPS AI ($19 / $97 DFY) ➔</div>
-      </div>
-    </a>
-  </div>
 
   <div class="pricing-card">
     <div class="price-box">
       <div>
-        <div class="price-tagline">🔥 Complete Digital Asset Bundle</div>
-        <div class="price-amount">$19 <span class="price-old">$415</span></div>
+        <div class="price-tagline">💎 Complete Trader Asset Suite</div>
+        <div class="price-amount">$19 <span class="price-old">$297</span></div>
       </div>
-      <div style="text-align: right;">
-        <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.85rem;">
-          Save 95% Today
+      <div>
+        <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.85rem;">
+          Save 93% Today
         </span>
       </div>
     </div>
@@ -229,59 +234,55 @@
         <div class="value-icon">🕯️</div>
         <div class="value-content">
           <div class="value-title">
-            <span>TradingView Pine Script Pro Suite (v5)</span>
-            <span class="value-worth">$149 Value</span>
+            <span>ICT Fair Value Gap (FVG) Automated Bot (.pine v5)</span>
+            <span class="value-worth">$119 Value</span>
           </div>
-          <div class="value-desc">Includes Automated ICT Fair Value Gap Bot, Liquidity Sweep / Order Block Hunter, and Prop Firm Daily Drawdown Warning Guard.</div>
+          <div class="value-desc">Pinpoints institutional liquidity imbalances across 1m, 5m, 15m, and 1H charts with real-time fill tracking and custom alerts.</div>
         </div>
       </div>
 
       <!-- Item 2 -->
       <div class="value-item">
-        <div class="value-icon">📓</div>
+        <div class="value-icon">🎯</div>
         <div class="value-content">
           <div class="value-title">
-            <span>Notion Pro Trading Journal & Risk Manager</span>
-            <span class="value-worth">$49 Value</span>
+            <span>SMC Liquidity Sweep & Order Block Hunter (.pine v5)</span>
+            <span class="value-worth">$89 Value</span>
           </div>
-          <div class="value-desc">Pre-built automated database template with Win-Rate tracking, Risk-to-Reward ratio calculator, and emotion logging. 1-Click Duplicate.</div>
+          <div class="value-desc">Detects stop hunt fakeouts and institutional manipulation wicks before high-probability trend reversals happen.</div>
         </div>
       </div>
 
       <!-- Item 3 -->
       <div class="value-item">
-        <div class="value-icon">⚡</div>
+        <div class="value-icon">🛡️</div>
         <div class="value-content">
           <div class="value-title">
-            <span>VIP Make.com Master Lead Generation Blueprint</span>
-            <span class="value-worth">$99 Value</span>
+            <span>Prop Firm Daily Drawdown Defense Guard (.pine v5)</span>
+            <span class="value-worth">$69 Value</span>
           </div>
-          <div class="value-desc">Production-grade JSON blueprint connecting Webhooks, Google Sheets database, and instant Telegram push notifications with error handling.</div>
+          <div class="value-desc">Hard-locks your maximum daily loss boundary (5% barrier on FTMO, FundedNext, MFF) directly onto your chart. Prevents account breach.</div>
         </div>
       </div>
 
       <!-- Item 4 -->
       <div class="value-item">
-        <div class="value-icon">🚀</div>
+        <div class="value-icon">📓</div>
         <div class="value-content">
           <div class="value-title">
-            <span>1-Click Cloud VPS AI Agent Deployment Script</span>
-            <span class="value-worth">$79 Value</span>
+            <span>Notion Pro Prop Firm & Trading Journal 2026</span>
+            <span class="value-worth">$49 Value</span>
           </div>
-          <div class="value-desc">Automated Bash script to deploy Docker, Python 3, n8n, and 24/7 background AI agents on a $4.99/mo Hostinger VPS with zero terminal headache.</div>
+          <div class="value-desc">Automated database template tracking Win-Rate, Risk-to-Reward ratio, psychological tilt alerts, and lot size calculations.</div>
         </div>
       </div>
+    </div>
 
-      <!-- Item 5 -->
-      <div class="value-item">
-        <div class="value-icon">📘</div>
-        <div class="value-content">
-          <div class="value-title">
-            <span>3-Minute Quickstart Guide & Zero-Touch FAQ</span>
-            <span class="value-worth">$39 Value</span>
-          </div>
-          <div class="value-desc">Step-by-step visual documentation and troubleshooting guide. Set up everything in under 5 minutes without writing a single line of code.</div>
-        </div>
+    <!-- Bonus Box: VIP Telegram Group -->
+    <div class="bonus-box">
+      <span class="bonus-badge">VIP BONUS</span>
+      <div class="bonus-text">
+        <strong>Free Lifetime Access to AutoFlow VIP Alpha Telegram Channel:</strong> Get daily institutional market breakdowns, NY session live key levels, and direct Pine Script updates.
       </div>
     </div>
 
@@ -289,19 +290,19 @@
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="b0ynghe0lx@gmail.com">
-      <input type="hidden" name="item_name" value="The 2026 Pro Trader and Automation Starter Kit">
+      <input type="hidden" name="item_name" value="The 2026 Institutional Prop Firm and SMC Trader Suite">
       <input type="hidden" name="amount" value="19.00">
       <input type="hidden" name="currency_code" value="USD">
       <input type="hidden" name="no_shipping" value="1">
-      <input type="hidden" name="return" value="https://ceopatinhalo-ai.github.io/automation-calculator/download-vault-vip.html">
-      <input type="hidden" name="cancel_return" value="https://ceopatinhalo-ai.github.io/automation-calculator/vip-kit.html">
+      <input type="hidden" name="return" value="https://ceopatinhalo-ai.github.io/automation-calculator/download-forex-vip.html">
+      <input type="hidden" name="cancel_return" value="https://ceopatinhalo-ai.github.io/automation-calculator/forex-vip-kit.html">
       <button type="submit" class="btn-buy">
-        🔒 Pay $19 USD with PayPal / Credit Card (Instant Download)
+        ⚡ Pay $19 USD with PayPal / Card (Instant Download)
       </button>
     </form>
 
     <div class="security-note">
-      🛡️ Encrypted 256-Bit SSL Checkout • Immediate Digital Delivery • Zero Touch Setup
+      🛡️ Encrypted 256-Bit SSL Checkout • Immediate Access to Source Files • Zero Monthly Fees
     </div>
   </div>
 
@@ -309,17 +310,21 @@
   <div class="faq-card">
     <div class="faq-title">Frequently Asked Questions</div>
     <div class="faq-item">
-      <div class="faq-q">How do I receive the files after purchase?</div>
-      <div class="faq-a">Immediately after completing payment, PayPal will redirect you to the AutoFlow VIP Download Vault where you can download the entire `.zip` bundle and access the Notion templates in 1 click.</div>
+      <div class="faq-q">Do these Pine Scripts work on the free TradingView plan?</div>
+      <div class="faq-a">Yes 100%. All indicators are coded in standard Pine Script v5 and do not require any paid TradingView subscription.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Do I need coding skills?</div>
-      <div class="faq-a">Zero coding required. You simply copy and paste the Pine Script code into TradingView's editor and import the JSON blueprint into Make.com. Everything is plug-and-play.</div>
+      <div class="faq-q">Can I use these indicators on Funded challenges (FTMO, FundedNext)?</div>
+      <div class="faq-a">Absolutely. The Prop Firm Drawdown Guard is specifically designed to prevent the #1 reason 90% of traders fail: violating the 5% daily loss limit.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Are there any recurring subscription fees?</div>
-      <div class="faq-a">None whatsoever. This is a one-time purchase with lifetime access to all files and indicators included in the 2026 starter package.</div>
+      <div class="faq-q">How do I access the files and Telegram VIP after payment?</div>
+      <div class="faq-a">PayPal immediately redirects you to the secure Download Vault where you can download the complete `.zip` archive and get your private invite link.</div>
     </div>
+  </div>
+
+  <div class="nav-back">
+    <a href="forex-calculator.html">← Back to Free Forex & Gold Lot Size Calculator</a>
   </div>
 </div>
 
