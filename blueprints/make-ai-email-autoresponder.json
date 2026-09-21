@@ -1,0 +1,51 @@
+{
+  "name": "AutoFlow AI Lead Classifier & Auto-Responder (OpenAI + Brevo)",
+  "version": 1,
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "name": "Incoming Form Submission"
+      }
+    },
+    {
+      "id": 2,
+      "module": "openai:createChatCompletion",
+      "version": 1,
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": [
+          { "role": "system", "content": "Analyze the user inquiry, determine lead score (Hot/Warm/Cold), and draft a personalized professional response email." },
+          { "role": "user", "content": "Customer: {{1.name}}\nInquiry: {{1.message}}" }
+        ]
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 0 },
+        "name": "AI Intent Analysis & Draft"
+      }
+    },
+    {
+      "id": 3,
+      "module": "brevo:sendTransactionalEmail",
+      "version": 1,
+      "parameters": {
+        "to": "{{1.email}}",
+        "subject": "Thank you for reaching out, {{1.name}}! Here is your custom solution",
+        "htmlContent": "<p>{{2.choices[].message.content}}</p>"
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 0 },
+        "name": "Send AI Email via Brevo"
+      }
+    }
+  ],
+  "metadata": {
+    "author": "AutoFlow Tech",
+    "description": "Auto-qualify leads with AI and send personalized transactional follow-ups instantly via Brevo.",
+    "license": "MIT"
+  }
+}

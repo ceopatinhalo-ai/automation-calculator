@@ -1,0 +1,48 @@
+{
+  "name": "AutoFlow Instant Lead Pipeline (Webhook -> Google Sheets -> Telegram)",
+  "version": 1,
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "name": "Catch Lead Webhook"
+      }
+    },
+    {
+      "id": 2,
+      "module": "google-sheets:addRow",
+      "version": 1,
+      "parameters": {
+        "spreadsheetId": "YOUR_GOOGLE_SHEET_ID",
+        "sheet": "Leads",
+        "values": ["{{1.name}}", "{{1.email}}", "{{1.phone}}", "{{formatDate(now; 'YYYY-MM-DD HH:mm')}}"]
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 0 },
+        "name": "Log Lead to Google Sheets"
+      }
+    },
+    {
+      "id": 3,
+      "module": "telegram:sendMessage",
+      "version": 1,
+      "parameters": {
+        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "text": "🚨 *NEW HOT LEAD RECEIVED*\n\n👤 Name: {{1.name}}\n📧 Email: {{1.email}}\n📱 Phone: {{1.phone}}\n⏰ Time: {{now}}\n\n_AutoFlow 1-Click Template_"
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 0 },
+        "name": "Instant Telegram Alert"
+      }
+    }
+  ],
+  "metadata": {
+    "author": "AutoFlow Tech",
+    "description": "Ready-to-use 1-click Make.com blueprint to capture leads and alert your team in real time.",
+    "license": "MIT"
+  }
+}

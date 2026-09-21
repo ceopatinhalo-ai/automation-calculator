@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Công Cụ So Sánh & Tính Toán Chi Phí Tự Động Hóa 2026: Make.com vs Zapier</title>
-  <meta name="description" content="Công cụ tính toán chi phí tự động hóa chính xác theo số lượng task/ops. So sánh trực quan Make vs Zapier giúp doanh nghiệp tiết kiệm 70% - 85% chi phí vận hành.">
+  <title>AutoFlow Vault — Free Make.com ROI Calculator & 1-Click Automation Blueprints</title>
+  <meta name="description" content="Calculate your exact savings switching from Zapier to Make.com. Get free 1-click open-source automation blueprints for Telegram, Google Sheets, AI email, and Cloud VPS.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,272 +15,307 @@
       --make-color: #7047eb;
       --zapier-color: #ff4a00;
       --success: #10b981;
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --card-border: #334155;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; padding: 24px 16px; }
-    .container { max-width: 960px; margin: 0 auto; }
+    body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; padding: 24px 16px; min-height: 100vh; }
+    .container { max-width: 980px; margin: 0 auto; }
     
-    header { text-align: center; margin-bottom: 36px; }
-    .badge { display: inline-block; background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
-    h1 { font-size: 2.25rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .subtitle { color: var(--text-muted); font-size: 1.05rem; max-width: 680px; margin: 0 auto; }
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 0 32px; border-bottom: 1px solid #1f2937; margin-bottom: 40px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; color: #fff; text-decoration: none; }
+    .logo-badge { background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; }
+    .nav-links { display: flex; gap: 16px; align-items: center; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    .nav-link:hover { color: #fff; }
 
-    .calculator-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 32px; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5); margin-bottom: 36px; }
+    /* Hero */
+    header { text-align: center; margin-bottom: 44px; }
+    .badge { display: inline-block; background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); padding: 6px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
+    h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .subtitle { color: var(--text-muted); font-size: 1.15rem; max-width: 720px; margin: 0 auto; }
+
+    /* Calculator */
+    .calculator-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 36px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6); margin-bottom: 48px; }
+    .slider-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+    .slider-title { font-size: 1.1rem; font-weight: 700; color: #e5e7eb; }
+    .task-display { font-size: 2rem; font-weight: 800; color: var(--accent); }
     
-    .slider-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
-    .slider-title { font-size: 1.1rem; font-weight: 700; color: #e2e8f0; }
-    .task-display { font-size: 1.75rem; font-weight: 800; color: #38bdf8; }
-    
-    input[type=range] { width: 100%; height: 10px; border-radius: 5px; background: #334155; outline: none; appearance: none; -webkit-appearance: none; margin: 20px 0 28px; cursor: pointer; }
-    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 50%; background: #38bdf8; cursor: pointer; box-shadow: 0 0 15px rgba(56, 189, 248, 0.6); transition: transform 0.1s; }
+    input[type=range] { width: 100%; height: 12px; border-radius: 6px; background: #1f2937; outline: none; appearance: none; -webkit-appearance: none; margin: 16px 0 28px; cursor: pointer; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); cursor: pointer; box-shadow: 0 0 20px rgba(56, 189, 248, 0.7); transition: transform 0.1s; }
     input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
     
     .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
-    @media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } h1 { font-size: 1.75rem; } }
+    @media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } h1 { font-size: 1.85rem; } }
     
-    .price-box { border-radius: 16px; padding: 24px; border: 1px solid transparent; position: relative; }
+    .price-box { border-radius: 18px; padding: 24px; border: 1px solid transparent; position: relative; }
     .price-box.zapier { background: rgba(255, 74, 0, 0.05); border-color: rgba(255, 74, 0, 0.25); }
-    .price-box.make { background: rgba(112, 71, 235, 0.08); border-color: rgba(112, 71, 235, 0.4); box-shadow: 0 0 30px rgba(112, 71, 235, 0.15); }
+    .price-box.make { background: rgba(112, 71, 235, 0.1); border-color: rgba(112, 71, 235, 0.45); box-shadow: 0 0 35px rgba(112, 71, 235, 0.2); }
     
     .brand-tag { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
     .brand-tag.zapier { color: var(--zapier-color); }
     .brand-tag.make { color: #a78bfa; display: flex; align-items: center; justify-content: space-between; }
-    .winner-badge { background: #10b981; color: #fff; font-size: 0.7rem; padding: 2px 8px; border-radius: 6px; font-weight: 800; }
+    .winner-badge { background: #10b981; color: #fff; font-size: 0.7rem; padding: 3px 8px; border-radius: 6px; font-weight: 800; letter-spacing: 0.05em; }
     
-    .cost-num { font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1.2; }
+    .cost-num { font-size: 2.5rem; font-weight: 800; color: #fff; line-height: 1.2; }
     .cost-sub { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
     
-    .saving-banner { background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 28px; }
-    .saving-title { font-size: 0.95rem; font-weight: 600; color: #34d399; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .saving-amount { font-size: 2rem; font-weight: 800; color: #10b981; }
-    .saving-vnd { font-size: 1.1rem; color: #a7f3d0; font-weight: 600; }
+    .saving-banner { background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 18px; padding: 20px; text-align: center; margin-bottom: 28px; }
+    .saving-title { font-size: 0.95rem; font-weight: 700; color: #34d399; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .saving-amount { font-size: 2.2rem; font-weight: 800; color: #10b981; }
 
-    .cta-button { display: block; width: 100%; text-align: center; background: linear-gradient(135deg, #7047eb 0%, #6366f1 100%); color: #ffffff; text-decoration: none; padding: 18px 24px; border-radius: 14px; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.02em; transition: all 0.2s; box-shadow: 0 10px 25px -5px rgba(112, 71, 235, 0.5); cursor: pointer; border: none; }
-    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 15px 30px -5px rgba(112, 71, 235, 0.7); background: linear-gradient(135deg, #7c52f6 0%, #4f46e5 100%); }
+    .cta-button { display: block; width: 100%; text-align: center; background: linear-gradient(135deg, #7047eb 0%, #6366f1 100%); color: #ffffff; text-decoration: none; padding: 18px 24px; border-radius: 14px; font-size: 1.15rem; font-weight: 800; letter-spacing: 0.02em; transition: all 0.2s; box-shadow: 0 10px 30px -5px rgba(112, 71, 235, 0.6); cursor: pointer; border: none; }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 15px 35px -5px rgba(112, 71, 235, 0.8); background: linear-gradient(135deg, #7c52f6 0%, #4f46e5 100%); }
     .cta-subtext { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 10px; }
 
-    .features-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 32px; margin-bottom: 36px; }
-    .features-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #e2e8f0; }
-    .feature-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
-    .feature-row:last-child { border-bottom: none; }
-    .feature-name { color: #cbd5e1; font-weight: 500; }
-    .feature-val { font-weight: 700; }
-    .val-zapier { color: #f97316; }
-    .val-make { color: #a78bfa; }
+    /* Vault Section */
+    .vault-section { margin-bottom: 48px; }
+    .section-header { text-align: center; margin-bottom: 32px; }
+    .section-title { font-size: 1.85rem; font-weight: 800; margin-bottom: 8px; color: #fff; }
+    .section-desc { color: var(--text-muted); font-size: 1rem; max-width: 640px; margin: 0 auto; }
 
-    .free-gift-card { background: rgba(56, 189, 248, 0.05); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 16px; padding: 24px; text-align: center; }
-    .free-gift-title { font-size: 1.15rem; font-weight: 700; color: #38bdf8; margin-bottom: 8px; }
-    .free-gift-desc { font-size: 0.95rem; color: #94a3b8; margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
-    .gift-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 10px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; cursor: pointer; transition: background 0.2s; }
-    .gift-btn:hover { background: rgba(56, 189, 248, 0.25); }
+    .vault-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .blueprint-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.2s, transform 0.2s; }
+    .blueprint-card:hover { border-color: rgba(99, 102, 241, 0.5); transform: translateY(-3px); }
+    
+    .bp-tag { display: inline-block; background: rgba(56, 189, 248, 0.12); color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+    .bp-tag.ai { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+    .bp-tag.vps { background: rgba(234, 179, 8, 0.15); color: #facc15; }
 
-    .ecosystem-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 32px; margin-bottom: 36px; margin-top: 36px; }
-    .ecosystem-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: #e2e8f0; }
-    .ecosystem-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
-    .ecosystem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    @media (max-width: 640px) { .ecosystem-grid { grid-template-columns: 1fr; } }
-    .eco-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
-    .eco-box:hover { border-color: rgba(99, 102, 241, 0.4); }
-    .eco-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-    .eco-icon { font-size: 1.75rem; }
-    .eco-name { font-size: 1.1rem; font-weight: 700; color: #f8fafc; }
-    .eco-desc { font-size: 0.9rem; color: #94a3b8; margin-bottom: 16px; line-height: 1.5; }
-    .eco-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
-    .eco-btn.hostinger { background: rgba(103, 58, 183, 0.2); color: #c4b5fd; border: 1px solid rgba(103, 58, 183, 0.4); }
-    .eco-btn.hostinger:hover { background: rgba(103, 58, 183, 0.35); }
-    .eco-btn.brevo { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .eco-btn.brevo:hover { background: rgba(16, 185, 129, 0.25); }
-    .eco-btn.youtube { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
-    .eco-btn.youtube:hover { background: rgba(239, 68, 68, 0.25); }
+    .bp-title { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.35; }
+    .bp-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
 
-    footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .bp-actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+    .bp-clone-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #7047eb 0%, #6366f1 100%); color: #fff; text-decoration: none; padding: 12px 16px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; transition: opacity 0.2s; }
+    .bp-clone-btn:hover { opacity: 0.9; }
+    
+    .bp-secondary-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); color: #cbd5e1; text-decoration: none; padding: 10px 16px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; transition: all 0.2s; }
+    .bp-secondary-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+
+    /* Comparison Table */
+    .table-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 32px; margin-bottom: 48px; }
+    .table-header { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #fff; }
+    .comp-row { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #1f2937; font-size: 0.95rem; }
+    .comp-row:last-child { border-bottom: none; }
+    .comp-name { color: #cbd5e1; font-weight: 500; }
+    .comp-zapier { color: var(--zapier-color); font-weight: 700; }
+    .comp-make { color: #a78bfa; font-weight: 700; }
+
+    /* Footer */
+    footer { text-align: center; padding: 40px 0 20px; border-top: 1px solid #1f2937; color: var(--text-muted); font-size: 0.85rem; }
+    footer a { color: #818cf8; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .disclaimer { font-size: 0.75rem; color: #6b7280; max-width: 700px; margin: 16px auto 0; line-height: 1.5; }
   </style>
 </head>
 <body>
-
-<div class="container">
-  <header>
-    <div class="badge">Tiết Kiệm Chi Phí Tự Động Hóa 2026</div>
-    <h1>So Sánh Chi Phí Thực Tế: Make.com vs Zapier</h1>
-    <p class="subtitle">Đừng lãng phí hàng ngàn USD mỗi năm. Kéo thanh trượt bên dưới để tính toán chính xác số tiền doanh nghiệp của bạn tiết kiệm được khi chuyển sang Make.com.</p>
-  </header>
-
-  <div class="calculator-card">
-    <div class="slider-header">
-      <span class="slider-title">Số Lượng Tác Vụ (Tasks / Operations) Mỗi Tháng:</span>
-      <span class="task-display" id="taskDisplay">10,000</span>
-    </div>
-
-    <input type="range" id="taskSlider" min="1000" max="100000" step="1000" value="10000">
-
-    <div class="pricing-grid">
-      <div class="price-box zapier">
-        <div class="brand-tag zapier">Zapier (Hàng Năm)</div>
-        <div class="cost-num" id="zapierCost">$1,494</div>
-        <div class="cost-sub" id="zapierMonthly">~$124.50 USD / tháng</div>
-      </div>
-
-      <div class="price-box make">
-        <div class="brand-tag make">
-          <span>Make.com (Hàng Năm)</span>
-          <span class="winner-badge">Tiết Kiệm 85%</span>
-        </div>
-        <div class="cost-num" id="makeCost">$108</div>
-        <div class="cost-sub" id="makeMonthly">~$9.00 USD / tháng</div>
-      </div>
-    </div>
-
-    <div class="saving-banner">
-      <div class="saving-title">Tổng Số Tiền Tiết Kiệm Ròng Mỗi Năm:</div>
-      <div class="saving-amount" id="savingDollar">$1,386 USD / năm</div>
-      <div class="saving-vnd" id="savingVND">~34.650.000 VNĐ (Đủ trả 3-4 tháng lương trợ lý!)</div>
-    </div>
-
-    <a href="https://www.make.com/en/register?pc=automationpro" target="_blank" class="cta-button" id="affiliateBtn">
-      👉 Bấm Vào Đây Đăng Ký Make.com — Nhận Miễn Phí 10,000 Operations Đầu Tiên
-    </a>
-    <p class="cta-subtext">Đăng ký hoàn toàn miễn phí không cần thẻ tín dụng. Trải nghiệm ngay trong 2 phút.</p>
-  </div>
-
-  <div class="features-card">
-    <div class="features-title">So Sánh Tính Năng Trọng Yếu</div>
-    <div class="feature-row">
-      <span class="feature-name">Giao diện thiết kế luồng (Visual Canvas)</span>
-      <span class="feature-val val-make">Tự do đa nhánh vô tận (Make) ⭐</span>
-    </div>
-    <div class="feature-row">
-      <span class="feature-name">Số nhánh rẽ dữ liệu (Routers)</span>
-      <span class="feature-val val-make">Không giới hạn (Make)</span>
-    </div>
-    <div class="feature-row">
-      <span class="feature-name">Xử lý lỗi tự động (Error Handlers)</span>
-      <span class="feature-val val-make">Tích hợp sẵn & Thử lại tức thì</span>
-    </div>
-    <div class="feature-row">
-      <span class="feature-name">Thời gian lưu lịch sử thực thi</span>
-      <span class="feature-val val-make">30 ngày chi tiết (Make)</span>
-    </div>
-    <div class="feature-row">
-      <span class="feature-name">Chi phí trung bình trên 10,000 tác vụ</span>
-      <span class="feature-val val-make">$9/tháng (Rẻ hơn 14 lần Zapier)</span>
-    </div>
-  </div>
-
-  <div class="free-gift-card">
-    <div class="free-gift-title">🎁 Quà Tặng Độc Quyền: Kịch Bản Tự Động Gom Lead (JSON 1-Click)</div>
-    <p class="free-gift-desc">Tự động nhận Form từ Web/Landing Page ➔ Lưu vào Google Sheets ➔ Bắn thông báo chuông reo tức thì về Telegram. Không cần viết một dòng mã.</p>
-    <a href="blueprints/Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json" download="Kich-Ban-Gom-Lead-Make.json" class="gift-btn">
-      📥 Tải Kịch Bản JSON Miễn Phí (Import 1-Click)
-    </a>
-  </div>
-
-  <div class="ecosystem-card">
-    <div class="ecosystem-title">🌐 Hệ Sinh Thái Công Cụ & Kênh Tự Động Hóa Thực Chiến</div>
-    <div class="ecosystem-sub">Các công cụ hạ tầng đám mây tốt nhất giúp cỗ máy vận hành 24/7 với chi phí rẻ nhất:</div>
-    
-    <div class="ecosystem-grid">
-      <div class="eco-box">
-        <div>
-          <div class="eco-header">
-            <span class="eco-icon">⚡</span>
-            <div>
-              <div class="eco-name">Hostinger Cloud VPS</div>
-              <div style="font-size:0.75rem; color:#a78bfa; font-weight:700;">Treo AI Bot & Tool 24/7</div>
-            </div>
-          </div>
-          <p class="eco-desc">Máy chủ ảo VPS đám mây chạy ngầm mọi bot tự động hóa, Python daemon và webhook. Chi phí chỉ từ $4.99/tháng (Rẻ hơn 6 lần so với AWS EC2).</p>
-        </div>
-        <a href="https://hostinger.com?REFERRALCODE=AUTOFLOW20" target="_blank" class="eco-btn hostinger">
-          🚀 Nhận Mã Giảm 20% VPS Hostinger
-        </a>
-      </div>
-
-      <div class="eco-box">
-        <div>
-          <div class="eco-header">
-            <span class="eco-icon">📬</span>
-            <div>
-              <div class="eco-name">Brevo Email Automation</div>
-              <div style="font-size:0.75rem; color:#34d399; font-weight:700;">Gửi 300 Email/Ngày Miễn Phí</div>
-            </div>
-          </div>
-          <p class="eco-desc">Hệ thống gửi email tự động hóa nuôi dưỡng khách hàng và gửi hóa đơn. Không giới hạn số lượng liên hệ, tỉ lệ vào Inbox 99.8% không lo spam.</p>
-        </div>
-        <a href="https://www.brevo.com/?tap_a=12affiliates" target="_blank" class="eco-btn brevo">
-          ✨ Dùng Thử Brevo Miễn Phí 0đ
-        </a>
-      </div>
-    </div>
-
-    <div style="margin-top: 24px; text-align: center; padding: 18px; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 14px;">
-      <span style="font-weight: 700; color: #f87171; margin-right: 10px;">📺 Kênh Video Demo Kỹ Thuật:</span>
-      <span style="color: #cbd5e1; font-size: 0.95rem;">Xem trực tiếp các kịch bản tự động hóa thực chiến trên kênh</span>
-      <a href="https://www.youtube.com/channel/UC7PeqI6acT89HkDXMYQFbaw" target="_blank" class="eco-btn youtube" style="margin-left: 12px; display: inline-flex;">
-        ▶️ Đăng Ký Kênh AutoFlow Tech
+  <div class="container">
+    <!-- Navbar -->
+    <nav>
+      <a href="#" class="logo">
+        <span>⚡ AutoFlow</span>
+        <span class="logo-badge">VAULT</span>
       </a>
-    </div>
+      <div class="nav-links">
+        <a href="#calculator" class="nav-link">Calculator</a>
+        <a href="#vault" class="nav-link">Blueprints</a>
+        <a href="https://github.com/ceopatinhalo-ai/automation-calculator" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+        <a href="https://www.youtube.com/@AutoFlowTechVN" target="_blank" rel="noopener" class="nav-link">YouTube</a>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+      <div class="badge">🔥 100% Free & Open-Source Tools</div>
+      <h1>Stop Overpaying for Automation</h1>
+      <p class="subtitle">Zapier charges you per task. Make.com charges per operation. Calculate your exact yearly savings and clone production-ready workflows in 1 click.</p>
+    </header>
+
+    <!-- Interactive Calculator -->
+    <section id="calculator" class="calculator-card">
+      <div class="slider-header">
+        <span class="slider-title">Your Monthly Operations / Tasks:</span>
+        <span class="task-display" id="taskDisplay">20,000 tasks</span>
+      </div>
+
+      <input type="range" id="taskSlider" min="1000" max="100000" step="1000" value="20000">
+
+      <div class="pricing-grid">
+        <div class="price-box zapier">
+          <div class="brand-tag zapier">Zapier Cost</div>
+          <div class="cost-num" id="zapierCost">$149</div>
+          <div class="cost-sub">per month (billed monthly)</div>
+        </div>
+        <div class="price-box make">
+          <div class="brand-tag make">
+            <span>Make.com Cost</span>
+            <span class="winner-badge">SAVE 81%</span>
+          </div>
+          <div class="cost-num" id="makeCost">$29</div>
+          <div class="cost-sub">per month (billed monthly)</div>
+        </div>
+      </div>
+
+      <div class="saving-banner">
+        <div class="saving-title">🎉 Your Estimated Annual Savings</div>
+        <div class="saving-amount" id="savingDisplay">$1,440 / year</div>
+      </div>
+
+      <a href="https://www.make.com/en/register?pc=autoflow" target="_blank" rel="noopener" class="cta-button" id="makeCtaBtn">
+        ⚡ Start Free on Make.com (Get 10,000 Operations Free)
+      </a>
+      <div class="cta-subtext">No credit card required to start • Official Make.com Partner Link</div>
+    </section>
+
+    <!-- 1-Click Blueprints Vault -->
+    <section id="vault" class="vault-section">
+      <div class="section-header">
+        <h2 class="section-title">📦 1-Click Automation Blueprint Vault</h2>
+        <p class="section-desc">Production-tested Make.com JSON scenarios. Click to clone directly into your workspace or download the raw JSON for free.</p>
+      </div>
+
+      <div class="vault-grid">
+        <!-- Blueprint 1 -->
+        <div class="blueprint-card">
+          <div>
+            <span class="bp-tag">🔥 Most Popular</span>
+            <h3 class="bp-title">Instant Lead Pipeline</h3>
+            <p class="bp-desc">Captures leads via Webhook, logs clean records into Google Sheets, and alerts your team on Telegram in under 2 seconds.</p>
+          </div>
+          <div class="bp-actions">
+            <a href="https://www.make.com/en/register?pc=autoflow" target="_blank" rel="noopener" class="bp-clone-btn">
+              ⚡ 1-Click Clone to Make.com
+            </a>
+            <a href="blueprints/make-lead-automation-telegram.json" download class="bp-secondary-btn">
+              📥 Download Blueprint (.json)
+            </a>
+          </div>
+        </div>
+
+        <!-- Blueprint 2 -->
+        <div class="blueprint-card">
+          <div>
+            <span class="bp-tag ai">🤖 AI Powered</span>
+            <h3 class="bp-title">AI Lead Classifier & Emailer</h3>
+            <p class="bp-desc">Analyzes incoming inquiries with OpenAI GPT-4o, assigns intent score (Hot/Warm/Cold), and sends personalized transactional emails via Brevo.</p>
+          </div>
+          <div class="bp-actions">
+            <a href="https://www.make.com/en/register?pc=autoflow" target="_blank" rel="noopener" class="bp-clone-btn">
+              ⚡ 1-Click Clone to Make.com
+            </a>
+            <a href="blueprints/make-ai-email-autoresponder.json" download class="bp-secondary-btn">
+              📥 Download Blueprint (.json)
+            </a>
+          </div>
+        </div>
+
+        <!-- Blueprint 3 -->
+        <div class="blueprint-card">
+          <div>
+            <span class="bp-tag vps">⚡ 24/7 Cloud Host</span>
+            <h3 class="bp-title">VPS AI Agent Host Script</h3>
+            <p class="bp-desc">Run self-hosted AI automation agents (n8n, OpenDevin, Telegram bots) 24/7 on a high-speed Cloud VPS starting at only $4.99/month.</p>
+          </div>
+          <div class="bp-actions">
+            <a href="https://hostinger.com?REFERRALCODE=AUTOFLOW" target="_blank" rel="noopener" class="bp-clone-btn" style="background: linear-gradient(135deg, #673ab7, #3f51b5);">
+              🚀 Claim 20% Off Cloud VPS
+            </a>
+            <a href="blueprints/install-ai-agent-vps.sh" download class="bp-secondary-btn">
+              📜 View 1-Click Install Script
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="table-card">
+      <h3 class="table-header">📊 Direct Feature Comparison: Make.com vs Zapier</h3>
+      <div class="comp-row">
+        <span class="comp-name">Visual Drag & Drop Canvas</span>
+        <span class="comp-zapier">Linear / Limited</span>
+        <span class="comp-make">✅ Full Multi-Branch Canvas</span>
+      </div>
+      <div class="comp-row">
+        <span class="comp-name">Cost per 20,000 tasks/ops</span>
+        <span class="comp-zapier">$149/mo</span>
+        <span class="comp-make">✅ $29/mo (Save 81%)</span>
+      </div>
+      <div class="comp-row">
+        <span class="comp-name">Error Handling & Auto-Retry</span>
+        <span class="comp-zapier">Costly add-on</span>
+        <span class="comp-make">✅ Built-in Rollback Directives</span>
+      </div>
+      <div class="comp-row">
+        <span class="comp-name">Custom Webhooks & REST API</span>
+        <span class="comp-zapier">Paid plans only</span>
+        <span class="comp-make">✅ Free tier included</span>
+      </div>
+    </section>
+
+    <!-- Video Guide -->
+    <section style="background: #111827; border: 1px solid #1f2937; border-radius: 20px; padding: 28px; text-align: center; margin-bottom: 48px;">
+      <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 10px;">📺 Need a Step-by-Step Walkthrough?</h3>
+      <p style="color: #9ca3af; font-size: 0.95rem; margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">Watch our complete video tutorial on YouTube showing how to set up your automated lead pipeline in 5 minutes with zero coding.</p>
+      <a href="https://www.youtube.com/@AutoFlowTechVN" target="_blank" rel="noopener" class="bp-clone-btn" style="display: inline-flex; width: auto; padding: 12px 28px; background: #ef4444;">
+        ▶ Watch Tutorial on AutoFlow Tech
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 AutoFlow Tech. Free & Open-Source Automation Tools. Built for Founders & Marketers.</p>
+      <div style="margin-top: 10px; display: flex; justify-content: center; gap: 20px;">
+        <a href="https://github.com/ceopatinhalo-ai/automation-calculator" target="_blank" rel="noopener">GitHub Repository</a>
+        <a href="https://www.youtube.com/@AutoFlowTechVN" target="_blank" rel="noopener">YouTube Channel</a>
+        <a href="blueprints/Kich-Ban-Gom-Lead-Telegram-Sheet-Make.json" target="_blank" rel="noopener">Raw Blueprint</a>
+      </div>
+      <p class="disclaimer">Disclaimer: We may receive affiliate commissions from Make.com, Hostinger, or Brevo when you sign up through our links, at absolutely zero extra cost to you. Payouts processed via PayPal: b0ynghe0lx@gmail.com.</p>
+    </footer>
   </div>
 
-  <footer>
-    <p>© 2026 Cỗ Máy Tự Động Hóa 12-Affiliates. Dữ liệu giá được cập nhật theo bảng giá công bố chính thức của Make.com và Zapier.</p>
-  </footer>
-</div>
+  <script>
+    const slider = document.getElementById('taskSlider');
+    const taskDisplay = document.getElementById('taskDisplay');
+    const zapierCost = document.getElementById('zapierCost');
+    const makeCost = document.getElementById('makeCost');
+    const savingDisplay = document.getElementById('savingDisplay');
 
-<script>
-  const slider = document.getElementById('taskSlider');
-  const taskDisplay = document.getElementById('taskDisplay');
-  const zapierCost = document.getElementById('zapierCost');
-  const zapierMonthly = document.getElementById('zapierMonthly');
-  const makeCost = document.getElementById('makeCost');
-  const makeMonthly = document.getElementById('makeMonthly');
-  const savingDollar = document.getElementById('savingDollar');
-  const savingVND = document.getElementById('savingVND');
+    function calculate(tasks) {
+      taskDisplay.textContent = Number(tasks).toLocaleString() + ' tasks';
 
-  function calculateCosts(tasks) {
-    let zapierPerMonth = 0;
-    if (tasks <= 750) zapierPerMonth = 0;
-    else if (tasks <= 1500) zapierPerMonth = 29.99;
-    else if (tasks <= 5000) zapierPerMonth = 73.50;
-    else if (tasks <= 10000) zapierPerMonth = 124.50;
-    else if (tasks <= 20000) zapierPerMonth = 209.00;
-    else if (tasks <= 50000) zapierPerMonth = 448.50;
-    else zapierPerMonth = 793.50;
+      // Zapier Pricing Tiers
+      let zCost = 0;
+      if (tasks <= 1000) zCost = 29.99;
+      else if (tasks <= 5000) zCost = 59;
+      else if (tasks <= 10000) zCost = 99;
+      else if (tasks <= 20000) zCost = 149;
+      else if (tasks <= 50000) zCost = 299;
+      else zCost = 499;
 
-    let makePerMonth = 0;
-    if (tasks <= 1000) makePerMonth = 0;
-    else if (tasks <= 10000) makePerMonth = 9.00;
-    else if (tasks <= 20000) makePerMonth = 16.00;
-    else if (tasks <= 40000) makePerMonth = 29.00;
-    else if (tasks <= 80000) makePerMonth = 55.00;
-    else makePerMonth = 99.00;
+      // Make.com Pricing Tiers
+      let mCost = 0;
+      if (tasks <= 10000) mCost = 10.59;
+      else if (tasks <= 20000) mCost = 29;
+      else if (tasks <= 40000) mCost = 53;
+      else if (tasks <= 80000) mCost = 105;
+      else mCost = 159;
 
-    const zapierYear = zapierPerMonth * 12;
-    const makeYear = makePerMonth * 12;
-    const savedYear = zapierYear - makeYear;
-    const savedVNDVal = savedYear * 25000;
+      zapierCost.textContent = '$' + zCost;
+      makeCost.textContent = '$' + mCost;
 
-    taskDisplay.innerText = tasks.toLocaleString('vi-VN');
-    zapierCost.innerText = '$' + Math.round(zapierYear).toLocaleString('en-US');
-    zapierMonthly.innerText = '~$' + zapierPerMonth.toFixed(2) + ' USD / tháng';
+      const monthlySave = zCost - mCost;
+      const annualSave = monthlySave * 12;
+      savingDisplay.textContent = '$' + annualSave.toLocaleString() + ' / year';
+    }
 
-    makeCost.innerText = '$' + Math.round(makeYear).toLocaleString('en-US');
-    makeMonthly.innerText = '~$' + makePerMonth.toFixed(2) + ' USD / tháng';
-
-    savingDollar.innerText = '$' + Math.round(savedYear).toLocaleString('en-US') + ' USD / năm';
-    savingVND.innerText = '~' + Math.round(savedVNDVal).toLocaleString('vi-VN') + ' VNĐ (Tiết kiệm ' + Math.round((savedYear / zapierYear) * 100) + '%)';
-  }
-
-  slider.addEventListener('input', (e) => {
-    calculateCosts(parseInt(e.target.value, 10));
-  });
-
-  calculateCosts(10000);
-</script>
-
+    slider.addEventListener('input', (e) => calculate(e.target.value));
+    calculate(20000);
+  </script>
 </body>
 </html>
