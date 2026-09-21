@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>So Sánh & Tính Chi Phí: Framer vs Webflow 2026 — Nên Chọn Nền Tảng Nào?</title>
+  <meta name="description" content="Công cụ tương tác so sánh tính năng, thời gian dựng web và chi phí thực tế giữa Framer và Webflow năm 2026. Chọn đúng nền tảng phù hợp cho Freelancer, Startup và Agency.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #0099ff;
+      --primary-hover: #007acc;
+      --framer: #0055ff;
+      --webflow: #146ef5;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --accent: #ec4899;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(0, 153, 255, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.12) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 16px;
+    }
+    .container { width: 100%; max-width: 880px; }
+    header { text-align: center; margin-bottom: 36px; }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      transition: all 0.2s;
+    }
+    .nav-back:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(0, 153, 255, 0.15);
+      border: 1px solid rgba(0, 153, 255, 0.3);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #7dd3fc;
+      margin-bottom: 16px;
+    }
+    h1 { 
+      font-size: 2.25rem; 
+      font-weight: 800; 
+      line-height: 1.25; 
+      margin-bottom: 12px; 
+      background: linear-gradient(135deg, #ffffff 30%, #7dd3fc 70%, #f472b6 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .subtitle { color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; max-width: 720px; margin: 0 auto; }
+
+    .calc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      margin-bottom: 32px;
+    }
+
+    .form-section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .option-btn {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .option-btn:hover {
+      border-color: rgba(0, 153, 255, 0.4);
+      color: #fff;
+    }
+    .option-btn.active {
+      background: rgba(0, 153, 255, 0.15);
+      border-color: #0099ff;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 153, 255, 0.25);
+    }
+    .option-btn span { display: block; font-size: 0.75rem; color: #64748b; margin-top: 4px; font-weight: 400; }
+    .option-btn.active span { color: #93c5fd; }
+
+    .slider-group { margin-bottom: 28px; }
+    .slider-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .slider-label { font-weight: 600; font-size: 0.95rem; color: #e2e8f0; }
+    .slider-val { font-size: 1.2rem; font-weight: 800; color: #38bdf8; }
+    input[type=range] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #1e293b;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #0099ff;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(0, 153, 255, 0.8);
+      border: 2px solid #ffffff;
+    }
+
+    .recommendation-card {
+      background: linear-gradient(135deg, rgba(0, 153, 255, 0.12), rgba(236, 72, 153, 0.08));
+      border: 2px solid #0099ff;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      margin: 28px 0;
+      position: relative;
+    }
+    .rec-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #0099ff, #ec4899);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .rec-title { font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 8px; }
+    .rec-desc { font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; max-width: 650px; margin: 0 auto 18px; }
+
+    .score-breakdown {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .score-item {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 20px;
+      min-width: 140px;
+    }
+    .score-item .label { font-size: 0.75rem; color: #94a3b8; margin-bottom: 4px; }
+    .score-item .value { font-size: 1.3rem; font-weight: 800; }
+    .score-framer .value { color: #38bdf8; }
+    .score-webflow .value { color: #818cf8; }
+
+    .compare-table-wrapper {
+      overflow-x: auto;
+      margin: 28px 0;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+    }
+    table.compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: rgba(15, 23, 42, 0.6);
+    }
+    table.compare-table th {
+      background: rgba(30, 41, 59, 0.8);
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 700;
+      color: #e2e8f0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    table.compare-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+    }
+    table.compare-table tr:last-child td { border-bottom: none; }
+    .check { color: #10b981; font-weight: bold; }
+    .cross { color: #f43f5e; font-weight: bold; }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    @media (max-width: 640px) { .action-grid { grid-template-columns: 1fr; } }
+
+    .btn-framer {
+      display: block;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #0099ff, #0055ff);
+      color: white;
+      text-align: center;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 8px 24px rgba(0, 153, 255, 0.35);
+    }
+    .btn-framer:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0, 153, 255, 0.5); }
+
+    .btn-webflow {
+      display: block;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #146ef5, #4338ca);
+      color: white;
+      text-align: center;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 8px 24px rgba(20, 110, 245, 0.35);
+    }
+    .btn-webflow:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(20, 110, 245, 0.5); }
+
+    .bonus-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 28px;
+    }
+    .bonus-box h3 { font-size: 1rem; font-weight: 700; color: #e2e8f0; margin-bottom: 12px; }
+    .bonus-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .bonus-box li { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #94a3b8; }
+    .bonus-box li strong { color: #38bdf8; }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      font-size: 0.8rem;
+      margin-top: 40px;
+      line-height: 1.6;
+    }
+    footer a { color: #94a3b8; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <a href="index.html" class="nav-back">← Quay lại Hub Công Cụ Tự Động</a>
+      <div>
+        <span class="badge">⚡ Radar B2B No-Code 2026</span>
+      </div>
+      <h1>Framer vs Webflow: Chọn Nền Tảng Nào?</h1>
+      <p class="subtitle">Đừng đoán mò. Trả lời 3 tiêu chí dưới đây để thuật toán tính toán chính xác nền tảng tối ưu nhất cho thời gian, kỹ năng và ngân sách của bạn.</p>
+    </header>
+
+    <div class="calc-box">
+      <div class="form-section-title">1. Loại website bạn cần dựng:</div>
+      <div class="options-grid" id="type-options">
+        <button class="option-btn active" data-type="landing" onclick="selectType(this)">
+          🚀 Landing Page / Portfolio
+          <span>Cần chuyển đổi nhanh, đẹp mắt</span>
+        </button>
+        <button class="option-btn" data-type="saas" onclick="selectType(this)">
+          💻 SaaS Marketing Site
+          <span>Đẹp, mượt, tích hợp SEO</span>
+        </button>
+        <button class="option-btn" data-type="cms" onclick="selectType(this)">
+          📚 Blog / CMS Đồ Sộ
+          <span>Hàng trăm bài viết, phân mục</span>
+        </button>
+        <button class="option-btn" data-type="agency" onclick="selectType(this)">
+          🏢 Dự án Khách hàng Agency
+          <span>Bàn giao client tự quản trị</span>
+        </button>
+      </div>
+
+      <div class="form-section-title">2. Kỹ năng hiện tại của bạn:</div>
+      <div class="options-grid" id="skill-options">
+        <button class="option-btn active" data-skill="figma" onclick="selectSkill(this)">
+          🎨 Dùng thạo Figma
+          <span>Kéo thả visual, auto-layout</span>
+        </button>
+        <button class="option-btn" data-skill="coding" onclick="selectSkill(this)">
+          👨‍💻 Biết HTML/CSS cơ bản
+          <span>Hiểu Box-model, Flexbox, Grid</span>
+        </button>
+        <button class="option-btn" data-skill="beginner" onclick="selectSkill(this)">
+          🌱 Người mới bắt đầu
+          <span>Chưa biết thiết kế lẫn code</span>
+        </button>
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-head">
+          <span class="slider-label">3. Số lượng trang web dự kiến:</span>
+          <span class="slider-val" id="page-count-val">5 trang</span>
+        </div>
+        <input type="range" id="page-slider" min="1" max="50" value="5" oninput="updateCalculation()">
+      </div>
+
+      <!-- Recommendation Display -->
+      <div class="recommendation-card" id="rec-card">
+        <span class="rec-badge" id="rec-winner-badge">🏆 ĐỀ XUẤT TỐI ƯU 96%</span>
+        <div class="rec-title" id="rec-title">Framer là lựa chọn số 1 của bạn!</div>
+        <p class="rec-desc" id="rec-desc">
+          Với nhu cầu dựng Landing Page / Portfolio và kỹ năng Figma, Framer cho phép bạn copy paste trực tiếp từ Figma lên web chỉ trong 1 nốt nhạc, tiết kiệm 80% thời gian so với Webflow.
+        </p>
+
+        <div class="score-breakdown">
+          <div class="score-item score-framer">
+            <div class="label">Độ tương thích Framer</div>
+            <div class="value" id="score-framer">96%</div>
+          </div>
+          <div class="score-item score-webflow">
+            <div class="label">Độ tương thích Webflow</div>
+            <div class="value" id="score-webflow">68%</div>
+          </div>
+          <div class="score-item">
+            <div class="label">Thời gian triển khai ước tính</div>
+            <div class="value" id="time-estimate" style="color: #10b981;">1 - 2 ngày</div>
+          </div>
+          <div class="score-item">
+            <div class="label">Chi phí hosting khởi điểm</div>
+            <div class="value" id="cost-estimate" style="color: #facc15;">$5 - $15/tháng</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-table-wrapper">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Tiêu Chí So Sánh</th>
+              <th style="color: #38bdf8;">Framer (Design-First)</th>
+              <th style="color: #818cf8;">Webflow (Code-First)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Copy paste từ Figma</strong></td>
+              <td><span class="check">✔ 1-Click Native plugin</span></td>
+              <td><span class="cross">▲ Phải chỉnh lại CSS box</span></td>
+            </tr>
+            <tr>
+              <td><strong>Độ dốc học tập (Learning curve)</strong></td>
+              <td><span class="check">✔ Siêu thấp (giống Figma 90%)</span></td>
+              <td><span class="cross">▲ Cao (phải hiểu HTML/CSS)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Hiệu ứng Animation</strong></td>
+              <td><span class="check">✔ React Spring mượt đỉnh cao</span></td>
+              <td><span class="check">✔ Interactions 2.0 mạnh mẽ</span></td>
+            </tr>
+            <tr>
+              <td><strong>Hệ thống CMS & Database</strong></td>
+              <td>Tối đa 10,000 items (Đủ cho 95% web)</td>
+              <td><span class="check">✔ Khủng, quan hệ đa tầng (Relational)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tốc độ xuất bản (Speed to Market)</strong></td>
+              <td><span class="check">✔ 2 - 4 giờ cho Landing Page</span></td>
+              <td>▲ 2 - 5 ngày thiết lập</td>
+            </tr>
+            <tr>
+              <td><strong>Chính sách dùng thử</strong></td>
+              <td><span class="check">✔ Miễn phí trọn đời (subdomain)</span></td>
+              <td><span class="check">✔ Miễn phí 2 trang tĩnh</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="action-grid">
+        <a href="https://framer.com?via=autoflow" target="_blank" rel="noopener sponsored" class="btn-framer">
+          🚀 Mở Tài Khoản Framer (Free Forever)
+        </a>
+        <a href="https://webflow.com?via=autoflow" target="_blank" rel="noopener sponsored" class="btn-webflow">
+          🌐 Khám Phá Webflow (Free Tier)
+        </a>
+      </div>
+
+      <div class="bonus-box">
+        <h3>🎁 Gói Quà Tặng Độc Quyền Khi Đăng Ký Qua AutoFlow:</h3>
+        <ul>
+          <li>✔ <strong>Bộ 12+ Templates Framer SaaS Landing Page</strong> chuẩn conversion trị giá $149.</li>
+          <li>✔ <strong>SOP Tối ưu hóa SEO & Page Speed 99/100</strong> trên Google Lighthouse.</li>
+          <li>✔ <strong>Kịch bản tích hợp Webhook Tự động</strong> gửi Lead về Google Sheets / Airtable.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>© 2026 AutoFlow Intelligence Hub. Mọi liên kết đối tác đều được kiểm duyệt minh bạch theo chuẩn FTC.<br>
+      Khuyến nghị mang tính tham khảo kỹ thuật dựa trên dữ liệu hiệu năng thực tế.</p>
+    </footer>
+  </div>
+
+  <script>
+    let currentType = 'landing';
+    let currentSkill = 'figma';
+
+    function selectType(btn) {
+      document.querySelectorAll('#type-options .option-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentType = btn.getAttribute('data-type');
+      updateCalculation();
+    }
+
+    function selectSkill(btn) {
+      document.querySelectorAll('#skill-options .option-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentSkill = btn.getAttribute('data-skill');
+      updateCalculation();
+    }
+
+    function updateCalculation() {
+      const pageSlider = document.getElementById('page-slider');
+      const pages = parseInt(pageSlider.value);
+      document.getElementById('page-count-val').innerText = pages + (pages === 1 ? ' trang' : ' trang');
+
+      let framerScore = 70;
+      let webflowScore = 70;
+      let winner = 'framer';
+      let title = '';
+      let desc = '';
+      let timeEst = '';
+      let costEst = '';
+
+      if (currentType === 'landing' || currentType === 'saas') {
+        framerScore += 20;
+      } else if (currentType === 'cms' || currentType === 'agency') {
+        webflowScore += 20;
+      }
+
+      if (currentSkill === 'figma') {
+        framerScore += 15;
+        webflowScore -= 10;
+      } else if (currentSkill === 'coding') {
+        webflowScore += 15;
+        framerScore += 5;
+      } else {
+        framerScore += 10;
+        webflowScore -= 15;
+      }
+
+      if (pages > 25) {
+        webflowScore += 10;
+      } else {
+        framerScore += 10;
+      }
+
+      framerScore = Math.min(98, Math.max(45, framerScore));
+      webflowScore = Math.min(98, Math.max(45, webflowScore));
+
+      if (framerScore >= webflowScore) {
+        winner = 'framer';
+        document.getElementById('rec-winner-badge').innerText = `🏆 ĐỀ XUẤT FRAMER: ${framerScore}% PHÙ HỢP`;
+        document.getElementById('rec-winner-badge').style.background = 'linear-gradient(135deg, #0099ff, #0055ff)';
+        document.getElementById('rec-title').innerText = 'Framer là lựa chọn số 1 dành cho bạn!';
+        document.getElementById('rec-desc').innerText = `Với định hướng ${pages} trang và thế mạnh hiện tại, Framer giúp bạn đưa sản phẩm ra thị trường nhanh gấp 3 lần với hiệu ứng mượt như ứng dụng gốc và chi phí hosting cực kỳ dễ chịu.`;
+        timeEst = pages <= 5 ? '1 - 2 ngày' : `${Math.ceil(pages / 3)} ngày`;
+        costEst = '$5 - $15 / tháng';
+      } else {
+        winner = 'webflow';
+        document.getElementById('rec-winner-badge').innerText = `🏆 ĐỀ XUẤT WEBFLOW: ${webflowScore}% PHÙ HỢP`;
+        document.getElementById('rec-winner-badge').style.background = 'linear-gradient(135deg, #146ef5, #4338ca)';
+        document.getElementById('rec-title').innerText = 'Webflow là giải pháp tối ưu quy mô lớn!';
+        document.getElementById('rec-desc').innerText = `Bạn cần cơ chế quản trị dữ liệu phức tạp (${pages} trang) hoặc cần kiểm soát tuyệt đối từng dòng code HTML/CSS. Webflow là tiêu chuẩn vàng của ngành dành cho các hệ thống CMS đa tầng.`;
+        timeEst = pages <= 5 ? '3 - 5 ngày' : `${Math.ceil(pages / 1.5)} ngày`;
+        costEst = '$14 - $29 / tháng';
+      }
+
+      document.getElementById('score-framer').innerText = framerScore + '%';
+      document.getElementById('score-webflow').innerText = webflowScore + '%';
+      document.getElementById('time-estimate').innerText = timeEst;
+      document.getElementById('cost-estimate').innerText = costEst;
+    }
+
+    // Run on init
+    updateCalculation();
+  </script>
+</body>
+</html>
