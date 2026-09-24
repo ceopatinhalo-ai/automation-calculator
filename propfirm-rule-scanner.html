@@ -1799,40 +1799,14 @@
       if (!email || !email.includes('@')) return;
 
       const leadData = {
-        email: email,
-        source: 'propfirm_rule_scanner_2026',
         firm: currentFirmKey,
-        accountSize: currentAccountSize,
-        timestamp: new Date().toISOString()
+        accountSize: currentAccountSize
       };
 
-      // Save to autoflow_leads
-      try {
-        let leads = JSON.parse(localStorage.getItem('autoflow_leads') || '[]');
-        leads.push(leadData);
-        localStorage.setItem('autoflow_leads', JSON.stringify(leads));
-      } catch(err) {
-        console.warn('Storage warning', err);
+      // Real lead transmission
+      if (window.dispatchLeadToBackend) {
+        window.dispatchLeadToBackend(email, 'propfirm_rule_scanner_2026', leadData);
       }
-
-      // Backward compatibility with other calculators
-      try {
-        let leadsOld = JSON.parse(localStorage.getItem('autoflow_captured_leads_v1') || '[]');
-        leadsOld.push(leadData);
-        localStorage.setItem('autoflow_captured_leads_v1', JSON.stringify(leadsOld));
-      } catch(err) {}
-
-      // Telemetry update
-      try {
-        const TEL_KEY = 'autoflow_telemetry_metrics_v1';
-        const telRaw = localStorage.getItem(TEL_KEY);
-        if (telRaw) {
-          let tel = JSON.parse(telRaw);
-          tel.downloads = (tel.downloads || 42) + 1;
-          tel.totalClicks = (tel.totalClicks || 186) + 1;
-          localStorage.setItem(TEL_KEY, JSON.stringify(tel));
-        }
-      } catch(err) {}
 
       // Show success message
       const successMsg = document.getElementById('msgLeadSuccess');
@@ -1853,5 +1827,6 @@
       updatePairSpecs();
     });
   </script>
+  <script src="scripts/lead-collector.js"></script>
 </body>
 </html>

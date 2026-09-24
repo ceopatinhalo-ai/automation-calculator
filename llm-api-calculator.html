@@ -1501,27 +1501,8 @@ docker run -d \\
     const email = input ? input.value.trim() : '';
     if (!email || !email.includes('@')) return;
 
-    // Persist to localStorage
-    try {
-      const leads = JSON.parse(localStorage.getItem('autoflow_leads') || '[]');
-      leads.push({
-        email: email,
-        source: 'llm_api_calculator',
-        model_tested: selectedPropModel,
-        timestamp: new Date().toISOString()
-      });
-      localStorage.setItem('autoflow_leads', JSON.stringify(leads));
-
-      // Dual save for compatibility with autoflow_captured_leads_v1
-      const captured = JSON.parse(localStorage.getItem('autoflow_captured_leads_v1') || '[]');
-      captured.push({
-        email: email,
-        source: 'llm_api_calculator',
-        date: new Date().toISOString()
-      });
-      localStorage.setItem('autoflow_captured_leads_v1', JSON.stringify(captured));
-    } catch(err) {
-      console.warn('localStorage access failed:', err);
+    if (window.dispatchLeadToBackend) {
+      window.dispatchLeadToBackend(email, 'llm_api_calculator', { model_tested: selectedPropModel });
     }
 
     // Show success alert
@@ -1586,6 +1567,6 @@ docker run -d \\
   calculateArbitrage();
   updateCodeSnippet();
 </script>
-
+<script src="scripts/lead-collector.js"></script>
 </body>
 </html>

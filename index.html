@@ -456,32 +456,10 @@
       const email = input ? input.value.trim() : '';
       if (!email || !email.includes('@')) return;
 
-      const LEADS_KEY = 'autoflow_captured_leads_v1';
-      let leads = [];
-      try {
-        const raw = localStorage.getItem(LEADS_KEY);
-        if (raw) leads = JSON.parse(raw);
-      } catch(err) {}
-
-      leads.push({
-        email: email,
-        source: 'make_vs_zapier_calculator',
-        timestamp: new Date().toISOString()
-      });
-      try {
-        localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
-      } catch(err) {}
-
-      try {
-        const TEL_KEY = 'autoflow_telemetry_metrics_v1';
-        const telRaw = localStorage.getItem(TEL_KEY);
-        if (telRaw) {
-          let tel = JSON.parse(telRaw);
-          tel.downloads = (tel.downloads || 42) + 1;
-          tel.totalClicks = (tel.totalClicks || 186) + 1;
-          localStorage.setItem(TEL_KEY, JSON.stringify(tel));
-        }
-      } catch(err) {}
+      // Real lead transmission
+      if (window.dispatchLeadToBackend) {
+        window.dispatchLeadToBackend(email, 'make_vs_zapier_calculator');
+      }
 
       const form = document.getElementById('blueprint-capture-form');
       const success = document.getElementById('bp-success-msg');
@@ -496,20 +474,9 @@
       document.body.removeChild(a);
     }
 
-    function trackDirectDownload(source) {
-      try {
-        const TEL_KEY = 'autoflow_telemetry_metrics_v1';
-        const telRaw = localStorage.getItem(TEL_KEY);
-        if (telRaw) {
-          let tel = JSON.parse(telRaw);
-          tel.downloads = (tel.downloads || 42) + 1;
-          localStorage.setItem(TEL_KEY, JSON.stringify(tel));
-        }
-      } catch(err) {}
-    }
-
     slider.addEventListener('input', (e) => calculate(e.target.value));
     calculate(20000);
   </script>
+  <script src="scripts/lead-collector.js"></script>
 </body>
 </html>

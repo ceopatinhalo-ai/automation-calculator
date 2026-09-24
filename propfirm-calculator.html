@@ -483,11 +483,9 @@
     const email = document.getElementById('txtLeadEmail').value;
     if (!email) return;
 
-    try {
-      const leads = JSON.parse(localStorage.getItem('autoflow_captured_leads_v1') || '[]');
-      leads.push({ email: email, source: 'propfirm_calculator', date: new Date().toISOString() });
-      localStorage.setItem('autoflow_captured_leads_v1', JSON.stringify(leads));
-    } catch(err) {}
+    if (window.dispatchLeadToBackend) {
+      window.dispatchLeadToBackend(email, 'propfirm_calculator');
+    }
 
     document.getElementById('leadSuccess').style.display = 'block';
 
@@ -503,6 +501,6 @@
   // Initialize
   runSimulation();
 </script>
-
+<script src="scripts/lead-collector.js"></script>
 </body>
 </html>

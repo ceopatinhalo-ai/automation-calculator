@@ -351,11 +351,11 @@
     e.preventDefault();
     const email = document.getElementById('vpsLeadEmail').value;
     if (!email) return;
-    try {
-      const leads = JSON.parse(localStorage.getItem('autoflow_leads') || '[]');
-      leads.push({ email: email, source: 'vps_calculator', timestamp: new Date().toISOString() });
-      localStorage.setItem('autoflow_leads', JSON.stringify(leads));
-    } catch (err) {}
+
+    if (window.dispatchLeadToBackend) {
+      window.dispatchLeadToBackend(email, 'vps_calculator');
+    }
+
     document.getElementById('vpsLeadSuccess').style.display = 'block';
     const link = document.createElement('a');
     link.href = 'blueprints/install-ai-agent-vps.sh';
@@ -365,6 +365,6 @@
     document.body.removeChild(link);
   }
 </script>
-
+<script src="scripts/lead-collector.js"></script>
 </body>
 </html>
