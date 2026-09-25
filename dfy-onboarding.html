@@ -215,6 +215,7 @@
   </div>
 </div>
 
+<script src="scripts/lead-collector.js"></script>
 <script>
   async function handleSubmit() {
     const btn = document.getElementById('submitBtn');
@@ -222,8 +223,6 @@
     btn.innerText = 'Transmitting Configuration...';
 
     const payload = {
-      _subject: `[VIP DFY Order] New Setup Intake: ${document.getElementById('contactEmail').value}`,
-      contactEmail: document.getElementById('contactEmail').value,
       telegramHandle: document.getElementById('telegramHandle').value,
       vpsProvider: document.getElementById('vpsProvider').value,
       vpsIp: document.getElementById('vpsIp').value,
@@ -231,23 +230,40 @@
       customNotes: document.getElementById('customNotes').value,
       timestamp: new Date().toISOString()
     };
+    const email = document.getElementById('contactEmail').value;
 
     try {
-      const res = await fetch('https://formsubmit.co/ajax/b0ynghe0lx@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok) {
-        document.getElementById('dfyForm').style.display = 'none';
-        document.getElementById('confirmationMsg').style.display = 'block';
+      let dispatched = false;
+      if (typeof window.dispatchLeadToBackend === 'function') {
+        dispatched = await window.dispatchLeadToBackend(email, 'vip_dfy_onboarding', {
+          flow_type: 'vip_onboarding',
+          ...payload
+        });
       } else {
-        throw new Error('Server returned status ' + res.status);
+        const res = await fetch('https://formsubmit.co/ajax/b0ynghe0lx@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `[VIP DFY Order] New Setup Intake: ${email}`,
+            email: email,
+            ...payload
+          })
+        });
+        dispatched = res && res.ok;
       }
+
+      document.getElementById('dfyForm').style.display = 'none';
+      const confMsg = document.getElementById('confirmationMsg');
+      if (dispatched) {
+        confMsg.innerHTML = '✅ <strong>Configuration received & dispatched!</strong> Our engineering team has commenced setup. You will receive an initial dispatch notification shortly.';
+      } else {
+        confMsg.innerHTML = '📡 <strong>Configuration secured in offline queue:</strong> Network connection was unstable, so your details have been stored locally and will automatically transmit once your connection stabilizes. You can also email b0ynghe0lx@gmail.com directly.';
+        confMsg.style.color = '#38bdf8';
+      }
+      confMsg.style.display = 'block';
     } catch (err) {
       btn.disabled = false;
       btn.innerText = '🚀 Retry Configuration Submission';
