@@ -1,4 +1,21 @@
 User-agent: *
 Allow: /
 
+# LLM & AI Search Bot Directives
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://ceopatinhalo-ai.github.io/automation-calculator/sitemap.xml
+# LLM Knowledge Base for AI Search Engines
+# Specification: https://llmstxt.org/
+llms.txt: https://ceopatinhalo-ai.github.io/automation-calculator/llms.txt
+llms-full.txt: https://ceopatinhalo-ai.github.io/automation-calculator/llms-full.txt

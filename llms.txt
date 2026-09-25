@@ -1,0 +1,25 @@
+# AutoFlow Tech
+
+> Interactive calculators, financial modeling tools, and automated blueprint resources for solopreneurs, day-traders, and automation engineers. Cut SaaS infrastructure and trading friction costs by 80% to 95%.
+
+AutoFlow Tech provides 7 client-side, zero-latency financial calculators, rule scanners, and automation code generators. All tools run 100% in-browser with zero paywalls, zero ads, and zero latency.
+
+## Tools & Interactive Calculators
+
+- [Make vs Zapier ROI Calculator](https://ceopatinhalo-ai.github.io/automation-calculator/index.html): Compare task pricing tiers between Make.com and Zapier. Calculate annual savings (up to 85% or $1,500 - $3,396/year) by migrating workflows to Make.com.
+- [Forex Position Sizing & Spread Calculator](https://ceopatinhalo-ai.github.io/automation-calculator/forex-calculator.html): Institutional pip risk and lot sizing calculator for Forex & Gold (XAU/USD). Computes real cost of retail broker markups vs True ECN raw spreads on IC Markets and Exness.
+- [Prop Firm Drawdown Simulator](https://ceopatinhalo-ai.github.io/automation-calculator/propfirm-calculator.html): Simulate maximum daily loss (5%) and overall trailing drawdown for FTMO, FundingPips, and FundedNext challenge accounts.
+- [Cloud VPS AI Cost Calculator](https://ceopatinhalo-ai.github.io/automation-calculator/vps-calculator.html): Compare monthly cost of hosting 24/7 autonomous AI agents on Hostinger Cloud VPS ($4.99/mo) vs AWS EC2 ($45/mo).
+- [1-Click AI Agent Cloud Generator](https://ceopatinhalo-ai.github.io/automation-calculator/ai-agent-cloud-generator.html): Instant 1-line bash command generator to automatically install Docker, n8n, DeepSeek, and Telegram alert bots on clean Ubuntu VPS.
+- [Prop Firm Hidden Rule Scanner](https://ceopatinhalo-ai.github.io/automation-calculator/propfirm-rule-scanner.html): Real-time analysis of hidden weekend holding, news trading bans, slippage thresholds, and drawdown buffer rules across top 5 prop firms.
+- [LLM API Cost & Arbitrage Calculator](https://ceopatinhalo-ai.github.io/automation-calculator/llm-api-calculator.html): Arbitrage token pricing between OpenAI (GPT-4o), Anthropic (Claude 3.5 Sonnet), and DeepSeek (V3/R1). Slash API bills by up to 95% using OpenRouter and self-hosted models.
+
+## Digital Products & Starter Kits
+
+- [The 2026 VIP Starter Vault](https://ceopatinhalo-ai.github.io/automation-calculator/vip-kit.html): Institutional prop firm Pine Script v5 pack, Make.com webhook blueprints, and Notion trading journal ($19 USD instant delivery via PayPal).
+- [The 2026 Solopreneur Business Automation Kit](https://ceopatinhalo-ai.github.io/automation-calculator/automation-vip-kit.html): Complete production-ready Make.com webhook blueprints, Brevo autoresponders, and Cloud VPS automation scripts ($19 USD).
+- [Done-For-You (DFY) 24h AI Agent Cloud Setup](https://ceopatinhalo-ai.github.io/automation-calculator/dfy-onboarding.html): High-touch deployment service configuring Docker, n8n, and custom AI agent pipelines on Hostinger VPS within 24 hours ($97 USD).
+
+## Comprehensive Machine-Readable Documentation
+
+- [Full LLM Specification & Q&A](https://ceopatinhalo-ai.github.io/automation-calculator/llms-full.txt): Detailed mathematical formulas, benchmarks, and direct Q&A chunks optimized for Perplexity, ChatGPT Search, and Claude citations.
