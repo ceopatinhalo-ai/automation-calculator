@@ -158,11 +158,21 @@
     </div>
   </div>
 
+  <div style="text-align: center; margin-bottom: 20px; font-size: 0.9rem; color: #94a3b8;">
+    Haven't ordered your setup yet? <a href="automation-vip-kit.html#dfy-setup" style="color: #a78bfa; font-weight: 700; text-decoration: underline;">Click here to secure your 24H DFY slot ($97 USD via PayPal)</a>
+  </div>
+
   <div class="form-card">
     <form id="dfyForm" onsubmit="event.preventDefault(); handleSubmit();">
       <div class="form-group">
         <label for="contactEmail">Your Primary Email (for Delivery & Video Walkthrough)</label>
         <input type="email" id="contactEmail" placeholder="founder@company.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="paypalTxId">PayPal Transaction ID / Receipt Number</label>
+        <input type="text" id="paypalTxId" placeholder="e.g. 9XX12345YY678901Z or your PayPal email" required>
+        <div class="input-hint">Required to match and verify your $97 payment in our engineering deployment queue.</div>
       </div>
 
       <div class="form-group">
@@ -223,6 +233,7 @@
     btn.innerText = 'Transmitting Configuration...';
 
     const payload = {
+      paypalTxId: document.getElementById('paypalTxId').value.trim(),
       telegramHandle: document.getElementById('telegramHandle').value,
       vpsProvider: document.getElementById('vpsProvider').value,
       vpsIp: document.getElementById('vpsIp').value,
