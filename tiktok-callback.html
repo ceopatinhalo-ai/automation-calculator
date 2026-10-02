@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác thực TikTok OAuth 2.0 - AutoFlow Tech</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0b0f19;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .card {
+            background: #131b2e;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 36px;
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+        .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 22px;
+            color: #38bdf8;
+            margin: 0 0 12px 0;
+        }
+        p {
+            color: #94a3b8;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+        .code-box {
+            background: #0a0e17;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 14px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 14px;
+            color: #4ade80;
+            word-break: break-all;
+            margin-bottom: 20px;
+            user-select: all;
+        }
+        .btn {
+            background: #0284c7;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn:hover {
+            background: #0369a1;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 14px;
+        }
+        .status-success {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .status-waiting {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon" id="status-icon">⏳</div>
+        <h1 id="status-title">Đang Xử Lý Mã Xác Thực TikTok...</h1>
+        <p id="status-desc">Hệ thống AutoFlow đang tự động chuyển tiếp Authorization Code về máy Mac.</p>
+        <div class="code-box" id="code-display">Đang tìm mã...</div>
+        <button class="btn" id="copy-btn" onclick="copyCode()" style="display:none;">📋 1-Click Copy Mã</button>
+        <div id="status-badge" class="status-badge status-waiting">Đang kết nối localhost:58261...</div>
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const state = params.get('state');
+        const error = params.get('error');
+        const errorDesc = params.get('error_description');
+
+        const titleEl = document.getElementById('status-title');
+        const descEl = document.getElementById('status-desc');
+        const iconEl = document.getElementById('status-icon');
+        const codeEl = document.getElementById('code-display');
+        const badgeEl = document.getElementById('status-badge');
+        const copyBtn = document.getElementById('copy-btn');
+
+        if (code) {
+            codeEl.innerText = code;
+            copyBtn.style.display = 'inline-block';
+            
+            // Tự động đẩy mã xác thực về cổng localhost 58261
+            fetch('http://127.0.0.1:58261/callback?code=' + encodeURIComponent(code) + '&state=' + encodeURIComponent(state || ''), { mode: 'no-cors' })
+                .then(() => {
+                    iconEl.innerText = '✅';
+                    titleEl.innerText = 'Xác Thực TikTok Thành Công!';
+                    descEl.innerText = 'Authorization Code đã được gửi tự động về daemon trên máy Mac của bạn. Bạn có thể đóng tab này an toàn.';
+                    badgeEl.className = 'status-badge status-success';
+                    badgeEl.innerText = '🟢 Đã gửi thành công tới localhost:58261';
+                })
+                .catch(err => {
+                    iconEl.innerText = '📋';
+                    titleEl.innerText = 'Mã Xác Thực Sẵn Sàng!';
+                    descEl.innerText = 'Trình duyệt có thể đã chặn kết nối nội bộ. Bạn hãy bấm Copy mã bên dưới và dán vào cửa sổ terminal:';
+                    badgeEl.className = 'status-badge status-waiting';
+                    badgeEl.innerText = '🟡 Vui lòng copy mã bên trên vào terminal';
+                });
+        } else if (error) {
+            iconEl.innerText = '❌';
+            titleEl.innerText = 'Lỗi Xác Thực TikTok: ' + error;
+            descEl.innerText = errorDesc || 'Không nhận được mã xác thực từ TikTok.';
+            codeEl.innerText = 'Error: ' + error + '\n' + (errorDesc || '');
+            badgeEl.className = 'status-badge';
+            badgeEl.style.color = '#ef4444';
+            badgeEl.innerText = '🔴 Thất bại';
+        } else {
+            iconEl.innerText = 'ℹ️';
+            titleEl.innerText = 'Không Tìm Thấy Mã Xác Thực';
+            descEl.innerText = 'Trang này được sử dụng làm Redirect URI callback cho TikTok OAuth 2.0.';
+            codeEl.innerText = 'URL không chứa tham số ?code=...';
+        }
+
+        function copyCode() {
+            if (code) {
+                navigator.clipboard.writeText(code);
+                copyBtn.innerText = '✅ Đã Copy!';
+                setTimeout(() => copyBtn.innerText = '📋 1-Click Copy Mã', 2500);
+            }
+        }
+    </script>
+</body>
+</html>
