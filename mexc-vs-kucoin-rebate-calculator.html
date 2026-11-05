@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEXC (0% Maker + 70% Rebate) vs KuCoin (60% Rebate): High-Frequency Scalper Fee Matrix 2026</title>
+  <meta name="description" content="Interactive 2026 High-Frequency Crypto Scalper Fee Calculator comparing MEXC (0.00% Maker fee + 70% lifetime rebate, Code: 1F2C8) vs KuCoin (60% lifetime Spot & Futures rebate, Code: QBS4YZ1L).">
+  <link rel="canonical" href="https://ceopatinhalo-ai.github.io/automation-calculator/mexc-vs-kucoin-rebate-calculator.html">
+  <meta property="og:title" content="MEXC (0% Maker + 70% Rebate) vs KuCoin (60% Rebate): High-Frequency Scalper Fee Matrix">
+  <meta property="og:description" content="Calculate how much you save with MEXC 0.00% Limit Maker fees + 70% Taker rebate vs KuCoin 60% lifetime Spot & Futures cashback.">
+  <meta property="og:url" content="https://ceopatinhalo-ai.github.io/automation-calculator/mexc-vs-kucoin-rebate-calculator.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "MEXC vs KuCoin High-Frequency Scalper Fee & Rebate Calculator",
+        "url": "https://ceopatinhalo-ai.github.io/automation-calculator/mexc-vs-kucoin-rebate-calculator.html",
+        "description": "Interactive Limit Maker vs Market Taker fee matrix comparing MEXC (0% Maker + 70% Rebate) and KuCoin (60% Spot & Futures Rebate).",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does MEXC's 0.00% Maker fee + 70% Taker rebate impact high-frequency scalpers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "On MEXC, all Resting Limit (Maker) orders incur a 0.000% execution fee, while Market (Taker) orders start at 0.020% (2 bps). When registered with partner invite code 1F2C8, traders receive a 70% lifetime rebate on Taker fees, dropping the effective Taker rate to 0.006% (0.6 bps). On $2,000,000 monthly volume with a 50% Maker / 50% Taker split, your net monthly fee is only $60."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do automated grid bot and spot-futures arbitrageurs prefer KuCoin's 60% rebate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "KuCoin (Partner Code: QBS4YZ1L) provides an industry-leading 60% lifetime commission kickback across both Spot trading and Perpetual Futures, combined with native server-side DCA, Spot Grid, Futures Grid, and Funding Rate Arbitrage bots. Further stacking KCS token fee discounts (-20%) makes KuCoin ideal for multi-pair API trading."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between Limit Maker and Market Taker execution in perpetual futures?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Limit Maker order rests on the orderbook (Post-Only) and adds liquidity, qualifying for 0.00% fees on MEXC or 0.020% base fees on KuCoin. A Market Taker order crosses the bid-ask spread immediately to fill against existing orders, paying the Taker rate."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #000000;
+      --border-subtle: #cbd5e1;
+      --text-main: #000000;
+      --text-secondary: #1e293b;
+      --text-muted: #475569;
+      --mexc-blue: #0066ff;
+      --mexc-bg: #eff6ff;
+      --kucoin-teal: #009473;
+      --kucoin-bg: #ecfdf5;
+      --danger: #b91c1c;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --surface: #0a0a0c;
+        --card-bg: #111115;
+        --border: #ffffff;
+        --border-subtle: #27272a;
+        --text-main: #ffffff;
+        --text-secondary: #e4e4e7;
+        --text-muted: #a1a1aa;
+        --mexc-blue: #38bdf8;
+        --mexc-bg: rgba(56, 189, 248, 0.12);
+        --kucoin-teal: #10b981;
+        --kucoin-bg: rgba(16, 185, 129, 0.12);
+        --danger: #f87171;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 64px;
+    }
+    .top-banner {
+      background: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-bottom: 2px solid var(--kucoin-teal);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .top-banner a {
+      background: #ffffff;
+      color: #000000;
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 2px solid var(--border-subtle);
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-tag {
+      background: var(--text-main);
+      color: var(--bg);
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--surface);
+      color: var(--text-main);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    header {
+      margin-bottom: 44px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      border: 2px solid var(--text-main);
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      color: var(--text-main);
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 860px;
+      font-weight: 500;
+    }
+    .calc-shell {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 48px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 32px;
+    }
+    @media (max-width: 860px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .calc-shell {
+        padding: 24px 18px;
+      }
+    }
+    .control-group {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .control-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .control-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .control-label {
+      font-size: 0.92rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .control-readout {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--mexc-blue);
+      font-variant-numeric: tabular-nums;
+    }
+    input[type="number"], select {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      border: 2px solid var(--border-subtle);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--text-main);
+      font-variant-numeric: tabular-nums;
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 10px;
+      border-radius: 6px;
+      background: var(--border-subtle);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--text-main);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--text-main);
+      cursor: pointer;
+    }
+    .ratio-bar {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      font-weight: 800;
+      margin-top: 8px;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+    .preset-pills {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .pill-btn {
+      background: var(--surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      padding: 5px 11px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .pill-btn:hover {
+      border-color: var(--text-main);
+    }
+    .results-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .split-banner {
+      background: var(--surface);
+      border: 2px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .split-box-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .split-box-val {
+      font-size: 1.35rem;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+    .exchange-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      .exchange-cards, .split-banner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .ex-card {
+      border-radius: 16px;
+      padding: 22px;
+      border: 2px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .ex-card.mexc {
+      background: var(--mexc-bg);
+      border-color: var(--mexc-blue);
+    }
+    .ex-card.kucoin {
+      background: var(--kucoin-bg);
+      border-color: var(--kucoin-teal);
+    }
+    .ex-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .ex-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+    }
+    .ex-badge {
+      font-size: 0.74rem;
+      font-weight: 900;
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      background: var(--text-main);
+      color: var(--bg);
+    }
+    .metric-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--border-subtle);
+      font-variant-numeric: tabular-nums;
+    }
+    .rebate-highlight {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 2px solid var(--text-main);
+    }
+    .rebate-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+    }
+    .rebate-usd {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--kucoin-teal);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+      margin: 4px 0;
+    }
+    .savings-summary {
+      background: var(--surface);
+      border: 2px solid var(--text-main);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .btn-cta {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding: 16px 18px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 900;
+      transition: transform 0.15s;
+      border: 2px solid var(--text-main);
+    }
+    .btn-cta:hover {
+      transform: translateY(-2px);
+    }
+    .btn-mexc {
+      background: var(--mexc-blue);
+      color: #ffffff;
+      border-color: var(--mexc-blue);
+    }
+    .btn-kucoin {
+      background: var(--kucoin-teal);
+      color: #ffffff;
+      border-color: var(--kucoin-teal);
+    }
+    .code-caption {
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    section {
+      margin-bottom: 52px;
+    }
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .section-lead {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      background: var(--card-bg);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.96rem;
+    }
+    th, td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-variant-numeric: tabular-nums;
+    }
+    th {
+      background: var(--surface);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--border);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .winner-cell {
+      font-weight: 900;
+      color: var(--kucoin-teal);
+    }
+    .deep-dive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .deep-dive-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .info-card {
+      border: 2px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px;
+      background: var(--card-bg);
+    }
+    .info-card h3 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .info-card ul {
+      list-style: none;
+    }
+    .info-card li {
+      margin-bottom: 12px;
+      padding-left: 22px;
+      position: relative;
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+    }
+    .info-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+      color: var(--text-main);
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-item {
+      border: 2px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 22px 24px;
+      background: var(--card-bg);
+    }
+    .faq-q {
+      font-size: 1.12rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .faq-a {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+    }
+    .cluster-nav {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+    .cluster-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .cluster-card {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+    .cluster-card:hover {
+      border-color: var(--text-main);
+    }
+    footer {
+      border-top: 2px solid var(--border-subtle);
+      padding-top: 32px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner">
+    <span>⚡ <strong>HIGH-FREQUENCY SCALPER REBATES:</strong> MEXC 0% Maker + 70% Rebate (Code: <strong>1F2C8</strong>) | KuCoin 60% Lifetime Rebate (Code: <strong>QBS4YZ1L</strong>)</span>
+    <a href="forex-calculator.html">Open Forex &amp; Gold Calculator ➔</a>
+  </div>
+
+  <div class="container">
+    <nav aria-label="Primary Navigation">
+      <a href="index.html" class="logo">
+        <span>AutoFlow</span>
+        <span class="logo-tag">Scalper Matrix</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Make vs Zapier</a>
+        <a href="forex-calculator.html" class="nav-link">Forex &amp; Gold Calculator</a>
+        <a href="bingx-vs-bybit-futures-fee-calculator.html" class="nav-link">BingX vs Bybit</a>
+        <a href="mexc-vs-kucoin-rebate-calculator.html" class="nav-link active">MEXC vs KuCoin</a>
+        <a href="gateio-vs-htx-altcoin-fee-matrix.html" class="nav-link">Gate.io vs HTX</a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="eyebrow">Limit Maker vs Market Taker Execution Math</div>
+      <h1>MEXC (0% Maker Fee + 70% Rebate) vs KuCoin (60% Lifetime Spot &amp; Futures Rebate): High-Frequency Scalper Fee Matrix</h1>
+      <p class="subtitle">
+        Orderflow scalpers, market makers, and automated grid bots execute hundreds of fills per week. Compare how MEXC's 0.00% Limit Maker fee + 70% Taker kickback stacks up against KuCoin's 60% all-market lifetime rebate.
+      </p>
+    </header>
+
+    <main>
+      <section class="calc-shell" aria-label="Interactive MEXC vs KuCoin Scalper Fee Calculator">
+        <div class="calc-grid">
+          <!-- Left: User Controls -->
+          <div class="controls-column">
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-label" for="monthlyVolumeUsd">1. Monthly Trading Volume ($ USD)</label>
+                <span class="control-readout" id="volumeReadout">$2,000,000</span>
+              </div>
+              <input type="number" id="monthlyVolumeUsd" value="2000000" min="10000" max="500000000" step="50000" oninput="syncVolumeInput()">
+              <input type="range" id="volumeSlider" min="50000" max="25000000" step="50000" value="2000000" oninput="syncVolumeSlider()" aria-label="Monthly Volume Slider">
+              <div class="preset-pills">
+                <button type="button" class="pill-btn" onclick="setVolumePreset(500000)">$500K / mo</button>
+                <button type="button" class="pill-btn" onclick="setVolumePreset(2000000)">$2M / mo</button>
+                <button type="button" class="pill-btn" onclick="setVolumePreset(10000000)">$10M / mo</button>
+                <button type="button" class="pill-btn" onclick="setVolumePreset(25000000)">$25M / mo</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-label" for="makerRatio">2. Limit Maker vs Market Taker Ratio</label>
+                <span class="control-readout" id="makerRatioReadout">50% Maker</span>
+              </div>
+              <input type="number" id="makerRatio" value="50" min="0" max="100" step="5" oninput="syncRatioInput()">
+              <input type="range" id="makerRatioSlider" min="0" max="100" step="5" value="50" oninput="syncRatioSlider()" aria-label="Maker vs Taker Ratio Slider">
+              <div class="ratio-bar">
+                <span id="makerPctLabel">Limit Maker: 50%</span>
+                <span id="takerPctLabel">Market Taker: 50%</span>
+              </div>
+              <div class="preset-pills">
+                <button type="button" class="pill-btn" onclick="setRatioPreset(80)">80% Post-Only Maker</button>
+                <button type="button" class="pill-btn" onclick="setRatioPreset(50)">50% Balanced</button>
+                <button type="button" class="pill-btn" onclick="setRatioPreset(20)">20% Breakout Taker</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-label" for="kcsDiscountToggle">3. KuCoin KCS Fee Deduction (-20%)</label>
+              </div>
+              <select id="kcsDiscountToggle" onchange="recalculateScalperMatrix()">
+                <option value="0" selected>Standard USDT Fee Settlement (60% Partner Rebate Only)</option>
+                <option value="1">Enable KCS Token Fee Pay (-20% Extra + 60% Rebate)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Right: Live Mathematical Output -->
+          <div class="results-column">
+            <div class="split-banner">
+              <div>
+                <div class="split-box-label">Monthly Limit Maker Volume</div>
+                <div class="split-box-val" id="makerVolDisplay">$1,000,000</div>
+              </div>
+              <div>
+                <div class="split-box-label">Monthly Market Taker Volume</div>
+                <div class="split-box-val" id="takerVolDisplay">$1,000,000</div>
+              </div>
+            </div>
+
+            <div class="exchange-cards">
+              <!-- MEXC Card -->
+              <div class="ex-card mexc">
+                <div>
+                  <div class="ex-header">
+                    <span class="ex-title">MEXC Futures</span>
+                    <span class="ex-badge">0% Maker + 70% Rebate</span>
+                  </div>
+                  <div class="metric-line">
+                    <span>Maker Fee (0.000%):</span>
+                    <strong id="mexcMakerCost">$0.00 (Free)</strong>
+                  </div>
+                  <div class="metric-line">
+                    <span>Gross Taker Fee (0.020%):</span>
+                    <strong id="mexcTakerGross">$200.00</strong>
+                  </div>
+                  <div class="metric-line">
+                    <span>70% Taker Cashback:</span>
+                    <strong id="mexcRebateBack">-$140.00</strong>
+                  </div>
+                </div>
+                <div class="rebate-highlight">
+                  <div class="rebate-label">Net Monthly Execution Cost</div>
+                  <div class="rebate-usd" id="mexcNetMonthlyCost">$60.00 / mo</div>
+                  <div style="font-size: 0.85rem; font-weight: 700;" id="mexcSavedVsStandard">Saves $940/mo vs 0.05% exchange</div>
+                </div>
+              </div>
+
+              <!-- KuCoin Card -->
+              <div class="ex-card kucoin">
+                <div>
+                  <div class="ex-header">
+                    <span class="ex-title">KuCoin Pro</span>
+                    <span class="ex-badge">60% Lifetime Rebate</span>
+                  </div>
+                  <div class="metric-line">
+                    <span>Gross Maker + Taker Fee:</span>
+                    <strong id="kucoinGrossCost">$800.00</strong>
+                  </div>
+                  <div class="metric-line">
+                    <span>60% Partner Rebate:</span>
+                    <strong id="kucoinRebateBack">+$480.00</strong>
+                  </div>
+                  <div class="metric-line">
+                    <span>Net Monthly Execution Cost:</span>
+                    <strong id="kucoinNetCost">$320.00 / mo</strong>
+                  </div>
+                </div>
+                <div class="rebate-highlight">
+                  <div class="rebate-label">Your 60% Annual Cashback</div>
+                  <div class="rebate-usd" id="kucoinAnnualRebate">+$5,760 / yr</div>
+                  <div style="font-size: 0.85rem; font-weight: 700;">Applies to both Spot &amp; Futures</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="savings-summary">
+              <div>
+                <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted);">
+                  Annual Scalper Capital Preserved (MEXC 0% Maker + 70% Rebate vs Unrebated Tier-1):
+                </div>
+                <div style="font-size: 1.55rem; font-weight: 900; color: var(--kucoin-teal); font-variant-numeric: tabular-nums;" id="annualScalperSavings">
+                  +$11,280 / year retained
+                </div>
+              </div>
+            </div>
+
+            <div class="cta-grid">
+              <div>
+                <a href="https://www.mexc.com/register?inviteCode=1F2C8" target="_blank" rel="noopener noreferrer" class="btn-cta btn-mexc">
+                  Unlock MEXC 70% Rebate ➔
+                </a>
+                <div class="code-caption">Partner Invite Code: <strong>1F2C8</strong></div>
+              </div>
+              <div>
+                <a href="https://www.kucoin.com/r/af/r3M1456?rcode=QBS4YZ1L" target="_blank" rel="noopener noreferrer" class="btn-cta btn-kucoin">
+                  Claim KuCoin 60% Rebate ➔
+                </a>
+                <div class="code-caption">Partner Referral Code: <strong>QBS4YZ1L</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Real Parameter Comparison Table -->
+      <section aria-labelledby="matrix-heading">
+        <h2 class="section-title" id="matrix-heading">2026 High-Frequency Fee &amp; Rebate Schedule: MEXC vs KuCoin</h2>
+        <p class="section-lead">
+          Direct side-by-side audit of base maker/taker schedules, partner rebate percentages, and automated grid bot capabilities.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fee Tier / Trading Feature</th>
+                <th>MEXC Global (Invite Code: 1F2C8)</th>
+                <th>KuCoin Exchange (Invite Code: QBS4YZ1L)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Lifetime Partner Rebate Rate</strong></td>
+                <td class="winner-cell">70% Lifetime Commission Rebate</td>
+                <td>60% Lifetime Spot &amp; Futures Rebate</td>
+              </tr>
+              <tr>
+                <td><strong>Perpetual Futures Base Maker Fee</strong></td>
+                <td class="winner-cell">0.000% (Zero Maker Fee on Limit Orders)</td>
+                <td>0.020% (0.0080% net after 60% rebate)</td>
+              </tr>
+              <tr>
+                <td><strong>Perpetual Futures Base Taker Fee</strong></td>
+                <td class="winner-cell">0.020% (0.0060% net after 70% rebate)</td>
+                <td>0.060% (0.0240% net after 60% rebate)</td>
+              </tr>
+              <tr>
+                <td><strong>Spot Market Base Maker / Taker Fee</strong></td>
+                <td class="winner-cell">0.000% Maker / 0.050% Taker</td>
+                <td>0.100% Base (0.032% net with KCS + 60% rebate)</td>
+              </tr>
+              <tr>
+                <td><strong>Native Exchange Token Fee Stack</strong></td>
+                <td>MX Token Hold Deduction (Up to 50% off)</td>
+                <td class="winner-cell">KCS Pay (-20% Spot) + KCS Staking Yield</td>
+              </tr>
+              <tr>
+                <td><strong>Built-In Automated Quant Bots</strong></td>
+                <td>Futures Grid &amp; Copy Trading</td>
+                <td class="winner-cell">Full Quant Suite (Spot Grid, Perp Grid, Funding Arb, Martingale)</td>
+              </tr>
+              <tr>
+                <td><strong>Listed Perpetual &amp; Altcoin Pairs</strong></td>
+                <td class="winner-cell">2,400+ Spot &amp; 600+ Perpetual Contracts</td>
+                <td>850+ High-Liquidity Spot &amp; 320+ Futures Contracts</td>
+              </tr>
+              <tr>
+                <td><strong>Maximum Leverage Supported</strong></td>
+                <td class="winner-cell">Up to 200x on BTCUSDT / ETHUSDT</td>
+                <td>Up to 125x on Major Perpetuals</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Strategy Breakdown -->
+      <section aria-labelledby="strategy-heading">
+        <h2 class="section-title" id="strategy-heading">How Orderflow Scalpers &amp; Bot Operators Combine MEXC and KuCoin</h2>
+        <p class="section-lead">
+          Choosing the right venue depends on whether your execution relies on manual Post-Only limit orders or multi-asset automated grid bots.
+        </p>
+        <div class="deep-dive-grid">
+          <div class="info-card">
+            <h3>When to Deploy MEXC (Code: 1F2C8)</h3>
+            <ul>
+              <li><strong>Zero-Cost Limit Order Scalping:</strong> If you enter and exit positions using Post-Only Limit orders, MEXC charges <strong>$0.00</strong> in Maker fees regardless of whether you trade $100K or $50M a month.</li>
+              <li><strong>0.6 Basis Point Net Taker Stops:</strong> Even when your stop-loss or breakout entry triggers as a Market Taker order, the 0.020% base fee combined with our 70% rebate drops your effective cost to 0.006%.</li>
+              <li><strong>200x Intraday Momentum:</strong> Ideal for high-leverage momentum traders capturing 15-minute volatility on newly listed narrative tokens.</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>When to Deploy KuCoin (Code: QBS4YZ1L)</h3>
+            <ul>
+              <li><strong>60% Rebate Across Both Spot &amp; Futures:</strong> Unlike venues that restrict rebates to derivatives, KuCoin returns 60% of fees across Spot accumulation, Margin borrowing, and Perpetual Futures.</li>
+              <li><strong>Funding Rate Arbitrage &amp; Grid Bots:</strong> KuCoin's server-side bots execute delta-neutral Spot-vs-Perp funding rate harvesting 24/7 with zero VPS latency, while your 60% rebate compounds daily.</li>
+              <li><strong>API Sub-Account Isolation:</strong> Institutional API traders can spin up isolated sub-accounts for independent algorithmic strategies under one master 60% rebate umbrella.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section aria-labelledby="faq-heading">
+        <h2 class="section-title" id="faq-heading">Frequently Asked Questions (Scalper Maker/Taker Math)</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">1. How does MEXC's 0.00% Maker fee + 70% Taker rebate impact high-frequency scalpers?</div>
+            <p class="faq-a">
+              On MEXC, all Resting Limit (Maker) orders incur a 0.000% execution fee, while Market (Taker) orders start at 0.020% (2 bps). When registered with partner invite code <strong>1F2C8</strong>, traders receive a 70% lifetime rebate on Taker fees, dropping the effective Taker rate to 0.006% (0.6 bps). On $2,000,000 monthly volume with a 50% Maker / 50% Taker split, your net monthly fee is only $60.
+            </p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">2. Why do automated grid bot and spot-futures arbitrageurs prefer KuCoin's 60% rebate?</div>
+            <p class="faq-a">
+              KuCoin (Partner Code: <strong>QBS4YZ1L</strong>) provides an industry-leading 60% lifetime commission kickback across both Spot trading and Perpetual Futures, combined with native server-side DCA, Spot Grid, Futures Grid, and Funding Rate Arbitrage bots. Further stacking KCS token fee discounts (-20%) makes KuCoin ideal for multi-pair API trading.
+            </p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">3. What is the difference between Limit Maker and Market Taker execution in perpetual futures?</div>
+            <p class="faq-a">
+              A Limit Maker order rests on the orderbook (Post-Only) and adds liquidity, qualifying for 0.00% fees on MEXC or 0.020% base fees on KuCoin. A Market Taker order crosses the bid-ask spread immediately to fill against existing orders, paying the Taker rate. Increasing your Maker ratio from 20% to 70% cuts net execution drag by more than half.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Internal Cross-Navigation -->
+      <aside class="cluster-nav" aria-label="Related Trading & Rebate Calculators">
+        <h3 style="font-size: 1.2rem; font-weight: 900;">Explore the Complete 2026 Fee &amp; Rebate Calculator Suite</h3>
+        <div class="cluster-links">
+          <a href="bingx-vs-bybit-futures-fee-calculator.html" class="cluster-card">
+            BingX (54% Rebate) vs Bybit (40% Rebate) Perp Calculator ➔
+          </a>
+          <a href="gateio-vs-htx-altcoin-fee-matrix.html" class="cluster-card">
+            Gate.io (55% Rebate) vs HTX (55%) &amp; BitMart (50%) ➔
+          </a>
+          <a href="forex-calculator.html" class="cluster-card">
+            Global Forex &amp; Gold (XAUUSD) Lot &amp; Spread Calculator ➔
+          </a>
+          <a href="index.html" class="cluster-card">
+            AutoFlow Hub: Make.com vs Zapier ROI Calculator ➔
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <p>© 2026 AutoFlow Quantitative Trading &amp; Automation Systems. Built for Algorithmic &amp; High-Frequency Scalpers.</p>
+      <p style="margin-top: 8px;">
+        <a href="index.html">Home ROI Calculator</a> ·
+        <a href="forex-calculator.html">Forex &amp; Gold Lot Calculator</a> ·
+        <a href="bingx-vs-bybit-futures-fee-calculator.html">BingX vs Bybit Calculator</a> ·
+        <a href="gateio-vs-htx-altcoin-fee-matrix.html">Gate.io vs HTX Altcoin Matrix</a>
+      </p>
+      <p style="margin-top: 12px; font-size: 0.8rem;">
+        Risk Disclosure: High-frequency derivatives trading involves substantial risk. Fee schedules reflect 2026 VIP0 rates combined with verified partner codes 1F2C8 (MEXC) and QBS4YZ1L (KuCoin).
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const volumeInput = document.getElementById('monthlyVolumeUsd');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const ratioInput = document.getElementById('makerRatio');
+    const ratioSlider = document.getElementById('makerRatioSlider');
+    const kcsSelect = document.getElementById('kcsDiscountToggle');
+
+    function fmtUsd(val) {
+      return '$' + Number(val).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function fmtWhole(val) {
+      return '$' + Math.round(val).toLocaleString('en-US');
+    }
+
+    function recalculateScalperMatrix() {
+      const totalVol = Math.max(10000, Number(volumeInput.value) || 2000000);
+      const makerPct = Math.min(100, Math.max(0, Number(ratioInput.value) || 50));
+      const takerPct = 100 - makerPct;
+      const useKcsDiscount = kcsSelect.value === '1';
+
+      document.getElementById('volumeReadout').textContent = fmtWhole(totalVol);
+      document.getElementById('makerRatioReadout').textContent = makerPct + '% Maker';
+      document.getElementById('makerPctLabel').textContent = 'Limit Maker: ' + makerPct + '%';
+      document.getElementById('takerPctLabel').textContent = 'Market Taker: ' + takerPct + '%';
+
+      const makerVol = totalVol * (makerPct / 100);
+      const takerVol = totalVol * (takerPct / 100);
+
+      document.getElementById('makerVolDisplay').textContent = fmtWhole(makerVol);
+      document.getElementById('takerVolDisplay').textContent = fmtWhole(takerVol);
+
+      // MEXC: 0.000% Maker, 0.020% Taker (0.0002), 70% Rebate
+      const mexcMakerFee = 0;
+      const mexcTakerGross = takerVol * 0.0002;
+      const mexcRebate = mexcTakerGross * 0.70;
+      const mexcNet = mexcMakerFee + (mexcTakerGross - mexcRebate);
+
+      // Standard unrebated Tier-1 exchange benchmark (0.02% Maker, 0.05% Taker)
+      const standardBenchmarkCost = (makerVol * 0.0002) + (takerVol * 0.0005);
+      const mexcMonthlySavedVsStd = Math.max(0, standardBenchmarkCost - mexcNet);
+
+      document.getElementById('mexcMakerCost').textContent = '$0.00 (Free)';
+      document.getElementById('mexcTakerGross').textContent = fmtUsd(mexcTakerGross);
+      document.getElementById('mexcRebateBack').textContent = '-' + fmtUsd(mexcRebate);
+      document.getElementById('mexcNetMonthlyCost').textContent = fmtUsd(mexcNet) + ' / mo';
+      document.getElementById('mexcSavedVsStandard').textContent = 'Saves ' + fmtWhole(mexcMonthlySavedVsStd) + '/mo vs standard 0.02%/0.05% desk';
+
+      // KuCoin: 0.020% Maker (0.0002), 0.060% Taker (0.0006), optional -20% KCS deduction, 60% Partner Rebate
+      const kcsMultiplier = useKcsDiscount ? 0.80 : 1.00;
+      const kucoinGross = ((makerVol * 0.0002) + (takerVol * 0.0006)) * kcsMultiplier;
+      const kucoinRebate = kucoinGross * 0.60;
+      const kucoinNet = kucoinGross - kucoinRebate;
+
+      document.getElementById('kucoinGrossCost').textContent = fmtUsd(kucoinGross);
+      document.getElementById('kucoinRebateBack').textContent = '+' + fmtUsd(kucoinRebate);
+      document.getElementById('kucoinNetCost').textContent = fmtUsd(kucoinNet) + ' / mo';
+      document.getElementById('kucoinAnnualRebate').textContent = '+' + fmtWhole(kucoinRebate * 12) + ' / yr';
+
+      const annualPreserved = mexcMonthlySavedVsStd * 12;
+      document.getElementById('annualScalperSavings').textContent = '+' + fmtWhole(annualPreserved) + ' / year retained';
+    }
+
+    function syncVolumeInput() {
+      volumeSlider.value = Math.min(25000000, Math.max(50000, Number(volumeInput.value) || 2000000));
+      recalculateScalperMatrix();
+    }
+
+    function syncVolumeSlider() {
+      volumeInput.value = volumeSlider.value;
+      recalculateScalperMatrix();
+    }
+
+    function syncRatioInput() {
+      ratioSlider.value = Math.min(100, Math.max(0, Number(ratioInput.value) || 50));
+      recalculateScalperMatrix();
+    }
+
+    function syncRatioSlider() {
+      ratioInput.value = ratioSlider.value;
+      recalculateScalperMatrix();
+    }
+
+    function setVolumePreset(val) {
+      volumeInput.value = val;
+      volumeSlider.value = Math.min(25000000, val);
+      recalculateScalperMatrix();
+    }
+
+    function setRatioPreset(val) {
+      ratioInput.value = val;
+      ratioSlider.value = val;
+      recalculateScalperMatrix();
+    }
+
+    recalculateScalperMatrix();
+  </script>
+</body>
+</html>

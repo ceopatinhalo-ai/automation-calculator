@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeyGen AI vs InVideo AI & Traditional Studio (2026): Avatar Lip-Sync ROI Calculator</title>
+  <meta name="description" content="Interactive 2026 video production ROI calculator: Compare HeyGen AI (40-Language Avatar Lip-Sync) vs InVideo AI and $150/video Traditional Studio shoots. Calculate faceless channel profit and localization costs.">
+  <link rel="canonical" href="https://ceopatinhalo-ai.github.io/automation-calculator/heygen-vs-invideo-ai-avatar-cost.html">
+  <meta property="og:title" content="HeyGen AI vs InVideo AI & Traditional Studio (2026): Avatar Lip-Sync ROI Calculator">
+  <meta property="og:description" content="Calculate your monthly video production savings and multilingual AdSense/Affiliate ROI using HeyGen AI 40-language lip-sync avatars vs traditional studio shoots.">
+  <meta property="og:url" content="https://ceopatinhalo-ai.github.io/automation-calculator/heygen-vs-invideo-ai-avatar-cost.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HeyGen AI vs InVideo AI & Studio Production ROI Calculator",
+    "url": "https://ceopatinhalo-ai.github.io/automation-calculator/heygen-vs-invideo-ai-avatar-cost.html",
+    "description": "Interactive calculator comparing 2026 faceless video production costs across HeyGen AI 40-language lip-sync avatars, InVideo AI, and traditional studio shoots.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does HeyGen AI save compared to a traditional video studio in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A traditional studio shoot with on-camera talent, lighting, and video editing averages $150 per short-form video plus $65 per localized language dub. Producing 30 videos across 3 languages costs $10,350/month in a traditional studio, compared to $29–$89/month on HeyGen AI Creator/Business plans—reducing production overhead by over 99%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should creators choose HeyGen AI over InVideo AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Choose HeyGen AI when you need photorealistic digital twin avatars, custom voice cloning, and frame-accurate 40-language lip-sync for high-trust B2B sales, SaaS demos, and TikTok/Reels authority content. Choose InVideo AI if you only produce stock-footage compilation videos without an on-camera presenter."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does 40-language AI avatar localization multiply Affiliate and AdSense revenue?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "By translating a single winning English video into High-CPM markets (German, Japanese, Spanish, French, Portuguese) with native lip-sync via HeyGen AI, solopreneurs multiply their addressable distribution by 3x to 5x without recording extra footage."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.88);
+      --card-border: rgba(255, 255, 255, 0.09);
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent: #a855f7;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #f43f5e;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+    body {
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.14) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.12) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 48px;
+      line-height: 1.6;
+    }
+    .sticky-vip-bar {
+      background: linear-gradient(90deg, #7c3aed, #0284c7);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .container { width: 100%; max-width: 980px; padding: 28px 16px 0; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; }
+    .logo-badge { background: linear-gradient(135deg, #a855f7, #38bdf8); color: #fff; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; }
+    .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+    .nav-link:hover { color: #fff; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(168, 85, 247, 0.14);
+      color: #d8b4fe;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.22;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 25%, #d8b4fe 65%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-muted); font-size: 1.04rem; max-width: 760px; margin: 0 auto; }
+
+    .calc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      margin-bottom: 36px;
+      backdrop-filter: blur(16px);
+    }
+    .slider-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 720px) { .slider-grid { grid-template-columns: 1fr; } }
+    .slider-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .slider-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .slider-label { font-weight: 700; font-size: 0.96rem; color: #e2e8f0; }
+    .slider-val { font-size: 1.3rem; font-weight: 800; color: #c084fc; }
+    input[type=range] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #1e293b;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #a855f7;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.85);
+      border: 2px solid #ffffff;
+    }
+    .slider-hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+    @media (max-width: 780px) { .tier-grid { grid-template-columns: 1fr; } }
+    .tier-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 22px 18px;
+      text-align: center;
+      position: relative;
+    }
+    .tier-card.winner {
+      border: 2px solid #a855f7;
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.14), rgba(15, 23, 42, 0.85));
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
+    }
+    .winner-pill {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #a855f7, #38bdf8);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .tier-name { font-size: 0.95rem; font-weight: 700; color: #cbd5e1; margin-bottom: 8px; }
+    .tier-price { font-size: 2rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+    .tier-unit { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; }
+    .tier-meta { font-size: 0.82rem; color: #94a3b8; line-height: 1.45; }
+
+    .roi-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(56, 189, 248, 0.12));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 18px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    @media (max-width: 640px) { .roi-banner { grid-template-columns: 1fr; } }
+    .roi-metric-label { font-size: 0.8rem; font-weight: 800; color: #6ee7b7; text-transform: uppercase; letter-spacing: 0.05em; }
+    .roi-metric-val { font-size: 2rem; font-weight: 800; color: #34d399; margin: 4px 0; }
+    .roi-metric-sub { font-size: 0.83rem; color: #cbd5e1; }
+
+    .cta-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    @media (max-width: 680px) { .cta-row { grid-template-columns: 1fr; } }
+    .btn-primary {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 22px;
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1rem;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(168, 85, 247, 0.38);
+      transition: transform 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 20px;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #7dd3fc;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(56, 189, 248, 0.24); color: #fff; }
+
+    .section-title { font-size: 1.5rem; font-weight: 800; margin: 36px 0 16px; color: #fff; }
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      margin-bottom: 36px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th { background: rgba(30, 41, 59, 0.9); color: #f8fafc; font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--card-border); }
+    td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1; }
+    tr:last-child td { border-bottom: none; }
+    .good { color: #34d399; font-weight: 700; }
+    .warn { color: #fbbf24; font-weight: 600; }
+    .bad { color: #fb7185; font-weight: 600; }
+
+    .faq-grid { display: grid; gap: 16px; margin-bottom: 40px; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px 24px;
+    }
+    .faq-q { font-weight: 800; font-size: 1.05rem; color: #f8fafc; margin-bottom: 8px; }
+    .faq-a { color: var(--text-muted); font-size: 0.93rem; }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 24px;
+      margin-top: 20px;
+    }
+    footer a { color: #7dd3fc; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="sticky-vip-bar">
+    <span>🎬 <strong>2026 Faceless Creator Stack:</strong> Automate Video Scripts, n8n Webhooks & Multi-Language Funnels</span>
+    <a href="automation-vip-kit.html" style="background:#fff; color:#090d16; padding:4px 12px; border-radius:6px; text-decoration:none; font-size:0.82rem; font-weight:800;">Get $19 Automation VIP Kit ➔</a>
+  </div>
+
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo">
+        <span>AutoFlow</span>
+        <span class="logo-badge">AI ROI LABS</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Make vs Zapier</a>
+        <a href="ai-tools-directory.html" class="nav-link">AI Tools Directory</a>
+        <a href="chatpdf-vs-humata-research-roi.html" class="nav-link">ChatPDF vs Humata</a>
+        <a href="hostinger-vps-vs-aws-ai-agent-cost.html" class="nav-link">Hostinger vs AWS VPS</a>
+        <a href="automation-vip-kit.html" class="nav-link" style="color:#38bdf8;">VIP Blueprints</a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="badge">🎥 2026 AI Video Avatar & Lip-Sync Economics</div>
+      <h1>HeyGen AI vs Traditional Video Studio & InVideo AI: 2026 ROI Calculator</h1>
+      <p class="subtitle">
+        Quantify how much studio budget you save by replacing $150/video live shoots with <strong>HeyGen AI 40-Language Lip-Sync Avatars</strong>—and model your localized Affiliate & AdSense revenue multiplier.
+      </p>
+    </header>
+
+    <section class="calc-card" aria-label="Interactive Video Production Cost Calculator">
+      <div class="slider-grid">
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="videosPerMonth" class="slider-label">Monthly Videos Published:</label>
+            <span class="slider-val" id="videosPerMonthVal">30 videos</span>
+          </div>
+          <input type="range" id="videosPerMonth" min="5" max="120" step="5" value="30">
+          <div class="slider-hint">Short-form Reels/TikToks, SaaS product demos, or YouTube explainers.</div>
+        </div>
+
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="langCount" class="slider-label">Localized Target Languages:</label>
+            <span class="slider-val" id="langCountVal">3 languages</span>
+          </div>
+          <input type="range" id="langCount" min="1" max="10" step="1" value="3">
+          <div class="slider-hint">1 = English only • 3+ = EN + ES + DE/JP high-CPM global channels.</div>
+        </div>
+      </div>
+
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div class="tier-name">Traditional Studio & Actor</div>
+          <div class="tier-price" id="studioMonthlyCost">$8,400/mo</div>
+          <div class="tier-unit" id="studioPerAsset">$93.33 per localized video</div>
+          <div class="tier-meta">
+            $150 base shoot/edit per video + $65/language voice dubbing & manual re-sync. Slow 5-day turnaround.
+          </div>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-name">InVideo AI + Freelance Dubs</div>
+          <div class="tier-price" id="invideoMonthlyCost">$240/mo</div>
+          <div class="tier-unit">Stock B-Roll Only (No Lip-Sync Twin)</div>
+          <div class="tier-meta">
+            Good for generic faceless stock compilations, but lacks 4K custom digital twin avatars & native facial lip-sync.
+          </div>
+        </div>
+
+        <div class="tier-card winner">
+          <div class="winner-pill">🏆 99.1% STUDIO SAVINGS + 40 LANGUAGES</div>
+          <div class="tier-name" style="color:#e9d5ff;">HeyGen AI Avatar Studio</div>
+          <div class="tier-price" id="heygenMonthlyCost" style="color:#d8b4fe;">$59/mo</div>
+          <div class="tier-unit" id="heygenPerAsset" style="color:#a5f3fc;">$0.66 per localized video</div>
+          <div class="tier-meta">
+            Photorealistic Custom Avatar Twin, Voice Cloning, 1-Click 40-Language Lip-Sync & API Webhook automation.
+          </div>
+        </div>
+      </div>
+
+      <div class="roi-banner">
+        <div>
+          <div class="roi-metric-label">Monthly Production Cost Saved</div>
+          <div class="roi-metric-val" id="monthlySavingsVal">$8,341/mo</div>
+          <div class="roi-metric-sub" id="annualSavingsSub">$100,092 saved per year vs studio production</div>
+        </div>
+        <div>
+          <div class="roi-metric-label">Projected Monthly Affiliate + AdSense Return</div>
+          <div class="roi-metric-val" id="projectedRevenueVal">$2,970/mo</div>
+          <div class="roi-metric-sub" id="totalAssetsSub">Based on 90 localized video assets live/month</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a href="https://heygen.com/?sid=rewardful&via=heygenpro" target="_blank" rel="noopener" class="btn-primary">
+          🚀 Launch HeyGen AI Studio (Partner Code: via=heygenpro) ➔
+        </a>
+        <a href="ai-tools-directory.html" class="btn-secondary">
+          📊 Compare All 20+ Recurring AI Tools ➔
+        </a>
+      </div>
+    </section>
+
+    <h2 class="section-title">Head-to-Head Specification Matrix: HeyGen AI vs InVideo AI vs Studio</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Production Metric</th>
+            <th>HeyGen AI (Creator / Business)</th>
+            <th>InVideo AI (Plus / Max)</th>
+            <th>Traditional Video Studio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Monthly Base Subscription</strong></td>
+            <td class="good">$29 – $89 / month</td>
+            <td class="warn">$25 – $60 / month</td>
+            <td class="bad">$4,500 – $15,000+ / month</td>
+          </tr>
+          <tr>
+            <td><strong>Custom Digital Twin Avatar</strong></td>
+            <td class="good">✔ Instant 4K Webcam/Phone Clone</td>
+            <td class="bad">✘ Stock B-Roll & Voiceover Only</td>
+            <td class="warn">✔ Requires Physical Camera Crew</td>
+          </tr>
+          <tr>
+            <td><strong>40-Language Facial Lip-Sync</strong></td>
+            <td class="good">✔ Native Frame-Accurate Lip-Sync</td>
+            <td class="warn">Audio Translation Only (No Lip Re-Sync)</td>
+            <td class="bad">$65 – $120 per language actor</td>
+          </tr>
+          <tr>
+            <td><strong>API & Make.com / n8n Automation</strong></td>
+            <td class="good">✔ Full Webhook & REST API</td>
+            <td class="bad">✘ Manual Web Prompting Only</td>
+            <td class="bad">✘ 100% Manual Editing Pipeline</td>
+          </tr>
+          <tr>
+            <td><strong>Best Conversion Use Case</strong></td>
+            <td class="good">High-Trust B2B Sales, SaaS Demos, Personal Brand</td>
+            <td class="warn">Top-10 Listicle Faceless Shorts</td>
+            <td class="warn">Super Bowl / TV Commercials</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">Frequently Asked Questions (AI Video ROI & Localization)</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">1. How does the HeyGen vs Traditional Studio cost formula work?</div>
+        <div class="faq-a">
+          Our calculator benchmarks a standard $150 studio production cost per original video (scripting setup, studio lighting, actor fee, and Premiere Pro editing) plus $65 per localized language version. With <a href="https://heygen.com/?sid=rewardful&via=heygenpro" target="_blank" rel="noopener" style="color:#38bdf8;">HeyGen AI</a>, your subscription scales from $29/mo (Creator) to $89/mo (Business) while generating dozens of localized lip-synced videos automatically.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">2. Can I automate HeyGen AI video generation with Make.com or n8n?</div>
+        <div class="faq-a">
+          Yes. Using the blueprints inside our <a href="automation-vip-kit.html" style="color:#38bdf8;">$19 Automation VIP Kit</a>, you can connect Google Sheets or RSS feeds directly to HeyGen's API to render daily avatar videos and publish them to YouTube Shorts, TikTok, and Instagram Reels automatically.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">3. Does HeyGen offer a recurring partner program for creators?</div>
+        <div class="faq-a">
+          Yes! HeyGen pays 20%–30% recurring commissions on referred creator and enterprise plans. You can explore HeyGen alongside 25 other verified partner programs inside our <a href="ai-tools-directory.html" style="color:#38bdf8;">Top AI Tools Directory</a>.
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        © 2026 AutoFlow Tech • <a href="index.html">Make vs Zapier Calculator</a> • <a href="ai-tools-directory.html">AI Tools Directory</a> • <a href="automation-vip-kit.html">Automation VIP Kit</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const videosInput = document.getElementById('videosPerMonth');
+    const langInput = document.getElementById('langCount');
+
+    const videosValEl = document.getElementById('videosPerMonthVal');
+    const langValEl = document.getElementById('langCountVal');
+    const studioMonthlyCostEl = document.getElementById('studioMonthlyCost');
+    const studioPerAssetEl = document.getElementById('studioPerAsset');
+    const invideoMonthlyCostEl = document.getElementById('invideoMonthlyCost');
+    const heygenMonthlyCostEl = document.getElementById('heygenMonthlyCost');
+    const heygenPerAssetEl = document.getElementById('heygenPerAsset');
+    const monthlySavingsValEl = document.getElementById('monthlySavingsVal');
+    const annualSavingsSubEl = document.getElementById('annualSavingsSub');
+    const projectedRevenueValEl = document.getElementById('projectedRevenueVal');
+    const totalAssetsSubEl = document.getElementById('totalAssetsSub');
+
+    function calculateHeygenRoi() {
+      const videos = parseInt(videosInput.value, 10) || 30;
+      const langs = parseInt(langInput.value, 10) || 3;
+      const totalLocalizedAssets = videos * langs;
+
+      videosValEl.textContent = videos + ' videos';
+      langValEl.textContent = langs + (langs === 1 ? ' language' : ' languages');
+
+      // Traditional studio: $150 per base video + $65 per additional language per video
+      const studioCost = (videos * 150) + (videos * Math.max(0, langs - 1) * 65);
+      const studioPerAsset = studioCost / totalLocalizedAssets;
+
+      // InVideo AI ($30-$60 base) + external dubbing/voice sync overhead ($3 per localized clip)
+      const invideoBase = videos <= 30 ? 30 : 60;
+      const invideoCost = invideoBase + (videos * Math.max(0, langs - 1) * 3.5);
+
+      // HeyGen AI plan tier: $29/mo up to 20 total assets, $59/mo up to 90 assets, $89/mo above 90
+      let heygenCost = 29;
+      if (totalLocalizedAssets > 25 && totalLocalizedAssets <= 90) {
+        heygenCost = 59;
+      } else if (totalLocalizedAssets > 90) {
+        heygenCost = 89 + Math.ceil((totalLocalizedAssets - 90) / 50) * 30;
+      }
+      const heygenPerAsset = heygenCost / totalLocalizedAssets;
+
+      const monthlySavings = Math.max(0, studioCost - heygenCost);
+      const annualSavings = monthlySavings * 12;
+
+      // Estimated creator monetization: ~$33 average net Affiliate + AdSense yield per localized video asset
+      const projectedRevenue = Math.round(totalLocalizedAssets * 33);
+
+      studioMonthlyCostEl.textContent = '$' + studioCost.toLocaleString() + '/mo';
+      studioPerAssetEl.textContent = '$' + studioPerAsset.toFixed(2) + ' per localized video';
+      invideoMonthlyCostEl.textContent = '$' + Math.round(invideoCost).toLocaleString() + '/mo';
+      heygenMonthlyCostEl.textContent = '$' + heygenCost.toLocaleString() + '/mo';
+      heygenPerAssetEl.textContent = '$' + heygenPerAsset.toFixed(2) + ' per localized video';
+      monthlySavingsValEl.textContent = '$' + monthlySavings.toLocaleString() + '/mo';
+      annualSavingsSubEl.textContent = '$' + annualSavings.toLocaleString() + ' saved per year vs studio production';
+      projectedRevenueValEl.textContent = '$' + projectedRevenue.toLocaleString() + '/mo';
+      totalAssetsSubEl.textContent = 'Based on ' + totalLocalizedAssets + ' localized video assets live/month';
+    }
+
+    videosInput.addEventListener('input', calculateHeygenRoi);
+    langInput.addEventListener('input', calculateHeygenRoi);
+    calculateHeygenRoi();
+  </script>
+</body>
+</html>

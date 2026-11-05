@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BingX (54% Rebate) vs Bybit (40% Rebate): 2026 Perpetual Futures Fee Calculator</title>
+  <meta name="description" content="Interactive 2026 Perpetual Futures Fee & Rebate Calculator comparing BingX (54% lifetime commission kickback, 0.050% taker fee) vs Bybit (40% rebate, 0.055% taker fee, Unified Trading Account).">
+  <link rel="canonical" href="https://ceopatinhalo-ai.github.io/automation-calculator/bingx-vs-bybit-futures-fee-calculator.html">
+  <meta property="og:title" content="BingX (54% Rebate) vs Bybit (40% Rebate): 2026 Perpetual Futures Fee Calculator">
+  <meta property="og:description" content="Calculate your exact monthly perpetual futures notional volume, taker fees (0.05% vs 0.055%), and lifetime fee rebates on BingX vs Bybit.">
+  <meta property="og:url" content="https://ceopatinhalo-ai.github.io/automation-calculator/bingx-vs-bybit-futures-fee-calculator.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "BingX vs Bybit Perpetual Futures Fee & Rebate Calculator",
+        "url": "https://ceopatinhalo-ai.github.io/automation-calculator/bingx-vs-bybit-futures-fee-calculator.html",
+        "description": "Interactive crypto derivatives calculator comparing monthly notional volume, taker fees, and lifetime rebates between BingX (54% rebate) and Bybit (40% rebate).",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is perpetual futures notional volume calculated from margin and leverage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every perpetual futures position is sized by multiplying your Margin Collateral (USD) by your Leverage multiplier. Because every completed trade requires both an entry order and an exit order (2 execution legs), a trader with $5,000 margin at 20x leverage executing 60 round-trip trades per month generates $12,000,000 in monthly notional volume."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the effective taker fee on BingX vs Bybit after lifetime rebates?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "BingX charges a base Perpetual Futures Taker fee of 0.050% (5 bps) and a Maker fee of 0.020%. With the 54% lifetime rebate (Code: GXFLIC), the effective Taker fee drops to 0.0230%. Bybit charges a base Taker fee of 0.055% (5.5 bps) and Maker fee of 0.020%; with the 40% partner rebate (Code: BGP06Q), the net Taker fee drops to 0.0330%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should a derivatives trader choose Bybit over BingX?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choose BingX if you prioritize maximum fee kickbacks (54% lifetime rebate), social copy trading automation, or synthetic TradFi/commodity futures inside a crypto account. Choose Bybit if you execute large institutional block orders ($500K+ per clip) requiring deep L2 orderbook liquidity, Portfolio Margin across USDC options and perps, and sub-5ms API matching engine latency."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #000000;
+      --border-subtle: #cbd5e1;
+      --text-main: #000000;
+      --text-secondary: #1e293b;
+      --text-muted: #475569;
+      --bingx-blue: #0052ff;
+      --bingx-bg: #eff6ff;
+      --bybit-amber: #d97706;
+      --bybit-bg: #fffbeb;
+      --emerald: #047857;
+      --emerald-bg: #ecfdf5;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --surface: #0a0a0c;
+        --card-bg: #111115;
+        --border: #ffffff;
+        --border-subtle: #27272a;
+        --text-main: #ffffff;
+        --text-secondary: #e4e4e7;
+        --text-muted: #a1a1aa;
+        --bingx-blue: #3b82f6;
+        --bingx-bg: rgba(59, 130, 246, 0.12);
+        --bybit-amber: #f59e0b;
+        --bybit-bg: rgba(245, 158, 11, 0.12);
+        --emerald: #10b981;
+        --emerald-bg: rgba(16, 185, 129, 0.12);
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 64px;
+    }
+    .top-banner {
+      background: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-bottom: 2px solid var(--bingx-blue);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .top-banner a {
+      background: #ffffff;
+      color: #000000;
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 2px solid var(--border-subtle);
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-tag {
+      background: var(--text-main);
+      color: var(--bg);
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--surface);
+      color: var(--text-main);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    header {
+      margin-bottom: 44px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      border: 2px solid var(--text-main);
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2.65rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      color: var(--text-main);
+    }
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 860px;
+      font-weight: 500;
+    }
+    .calc-shell {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 48px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.25fr;
+      gap: 32px;
+    }
+    @media (max-width: 860px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .calc-shell {
+        padding: 24px 18px;
+      }
+    }
+    .control-group {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .control-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .control-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .control-label {
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text-main);
+    }
+    .control-readout {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--bingx-blue);
+      font-variant-numeric: tabular-nums;
+    }
+    .input-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    input[type="number"], select {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      border: 2px solid var(--border-subtle);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--text-main);
+      font-variant-numeric: tabular-nums;
+    }
+    input[type="number"]:focus, select:focus {
+      outline: none;
+      border-color: var(--bingx-blue);
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 10px;
+      border-radius: 6px;
+      background: var(--border-subtle);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--text-main);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--text-main);
+      cursor: pointer;
+    }
+    .preset-pills {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .pill-btn {
+      background: var(--surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      padding: 5px 11px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .pill-btn:hover {
+      border-color: var(--text-main);
+    }
+    .results-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .notional-banner {
+      background: var(--surface);
+      border: 2px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .notional-label {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    .notional-val {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text-main);
+      font-variant-numeric: tabular-nums;
+    }
+    .exchange-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      .exchange-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+    .ex-card {
+      border-radius: 16px;
+      padding: 22px;
+      border: 2px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .ex-card.bingx {
+      background: var(--bingx-bg);
+      border-color: var(--bingx-blue);
+    }
+    .ex-card.bybit {
+      background: var(--bybit-bg);
+      border-color: var(--bybit-amber);
+    }
+    .ex-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .ex-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+    }
+    .ex-badge {
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      background: var(--text-main);
+      color: var(--bg);
+    }
+    .metric-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border-subtle);
+      font-variant-numeric: tabular-nums;
+    }
+    .metric-line strong {
+      font-weight: 800;
+    }
+    .rebate-highlight {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 2px solid var(--text-main);
+    }
+    .rebate-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+    }
+    .rebate-usd {
+      font-size: 1.95rem;
+      font-weight: 900;
+      color: var(--emerald);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+      margin: 4px 0;
+    }
+    .delta-box {
+      background: var(--emerald-bg);
+      border: 2px solid var(--emerald);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .delta-text {
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+    .delta-val {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--emerald);
+      font-variant-numeric: tabular-nums;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .btn-cta {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      padding: 16px 18px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 900;
+      transition: transform 0.15s;
+      border: 2px solid var(--text-main);
+    }
+    .btn-cta:hover {
+      transform: translateY(-2px);
+    }
+    .btn-bingx {
+      background: var(--bingx-blue);
+      color: #ffffff;
+      border-color: var(--bingx-blue);
+    }
+    .btn-bybit {
+      background: var(--text-main);
+      color: var(--bg);
+    }
+    .code-caption {
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+    section {
+      margin-bottom: 52px;
+    }
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .section-lead {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      background: var(--card-bg);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.96rem;
+    }
+    th, td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-variant-numeric: tabular-nums;
+    }
+    th {
+      background: var(--surface);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--border);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .winner-cell {
+      font-weight: 900;
+      color: var(--emerald);
+    }
+    .deep-dive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .deep-dive-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .info-card {
+      border: 2px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px;
+      background: var(--card-bg);
+    }
+    .info-card h3 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .info-card ul {
+      list-style: none;
+    }
+    .info-card li {
+      margin-bottom: 12px;
+      padding-left: 22px;
+      position: relative;
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+    }
+    .info-card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+      color: var(--text-main);
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-item {
+      border: 2px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 22px 24px;
+      background: var(--card-bg);
+    }
+    .faq-q {
+      font-size: 1.12rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .faq-a {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+    }
+    .cluster-nav {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+    .cluster-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .cluster-card {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+    .cluster-card:hover {
+      border-color: var(--text-main);
+    }
+    footer {
+      border-top: 2px solid var(--border-subtle);
+      padding-top: 32px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner">
+    <span>⚡ <strong>VERIFIED 2026 PARTNER REBATE CODES:</strong> BingX 54% Lifetime Rebate (Code: <strong>GXFLIC</strong>) | Bybit 40% VIP Rebate (Code: <strong>BGP06Q</strong>)</span>
+    <a href="forex-calculator.html">Switch to Forex &amp; Gold Lot Calculator ➔</a>
+  </div>
+
+  <div class="container">
+    <nav aria-label="Primary Navigation">
+      <a href="index.html" class="logo">
+        <span>AutoFlow</span>
+        <span class="logo-tag">Perp Fee Matrix</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Make vs Zapier</a>
+        <a href="forex-calculator.html" class="nav-link">Forex &amp; Gold Calculator</a>
+        <a href="bingx-vs-bybit-futures-fee-calculator.html" class="nav-link active">BingX vs Bybit</a>
+        <a href="mexc-vs-kucoin-rebate-calculator.html" class="nav-link">MEXC vs KuCoin</a>
+        <a href="gateio-vs-htx-altcoin-fee-matrix.html" class="nav-link">Gate.io vs HTX</a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="eyebrow">2026 Crypto Derivatives Fee &amp; Liquidity Audit</div>
+      <h1>BingX (54% Lifetime Rebate) vs Bybit (40% Rebate): Perpetual Futures Fee Calculator</h1>
+      <p class="subtitle">
+        Leveraged perpetual futures traders silently lose 18% to 45% of their annual margin collateral to Taker execution fees. Adjust your margin, average leverage, and monthly trade count below to quantify your exact notional volume and automated daily fee kickbacks.
+      </p>
+    </header>
+
+    <main>
+      <section class="calc-shell" aria-label="Interactive Perpetual Futures Rebate Calculator">
+        <div class="calc-grid">
+          <!-- Left: User Controls -->
+          <div class="controls-column">
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-label" for="marginUsd">1. Active Margin Capital ($ USD)</label>
+                <span class="control-readout" id="marginReadout">$5,000</span>
+              </div>
+              <div class="input-row">
+                <input type="number" id="marginUsd" value="5000" min="100" max="1000000" step="250" oninput="syncFromInputs('margin')">
+              </div>
+              <input type="range" id="marginRange" min="500" max="100000" step="500" value="5000" oninput="syncFromSliders('margin')" aria-label="Active Margin Slider">
+              <div class="preset-pills">
+                <button type="button" class="pill-btn" onclick="setMarginPreset(1000)">$1,000</button>
+                <button type="button" class="pill-btn" onclick="setMarginPreset(5000)">$5,000</button>
+                <button type="button" class="pill-btn" onclick="setMarginPreset(25000)">$25,000</button>
+                <button type="button" class="pill-btn" onclick="setMarginPreset(50000)">$50,000</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-label" for="leverageVal">2. Average Effective Leverage (x)</label>
+                <span class="control-readout" id="leverageReadout">20x</span>
+              </div>
+              <div class="input-row">
+                <input type="number" id="leverageVal" value="20" min="1" max="150" step="1" oninput="syncFromInputs('leverage')">
+              </div>
+              <input type="range" id="leverageRange" min="1" max="125" step="1" value="20" oninput="syncFromSliders('leverage')" aria-label="Leverage Multiplier Slider">
+              <div class="preset-pills">
+                <button type="button" class="pill-btn" onclick="setLeveragePreset(5)">5x Swing</button>
+                <button type="button" class="pill-btn" onclick="setLeveragePreset(20)">20x Intraday</button>
+                <button type="button" class="pill-btn" onclick="setLeveragePreset(50)">50x Scalper</button>
+                <button type="button" class="pill-btn" onclick="setLeveragePreset(100)">100x High-Octane</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-header">
+                <label class="control-label" for="tradesPerMonth">3. Round-Trip Trades / Month</label>
+                <span class="control-readout" id="tradesReadout">60 trades</span>
+              </div>
+              <div class="input-row">
+                <input type="number" id="tradesPerMonth" value="60" min="1" max="2000" step="5" oninput="syncFromInputs('trades')">
+              </div>
+              <input type="range" id="tradesRange" min="5" max="500" step="5" value="60" oninput="syncFromSliders('trades')" aria-label="Monthly Trades Slider">
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 8px;">
+                Each round-trip trade includes both <strong>Entry + Exit</strong> (2 execution legs).
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Live Mathematical Output -->
+          <div class="results-column">
+            <div class="notional-banner">
+              <div>
+                <div class="notional-label">Monthly Notional Volume (Entry + Exit)</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted);">Margin × Leverage × Trades × 2 Legs</div>
+              </div>
+              <div class="notional-val" id="notionalVolumeDisplay">$12,000,000</div>
+            </div>
+
+            <div class="exchange-cards">
+              <!-- BingX Card -->
+              <div class="ex-card bingx">
+                <div>
+                  <div class="ex-header">
+                    <span class="ex-title">BingX Perp</span>
+                    <span class="ex-badge">54% Rebate</span>
+                  </div>
+                  <div class="metric-line">
+                    <span>Base Taker Rate:</span>
+                    <strong>0.050% (5.0 bps)</strong>
+                  </div>
+                  <div class="metric-line">
+                    <span>Gross Monthly Fee:</span>
+                    <strong id="bingxGrossFee">$6,000.00</strong>
+                  </div>
+                  <div class="metric-line">
+                    <span>Effective Net Fee:</span>
+                    <strong id="bingxNetFee">$2,760.00 (0.023%)</strong>
+                  </div>
+                </div>
+                <div class="rebate-highlight">
+                  <div class="rebate-label">Your 54% Monthly Cashback</div>
+                  <div class="rebate-usd" id="bingxMonthlyRebate">+$3,240.00</div>
+                  <div style="font-size: 0.85rem; font-weight: 700;" id="bingxAnnualRebate">$38,880 / year returned</div>
+                </div>
+              </div>
+
+              <!-- Bybit Card -->
+              <div class="ex-card bybit">
+                <div>
+                  <div class="ex-header">
+                    <span class="ex-title">Bybit UTA</span>
+                    <span class="ex-badge">40% Rebate</span>
+                  </div>
+                  <div class="metric-line">
+                    <span>Base Taker Rate:</span>
+                    <strong>0.055% (5.5 bps)</strong>
+                  </div>
+                  <div class="metric-line">
+                    <span>Gross Monthly Fee:</span>
+                    <strong id="bybitGrossFee">$6,600.00</strong>
+                  </div>
+                  <div class="metric-line">
+                    <span>Effective Net Fee:</span>
+                    <strong id="bybitNetFee">$3,960.00 (0.033%)</strong>
+                  </div>
+                </div>
+                <div class="rebate-highlight">
+                  <div class="rebate-label">Your 40% Monthly Cashback</div>
+                  <div class="rebate-usd" id="bybitMonthlyRebate">+$2,640.00</div>
+                  <div style="font-size: 0.85rem; font-weight: 700;" id="bybitAnnualRebate">$31,680 / year returned</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="delta-box">
+              <div class="delta-text">
+                Extra Annual Fee Advantage on BingX (54% Rebate + Lower Base Taker):
+              </div>
+              <div class="delta-val" id="annualAdvantageUsd">+$14,400 / yr</div>
+            </div>
+
+            <div class="cta-grid">
+              <div>
+                <a href="https://bingx.com/invite/GXFLIC" target="_blank" rel="noopener noreferrer" class="btn-cta btn-bingx">
+                  Claim BingX 54% Rebate ➔
+                </a>
+                <div class="code-caption">Partner Invite Code: <strong>GXFLIC</strong></div>
+              </div>
+              <div>
+                <a href="https://www.bybitglobal.com/invite?ref=BGP06Q" target="_blank" rel="noopener noreferrer" class="btn-cta btn-bybit">
+                  Activate Bybit 40% Rebate ➔
+                </a>
+                <div class="code-caption">Partner Referral Code: <strong>BGP06Q</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Real Parameter Comparison Matrix -->
+      <section aria-labelledby="matrix-heading">
+        <h2 class="section-title" id="matrix-heading">2026 Perpetual Futures Specification Matrix: BingX vs Bybit</h2>
+        <p class="section-lead">
+          Verified execution rates, margin architecture, and automated rebate settlement schedules for high-volume perpetual futures traders.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Specification / Metric</th>
+                <th>BingX Perpetual Futures</th>
+                <th>Bybit Unified Trading Account (UTA)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Lifetime Partner Rebate Rate</strong></td>
+                <td class="winner-cell">54% Commission Kickback (Code: GXFLIC)</td>
+                <td>40% Commission Kickback (Code: BGP06Q)</td>
+              </tr>
+              <tr>
+                <td><strong>Standard VIP0 Futures Taker Fee</strong></td>
+                <td class="winner-cell">0.050% (5.0 basis points)</td>
+                <td>0.055% (5.5 basis points)</td>
+              </tr>
+              <tr>
+                <td><strong>Effective Taker Fee After Rebate</strong></td>
+                <td class="winner-cell">0.0230% (2.30 bps net)</td>
+                <td>0.0330% (3.30 bps net)</td>
+              </tr>
+              <tr>
+                <td><strong>Standard VIP0 Futures Maker Fee</strong></td>
+                <td>0.020% (0.0092% net after 54% rebate)</td>
+                <td>0.020% (0.0120% net after 40% rebate)</td>
+              </tr>
+              <tr>
+                <td><strong>Copy Trading &amp; Sub-Account Ecosystem</strong></td>
+                <td class="winner-cell">#1 Global Copy Trading (Zero-Slippage Subsidy)</td>
+                <td>Master/Follower Sub-Accounts + Automated Trading Bots</td>
+              </tr>
+              <tr>
+                <td><strong>Orderbook Depth on $1M+ BTC/ETH Clips</strong></td>
+                <td>High ($15M–$25M within 10 bps + Guaranteed Price Mode)</td>
+                <td class="winner-cell">Institutional Tier-1 ($45M+ within 10 bps, Sub-5ms API)</td>
+              </tr>
+              <tr>
+                <td><strong>Cross-Asset Collateral &amp; Options</strong></td>
+                <td>Multi-Asset USDT/USDC/Coin-M + Synthetic Gold/Forex/Indices</td>
+                <td class="winner-cell">Full UTA Portfolio Margin (Spot + Perps + USDC Options)</td>
+              </tr>
+              <tr>
+                <td><strong>Proof of Reserves (PoR) Verification</strong></td>
+                <td>100%+ Merkle Tree Audited Monthly (Mazars / CertiK)</td>
+                <td>100%+ Real-Time Merkle Tree PoR + Hacken Audit</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Structural Architecture Deep Dive -->
+      <section aria-labelledby="architecture-heading">
+        <h2 class="section-title" id="architecture-heading">Execution Architecture: Which Derivatives Desk Fits Your Strategy?</h2>
+        <p class="section-lead">
+          Many systematic traders maintain active margin across both venues—using BingX for high-turnover scalping and copy-trading strategies while deploying Bybit UTA for delta-neutral options hedging.
+        </p>
+        <div class="deep-dive-grid">
+          <div class="info-card">
+            <h3>Why Active Scalpers &amp; Copy Traders Choose BingX (GXFLIC)</h3>
+            <ul>
+              <li><strong>Lowest Net Taker Friction (0.0230%):</strong> Combining a 0.050% base taker rate with a 54% lifetime rebate saves $100 per $1,000,000 in notional volume compared to Bybit's net taker rate.</li>
+              <li><strong>Guaranteed Stop-Loss &amp; Zero-Slippage Perps:</strong> BingX offers an optional Guaranteed Price execution mode on Perpetual Futures, eliminating wick slippage during FOMC or CPI volatility spikes.</li>
+              <li><strong>TradFi + Crypto Unified Terminal:</strong> Trade BTCUSDT and ETHUSDT alongside Gold (XAUUSD), Crude Oil, and NASDAQ-100 futures using USDT collateral without moving funds off-exchange.</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>Why Institutional Quants &amp; API Desks Choose Bybit (BGP06Q)</h3>
+            <ul>
+              <li><strong>Unified Trading Account (UTA) Capital Efficiency:</strong> Offset unrealized perpetual futures profits directly against USDC options or spot margin positions in a single cross-collateralized pool.</li>
+              <li><strong>Deepest L2 Orderbook Liquidity:</strong> When firing market orders exceeding $250,000 per clip on major pairs (BTC, ETH, SOL), Bybit's tighter bid-ask depth minimizes market impact cost.</li>
+              <li><strong>40% Rebate on High-Frequency API Volume:</strong> Binding partner code <strong>BGP06Q</strong> reduces your effective VIP0 taker fee to 0.033% while unlocking institutional sub-account rate limits.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section aria-labelledby="faq-heading">
+        <h2 class="section-title" id="faq-heading">Frequently Asked Questions (Perpetual Futures Fee Math)</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">1. How is perpetual futures notional volume calculated from margin and leverage?</div>
+            <p class="faq-a">
+              Every perpetual futures position is sized by multiplying your Margin Collateral (USD) by your Leverage multiplier. Because every completed trade requires both an entry order and an exit order (2 execution legs), a trader with $5,000 margin at 20x leverage executing 60 round-trip trades per month generates $12,000,000 in monthly notional volume ($5,000 × 20 × 60 × 2).
+            </p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">2. What is the effective taker fee on BingX vs Bybit after lifetime rebates?</div>
+            <p class="faq-a">
+              BingX charges a base Perpetual Futures Taker fee of 0.050% (5 bps) and a Maker fee of 0.020%. With the 54% lifetime rebate (Code: <strong>GXFLIC</strong>), the effective Taker fee drops to 0.0230%. Bybit charges a base Taker fee of 0.055% (5.5 bps) and Maker fee of 0.020%; with the 40% partner rebate (Code: <strong>BGP06Q</strong>), the net Taker fee drops to 0.0330%.
+            </p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">3. When should a derivatives trader choose Bybit over BingX?</div>
+            <p class="faq-a">
+              Choose BingX if you prioritize maximum fee kickbacks (54% lifetime rebate), social copy trading automation, or synthetic TradFi/commodity futures inside a crypto account. Choose Bybit if you execute large institutional block orders ($500K+ per clip) requiring deep L2 orderbook liquidity, Portfolio Margin across USDC options and perps, and sub-5ms API matching engine latency.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Internal Cross-Navigation -->
+      <aside class="cluster-nav" aria-label="Related Trading & Rebate Calculators">
+        <h3 style="font-size: 1.2rem; font-weight: 900;">Explore the Complete 2026 Fee &amp; Rebate Calculator Suite</h3>
+        <div class="cluster-links">
+          <a href="mexc-vs-kucoin-rebate-calculator.html" class="cluster-card">
+            MEXC (0% Maker + 70% Rebate) vs KuCoin (60% Rebate) ➔
+          </a>
+          <a href="gateio-vs-htx-altcoin-fee-matrix.html" class="cluster-card">
+            Gate.io (55% Rebate) vs HTX (55%) &amp; BitMart (50%) ➔
+          </a>
+          <a href="forex-calculator.html" class="cluster-card">
+            Global Forex &amp; Gold (XAUUSD) Lot &amp; Spread Calculator ➔
+          </a>
+          <a href="index.html" class="cluster-card">
+            AutoFlow Hub: Make.com vs Zapier ROI Calculator ➔
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <p>© 2026 AutoFlow Quantitative Trading &amp; Automation Systems. Built for High-Frequency Derivatives Traders.</p>
+      <p style="margin-top: 8px;">
+        <a href="index.html">Home ROI Calculator</a> ·
+        <a href="forex-calculator.html">Forex &amp; Gold Lot Calculator</a> ·
+        <a href="mexc-vs-kucoin-rebate-calculator.html">MEXC vs KuCoin Matrix</a> ·
+        <a href="gateio-vs-htx-altcoin-fee-matrix.html">Gate.io vs HTX Altcoin Matrix</a>
+      </p>
+      <p style="margin-top: 12px; font-size: 0.8rem;">
+        Risk Disclosure: Leveraged perpetual futures trading carries significant risk of capital loss. Rebates are credited automatically by the respective exchanges when registering with verified partner codes GXFLIC (BingX) and BGP06Q (Bybit).
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const marginInput = document.getElementById('marginUsd');
+    const marginSlider = document.getElementById('marginRange');
+    const leverageInput = document.getElementById('leverageVal');
+    const leverageSlider = document.getElementById('leverageRange');
+    const tradesInput = document.getElementById('tradesPerMonth');
+    const tradesSlider = document.getElementById('tradesRange');
+
+    function formatCurrency(val) {
+      return '$' + Number(val).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function formatWholeUsd(val) {
+      return '$' + Math.round(val).toLocaleString('en-US');
+    }
+
+    function computePerpFees() {
+      const margin = Math.max(100, Number(marginInput.value) || 5000);
+      const leverage = Math.max(1, Math.min(150, Number(leverageInput.value) || 20));
+      const trades = Math.max(1, Number(tradesInput.value) || 60);
+
+      document.getElementById('marginReadout').textContent = formatWholeUsd(margin);
+      document.getElementById('leverageReadout').textContent = leverage + 'x';
+      document.getElementById('tradesReadout').textContent = trades + ' trades';
+
+      // Monthly round-trip notional volume (Entry leg + Exit leg = 2x per round-trip trade)
+      const monthlyNotional = margin * leverage * trades * 2;
+      document.getElementById('notionalVolumeDisplay').textContent = formatWholeUsd(monthlyNotional);
+
+      // BingX: 0.050% Taker Fee (0.0005), 54% Lifetime Rebate
+      const bingxTakerRate = 0.0005;
+      const bingxRebatePct = 0.54;
+      const bingxGross = monthlyNotional * bingxTakerRate;
+      const bingxRebate = bingxGross * bingxRebatePct;
+      const bingxNet = bingxGross - bingxRebate;
+
+      // Bybit: 0.055% Taker Fee (0.00055), 40% Lifetime Rebate
+      const bybitTakerRate = 0.00055;
+      const bybitRebatePct = 0.40;
+      const bybitGross = monthlyNotional * bybitTakerRate;
+      const bybitRebate = bybitGross * bybitRebatePct;
+      const bybitNet = bybitGross - bybitRebate;
+
+      document.getElementById('bingxGrossFee').textContent = formatCurrency(bingxGross);
+      document.getElementById('bingxNetFee').textContent = formatCurrency(bingxNet) + ' (0.023%)';
+      document.getElementById('bingxMonthlyRebate').textContent = '+' + formatCurrency(bingxRebate);
+      document.getElementById('bingxAnnualRebate').textContent = formatWholeUsd(bingxRebate * 12) + ' / year returned';
+
+      document.getElementById('bybitGrossFee').textContent = formatCurrency(bybitGross);
+      document.getElementById('bybitNetFee').textContent = formatCurrency(bybitNet) + ' (0.033%)';
+      document.getElementById('bybitMonthlyRebate').textContent = '+' + formatCurrency(bybitRebate);
+      document.getElementById('bybitAnnualRebate').textContent = formatWholeUsd(bybitRebate * 12) + ' / year returned';
+
+      // Total annual net cost difference (Bybit Net Fee - BingX Net Fee) * 12
+      const annualAdvantage = (bybitNet - bingxNet) * 12;
+      document.getElementById('annualAdvantageUsd').textContent = '+' + formatWholeUsd(annualAdvantage) + ' / yr';
+    }
+
+    function syncFromInputs(type) {
+      if (type === 'margin') {
+        marginSlider.value = Math.min(100000, Math.max(500, Number(marginInput.value) || 5000));
+      } else if (type === 'leverage') {
+        leverageSlider.value = Math.min(125, Math.max(1, Number(leverageInput.value) || 20));
+      } else if (type === 'trades') {
+        tradesSlider.value = Math.min(500, Math.max(5, Number(tradesInput.value) || 60));
+      }
+      computePerpFees();
+    }
+
+    function syncFromSliders(type) {
+      if (type === 'margin') {
+        marginInput.value = marginSlider.value;
+      } else if (type === 'leverage') {
+        leverageInput.value = leverageSlider.value;
+      } else if (type === 'trades') {
+        tradesInput.value = tradesSlider.value;
+      }
+      computePerpFees();
+    }
+
+    function setMarginPreset(val) {
+      marginInput.value = val;
+      marginSlider.value = Math.min(100000, val);
+      computePerpFees();
+    }
+
+    function setLeveragePreset(val) {
+      leverageInput.value = val;
+      leverageSlider.value = Math.min(125, val);
+      computePerpFees();
+    }
+
+    computePerpFees();
+  </script>
+</body>
+</html>

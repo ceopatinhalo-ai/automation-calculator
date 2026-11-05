@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vantage ($16/lot Gold Rebate) vs XM Global ($9/lot + $30 Bonus): 2026 XAUUSD Cashback Calculator</title>
+  <meta name="description" content="Interactive 2026 XAUUSD Gold Rebate Calculator: Compare Vantage Markets ($16/lot auto-cashback) vs XM Global ($9/lot cashback + $30 no-deposit bonus). Find the exact 4.29-lot break-even threshold.">
+  <link rel="canonical" href="https://ceopatinhalo-ai.github.io/automation-calculator/vantage-vs-xm-gold-rebate.html">
+  <meta property="og:title" content="Vantage ($16/lot Gold Rebate) vs XM Global ($9/lot + $30 Bonus): 2026 XAUUSD Cashback Calculator">
+  <meta property="og:description" content="Calculate your exact monthly & annual XAUUSD cashback between Vantage ($16/lot) and XM Global ($9/lot + $30 No-Deposit Bonus). Interactive break-even volume analysis.">
+  <meta property="og:url" content="https://ceopatinhalo-ai.github.io/automation-calculator/vantage-vs-xm-gold-rebate.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Vantage vs XM Global XAUUSD Gold Cashback Rebate Calculator 2026",
+        "url": "https://ceopatinhalo-ai.github.io/automation-calculator/vantage-vs-xm-gold-rebate.html",
+        "description": "Interactive per-lot cashback rebate calculator comparing Vantage Markets ($16/lot on Gold XAUUSD) and XM Global ($9/lot on Gold + $30 No-Deposit Bonus) with break-even volume modeling.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the exact break-even XAUUSD volume between Vantage and XM Global?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The mathematical break-even point in Month 1 is 4.29 standard lots of XAUUSD (30 USD bonus divided by the 7 USD per-lot rebate differential). Below 4.29 lots in your first month, XM Global yields higher net value due to the $30 No-Deposit Bonus. Above 4.29 lots per month, Vantage's $16/lot cashback generates $7.00 more per lot on every trade."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is the $16/lot Vantage XAUUSD rebate paid out?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When opening a Vantage Standard STP account under the institutional IB rebate link (affid=106266), $16.00 per round-turn standard lot on XAUUSD is credited directly into your trading wallet daily after position closure, with zero minimum holding time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does XM Global allow scalping with the $30 No-Deposit Bonus?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, XM Global permits intraday Gold trading on its Standard and Ultra Low accounts. While the $30 credit itself cannot be withdrawn directly, 100% of profits generated from trading with the bonus are withdrawable, and eligible accounts earn up to $9/lot in Loyalty/IB cashback."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --vantage-accent: #10b981;
+      --vantage-dark: #059669;
+      --xm-accent: #ef4444;
+      --xm-gold: #f59e0b;
+      --highlight: #38bdf8;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #ffffff;
+        --card-bg: #ffffff;
+        --card-border: #cbd5e1;
+        --text-main: #000000;
+        --text-muted: #334155;
+        --vantage-accent: #059669;
+        --xm-accent: #dc2626;
+        --highlight: #0284c7;
+      }
+      body { background-color: #ffffff; color: #000000; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif; font-size: 19px; }
+      .calc-card, .broker-box, .spec-table-wrap, .faq-item { box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #cbd5e1; background: #ffffff; }
+      input, select { background: #ffffff !important; color: #000000 !important; border: 2px solid #94a3b8 !important; font-weight: 700; }
+      h1, h2, h3 { color: #000000 !important; -webkit-text-fill-color: initial !important; background: none !important; }
+      .stat-val { color: #000000 !important; }
+      .nav-link { color: #334155; }
+      .nav-link:hover, .nav-link.active { color: #000000; }
+      .logo { color: #000000; }
+      table th { background: #f1f5f9 !important; color: #000000 !important; }
+      table td { color: #000000 !important; border-bottom-color: #e2e8f0 !important; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif; }
+    body { background-color: var(--bg); color: var(--text-main); line-height: 1.65; padding-bottom: 48px; min-height: 100vh; }
+    .sticky-top-bar {
+      background: linear-gradient(90deg, #059669, #0284c7);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .sticky-top-bar a {
+      background: #ffffff;
+      color: #090d16;
+      padding: 4px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+    .container { max-width: 1040px; margin: 0 auto; padding: 24px 16px 0; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 0 24px; border-bottom: 1px solid var(--card-border); margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; color: var(--text-main); text-decoration: none; }
+    .logo-badge { background: linear-gradient(135deg, #10b981, #0284c7); color: #fff; padding: 3px 9px; border-radius: 6px; font-size: 0.75rem; }
+    .nav-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 600; }
+    .nav-link:hover, .nav-link.active { color: var(--vantage-accent); }
+
+    header { text-align: center; margin-bottom: 36px; }
+    .pill-badge { display: inline-block; background: rgba(16, 185, 129, 0.14); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); padding: 6px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; }
+    h1 { font-size: 2.35rem; font-weight: 800; line-height: 1.2; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .subtitle { color: var(--text-muted); font-size: 1.08rem; max-width: 800px; margin: 0 auto; }
+
+    .calc-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 22px; padding: 32px; margin-bottom: 36px; box-shadow: 0 20px 45px -15px rgba(0,0,0,0.5); }
+    .grid-2 { display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px; }
+    @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } h1 { font-size: 1.8rem; } }
+
+    .form-group { margin-bottom: 22px; }
+    .form-label { display: flex; justify-content: space-between; align-items: center; font-size: 0.92rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .form-control { width: 100%; background: #1f2937; border: 1px solid #374151; color: #fff; padding: 13px 16px; border-radius: 12px; font-size: 1.05rem; font-weight: 700; outline: none; }
+    input[type=range] { width: 100%; height: 10px; border-radius: 6px; background: #374151; outline: none; appearance: none; -webkit-appearance: none; margin: 10px 0 6px; cursor: pointer; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #10b981; cursor: pointer; box-shadow: 0 0 12px rgba(16, 185, 129, 0.8); }
+
+    .breakeven-banner { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 14px; padding: 16px; margin-top: 14px; }
+    .breakeven-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--highlight); margin-bottom: 4px; }
+    .breakeven-text { font-size: 0.95rem; font-weight: 600; }
+
+    .results-stack { display: flex; flex-direction: column; gap: 16px; }
+    .result-box { border-radius: 16px; padding: 20px; border: 1px solid var(--card-border); }
+    .result-box.vantage { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.4); }
+    .result-box.xm { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.4); }
+    .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .result-broker { font-weight: 800; font-size: 1.15rem; }
+    .rate-pill { font-size: 0.78rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.1); }
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+    .metric-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+    .stat-val { font-size: 1.45rem; font-weight: 800; color: #fff; }
+    .stat-val.green { color: #34d399; }
+    .stat-val.amber { color: #fbbf24; }
+
+    .delta-summary { background: rgba(16, 185, 129, 0.14); border: 2px solid #10b981; border-radius: 16px; padding: 18px; text-align: center; }
+    .delta-summary h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .delta-amount { font-size: 1.85rem; font-weight: 900; color: #34d399; }
+
+    .broker-comparison-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+    @media (max-width: 768px) { .broker-comparison-cards { grid-template-columns: 1fr; } }
+    .broker-box { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+    .broker-box.vantage-card { border-top: 4px solid #10b981; }
+    .broker-box.xm-card { border-top: 4px solid #f59e0b; }
+    .broker-box h3 { font-size: 1.45rem; font-weight: 800; margin-bottom: 6px; }
+    .broker-sub { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 18px; }
+    .check-list { list-style: none; margin-bottom: 24px; }
+    .check-list li { margin-bottom: 10px; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 8px; }
+    .check-list li::before { content: "✓"; color: #10b981; font-weight: 900; }
+    .cta-btn { display: block; text-align: center; text-decoration: none; padding: 15px 20px; border-radius: 12px; font-weight: 800; font-size: 1rem; transition: transform 0.15s; }
+    .cta-btn:hover { transform: translateY(-2px); }
+    .cta-vantage { background: #10b981; color: #052e16; box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35); }
+    .cta-xm { background: #f59e0b; color: #090d16; box-shadow: 0 8px 22px rgba(245, 158, 11, 0.35); }
+
+    .spec-table-wrap { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 28px; margin-bottom: 40px; overflow-x: auto; }
+    .spec-table-wrap h2 { font-size: 1.55rem; font-weight: 800; margin-bottom: 18px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--card-border); font-size: 0.96rem; }
+    th { background: rgba(255,255,255,0.04); font-weight: 800; text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.04em; }
+
+    .faq-section { margin-bottom: 40px; }
+    .faq-section h2 { font-size: 1.55rem; font-weight: 800; margin-bottom: 18px; }
+    .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 22px; margin-bottom: 16px; }
+    .faq-item h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+    .faq-item p { color: var(--text-muted); font-size: 0.96rem; }
+
+    .internal-cluster-nav { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 26px; margin-bottom: 36px; }
+    .cluster-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 14px; }
+    .cluster-card { display: block; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--card-border); text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 0.92rem; transition: border-color 0.2s; }
+    .cluster-card:hover { border-color: #10b981; }
+    footer { text-align: center; padding-top: 28px; border-top: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="sticky-top-bar">
+    <span>⚡ <strong>Institutional Prop &amp; Gold SMC Kit ($19):</strong> Includes ICT Fair Value Gap Pine Script v5 + Risk Engine</span>
+    <a href="forex-vip-kit.html">Unlock VIP Suite ➔</a>
+  </div>
+
+  <div class="container">
+    <nav>
+      <a href="forex-calculator.html" class="logo">
+        <span>AutoFlow</span>
+        <span class="logo-badge">XAUUSD Rebate Matrix</span>
+      </a>
+      <div class="nav-links">
+        <a href="forex-calculator.html" class="nav-link">Lot &amp; Risk Calculator</a>
+        <a href="vantage-vs-xm-gold-rebate.html" class="nav-link active">Vantage vs XM Gold</a>
+        <a href="zfx-vs-icmarkets-spread-calculator.html" class="nav-link">ZFX vs IC Markets</a>
+        <a href="exness-vs-vantage-scalping-cost.html" class="nav-link">Exness vs Vantage</a>
+        <a href="forex-vip-kit.html" class="nav-link">VIP Pine Script Kit</a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="pill-badge">2026 Per-Lot Cashback Rebate Audit</div>
+      <h1>Vantage ($16/lot Gold Rebate) vs XM Global ($9/lot + $30 Bonus)</h1>
+      <p class="subtitle">Calculate your exact monthly and annual XAUUSD cashback payout. Discover why micro-account traders start with XM's $30 No-Deposit Bonus while active Gold traders (>4.29 lots/mo) capture 77.8% higher per-lot cashback on Vantage.</p>
+    </header>
+
+    <section class="calc-card" aria-label="Interactive XAUUSD Rebate Calculator">
+      <div class="grid-2">
+        <div>
+          <div class="form-group">
+            <label class="form-label" for="lotsSlider">
+              <span>Monthly Gold (XAUUSD) Volume</span>
+              <span id="lotsBadge" style="color: #10b981; font-size: 1.15rem; font-weight: 800;">50 Lots / Mo</span>
+            </label>
+            <input type="range" id="lotsSlider" min="1" max="300" step="1" value="50" oninput="calculateGoldRebate()">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted);">
+              <span>1 Lot (Micro)</span>
+              <span>Break-Even: 4.29 Lots</span>
+              <span>150 Lots</span>
+              <span>300 Lots (Fund)</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="capitalInput">
+              <span>Initial Trading Capital ($ USD)</span>
+            </label>
+            <input type="number" id="capitalInput" class="form-control" value="2000" min="50" max="500000" step="100" oninput="calculateGoldRebate()">
+          </div>
+
+          <div class="breakeven-banner">
+            <div class="breakeven-title">📐 Mathematical Break-Even Threshold: 4.29 Standard Lots</div>
+            <p class="breakeven-text" id="breakevenDynamicNote">
+              At <strong>50 lots/month</strong>, Vantage's $16/lot rebate outperforms XM's $9/lot + $30 welcome bonus by <strong>$320.00 in Month 1</strong> and <strong>$4,170.00 over 12 months</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="results-stack">
+          <div class="result-box vantage">
+            <div class="result-header">
+              <span class="result-broker">🏆 Vantage Markets (Standard STP)</span>
+              <span class="rate-pill">$16.00 / Lot Rebate</span>
+            </div>
+            <div class="metric-grid">
+              <div>
+                <div class="metric-label">Monthly Cashback</div>
+                <div class="stat-val green" id="vantageMonthlyOut">$800.00</div>
+              </div>
+              <div>
+                <div class="metric-label">Annual Cashback (12 Mo)</div>
+                <div class="stat-val green" id="vantageAnnualOut">$9,600.00</div>
+              </div>
+            </div>
+            <div style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
+              Annual Risk-Free Yield on $<span id="capDisplay1">2,000</span> Capital: <strong id="vantageYieldPct" style="color: #34d399;">+480.0% / yr</strong>
+            </div>
+          </div>
+
+          <div class="result-box xm">
+            <div class="result-header">
+              <span class="result-broker">⚡ XM Global (Standard + Bonus)</span>
+              <span class="rate-pill">$9.00 / Lot + $30 Bonus</span>
+            </div>
+            <div class="metric-grid">
+              <div>
+                <div class="metric-label">Month 1 (Cashback + $30)</div>
+                <div class="stat-val amber" id="xmMonthOneOut">$480.00</div>
+              </div>
+              <div>
+                <div class="metric-label">Annual Total (12 Mo + $30)</div>
+                <div class="stat-val amber" id="xmAnnualOut">$5,430.00</div>
+              </div>
+            </div>
+            <div style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
+              Annual Risk-Free Yield on $<span id="capDisplay2">2,000</span> Capital: <strong id="xmYieldPct" style="color: #fbbf24;">+271.5% / yr</strong>
+            </div>
+          </div>
+
+          <div class="delta-summary">
+            <h3 id="winnerLabel">Net Annual Cashback Advantage (Vantage Lead)</h3>
+            <div class="delta-amount" id="netAnnualAdvantage">+$4,170.00 / Year</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="broker-comparison-cards" aria-label="Direct Partner Registration">
+      <div class="broker-box vantage-card">
+        <div>
+          <h3>Vantage Markets — $16/Lot Gold Rebate</h3>
+          <p class="broker-sub">Best for Day Traders, Algo EAs &amp; High-Volume XAUUSD Scalpers (>5 Lots/Mo)</p>
+          <ul class="check-list">
+            <li><strong>$16.00 USD Cashback per standard lot</strong> on Gold (XAUUSD) settled daily</li>
+            <li>Zero minimum holding duration (1-second scalping &amp; hedging fully eligible)</li>
+            <li>ASIC (Australia) &amp; CIMA regulated with Equinix NY4/LD4 fiber execution</li>
+            <li>Up to 1:1000 flexible leverage + 50% deposit margin bonus option</li>
+          </ul>
+        </div>
+        <a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?affid=106266" target="_blank" rel="noopener" class="cta-btn cta-vantage">
+          Claim $16/Lot Vantage Gold Rebate ➔
+        </a>
+      </div>
+
+      <div class="broker-box xm-card">
+        <div>
+          <h3>XM Global — $9/Lot Rebate + $30 Bonus</h3>
+          <p class="broker-sub">Best for Beginners, Micro-Lot Testing &amp; Zero-Risk Live Execution (&lt;4.29 Lots/Mo)</p>
+          <ul class="check-list">
+            <li><strong>$30 No-Deposit Trading Bonus</strong> credited instantly upon KYC verification</li>
+            <li><strong>$9.00 USD per lot</strong> XAUUSD loyalty cashback rebate on Standard accounts</li>
+            <li>Strict Negative Balance Protection with micro-lot precision (0.01 lot = 1 oz Gold)</li>
+            <li>All profits generated from the $30 welcome credit are 100% withdrawable</li>
+          </ul>
+        </div>
+        <a href="https://clicks.pipaffiliates.com/c?c=714536&l=en&p=1" target="_blank" rel="noopener" class="cta-btn cta-xm">
+          Claim XM $30 No-Deposit Bonus + Rebate ➔
+        </a>
+      </div>
+    </section>
+
+    <section class="spec-table-wrap" aria-label="Institutional Execution Specification Matrix">
+      <h2>2026 XAUUSD Gold Rebate &amp; Execution Specification Matrix</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Specification Metric</th>
+            <th>Vantage Markets (Affid 106266)</th>
+            <th>XM Global (Partner 714536)</th>
+            <th>Quantitative Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>XAUUSD Cashback Rebate (Per Lot)</strong></td>
+            <td><strong>$16.00 / standard lot</strong></td>
+            <td>$9.00 / standard lot</td>
+            <td>Vantage (+$7.00/lot)</td>
+          </tr>
+          <tr>
+            <td><strong>No-Deposit Welcome Bonus</strong></td>
+            <td>$0 (50% Deposit Bonus Only)</td>
+            <td><strong>$30.00 Instant Credit</strong></td>
+            <td>XM Global (Zero Deposit)</td>
+          </tr>
+          <tr>
+            <td><strong>Month-1 Break-Even Volume</strong></td>
+            <td>Dominates at <strong>&gt; 4.29 Lots/Mo</strong></td>
+            <td>Dominates at <strong>1 – 4.28 Lots/Mo</strong></td>
+            <td>Volume Dependent</td>
+          </tr>
+          <tr>
+            <td><strong>50 Lots/Mo Annual Rebate Payout</strong></td>
+            <td><strong>$9,600.00 USD / year</strong></td>
+            <td>$5,430.00 USD / year (incl. $30)</td>
+            <td>Vantage (+$4,170/yr)</td>
+          </tr>
+          <tr>
+            <td><strong>Minimum Trade Duration for Rebate</strong></td>
+            <td><strong>0 Seconds (No Restriction)</strong></td>
+            <td>180 Seconds (3 Minutes for Loyalty)</td>
+            <td>Vantage (Scalper Friendly)</td>
+          </tr>
+          <tr>
+            <td><strong>Contract Size (1 Standard Lot Gold)</strong></td>
+            <td>100 Troy Ounces ($1 move = $100)</td>
+            <td>100 Troy Ounces ($1 move = $100)</td>
+            <td>Identical (Institutional Standard)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="faq-section" aria-label="Frequently Asked Questions">
+      <h2>Frequently Asked Questions: XAUUSD Cashback &amp; Break-Even Math</h2>
+      <div class="faq-item">
+        <h3>1. How is the 4.29-lot break-even threshold derived mathematically?</h3>
+        <p>Let <em>L</em> represent your monthly XAUUSD volume in standard lots. In Month 1, Vantage pays <code>16 × L</code> while XM Global provides <code>9 × L + 30</code>. Setting both equations equal (<code>16L = 9L + 30</code>) yields <code>7L = 30</code>, or <code>L = 4.2857 lots</code>. Once you trade 4.29 lots or more in your first month, Vantage's $7/lot rebate advantage completely surpasses XM's one-time $30 credit.</p>
+      </div>
+      <div class="faq-item">
+        <h3>2. Can I claim both the XM $30 No-Deposit Bonus and the Vantage $16/lot rebate?</h3>
+        <p>Yes. Institutional retail traders frequently claim XM Global's $30 No-Deposit Bonus first to test live Gold liquidity without risking capital, while running their primary $2,000+ day-trading capital on Vantage to collect $16.00 per lot in daily automated cashback.</p>
+      </div>
+      <div class="faq-item">
+        <h3>3. How do I size my Gold lots safely so spread fluctuations don't trigger margin calls?</h3>
+        <p>Never risk more than 1.0% to 1.5% of your account equity per XAUUSD setup. Use our <a href="forex-calculator.html" style="color: var(--vantage-accent); font-weight: 700;">Global Forex &amp; Gold Lot Size Calculator</a> before placing orders, or automate your entries with the <a href="forex-vip-kit.html" style="color: var(--vantage-accent); font-weight: 700;">AutoFlow VIP Pine Script v5 Suite</a>.</p>
+      </div>
+    </section>
+
+    <aside class="internal-cluster-nav" aria-label="Programmatic SEO Cluster Navigation">
+      <h3 style="font-size: 1.15rem; font-weight: 800;">Explore Institutional Broker Cost &amp; Rebate Calculators</h3>
+      <div class="cluster-links">
+        <a href="forex-calculator.html" class="cluster-card">📐 Global Forex &amp; Gold Position Size Calculator</a>
+        <a href="zfx-vs-icmarkets-spread-calculator.html" class="cluster-card">⚡ ZFX ($18/lot) vs IC Markets (0.0 Pip Raw ECN)</a>
+        <a href="exness-vs-vantage-scalping-cost.html" class="cluster-card">🌙 Exness (0% Swap Gold) vs Vantage ($16/lot Cashback)</a>
+        <a href="forex-vip-kit.html" class="cluster-card">💎 AutoFlow VIP ICT Pine Script v5 &amp; Prop Risk Kit</a>
+      </div>
+    </aside>
+
+    <footer>
+      <p>© 2026 AutoFlow Institutional Trading Analytics. Rebate figures are based on verified IB tier schedules (Vantage affid=106266, XM c=714536). Leveraged CFD trading carries significant risk.</p>
+    </footer>
+  </div>
+
+  <script>
+    function calculateGoldRebate() {
+      const lotsEl = document.getElementById('lotsSlider');
+      const capEl = document.getElementById('capitalInput');
+      if (!lotsEl || !capEl) return;
+
+      const lots = Math.max(1, parseFloat(lotsEl.value) || 50);
+      const capital = Math.max(50, parseFloat(capEl.value) || 2000);
+
+      document.getElementById('lotsBadge').textContent = lots + (lots === 1 ? ' Lot / Mo' : ' Lots / Mo');
+
+      // Exact Formula required by specification:
+      // Vantage Cashback = lots * 16 ($/month) & lots * 16 * 12 ($/year)
+      const vantageMonthly = lots * 16;
+      const vantageAnnual = lots * 16 * 12;
+
+      // XM Cashback + Bonus = lots * 9 + 30 (first month) & lots * 9 * 12 + 30 ($/year)
+      const xmMonthOne = (lots * 9) + 30;
+      const xmAnnual = (lots * 9 * 12) + 30;
+
+      const monthOneDiff = vantageMonthly - xmMonthOne;
+      const annualDiff = vantageAnnual - xmAnnual;
+
+      const vantageYield = (vantageAnnual / capital) * 100;
+      const xmYield = (xmAnnual / capital) * 100;
+
+      document.getElementById('vantageMonthlyOut').textContent = '$' + vantageMonthly.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('vantageAnnualOut').textContent = '$' + vantageAnnual.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('xmMonthOneOut').textContent = '$' + xmMonthOne.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('xmAnnualOut').textContent = '$' + xmAnnual.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      document.getElementById('capDisplay1').textContent = capital.toLocaleString('en-US');
+      document.getElementById('capDisplay2').textContent = capital.toLocaleString('en-US');
+      document.getElementById('vantageYieldPct').textContent = '+' + vantageYield.toFixed(1) + '% / yr';
+      document.getElementById('xmYieldPct').textContent = '+' + xmYield.toFixed(1) + '% / yr';
+
+      const noteEl = document.getElementById('breakevenDynamicNote');
+      const winnerLabelEl = document.getElementById('winnerLabel');
+      const netAdvEl = document.getElementById('netAnnualAdvantage');
+
+      if (lots < 4.29) {
+        const xmLeadM1 = Math.abs(monthOneDiff);
+        noteEl.innerHTML = 'At <strong>' + lots + ' lots/month</strong> (below the 4.29-lot break-even), XM Global leads in Month 1 by <strong>$' + xmLeadM1.toFixed(2) + '</strong> thanks to the $30 No-Deposit Bonus.';
+      } else {
+        noteEl.innerHTML = 'At <strong>' + lots + ' lots/month</strong> (above the 4.29-lot break-even), Vantage\'s $16/lot rebate outperforms XM\'s $9/lot + $30 bonus by <strong>$' + monthOneDiff.toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' in Month 1</strong> and <strong>$' + annualDiff.toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' over 12 months</strong>.';
+      }
+
+      if (annualDiff >= 0) {
+        winnerLabelEl.textContent = 'Net Annual Cashback Advantage (Vantage Lead)';
+        netAdvEl.textContent = '+$' + annualDiff.toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' / Year';
+        netAdvEl.style.color = '#34d399';
+      } else {
+        winnerLabelEl.textContent = 'Net Annual Cashback Advantage (XM Lead)';
+        netAdvEl.textContent = '+$' + Math.abs(annualDiff).toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' / Year';
+        netAdvEl.style.color = '#fbbf24';
+      }
+    }
+
+    calculateGoldRebate();
+  </script>
+</body>
+</html>

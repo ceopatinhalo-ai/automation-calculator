@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatPDF vs Humata AI (2026): Document Intelligence, Legal PDF & Academic Research ROI Calculator</title>
+  <meta name="description" content="Interactive 2026 PDF research ROI calculator: Compare ChatPDF vs Humata AI for 500-page legal contracts, SEC 10-K filings, and academic papers. Calculate monthly analyst hours and billable dollars saved.">
+  <link rel="canonical" href="https://ceopatinhalo-ai.github.io/automation-calculator/chatpdf-vs-humata-research-roi.html">
+  <meta property="og:title" content="ChatPDF vs Humata AI (2026): Document Intelligence, Legal PDF & Academic Research ROI Calculator">
+  <meta property="og:description" content="Compare ChatPDF ($5-$19.99/mo) vs Humata AI ($14.99-$49/mo) for academic papers, OCR scanned PDFs, and legal due diligence.">
+  <meta property="og:url" content="https://ceopatinhalo-ai.github.io/automation-calculator/chatpdf-vs-humata-research-roi.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ChatPDF vs Humata AI Document Intelligence ROI Calculator",
+    "url": "https://ceopatinhalo-ai.github.io/automation-calculator/chatpdf-vs-humata-research-roi.html",
+    "description": "Quantifies monthly research hours saved, billable analyst ROI, and feature differences between ChatPDF and Humata AI.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the main difference between ChatPDF and Humata AI in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChatPDF is optimized for ultra-fast, low-cost ($5 to $19.99/mo) multi-language academic paper summarization, student literature reviews, and instant page-level citations. Humata AI ($14.99 to $49/mo) specializes in enterprise OCR for scanned legal contracts, clinical trial PDFs, SOC-2 Type II compliance, and role-based team folders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many hours do researchers save per month using ChatPDF or Humata AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Manual technical reading and citation extraction averages 3.5 minutes per dense PDF page. Reviewing 800 pages per week (3,440 pages/month) consumes roughly 200 hours of manual reading. Vector-indexed AI citation engines cut literature synthesis time by 80%, saving over 160 hours per month ($5,600/month at a $35/hr analyst rate)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which tool is better for scanned PDFs and complex tables?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Humata AI includes built-in enterprise OCR (Optical Character Recognition) on its Student, Expert, and Team tiers to parse scanned legal deeds, medical charts, and multi-column financial tables, whereas ChatPDF excels on digital-native text PDFs and arXiv papers."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.88);
+      --card-border: rgba(255, 255, 255, 0.09);
+      --primary: #38bdf8;
+      --accent: #10b981;
+      --humata: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+    body {
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.14) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.12) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 48px;
+      line-height: 1.6;
+    }
+    .sticky-vip-bar {
+      background: linear-gradient(90deg, #0284c7, #10b981);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .container { width: 100%; max-width: 980px; padding: 28px 16px 0; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; }
+    .logo-badge { background: linear-gradient(135deg, #38bdf8, #10b981); color: #fff; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; }
+    .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+    .nav-link:hover { color: #fff; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(56, 189, 248, 0.14);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.22;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 25%, #7dd3fc 65%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-muted); font-size: 1.04rem; max-width: 760px; margin: 0 auto; }
+
+    .calc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      margin-bottom: 36px;
+      backdrop-filter: blur(16px);
+    }
+    .slider-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 720px) { .slider-grid { grid-template-columns: 1fr; } }
+    .slider-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .slider-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .slider-label { font-weight: 700; font-size: 0.96rem; color: #e2e8f0; }
+    .slider-val { font-size: 1.3rem; font-weight: 800; color: #38bdf8; }
+    input[type=range] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #1e293b;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #38bdf8;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.85);
+      border: 2px solid #ffffff;
+    }
+    .slider-hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+    @media (max-width: 780px) { .compare-grid { grid-template-columns: 1fr; } }
+    .compare-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 22px 18px;
+      text-align: center;
+      position: relative;
+    }
+    .compare-card.chatpdf {
+      border: 2px solid #38bdf8;
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.13), rgba(15, 23, 42, 0.85));
+    }
+    .compare-card.humata {
+      border: 2px solid #10b981;
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.13), rgba(15, 23, 42, 0.85));
+    }
+    .card-pill {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #0284c7, #10b981);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .plan-name { font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin-bottom: 8px; }
+    .plan-price { font-size: 1.95rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+    .plan-sub { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; }
+    .plan-desc { font-size: 0.82rem; color: #94a3b8; line-height: 1.45; }
+
+    .roi-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(56, 189, 248, 0.12));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 18px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    @media (max-width: 640px) { .roi-banner { grid-template-columns: 1fr; } }
+    .roi-label { font-size: 0.8rem; font-weight: 800; color: #6ee7b7; text-transform: uppercase; letter-spacing: 0.05em; }
+    .roi-val { font-size: 2rem; font-weight: 800; color: #34d399; margin: 4px 0; }
+    .roi-sub { font-size: 0.83rem; color: #cbd5e1; }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 680px) { .cta-grid { grid-template-columns: 1fr; } }
+    .btn-chatpdf {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.98rem;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(2, 132, 199, 0.35);
+      transition: transform 0.2s;
+    }
+    .btn-chatpdf:hover { transform: translateY(-2px); }
+    .btn-humata {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.98rem;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(16, 185, 129, 0.35);
+      transition: transform 0.2s;
+    }
+    .btn-humata:hover { transform: translateY(-2px); }
+
+    .section-title { font-size: 1.5rem; font-weight: 800; margin: 36px 0 16px; color: #fff; }
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      margin-bottom: 36px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th { background: rgba(30, 41, 59, 0.9); color: #f8fafc; font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--card-border); }
+    td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1; }
+    tr:last-child td { border-bottom: none; }
+    .good { color: #34d399; font-weight: 700; }
+    .warn { color: #fbbf24; font-weight: 600; }
+
+    .faq-grid { display: grid; gap: 16px; margin-bottom: 40px; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px 24px;
+    }
+    .faq-q { font-weight: 800; font-size: 1.05rem; color: #f8fafc; margin-bottom: 8px; }
+    .faq-a { color: var(--text-muted); font-size: 0.93rem; }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 24px;
+      margin-top: 20px;
+    }
+    footer a { color: #7dd3fc; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="sticky-vip-bar">
+    <span>📚 <strong>2026 Document AI Benchmark:</strong> Save 160+ Research Hours/Month on SEC Filings, Legal PDFs & Academic Literature</span>
+    <a href="ai-tools-directory.html" style="background:#fff; color:#090d16; padding:4px 12px; border-radius:6px; text-decoration:none; font-size:0.82rem; font-weight:800;">Explore All AI SaaS Tools ➔</a>
+  </div>
+
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo">
+        <span>AutoFlow</span>
+        <span class="logo-badge">DOC AI LABS</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Make vs Zapier</a>
+        <a href="ai-tools-directory.html" class="nav-link">AI Tools Directory</a>
+        <a href="heygen-vs-invideo-ai-avatar-cost.html" class="nav-link">HeyGen vs InVideo</a>
+        <a href="hostinger-vps-vs-aws-ai-agent-cost.html" class="nav-link">Hostinger vs AWS VPS</a>
+        <a href="llm-api-calculator.html" class="nav-link" style="color:#38bdf8;">LLM Token Calculator</a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="badge">📄 2026 Document Intelligence & Legal PDF Benchmark</div>
+      <h1>ChatPDF vs Humata AI: 2026 Research Time & Billable ROI Calculator</h1>
+      <p class="subtitle">
+        Calculate how many analyst hours and billable dollars you reclaim every month when extracting citations from 500-page PDFs, SEC 10-K filings, clinical trials, and legal agreements.
+      </p>
+    </header>
+
+    <section class="calc-card" aria-label="Interactive Document Intelligence ROI Calculator">
+      <div class="slider-grid">
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="pagesPerWeek" class="slider-label">PDF Pages Analyzed Per Week:</label>
+            <span class="slider-val" id="pagesPerWeekVal">800 pages/wk</span>
+          </div>
+          <input type="range" id="pagesPerWeek" min="100" max="5000" step="100" value="800">
+          <div class="slider-hint">Academic papers, legal contracts, M&A data rooms, or financial filings.</div>
+        </div>
+
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="hourlyRate" class="slider-label">Researcher / Analyst Hourly Rate:</label>
+            <span class="slider-val" id="hourlyRateVal">$35/hr</span>
+          </div>
+          <input type="range" id="hourlyRate" min="15" max="200" step="5" value="35">
+          <div class="slider-hint">$20–$45/hr Graduate Researcher • $75–$200/hr Legal Counsel or M&A Analyst.</div>
+        </div>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="plan-name">Manual PDF Skimming & Ctrl+F</div>
+          <div class="plan-price" id="manualMonthlyCost">$7,023/mo</div>
+          <div class="plan-sub" id="manualHoursText">200.7 hrs/month manual reading</div>
+          <div class="plan-desc">
+            3.5 minutes/page average to read, cross-reference tables, and verify citations manually across multiple files.
+          </div>
+        </div>
+
+        <div class="compare-card chatpdf">
+          <div class="card-pill">⚡ BEST FOR ACADEMIC & MULTILINGUAL</div>
+          <div class="plan-name" style="color:#7dd3fc;">ChatPDF Plus</div>
+          <div class="plan-price" id="chatpdfPrice" style="color:#38bdf8;">$19.99/mo</div>
+          <div class="plan-sub">Up to 2,000 pages/PDF • 32 MB</div>
+          <div class="plan-desc">
+            Instant clickable page citations, multi-PDF folder chat, and cross-language query support (read German PDF, ask in English).
+          </div>
+        </div>
+
+        <div class="compare-card humata">
+          <div class="card-pill">🏛️ BEST FOR LEGAL OCR & ENTERPRISE</div>
+          <div class="plan-name" style="color:#6ee7b7;">Humata AI Expert / Team</div>
+          <div class="plan-price" id="humataPrice" style="color:#34d399;">$14.99/mo</div>
+          <div class="plan-sub">Built-in OCR • SOC-2 Type II Security</div>
+          <div class="plan-desc">
+            Parses scanned PDFs, complex scientific tables, and legal clauses with side-by-side highlighted bounding boxes.
+          </div>
+        </div>
+      </div>
+
+      <div class="roi-banner">
+        <div>
+          <div class="roi-label">Monthly Research Time Saved</div>
+          <div class="roi-val" id="hoursSavedVal">164.5 hours/mo</div>
+          <div class="roi-sub" id="pagesPerMonthSub">Across 3,440 PDF pages analyzed per month (82% faster)</div>
+        </div>
+        <div>
+          <div class="roi-label">Net Monthly Billable Value Reclaimed</div>
+          <div class="roi-val" id="dollarsSavedVal">$5,738/mo</div>
+          <div class="roi-sub" id="annualRoiSub">$68,856/year productivity gain after subscription cost</div>
+        </div>
+      </div>
+
+      <div class="cta-grid">
+        <a href="https://www.chatpdf.com/?via=chatpdfpro" target="_blank" rel="noopener" class="btn-chatpdf">
+          📘 Try ChatPDF Free (Partner Code: via=chatpdfpro) ➔
+        </a>
+        <a href="https://www.humata.ai/?via=humatapro" target="_blank" rel="noopener" class="btn-humata">
+          ⚖️ Try Humata AI Free (Partner Code: via=humatapro) ➔
+        </a>
+      </div>
+    </section>
+
+    <h2 class="section-title">Feature Matrix: ChatPDF vs Humata AI (2026)</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>ChatPDF (via=chatpdfpro)</th>
+            <th>Humata AI (via=humatapro)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Paid Tier Pricing (2026)</strong></td>
+            <td class="good">$5.00 – $19.99 / month (Plus Tier)</td>
+            <td class="good">$4.99 (Student) • $14.99 (Expert) • $49/user (Team)</td>
+          </tr>
+          <tr>
+            <td><strong>Scanned PDF & Image OCR</strong></td>
+            <td class="warn">Best for digital text PDFs</td>
+            <td class="good">✔ Full Optical Character Recognition (OCR)</td>
+          </tr>
+          <tr>
+            <td><strong>Citation Highlighting</strong></td>
+            <td class="good">✔ Single-click scroll to exact paragraph</td>
+            <td class="good">✔ Dual-pane bounding-box sentence highlight</td>
+          </tr>
+          <tr>
+            <td><strong>Data Privacy & Enterprise Security</strong></td>
+            <td class="good">Encrypted cloud storage, delete anytime</td>
+            <td class="good">✔ SOC-2 Type II Certified & Role-Based Access</td>
+          </tr>
+          <tr>
+            <td><strong>Ideal User Profile</strong></td>
+            <td class="good">PhD Researchers, Students, Global Analysts</td>
+            <td class="good">Law Firms, M&A Due Diligence, Biotech Teams</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">Frequently Asked Questions (Document AI & Research Automation)</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">1. How do ChatPDF and Humata AI prevent LLM hallucinations on legal and academic PDFs?</div>
+        <div class="faq-a">
+          Both platforms use Retrieval-Augmented Generation (RAG) with strict vector chunking. Every generated claim includes a clickable page number badge that scrolls the embedded PDF viewer directly to the source paragraph so you can verify facts in 1 second.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">2. Should I pick ChatPDF or Humata AI for my workflow?</div>
+        <div class="faq-a">
+          Pick <a href="https://www.chatpdf.com/?via=chatpdfpro" target="_blank" rel="noopener" style="color:#38bdf8;">ChatPDF</a> if you read digital research papers, textbooks, and multi-language reports and want an ultra-fast, budget-friendly interface. Pick <a href="https://www.humata.ai/?via=humatapro" target="_blank" rel="noopener" style="color:#34d399;">Humata AI</a> if your documents include scanned contracts, medical charts, or require enterprise SOC-2 security.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">3. Can I combine Document AI with custom LLM API pipelines?</div>
+        <div class="faq-a">
+          Absolutely. If you process 100M+ tokens via custom Python scripts, compare API token costs using our <a href="llm-api-calculator.html" style="color:#38bdf8;">LLM API Cost & Token Arbitrage Calculator</a> or browse more SaaS tools in our <a href="ai-tools-directory.html" style="color:#38bdf8;">AI Tools Directory</a>.
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        © 2026 AutoFlow Tech • <a href="ai-tools-directory.html">AI Tools Directory</a> • <a href="llm-api-calculator.html">LLM Token Calculator</a> • <a href="automation-vip-kit.html">Automation VIP Kit</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const pagesInput = document.getElementById('pagesPerWeek');
+    const rateInput = document.getElementById('hourlyRate');
+
+    const pagesValEl = document.getElementById('pagesPerWeekVal');
+    const rateValEl = document.getElementById('hourlyRateVal');
+    const manualMonthlyCostEl = document.getElementById('manualMonthlyCost');
+    const manualHoursTextEl = document.getElementById('manualHoursText');
+    const chatpdfPriceEl = document.getElementById('chatpdfPrice');
+    const humataPriceEl = document.getElementById('humataPrice');
+    const hoursSavedValEl = document.getElementById('hoursSavedVal');
+    const pagesPerMonthSubEl = document.getElementById('pagesPerMonthSub');
+    const dollarsSavedValEl = document.getElementById('dollarsSavedVal');
+    const annualRoiSubEl = document.getElementById('annualRoiSub');
+
+    function updateResearchRoi() {
+      const pagesPerWeek = parseInt(pagesInput.value, 10) || 800;
+      const hourlyRate = parseInt(rateInput.value, 10) || 35;
+
+      pagesValEl.textContent = pagesPerWeek.toLocaleString() + ' pages/wk';
+      rateValEl.textContent = '$' + hourlyRate + '/hr';
+
+      const pagesPerMonth = Math.round(pagesPerWeek * 4.3);
+      // Manual technical reading + citation lookup: 3.5 minutes per page
+      const manualHours = (pagesPerMonth * 3.5) / 60;
+      const manualCost = Math.round(manualHours * hourlyRate);
+
+      // AI RAG reduces reading & extraction time by 82%
+      const hoursSaved = manualHours * 0.82;
+
+      // Subscription tier scaling
+      const chatpdfCost = pagesPerWeek <= 500 ? 9.99 : 19.99;
+      let humataCost = 14.99;
+      if (pagesPerWeek > 1500) {
+        humataCost = 49.00;
+      }
+
+      const netMonthlySavings = Math.max(0, Math.round((hoursSaved * hourlyRate) - humataCost));
+      const annualSavings = netMonthlySavings * 12;
+
+      manualMonthlyCostEl.textContent = '$' + manualCost.toLocaleString() + '/mo';
+      manualHoursTextEl.textContent = manualHours.toFixed(1) + ' hrs/month manual reading';
+      chatpdfPriceEl.textContent = '$' + chatpdfCost.toFixed(2) + '/mo';
+      humataPriceEl.textContent = '$' + humataCost.toFixed(2) + '/mo';
+      hoursSavedValEl.textContent = hoursSaved.toFixed(1) + ' hours/mo';
+      pagesPerMonthSubEl.textContent = 'Across ' + pagesPerMonth.toLocaleString() + ' PDF pages analyzed per month (82% faster)';
+      dollarsSavedValEl.textContent = '$' + netMonthlySavings.toLocaleString() + '/mo';
+      annualRoiSubEl.textContent = '$' + annualSavings.toLocaleString() + '/year productivity gain after subscription cost';
+    }
+
+    pagesInput.addEventListener('input', updateResearchRoi);
+    rateInput.addEventListener('input', updateResearchRoi);
+    updateResearchRoi();
+  </script>
+</body>
+</html>

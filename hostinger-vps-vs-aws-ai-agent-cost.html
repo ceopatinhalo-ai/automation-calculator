@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostinger KVM Cloud VPS ($4/mo) vs AWS EC2 & Zapier (2026): 24/7 Docker AI Agent & n8n TCO Calculator</title>
+  <meta name="description" content="Interactive 1-Year Total Cost of Ownership (TCO) calculator: Compare Hostinger KVM Cloud VPS vs AWS EC2 (+ NAT Gateway/Egress) and Zapier Cloud for running 24/7 Docker AI Agents and self-hosted n8n.">
+  <link rel="canonical" href="https://ceopatinhalo-ai.github.io/automation-calculator/hostinger-vps-vs-aws-ai-agent-cost.html">
+  <meta property="og:title" content="Hostinger KVM Cloud VPS ($4/mo) vs AWS EC2 & Zapier (2026): 24/7 Docker AI Agent & n8n TCO Calculator">
+  <meta property="og:description" content="Calculate 1-year infrastructure TCO for self-hosted n8n and 24/7 Docker AI Agents: Hostinger KVM VPS vs AWS EC2 + NAT Gateway vs Zapier Cloud.">
+  <meta property="og:url" content="https://ceopatinhalo-ai.github.io/automation-calculator/hostinger-vps-vs-aws-ai-agent-cost.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://ceopatinhalo-ai.github.io/automation-calculator/assets/og-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Hostinger KVM Cloud VPS vs AWS EC2 & Zapier AI Agent TCO Calculator",
+    "url": "https://ceopatinhalo-ai.github.io/automation-calculator/hostinger-vps-vs-aws-ai-agent-cost.html",
+    "description": "Calculates 1-year Total Cost of Ownership (TCO) for 24/7 Docker AI Agents and self-hosted n8n across Hostinger KVM VPS, AWS EC2, and Zapier Cloud.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is AWS EC2 6x more expensive than Hostinger KVM VPS for 24/7 AI Agents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "While an AWS EC2 t3.large (8 GB RAM) instance appears to cost ~$60/month in base compute, AWS adds mandatory charges for EBS gp3 storage ($8/mo), public IPv4 addresses ($3.60/mo), NAT Gateway ($32/mo), and $0.09/GB outbound data transfer. Hostinger KVM 2 (8 GB RAM, 2 vCPU, 100 GB NVMe, 8 TB bandwidth, dedicated IPv4) costs a flat $6.99/month ($83.88/year), saving over 88% in annual TCO."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does self-hosting n8n on Hostinger VPS save compared to Zapier Cloud?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Running 5 autonomous AI agents executing 50,000 webhook tasks per month on Zapier Professional costs $2,000 to $3,500 per year. Self-hosting n8n on Docker inside a Hostinger KVM 2 VPS offers unlimited workflow executions for under $85/year—or you can pair it with Make.com Core ($108/year) for managed cloud webhooks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much RAM do I need for Docker, n8n, Redis, and Python AI Agents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For 1 to 3 lightweight webhook agents, 4 GB RAM (Hostinger KVM 1 at $4.99/mo) is sufficient. For 5+ concurrent AI agents running n8n queue workers, PostgreSQL, Redis, and headless Playwright browsers, 8 GB RAM (Hostinger KVM 2 at $6.99/mo) or 16 GB RAM (KVM 4) is recommended."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.88);
+      --card-border: rgba(255, 255, 255, 0.09);
+      --primary: #8b5cf6;
+      --make: #38bdf8;
+      --aws: #f97316;
+      --success: #10b981;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+    body {
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.16) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.12) 0px, transparent 50%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 48px;
+      line-height: 1.6;
+    }
+    .sticky-vip-bar {
+      background: linear-gradient(90deg, #6d28d9, #10b981);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .container { width: 100%; max-width: 980px; padding: 28px 16px 0; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; }
+    .logo-badge { background: linear-gradient(135deg, #8b5cf6, #38bdf8); color: #fff; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; }
+    .nav-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+    .nav-link:hover { color: #fff; }
+    header { text-align: center; margin-bottom: 36px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(139, 92, 246, 0.15);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 2.28rem;
+      font-weight: 800;
+      line-height: 1.22;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 25%, #c4b5fd 65%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-muted); font-size: 1.04rem; max-width: 780px; margin: 0 auto; }
+
+    .calc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      margin-bottom: 36px;
+      backdrop-filter: blur(16px);
+    }
+    .slider-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 720px) { .slider-grid { grid-template-columns: 1fr; } }
+    .slider-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .slider-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .slider-label { font-weight: 700; font-size: 0.96rem; color: #e2e8f0; }
+    .slider-val { font-size: 1.3rem; font-weight: 800; color: #c084fc; }
+    input[type=range] {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #1e293b;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #8b5cf6;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.85);
+      border: 2px solid #ffffff;
+    }
+    .slider-hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; }
+
+    .tco-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+    @media (max-width: 780px) { .tco-grid { grid-template-columns: 1fr; } }
+    .tco-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 22px 18px;
+      text-align: center;
+      position: relative;
+    }
+    .tco-card.winner {
+      border: 2px solid #8b5cf6;
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.16), rgba(15, 23, 42, 0.88));
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+    }
+    .winner-pill {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #8b5cf6, #10b981);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .tco-name { font-size: 0.95rem; font-weight: 700; color: #cbd5e1; margin-bottom: 8px; }
+    .tco-price { font-size: 2rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
+    .tco-monthly { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px; }
+    .tco-desc { font-size: 0.82rem; color: #94a3b8; line-height: 1.45; }
+
+    .savings-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(139, 92, 246, 0.12));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 18px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    @media (max-width: 640px) { .savings-banner { grid-template-columns: 1fr; } }
+    .sav-label { font-size: 0.8rem; font-weight: 800; color: #6ee7b7; text-transform: uppercase; letter-spacing: 0.05em; }
+    .sav-val { font-size: 2rem; font-weight: 800; color: #34d399; margin: 4px 0; }
+    .sav-sub { font-size: 0.83rem; color: #cbd5e1; }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 680px) { .cta-grid { grid-template-columns: 1fr; } }
+    .btn-hostinger {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.98rem;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(139, 92, 246, 0.4);
+      transition: transform 0.2s;
+    }
+    .btn-hostinger:hover { transform: translateY(-2px); }
+    .btn-make {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.96rem;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(2, 132, 199, 0.35);
+      transition: transform 0.2s;
+    }
+    .btn-make:hover { transform: translateY(-2px); }
+
+    .section-title { font-size: 1.5rem; font-weight: 800; margin: 36px 0 16px; color: #fff; }
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      margin-bottom: 36px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th { background: rgba(30, 41, 59, 0.9); color: #f8fafc; font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--card-border); }
+    td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #cbd5e1; }
+    tr:last-child td { border-bottom: none; }
+    .good { color: #34d399; font-weight: 700; }
+    .warn { color: #fbbf24; font-weight: 600; }
+    .bad { color: #fb7185; font-weight: 600; }
+
+    .faq-grid { display: grid; gap: 16px; margin-bottom: 40px; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px 24px;
+    }
+    .faq-q { font-weight: 800; font-size: 1.05rem; color: #f8fafc; margin-bottom: 8px; }
+    .faq-a { color: var(--text-muted); font-size: 0.93rem; }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 24px;
+      margin-top: 20px;
+    }
+    footer a { color: #7dd3fc; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="sticky-vip-bar">
+    <span>🐳 <strong>1-Click Docker & n8n Cloud Stack:</strong> Deploy 24/7 Autonomous AI Agents Without Surprise AWS NAT Bills</span>
+    <a href="ai-agent-cloud-generator.html" style="background:#fff; color:#090d16; padding:4px 12px; border-radius:6px; text-decoration:none; font-size:0.82rem; font-weight:800;">Open 1-Click Bash Generator ➔</a>
+  </div>
+
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo">
+        <span>AutoFlow</span>
+        <span class="logo-badge">CLOUD TCO LABS</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Make vs Zapier</a>
+        <a href="vps-calculator.html" class="nav-link">VPS Calculator</a>
+        <a href="heygen-vs-invideo-ai-avatar-cost.html" class="nav-link">HeyGen vs InVideo</a>
+        <a href="chatpdf-vs-humata-research-roi.html" class="nav-link">ChatPDF vs Humata</a>
+        <a href="ai-agent-cloud-generator.html" class="nav-link" style="color:#c4b5fd;">1-Click Installer</a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="badge">☁️ 2026 Docker AI Agent & Self-Hosted n8n Infrastructure Benchmark</div>
+      <h1>Hostinger KVM Cloud VPS ($4/mo) vs AWS EC2 & Zapier: 1-Year TCO Calculator</h1>
+      <p class="subtitle">
+        Calculate your true 12-month Total Cost of Ownership (TCO) when running 24/7 Docker AI Agents, self-hosted n8n queues, and Playwright scrapers—and pair them with Make.com visual webhooks.
+      </p>
+    </header>
+
+    <section class="calc-card" aria-label="Interactive 1-Year Cloud VPS vs AWS vs Zapier TCO Calculator">
+      <div class="slider-grid">
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="agentCount" class="slider-label">24/7 AI Agents / n8n Workflows:</label>
+            <span class="slider-val" id="agentCountVal">5 agents</span>
+          </div>
+          <input type="range" id="agentCount" min="1" max="25" step="1" value="5">
+          <div class="slider-hint">Each active agent runs ~10,000 webhook/API tasks per month.</div>
+        </div>
+
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="ramGb" class="slider-label">Provisioned System RAM (GB):</label>
+            <span class="slider-val" id="ramGbVal">8 GB RAM</span>
+          </div>
+          <input type="range" id="ramGb" min="4" max="32" step="4" value="8">
+          <div class="slider-hint">4 GB = KVM 1 • 8 GB = KVM 2 (Recommended) • 16 GB = KVM 4 • 32 GB = KVM 8.</div>
+        </div>
+      </div>
+
+      <div class="tco-grid">
+        <div class="tco-card">
+          <div class="tco-name">Zapier Cloud (Task-Based)</div>
+          <div class="tco-price" id="zapierAnnualCost">$1,548/yr</div>
+          <div class="tco-monthly" id="zapierMonthlySub">$129/mo for 50,000 tasks</div>
+          <div class="tco-desc">
+            Charges per task execution. High-frequency polling loops, JSON parsers, and AI agent retries drain task quotas fast.
+          </div>
+        </div>
+
+        <div class="tco-card">
+          <div class="tco-name">AWS EC2 + NAT Gateway + Egress</div>
+          <div class="tco-price" id="awsAnnualCost">$1,104/yr</div>
+          <div class="tco-monthly" id="awsMonthlySub">$92/mo (Compute + Storage + Bandwidth)</div>
+          <div class="tco-desc">
+            Includes EC2 on-demand compute, EBS gp3 SSD volume, $3.60/mo public IPv4 tax, NAT Gateway, and $0.09/GB egress fees.
+          </div>
+        </div>
+
+        <div class="tco-card winner">
+          <div class="winner-pill">🏆 92% 1-YEAR TCO SAVINGS</div>
+          <div class="tco-name" style="color:#ddd6fe;">Hostinger KVM Cloud VPS</div>
+          <div class="tco-price" id="hostingerAnnualCost" style="color:#c4b5fd;">$84/yr</div>
+          <div class="tco-monthly" id="hostingerMonthlySub" style="color:#a5f3fc;">$6.99/mo (KVM 2 • 8 GB NVMe)</div>
+          <div class="tco-desc">
+            AMD EPYC cores, NVMe SSD, up to 32 TB free bandwidth, dedicated IPv4 included, and 1-Click Ubuntu Docker + n8n template.
+          </div>
+        </div>
+      </div>
+
+      <div class="savings-banner">
+        <div>
+          <div class="sav-label">1-Year Savings vs AWS EC2</div>
+          <div class="sav-val" id="savedVsAwsVal">$1,020 / year</div>
+          <div class="sav-sub">Zero surprise egress bandwidth or NAT Gateway fees</div>
+        </div>
+        <div>
+          <div class="sav-label">1-Year Savings vs Zapier Cloud</div>
+          <div class="sav-val" id="savedVsZapierVal">$1,464 / year</div>
+          <div class="sav-sub">Unlimited self-hosted n8n executions + Make.com hybrid bridge</div>
+        </div>
+      </div>
+
+      <div class="cta-grid">
+        <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" rel="noopener" class="btn-hostinger">
+          🚀 Deploy Hostinger KVM VPS (Partner Code: OZDTRANVA3F1) ➔
+        </a>
+        <a href="https://www.make.com/en/register?pc=autoflowtech" target="_blank" rel="noopener" class="btn-make">
+          ⚡ Pair With Make.com Webhooks (pc=autoflowtech) ➔
+        </a>
+      </div>
+    </section>
+
+    <h2 class="section-title">1-Year Infrastructure Breakdown: Hostinger KVM vs AWS EC2 vs Zapier</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Infrastructure Component</th>
+            <th>Hostinger KVM VPS (OZDTRANVA3F1)</th>
+            <th>AWS EC2 (t3.large / t3.xlarge)</th>
+            <th>Zapier Professional Cloud</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>8 GB RAM + 2 vCPU Compute</strong></td>
+            <td class="good">$6.99 / mo ($83.88 / yr)</td>
+            <td class="warn">$60.74 / mo ($728.88 / yr)</td>
+            <td class="bad">No Raw Docker / Shell Access</td>
+          </tr>
+          <tr>
+            <td><strong>Outbound Bandwidth (8 TB/mo)</strong></td>
+            <td class="good">$0.00 (Included Free)</td>
+            <td class="bad">$90 – $720 / mo ($0.09/GB Egress)</td>
+            <td class="warn">Capped by Task Quota ($89–$349/mo)</td>
+          </tr>
+          <tr>
+            <td><strong>Dedicated Public IPv4 Address</strong></td>
+            <td class="good">$0.00 (Included Free)</td>
+            <td class="bad">$3.65 / mo ($43.80 / yr)</td>
+            <td class="warn">Shared Dynamic IPs (Paid Static IP Add-on)</td>
+          </tr>
+          <tr>
+            <td><strong>1-Click Docker + n8n + Ollama</strong></td>
+            <td class="good">✔ Native OS Template + Root SSH</td>
+            <td class="warn">Manual VPC, Security Group & IAM Setup</td>
+            <td class="bad">✘ Cannot Host Local Containers</td>
+          </tr>
+          <tr>
+            <td><strong>Hybrid Cloud Orchestration</strong></td>
+            <td class="good">Pair with Make.com ($9/mo) for 1,000+ OAuth Apps</td>
+            <td class="warn">Requires Custom Lambda + EventBridge</td>
+            <td class="bad">$1,068 – $4,188 / year</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">Frequently Asked Questions (Self-Hosted AI Agents & Cloud TCO)</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">1. Why do seasoned AI engineers combine Hostinger KVM VPS with Make.com?</div>
+        <div class="faq-a">
+          Running heavy Python scrapers, Playwright browsers, and high-frequency n8n loops on <a href="https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1" target="_blank" rel="noopener" style="color:#c4b5fd;">Hostinger KVM VPS</a> costs a flat $4.99–$12.99/mo with zero task limits, while connecting <a href="https://www.make.com/en/register?pc=autoflowtech" target="_blank" rel="noopener" style="color:#38bdf8;">Make.com</a> ($9/mo) handles instant OAuth2 connections to Google Workspace, Slack, HubSpot, and Notion without maintaining custom OAuth refresh tokens.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">2. How do I install Docker, n8n, and AI agents on Hostinger VPS in 60 seconds?</div>
+        <div class="faq-a">
+          Use our free <a href="ai-agent-cloud-generator.html" style="color:#38bdf8;">1-Click AI Agent Cloud Bash Generator</a> or grab our complete <a href="automation-vip-kit.html" style="color:#38bdf8;">$19 Automation VIP Kit</a> (with optional 24-hour Done-For-You server deployment).
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">3. Does the Hostinger referral code OZDTRANVA3F1 apply an extra discount?</div>
+        <div class="faq-a">
+          Yes—activating your KVM Cloud VPS via our verified partner link (<code style="color:#c4b5fd;">REFERRALCODE=OZDTRANVA3F1</code>) automatically applies up to 20% additional partner discount on top of Hostinger's seasonal multi-month promotional rates.
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        © 2026 AutoFlow Tech • <a href="vps-calculator.html">VPS Cost Calculator</a> • <a href="ai-agent-cloud-generator.html">1-Click Bash Generator</a> • <a href="automation-vip-kit.html">Automation VIP Kit</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const agentInput = document.getElementById('agentCount');
+    const ramInput = document.getElementById('ramGb');
+
+    const agentCountValEl = document.getElementById('agentCountVal');
+    const ramGbValEl = document.getElementById('ramGbVal');
+    const zapierAnnualCostEl = document.getElementById('zapierAnnualCost');
+    const zapierMonthlySubEl = document.getElementById('zapierMonthlySub');
+    const awsAnnualCostEl = document.getElementById('awsAnnualCost');
+    const awsMonthlySubEl = document.getElementById('awsMonthlySub');
+    const hostingerAnnualCostEl = document.getElementById('hostingerAnnualCost');
+    const hostingerMonthlySubEl = document.getElementById('hostingerMonthlySub');
+    const savedVsAwsValEl = document.getElementById('savedVsAwsVal');
+    const savedVsZapierValEl = document.getElementById('savedVsZapierVal');
+
+    function updateTcoCalculation() {
+      const agents = parseInt(agentInput.value, 10) || 5;
+      const ram = parseInt(ramInput.value, 10) || 8;
+
+      agentCountValEl.textContent = agents + (agents === 1 ? ' agent' : ' agents');
+      ramGbValEl.textContent = ram + ' GB RAM';
+
+      // Each agent runs ~10,000 tasks/mo on Zapier
+      const monthlyTasks = agents * 10000;
+      let zapierMonthly = 49;
+      if (monthlyTasks <= 20000) zapierMonthly = 89;
+      else if (monthlyTasks <= 50000) zapierMonthly = 129;
+      else if (monthlyTasks <= 100000) zapierMonthly = 289;
+      else zapierMonthly = 399 + Math.round((monthlyTasks - 100000) / 50000) * 90;
+      const zapierAnnual = zapierMonthly * 12;
+
+      // AWS EC2 + EBS + Public IPv4 + NAT Gateway/Bandwidth overhead
+      const awsMonthly = Math.round(28 + (ram * 6.5) + (agents * 2.4));
+      const awsAnnual = awsMonthly * 12;
+
+      // Hostinger KVM tier pricing
+      let hostingerMonthly = 4.99;
+      let kvmLabel = 'KVM 1 • 4 GB NVMe';
+      if (ram <= 4) {
+        hostingerMonthly = 4.99;
+        kvmLabel = 'KVM 1 • 4 GB NVMe';
+      } else if (ram <= 8) {
+        hostingerMonthly = 6.99;
+        kvmLabel = 'KVM 2 • 8 GB NVMe';
+      } else if (ram <= 16) {
+        hostingerMonthly = 10.99;
+        kvmLabel = 'KVM 4 • 16 GB NVMe';
+      } else {
+        hostingerMonthly = 19.99;
+        kvmLabel = 'KVM 8 • 32 GB NVMe';
+      }
+      const hostingerAnnual = Math.round(hostingerMonthly * 12);
+
+      const savedVsAws = Math.max(0, awsAnnual - hostingerAnnual);
+      const savedVsZapier = Math.max(0, zapierAnnual - hostingerAnnual);
+
+      zapierAnnualCostEl.textContent = '$' + zapierAnnual.toLocaleString() + '/yr';
+      zapierMonthlySubEl.textContent = '$' + zapierMonthly + '/mo for ' + monthlyTasks.toLocaleString() + ' tasks';
+      awsAnnualCostEl.textContent = '$' + awsAnnual.toLocaleString() + '/yr';
+      awsMonthlySubEl.textContent = '$' + awsMonthly + '/mo (Compute + Storage + Bandwidth)';
+      hostingerAnnualCostEl.textContent = '$' + hostingerAnnual.toLocaleString() + '/yr';
+      hostingerMonthlySubEl.textContent = '$' + hostingerMonthly.toFixed(2) + '/mo (' + kvmLabel + ')';
+      savedVsAwsValEl.textContent = '$' + savedVsAws.toLocaleString() + ' / year';
+      savedVsZapierValEl.textContent = '$' + savedVsZapier.toLocaleString() + ' / year';
+    }
+
+    agentInput.addEventListener('input', updateTcoCalculation);
+    ramInput.addEventListener('input', updateTcoCalculation);
+    updateTcoCalculation();
+  </script>
+</body>
+</html>

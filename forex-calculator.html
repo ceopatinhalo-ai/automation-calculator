@@ -189,6 +189,7 @@
     <div class="tab-container">
       <button class="tab-btn active" id="tab-lot-btn" onclick="switchTab('lot')">1. Position Size Calculator</button>
       <button class="tab-btn" id="tab-spread-btn" onclick="switchTab('spread')">2. Broker Spread Savings</button>
+      <button class="tab-btn" id="tab-rebate-btn" onclick="switchTab('rebate')">3. Cashback &amp; Crypto Rebate</button>
     </div>
 
     <!-- Mode 1: Lot Size Calculator -->
@@ -280,6 +281,40 @@
       </div>
     </div>
 
+    <!-- Mode 3: Multi-Asset Gold/Forex Cashback & Crypto Futures Rebate Calculator -->
+    <div id="section-rebate" class="calc-card" style="display:none;">
+      <div class="grid-2">
+        <div>
+          <div class="form-group">
+            <label class="form-label">Gold (XAUUSD) Monthly Lots: <span id="rebate-lots-badge" style="color:#fbbf24; font-weight:800;">60 Lots/Mo</span></label>
+            <input type="range" id="rebate-lots-range" min="10" max="500" step="10" value="60" oninput="recalculateMultiRebate()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Crypto Perpetual Monthly Fees Paid ($): <span id="crypto-fee-badge" style="color:#38bdf8; font-weight:800;">$1,000 / Mo</span></label>
+            <input type="range" id="crypto-fee-range" min="100" max="10000" step="100" value="1000" oninput="recalculateMultiRebate()">
+          </div>
+        </div>
+        <div class="output-panel">
+          <div class="stat-row">
+            <span class="stat-label">ZFX Gold Rebate ($18/lot)</span>
+            <span id="rebate-zfx-usd" class="stat-value primary">$1,080.00 / mo</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Vantage Gold Rebate ($16/lot)</span>
+            <span id="rebate-vantage-usd" class="stat-value">$960.00 / mo</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">MEXC / KuCoin Crypto Rebate (60%–70%)</span>
+            <span id="rebate-crypto-usd" class="stat-value">$650.00 / mo</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Total Annual Cashback Recovered</span>
+            <span id="rebate-annual-total" class="stat-value primary">$20,760.00 / yr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Verified Global Partner Cards -->
     <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:20px; text-align:center;">Verified Low-Cost Global Broker Partners</h2>
     <div class="brokers-grid">
@@ -364,6 +399,44 @@
           Open XM Account (Partner ID: 714536) ➔
         </a>
       </div>
+
+      <!-- ZFX Broker ($18/lot Gold Cashback) -->
+      <div class="broker-card" style="background: rgba(17, 24, 39, 0.85); border: 1px solid rgba(16, 185, 129, 0.45); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="broker-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <div class="broker-name" style="font-size:1.35rem; font-weight:800; color:#fff;">ZFX Global</div>
+            <span class="broker-tag" style="background:rgba(16,185,129,0.2); color:#34d399; border:1px solid rgba(16,185,129,0.4); padding:4px 10px; border-radius:999px; font-size:0.75rem; font-weight:800;">Gold $18/Lot Rebate</span>
+          </div>
+          <ul class="feature-list" style="list-style:none; padding:0; margin-bottom:20px;">
+            <li class="feature-item" style="font-size:0.88rem; color:#cbd5e1; margin-bottom:8px;">🏆 Industry-leading $18/lot Gold (XAUUSD) &amp; $12/lot Forex cashback</li>
+            <li class="feature-item" style="font-size:0.88rem; color:#cbd5e1; margin-bottom:8px;">FCA Regulated institutional liquidity &amp; ultra-fast scalping fills</li>
+            <li class="feature-item" style="font-size:0.88rem; color:#cbd5e1; margin-bottom:8px;">Also verified: <a href="https://my.octafx.com/open-account/?refid=ib29551873" target="_blank" rel="noopener" style="color:#38bdf8;">OctaFX (ib29551873)</a> &amp; <a href="https://www.puprime.net/forex-trading-account/?affid=90811" target="_blank" rel="noopener" style="color:#38bdf8;">PU Prime (90811)</a></li>
+          </ul>
+        </div>
+        <a href="https://my.zfx.com/reg/truely?agentnumber=Z2845472S2" 
+           target="_blank" rel="noopener noreferrer" class="btn-broker" style="display:block; text-align:center; background:linear-gradient(135deg, #10b981, #059669); color:#000; font-weight:800; padding:12px 18px; border-radius:12px; text-decoration:none;">
+          Open ZFX Account (Agent: Z2845472S2) ➔
+        </a>
+      </div>
+
+      <!-- Crypto Perpetual Futures Rebate Tier (40%-70% Lifetime) -->
+      <div class="broker-card" style="background: rgba(17, 24, 39, 0.85); border: 1px solid rgba(139, 92, 246, 0.45); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="broker-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <div class="broker-name" style="font-size:1.35rem; font-weight:800; color:#fff;">Crypto Futures Rebate Hub</div>
+            <span class="broker-tag" style="background:rgba(139,92,246,0.2); color:#c4b5fd; border:1px solid rgba(139,92,246,0.4); padding:4px 10px; border-radius:999px; font-size:0.75rem; font-weight:800;">40%–70% Lifetime</span>
+          </div>
+          <ul class="feature-list" style="list-style:none; padding:0; margin-bottom:20px;">
+            <li class="feature-item" style="font-size:0.88rem; color:#cbd5e1; margin-bottom:8px;">💎 <strong>MEXC (50%–70% + 0% Maker):</strong> <a href="https://www.mexc.com/register?inviteCode=1F2C8" target="_blank" rel="noopener" style="color:#38bdf8;">Code 1F2C8</a> • <strong>KuCoin (60%):</strong> <a href="https://www.kucoin.com/r/af/r3M1456?rcode=QBS4YZ1L" target="_blank" rel="noopener" style="color:#38bdf8;">Code QBS4YZ1L</a></li>
+            <li class="feature-item" style="font-size:0.88rem; color:#cbd5e1; margin-bottom:8px;">⚡ <strong>BingX (54% Perp):</strong> <a href="https://bingx.com/invite/GXFLIC" target="_blank" rel="noopener" style="color:#38bdf8;">Code GXFLIC</a> • <strong>Bybit (40%):</strong> <a href="https://www.bybitglobal.com/invite?ref=BGP06Q" target="_blank" rel="noopener" style="color:#38bdf8;">Code BGP06Q</a></li>
+            <li class="feature-item" style="font-size:0.88rem; color:#cbd5e1; margin-bottom:8px;">🌐 <strong>Gate.io (55%):</strong> <a href="https://www.gate.io/signup/gate-luckynow?ref_type=103&amp;ref=UwJFVQhe" target="_blank" rel="noopener" style="color:#38bdf8;">UwJFVQhe</a> • <strong>HTX (55%):</strong> <a href="https://www.htx.com/invite/vi-vi/1f?invite_code=7s432223" target="_blank" rel="noopener" style="color:#38bdf8;">7s432223</a> • <strong>BitMart:</strong> <a href="https://www.bitmart.com/register-referral/vn?r=mg9jr8" target="_blank" rel="noopener" style="color:#38bdf8;">mg9jr8</a></li>
+          </ul>
+        </div>
+        <a href="https://www.mexc.com/register?inviteCode=1F2C8" 
+           target="_blank" rel="noopener noreferrer" class="btn-broker" style="display:block; text-align:center; background:linear-gradient(135deg, #8b5cf6, #6d28d9); color:#fff; font-weight:800; padding:12px 18px; border-radius:12px; text-decoration:none;">
+          Activate 70% Crypto Fee Rebate (MEXC: 1F2C8) ➔
+        </a>
+      </div>
     </div>
 
     <!-- Free Lead Magnet with Email Capture -->
@@ -421,20 +494,39 @@
     function switchTab(tab) {
       const sectionLot = document.getElementById('section-lot');
       const sectionSpread = document.getElementById('section-spread');
+      const sectionRebate = document.getElementById('section-rebate');
       const btnLot = document.getElementById('tab-lot-btn');
       const btnSpread = document.getElementById('tab-spread-btn');
+      const btnRebate = document.getElementById('tab-rebate-btn');
 
-      if (tab === 'lot') {
-        sectionLot.style.display = 'block';
-        sectionSpread.style.display = 'none';
-        btnLot.classList.add('active');
-        btnSpread.classList.remove('active');
-      } else {
-        sectionLot.style.display = 'none';
-        sectionSpread.style.display = 'block';
-        btnLot.classList.remove('active');
-        btnSpread.classList.add('active');
-      }
+      sectionLot.style.display = (tab === 'lot') ? 'block' : 'none';
+      sectionSpread.style.display = (tab === 'spread') ? 'block' : 'none';
+      if (sectionRebate) sectionRebate.style.display = (tab === 'rebate') ? 'block' : 'none';
+
+      btnLot.classList.toggle('active', tab === 'lot');
+      btnSpread.classList.toggle('active', tab === 'spread');
+      if (btnRebate) btnRebate.classList.toggle('active', tab === 'rebate');
+    }
+
+    function recalculateMultiRebate() {
+      const lotsEl = document.getElementById('rebate-lots-range');
+      const cryptoEl = document.getElementById('crypto-fee-range');
+      if (!lotsEl || !cryptoEl) return;
+      const lots = parseFloat(lotsEl.value) || 60;
+      const cryptoFee = parseFloat(cryptoEl.value) || 1000;
+
+      document.getElementById('rebate-lots-badge').textContent = lots + ' Lots/Mo';
+      document.getElementById('crypto-fee-badge').textContent = '$' + cryptoFee.toLocaleString() + ' / Mo';
+
+      const zfxMonthly = lots * 18.0;
+      const vantageMonthly = lots * 16.0;
+      const cryptoMonthly = cryptoFee * 0.65;
+      const annualTotal = (zfxMonthly + cryptoMonthly) * 12;
+
+      document.getElementById('rebate-zfx-usd').textContent = '$' + zfxMonthly.toFixed(2) + ' / mo';
+      document.getElementById('rebate-vantage-usd').textContent = '$' + vantageMonthly.toFixed(2) + ' / mo';
+      document.getElementById('rebate-crypto-usd').textContent = '$' + cryptoMonthly.toFixed(2) + ' / mo';
+      document.getElementById('rebate-annual-total').textContent = '$' + annualTotal.toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' / yr';
     }
 
     function recalculateLotSize() {
@@ -511,6 +603,8 @@
     // Initial calculation
     recalculateLotSize();
     recalculateSpreadSavings();
+    recalculateMultiRebate();
+  </script>
   <script src="scripts/lead-collector.js"></script>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script src="scripts/telegram-twa-bridge.js"></script>
