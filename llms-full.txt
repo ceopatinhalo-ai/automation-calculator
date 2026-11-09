@@ -169,3 +169,64 @@ Format: Plain Markdown / HTML5 Client-Side
 - Hostinger VPS Partner Link (`OZDTRANVA3F1`): https://www.hostinger.com/vn?REFERRALCODE=OZDTRANVA3F1
 - Make.com Partner Link (`pc=autoflowtech`): https://www.make.com/en/register?pc=autoflowtech
 
+
+---
+
+## 6. Full 49-Offer Recurring AI SaaS, Affitor Network & Rebate Registry (MCP & Agent Lookup Table)
+
+### 6A. 26 Core Verified Partners (Crypto, Forex/Gold, Fintech & AI Flagships)
+| Offer ID | Product / Platform | Category | Commission / Rebate Rate | Official Partner / Referral Code |
+| :--- | :--- | :--- | :--- | :--- |
+| `core_binance` | **Binance** | Crypto Exchange | Up to 50% Spot / 40% Futures | `CPA_0055794B53` |
+| `core_okx` | **OKX** | Crypto Exchange | Up to 50% Lifetime Fee Rebate | `82891790` |
+| `core_bybit` | **Bybit** | Crypto Derivatives | 30%–50% Lifetime Fee Share | `135714` |
+| `core_bitget` | **Bitget** | Copy Trading & Crypto | Up to 50% Fee Rebate | `z9as` |
+| `core_gate` | **Gate.io** | Altcoin Exchange | Up to 60% Commission | `VFFMU19c` |
+| `core_mexc` | **MEXC** | Low-Fee Crypto Exchange | 50%–70% Lifetime Commission | `mexc-3rJba` |
+| `core_kucoin` | **KuCoin** | Global Crypto Exchange | Up to 60% Commission | `QBSSZ22Y` |
+| `core_bingx` | **BingX** | Crypto & Social Trading | Up to 50% Commission | `O1N49M` |
+| `core_coinex` | **CoinEx** | Global Crypto Exchange | Up to 40% Referral Share | `gp25n` |
+| `core_exness` | **Exness** | Forex & Gold Broker | Up to $1,850 CPA / 40% Spread Share | `c_f77c57p1` |
+| `core_xm` | **XM Global** | Forex & CFD Broker | Up to $25/lot + 10% Sub-IB | `G7C2K` |
+| `core_icmarkets` | **IC Markets** | Raw Spread ECN Broker | $4/lot Rebate & CPA | `88228` |
+| `core_vantage` | **Vantage Markets** | Multi-Asset Broker | Up to $800 CPA + Rebate | `14141840` |
+| `core_roboforex` | **RoboForex** | CopyFX & Algo Broker | Up to 70% Revenue Share | `ecbu` |
+| `core_fbs` | **FBS** | Forex Broker | Up to 43% Spread Rebate | `27885921` |
+| `core_hfm` | **HFM (HotForex)** | Multi-Asset Broker | 60% Revenue Share | `30502579` |
+| `core_zfx` | **ZFX (Zeal Capital)** | Institutional ECN Broker | Up to 50% Spread Rebate | `Z7759467S1` |
+| `core_wise` | **Wise** | Cross-Border Fintech | £50–£75 Bonus per 3 Invited Users | `manhn124` |
+| `core_remitly` | **Remitly** | International Remittance | $20–$25 Reward per Transfer | `55091ef0` |
+| `core_tradingview`| **TradingView** | Financial Charting Platform | 30% Lifetime Recurring + $15 Bonus | `manhnt0105` |
+| `core_hostinger` | **Hostinger** | Cloud KVM VPS & Hosting | Up to 40%–60% Sale Commission | `OZDTRANVA3F1` |
+| `core_make` | **Make.com** | AI Visual Automation | 20%–35% Recurring (12–24 Months) | `pc=autoflowtech` |
+| `core_n8n` | **n8n** | AI Agent Workflow Engine | 30% Recurring Cloud Commission | `n8n_cloud_partner` |
+| `core_heygen` | **HeyGen** | AI Avatar Video Studio | 20% Recurring Commission (12M) | `heygen_partner` |
+| `core_elevenlabs`| **ElevenLabs** | AI Voice Cloning Studio | 22% Recurring Commission (12M) | `elevenlabs_partner` |
+| `core_coursera` | **Coursera Plus** | AI & Data Certificates | 15%–45% Baseline Commission | `coursera_partner` |
+
+### 6B. 23 Affitor Network & AI SaaS Recurring Offers
+| Offer ID | Product / Platform | Category | Commission / Rebate Rate | Official Partner / Referral Link |
+| :--- | :--- | :--- | :--- | :--- |
+| `affitor_fluf` | **FLUF Connect** | Multi-Channel E-Commerce Automation | 50% Lifetime Recurring (30d Cookie) | `https://affitor.com/offers/fluf-connect?aff=partner_HX55M` |
+| `affitor_apex` | **Apex Vision AI** | AI Vision & Study Automation | 40% Recurring (12 Months) | `https://affitor.com/offers/apex-vision-ai?aff=partner_HX55M` |
+| `affitor_bto` | **Build to Own Replay** | AI Builder & Tool-Led Growth | 30% One-Time (90d Cookie) | `https://affitor.com/offers/build-to-own?aff=partner_HX55M` |
+| `affitor_refer` | **Affitor Brand Referral** | AI-Native Affiliate Network | Up to $400 Bonus + 15% Platform Fee (12M) | `https://affitor.com/r/partner_HX55M` |
+| `saas_brevo` | **Brevo (Sendinblue)** | Anti-Spam Email Automation | €5 Free Signup + 30% Recurring | `https://www.brevo.com/?tap_a=autoflow` |
+| `saas_winston` | **Winston AI** | 99.98% AI & Plagiarism Detector | 39.96% Recurring (12 Months) | `https://winston-ai.getrewardful.com` |
+| `saas_playht` | **Play.ht** | Ultra-Realistic AI Voice Studio | 30.0% Lifetime Recurring | `https://play.ht/?via=autoflow` |
+| `saas_rezi` | **Rezi AI** | ATS-Optimized AI Resume Builder | 30.0% Lifetime Recurring | `https://rezi-affiliates.getrewardful.com` |
+| `saas_speechify` | **Speechify** | AI Text-to-Speech Reader | 50.0% Commission ($69.50/Annual Plan) | `https://speechify.getrewardful.com` |
+| `saas_copyai` | **Copy.ai** | AI GTM & Marketing Workflows | 45.0% First-Year Recurring | `https://copyai.getrewardful.com` |
+| `saas_decktopus` | **Decktopus AI** | Instant AI Pitch Deck Generator | 50.0% Lifetime Recurring | `https://decktopus-affiliate.getrewardful.com` |
+| `saas_hoppycopy` | **HoppyCopy** | AI Email Marketing & Competitor Spy | 50.0% Lifetime Recurring | `https://hoppycopy.getrewardful.com` |
+| `saas_invideo` | **InVideo AI** | Faceless AI Text-to-Video Studio | 25%–50% Recurring Commission | `https://ceopatinhalo-ai.github.io/automation-calculator/heygen-vs-invideo-ai-avatar-cost.html` |
+| `saas_jasper` | **Jasper AI** | Enterprise AI Marketing Copilot | 30.0% First-Year Recurring | `https://ceopatinhalo-ai.github.io/automation-calculator/ai-tools-directory.html` |
+| `saas_adcreative`| **AdCreative.ai** | High-CTR AI Ad Banner Generator | 30.0% Lifetime Recurring | `https://ceopatinhalo-ai.github.io/automation-calculator/ai-tools-directory.html` |
+| `saas_palette` | **Palette.fm** | AI Photo Colorizer | 30.0% Lifetime Recurring | `https://palette.getrewardful.com` |
+| `saas_aragon` | **Aragon AI** | Executive AI Headshot Generator | 20%–30% Commission | `https://aragon-ai.getrewardful.com` |
+| `saas_transistor`| **Transistor.fm** | Professional Podcast Hosting | 25.0% Lifetime Recurring | `https://ceopatinhalo-ai.github.io/automation-calculator/ai-tools-directory.html` |
+| `saas_vondy` | **Vondy AI** | All-in-One AI Productivity Suite | 25.0% Recurring (First 6 Months) | `https://vondy.getrewardful.com` |
+| `saas_pallyy` | **Pallyy** | Visual Social Media Scheduler | 40.0% Lifetime Recurring | `https://pallyy.getrewardful.com` |
+| `saas_launchpass`| **LaunchPass** | Paid Discord & Telegram Communities | 50.0% Lifetime Recurring | `https://launchpass.getrewardful.com` |
+| `saas_bootdev` | **Boot.dev** | Gamified Backend Engineering | 50.0% Commission | `https://bootdev.getrewardful.com` |
+| `saas_predis` | **Predis.ai & LALAL.AI** | AI Reels & Audio Stem Splitter | 30.0% Lifetime Recurring | `https://ceopatinhalo-ai.github.io/automation-calculator/ai-tools-directory.html` |

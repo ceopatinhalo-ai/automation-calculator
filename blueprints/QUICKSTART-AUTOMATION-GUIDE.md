@@ -1,3 +1,9 @@
+---
+aliases:
+  - THE 2026 SOLOPRENEUR BUSINESS AUTOMATION & AI AGENT KIT
+  - QUICKSTART AUTOMATION GUIDE
+---
+
 # ⚡ THE 2026 SOLOPRENEUR BUSINESS AUTOMATION & AI AGENT KIT
 *Official Quickstart Guide, Blueprint Import Manual & Cloud VPS Setup*
 
@@ -55,3 +61,13 @@ If you prefer not to touch Linux terminals or configure webhooks, our engineerin
 
 ---
 *AutoFlow Tech © 2026. All rights reserved. Self-serve digital assets.*
+
+---
+
+## 🔗 Mạng Lưới Khái Niệm Cốt Lõi (Living Concepts)
+> 💡 *Ghi chú này đã được AI tự động đan dệt và đối chiếu vào hệ thống Living Concept Notes toàn Vault:*
+
+- [[Khai-niem-banh-da-noi-dung|🎡 Bánh Đà Nội Dung (Content Flywheel)]] — *Hệ sinh thái nội dung kéo traffic tiếp thị liên kết bền vững.*
+- [[Khai-niem-chi-so-ltv-tren-cac|📈 Chỉ Số LTV Trên CAC & Hiệu Quả Tăng Trưởng]] — *Đo lường biên lợi nhuận hoa hồng so với chi phí mua traffic.*
+- [[Khai-niem-mo-hinh-kinh-doanh-1-nguoi-dan-koe|💎 Mô Hình Doanh Nghiệp 1 Người (Dan Koe)]] — *Mô hình kinh doanh tiếp thị liên kết biên lợi nhuận cao cho cá nhân.*
+- [[Khai-niem-nguyen-ly-don-bay-naval-ravikant|⚖️ Nguyên Lý Đòn Bẩy Không Xin Phép (Naval Ravikant)]] — *Đòn bẩy dòng tiền không cần quản lý nhân sự hay hàng tồn kho.*
